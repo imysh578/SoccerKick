@@ -3,10 +3,10 @@ const Sequelize = require('sequelize');
 module.exports = class Team_board extends Sequelize.Model{
   static init(sequelize){
     return super.init({
-      team_board_writer: {
-        type: Sequelize.STRING(45),
-        allowNull: false,
-      },
+      // team_board_writer: {
+      //   type: Sequelize.STRING(45),
+      //   allowNull: false,
+      // },
       team_board_title: {
         type: Sequelize.STRING(45),
         allowNull: false,
@@ -34,5 +34,7 @@ module.exports = class Team_board extends Sequelize.Model{
     });
   }
   static associate(db) {
+    // 회원 관리 테이블 참조
+    db.Team_board.belongsTo(db.User, {foreignKey: 'team_board_writer', targetKey: 'user_id'});
   }
 };

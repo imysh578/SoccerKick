@@ -1,25 +1,25 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Team_comment extends Sequelize.Model{
+module.exports = class Mercenary_comment extends Sequelize.Model{
   static init(sequelize){
     return super.init({
-      // team_comment_writer: {
-      //   type: Sequelize.STRING(45),
-      //   allowNull: false,
-      // },
-      team_comment_comment: {
+      user_id: {
+        type: Sequelize.STRING(45),
+        allowNull: false,
+      },
+      mercenary_comment: {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      team_comment_date: {
+      mercenary_comment_date: {
         type: Sequelize.DATE,
         allowNull: false,
       },
     }, {
       sequelize,
       timestamps: false,
-      modelName: 'Team_comment',
-      tableName: 'team_comment',
+      modelName: 'Mercenary_comment',
+      tableName: 'mercenary_comment',
       paranoid: false,
       charset: 'utf8mb4',
       collate: 'utf8mb4_general_ci',
@@ -27,6 +27,6 @@ module.exports = class Team_comment extends Sequelize.Model{
   }
   static associate(db) {
     // 회원 관리 테이블 참조
-    db.Team_comment.belongsTo(db.User, {foreignKey: 'team_comment_writer', targetKey: 'user_id'});
+    db.Mercenary_comment.belongsTo(db.User, {foreignKey: 'user_id', targetKey: 'user_id'});
   }
 };
