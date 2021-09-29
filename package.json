@@ -15,5 +15,16 @@
   "bugs": {
     "url": "https://github.com/imysh578/Create-Football-community-site/issues"
   },
-  "homepage": "https://github.com/imysh578/Create-Football-community-site#readme"
+  "homepage": "https://github.com/imysh578/Create-Football-community-site#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.0",
+    "nunjucks": "^3.2.3",
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0"
+  }
 }
