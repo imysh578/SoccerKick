@@ -11,14 +11,15 @@
   </style>
 </head>
 <body>
+  <h1>구단 리스트</h1>
   <title>구단 리스트</title>
   <table>
     {% for team in teams %}
     <tr>
-      <td>{{team.teams_id}}</td>
-      <td>{{team.teams_name}}</td>
-      <td>{{team.teams_gender}}</td>
-      <td>{{team.teams_area}}</td>
+      <td>{{team.team_name}}</td>
+      <td>{{team.team_homeGround}}</td>
+      <td>{{team.team_headCount}}</td>
+      <td>{{team.team_area}}</td>
     </tr>
     {% endfor %}
   </table>

@@ -38,8 +38,8 @@ BattleBoard.init(sequelize);
 BattleComment.init(sequelize);
 
 // 다른 테이블과의 관계 설정
-// User.associate(db);
-// Teams.associate(db);
+User.associate(db);
+Teams.associate(db);
 // TeamsComment.associate(db);
 // TeamBoard.associate(db);
 // MercenaryBoard.associate(db);

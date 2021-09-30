@@ -9,6 +9,7 @@ const mysql = require('mysql2');
 const { sequelize } = require('./models');
 const indexRouter = require('./routes');
 const usersRouter = require('./routes/users');
+const teamsRouter = require('./routes/teams');
 
 const app = express();
 
@@ -23,20 +24,6 @@ nunjucks.configure('views', {
 });
 
 
-// const connection = mysql.createConnection({
-//   host: "jadu.cwmnyyljxyku.ap-northeast-2.rds.amazonaws.com",
-//   user: "jadu",
-//   password: "whwkdtjrgns",
-//   database: "soccer",
-// });
-
-// connection.connect();
-// let user;
-// connection.query("SELECT * FROM user", function (err, results, fields) {
-//     if (err) throw err;
-//     user = results;
-// });
-
 sequelize.sync({force:false})
 .then(()=>{
   console.log('Database connected successfully');
@@ -50,9 +37,10 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
+
 app.use('/', indexRouter);
-// app.use('/user', usersRouter);
-// app.use('/teams', teamsRouter);
+app.use('/user', usersRouter);
+app.use('/test', teamsRouter);
 // app.use('/team_board', teamBoardRouter);
 // app.use('/team_comment', teamCommentRouter);
 // app.use('/mercenary_board', mercenaryBoardRouter);
