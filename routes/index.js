@@ -6,15 +6,10 @@ const router = express.Router();
 
 router.get('/', async(req,res,next)=>{
   try {
-    const users = await User.findAll();
-    // console.log(users);
-    // res.render('sequelize',{users});
-    // console.log(users);
-    fs.readFile('../views/sequelize.html', (err, data)=>{
-      console.log(data);
-      // res.send(data.toString());
-    })
-    res.send('<h1> SoccerKick </h1>');
+    // User 테이블 쿼리 후 user 변수에 대입
+    const user = await User.findAll();
+    // user 테이블을 view 폴더의 sequelize.html에 연결
+    res.render('sequelize',{user});
   } catch (err) {
     console.error(err);
     next(err);
