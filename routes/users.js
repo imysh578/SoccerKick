@@ -20,7 +20,7 @@ router
       const user = await User.create({
         user_id: req.body.user_id,
         user_password: req.body.user_password,
-        user_name: req.body.team_name,
+        user_name: req.body.user_name,
         user_age: req.body.user_age,
         user_area: req.body.user_area,
         user_gender: req.body.user_gender,
@@ -29,8 +29,8 @@ router
         user_team: req.body.user_team,
         user_aboutme: req.body.user_aboutme,
       });
-      res.render("user", { user });
-      res.status(201).json(user);
+      res.redirect("/user");
+      // res.status(201).json(user);
     } catch (err) {
       console.error(err);
     }
