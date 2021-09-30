@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>구단 리스트</title>
+  <style>
+    *{
+      overflow:hidden;
+    }
+    body{
+      size: 16px;
+      display: grid;
+      grid-template-areas: 
+        "header header header"
+        "side main main"
+        "side main main"
+        "footer footer footer";
+      grid-template-rows: 5rem 25rem 25rem 5rem;
+      grid-template-columns: 1fr 2fr 2fr;
+    }
+    header{
+      border: 1px black solid;
+      grid-area: header;
+    }
+    aside{
+      border: 1px black solid;
+      grid-area: side;
+    }
+    main{
+      border: 1px black solid;
+      grid-area: main;
+    }
+    footer{
+      border: 1px black solid;
+      grid-area: footer;
+    }
+  </style>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header>
+    <h1>헤더</h1>
+  </header>
+  
+  <!-- 사이드바 -->
+  <aside>
+    <h1>사이드 메뉴바</h1>
+  </aside>
+  
+  <!-- 메인 -->
+  <main>
+    <h1>메인</h1>
+    <table>
+      <tr>
+        <th>구단 이름</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </main>
+  
+  <!-- 푸터 -->
+  <footer>
+    <h1>푸터</h1>
+
+  </footer>
+</body>
+</html>

@@ -2,7 +2,6 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const morgan = require('morgan');
-// const nunjucks = require('nunjucks');
 const mysql = require('mysql2');
 const ejs = require('ejs');
 
@@ -12,20 +11,13 @@ const { sequelize } = require('./models');
 // 라우터 불러오기
 const indexRouter = require('./routes');
 const usersRouter = require('./routes/users');
+const teamsRouter = require('./routes/teams');
 
 const app = express();
 
 const PORT = 3000;
 // 기존 포트 넘버 없으면 3000으로 설정
 app.set('port', process.env.PORT || PORT);
-
-
-// // nunjucks를 기본 엔진으로 설정
-// app.set('view engine', 'html');
-// nunjucks.configure('views', {
-//   express: app,
-//   watch: true,
-// });
 
 // ejs 템플릿 설정
 app.set('view engine', 'ejs');
@@ -47,8 +39,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 app.use('/', indexRouter);
-// app.use('/user', usersRouter);
-// app.use('/teams', teamsRouter);
+app.use('/user', usersRouter);
+app.use('/teams', teamsRouter);
 // app.use('/team_board', teamBoardRouter);
 // app.use('/team_comment', teamCommentRouter);
 // app.use('/mercenary_board', mercenaryBoardRouter);
