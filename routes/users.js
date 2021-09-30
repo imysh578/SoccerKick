@@ -9,7 +9,7 @@ router
       // Teams 테이블 쿼리 후 teams 변수에 대입
       const user = await User.findAll();
 
-      res.render("user.html", { user });
+      res.render("user", { user });
     } catch (err) {
       console.error(err);
       next(err);
@@ -17,7 +17,7 @@ router
   })
   .post("/", async (req, res, next) => {
     try {
-      const users = await User.create({
+      const user = await User.create({
         user_id: req.body.user_id,
         user_password: req.body.user_password,
         user_name: req.body.team_name,
@@ -29,8 +29,11 @@ router
         user_team: req.body.user_team,
         user_aboutme: req.body.user_aboutme,
       });
-      res.status(201).json(users);
+      res.render("user", { user });
+      res.status(201).json(user);
     } catch (err) {
       console.error(err);
     }
   });
+
+module.exports = router;

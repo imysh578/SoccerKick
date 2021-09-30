@@ -7,7 +7,7 @@ const mysql = require("mysql2");
 
 const { sequelize } = require("./models");
 // const indexRouter = require("./routes");
-const usersRouter = require("./routes");
+const usersRouter = require("./routes/users");
 
 const app = express();
 
@@ -36,7 +36,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // app.use("/", indexRouter);
-app.use("/", usersRouter);
+app.use("/user", usersRouter);
+app.use("/post_page", usersRouter);
 // app.use('/teams', teamsRouter);
 // app.use('/team_board', teamBoardRouter);
 // app.use('/team_comment', teamCommentRouter);
