@@ -4,74 +4,25 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>구단 리스트</title>
+  <title>구단 리스트 페이지</title>
   <style>
-    *{
-      overflow:hidden;
-    }
-    body{
-      size: 16px;
-      display: grid;
-      grid-template-areas: 
-        "header header header"
-        "side main main"
-        "side main main"
-        "footer footer footer";
-      grid-template-rows: 5rem 25rem 25rem 5rem;
-      grid-template-columns: 1fr 2fr 2fr;
-    }
-    header{
-      border: 1px black solid;
-      grid-area: header;
-    }
-    aside{
-      border: 1px black solid;
-      grid-area: side;
-    }
-    main{
-      border: 1px black solid;
-      grid-area: main;
-    }
-    footer{
-      border: 1px black solid;
-      grid-area: footer;
-    }
+      table{border: 1px solid blakc; border-collapse: collapse;}
+      table th, table td{border: 1px solid black}
   </style>
 </head>
 <body>
-  <!-- 헤더 -->
-  <header>
-    <h1>헤더</h1>
-  </header>
+  <title>구단 리스트</title>
+  <table>
+    {% for team in teams %}
+    <tr>
+      <td>{{team.teams_id}}</td>
+      <td>{{team.teams_name}}</td>
+      <td>{{team.teams_gender}}</td>
+      <td>{{team.teams_area}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <form action=""></form>
   
-  <!-- 사이드바 -->
-  <aside>
-    <h1>사이드 메뉴바</h1>
-  </aside>
-  
-  <!-- 메인 -->
-  <main>
-    <h1>메인</h1>
-    <table>
-      <tr>
-        <th>구단 이름</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-  </main>
-  
-  <!-- 푸터 -->
-  <footer>
-    <h1>푸터</h1>
-
-  </footer>
 </body>
 </html>

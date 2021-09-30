@@ -7,9 +7,9 @@ const router = express.Router();
 
 router.get('/teams', async(req,res,next)=>{
   try {
-    // User 테이블 쿼리 후 user 변수에 대입
+    // Teams 테이블 쿼리 후 teams 변수에 대입
     const teams = await Teams.findAll();
-    // user 테이블을 view 폴더의 sequelize.html에 연결
+    // teams 테이블을 view 폴더의 teams.html에 연결
     res.render('teams',{teams});
   } catch (err) {
     console.error(err);

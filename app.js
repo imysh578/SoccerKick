@@ -2,14 +2,11 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const morgan = require('morgan');
-// const nunjucks = require('nunjucks');
+const nunjucks = require('nunjucks');
 const mysql = require('mysql2');
-const ejs = require('ejs');
 
-// 모델(테이블)을 sequelize 객체에 담기
+
 const { sequelize } = require('./models');
-
-// 라우터 불러오기
 const indexRouter = require('./routes');
 const usersRouter = require('./routes/users');
 
@@ -18,19 +15,27 @@ const app = express();
 const PORT = 3000;
 // 기존 포트 넘버 없으면 3000으로 설정
 app.set('port', process.env.PORT || PORT);
+// nunjucks를 기본 엔진으로 설정
+app.set('view engine', 'html');
+nunjucks.configure('views', {
+  express: app,
+  watch: true,
+});
 
 
-// // nunjucks를 기본 엔진으로 설정
-// app.set('view engine', 'html');
-// nunjucks.configure('views', {
-//   express: app,
-//   watch: true,
+// const connection = mysql.createConnection({
+//   host: "jadu.cwmnyyljxyku.ap-northeast-2.rds.amazonaws.com",
+//   user: "jadu",
+//   password: "whwkdtjrgns",
+//   database: "soccer",
 // });
 
-// ejs 템플릿 설정
-app.set('view engine', 'ejs');
-// views폴더 위치 설정
-app.set('views', path.join(__dirname, 'views'));
+// connection.connect();
+// let user;
+// connection.query("SELECT * FROM user", function (err, results, fields) {
+//     if (err) throw err;
+//     user = results;
+// });
 
 sequelize.sync({force:false})
 .then(()=>{
@@ -41,7 +46,6 @@ sequelize.sync({force:false})
 });
 
 app.use(morgan('dev'));
-// 정적 폴더를 public 폴더로 설정
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
