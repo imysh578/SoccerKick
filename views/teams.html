@@ -14,6 +14,12 @@
   <h1>구단 리스트</h1>
   <title>구단 리스트</title>
   <table>
+    <tr>
+      <th>구단명</th>
+      <th>홈구장</th>
+      <th>인원수</th>
+      <th>지역</th>
+    </tr>
     {% for team in teams %}
     <tr>
       <td>{{team.team_name}}</td>
@@ -23,7 +29,20 @@
     </tr>
     {% endfor %}
   </table>
-  <form action=""></form>
-  
+  <hr>
+  <form method="post">
+    <fieldset id="team-insert">
+      <legend>구단 생성 양식</legend>
+      <span>구단명</span>
+      <input type="text" name="team_name" id="team_name">
+      <span>홈구장</span>
+      <input type="text" name="team_homeGround" id="team_homeGround">
+      <span>인원수</span>
+      <input type="number" name="team_headCount" id="team_headCount" min="1" max="200">
+      <span>지역</span>
+      <input type="text" name="team_area" id="team_area">
+      <input type="submit" value="확인">
+    </fieldset>
+  </form>  
 </body>
 </html>

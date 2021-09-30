@@ -40,7 +40,7 @@ app.use(express.urlencoded({extended: false}));
 
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
-app.use('/test', teamsRouter);
+app.use('/teams', teamsRouter);
 // app.use('/team_board', teamBoardRouter);
 // app.use('/team_comment', teamCommentRouter);
 // app.use('/mercenary_board', mercenaryBoardRouter);
