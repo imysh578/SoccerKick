@@ -33,18 +33,18 @@ router
 		}
 	});
 
-router
-	.route("/:team_name")
-	// Update
-	.patch(async (req, res, next) => {
-		try {
-		} catch (err) {}
-	})
-	// Delete
-	.delete(async (req, res, next) => {
-		try {
+// router
+// 	.route("/:team_name")
+// 	// Update
+// 	.patch(async (req, res, next) => {
+// 		try {
+// 		} catch (err) {}
+// 	})
+// 	// Delete
+// 	.delete(async (req, res, next) => {
+// 		try {
       
-		} catch (err) {}
-	});
+// 		} catch (err) {}
+// 	});
 
 module.exports = router;

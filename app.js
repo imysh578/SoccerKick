@@ -52,7 +52,7 @@ app.use('/teams', teamsRouter);
 
 app.use((err, req, res, next)=>{
   res.locals.message = err.message;
-  res.locals.error = process.env.NODE_ENV !== 'soccer' ? err:{};
+  res.locals.error = process.env.NODE_ENV !== 'production' ? err:{};
   res.status(err.static || 500);
   res.render('error');
 });
