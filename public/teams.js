@@ -1,37 +1,63 @@
-// 팀 리스트 불러오기
-async function getTeamlist(){
+document.querySelectorAll('#team-list tr').forEach(el=>{
+  el.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const teamName = el.querySelector('td').textContent;
+    // console.log(teamName);
+    if(teamName) {
+      getTeamInfo(teamName);
+    }
+  });
+});
+
+async function getTeamInfo(teamName){
   try {
-    const res = await axios.get('/teams');
-    const teams = res.data;
-    const tbody = document.querySelector('#team-list-2 tbody');
+    const res = await axios.get(`/teams/${teamName}`);
+    const teamInfo = res.data;
+    console.log(teamInfo);
+    const tbody = document.querySelector('#selected tbody');
     tbody.innerHTML = '';
-    
+
+    teamInfo.map((team)=>{
+      const tr = document.createElement('tr');
+      let td = document.createElement('td');
+      td.textContent = team.team_name;
+      tr.appendChild(td);
+      td = document.createElement('td');
+      td.textContent = team.team_leaderId;
+      tr.appendChild(td);
+      td = document.createElement('td');
+      td.textContent = team.team_homeGround;
+      tr.appendChild(td);
+      td = document.createElement('td');
+      td.textContent = team.team_headCount;
+      tr.appendChild(td);
+      td = document.createElement('td');
+      td.textContent = team.team_info;
+      tr.appendChild(td);
+      td = document.createElement('td');
+      td.textContent = team.team_manner;
+      tr.appendChild(td);
+      td = document.createElement('td');
+      td.textContent = team.team_area;
+      tr.appendChild(td);
+
+      const join = document.createElement('button');
+      join.textContent = "가입 신청";
+      td = document.createElement('td');
+      td.appendChild(join);
+      tr.appendChild(td);
+      
+      const edit = document.createElement('button');
+      edit.textContent = "구단 관리";
+      td = document.createElement('td');
+      td.appendChild(edit);
+      tr.appendChild(td);
+      
+      
+      tbody.appendChild(tr);
+    })
   } catch (err) {
     console.error(err);
   }
 }
-
-document.querySelector('#team-info').addEventListener('click', async(e)=>{
-  e.preventDefault();
-  console.log(e.target);
-})
-
-
-document.getElementById('team-create-form').addEventListener('submit', async(e)=>{
-  e.preventDefault();
-  const team_name = e.target.team_name.value;
-  const team_homeGround = e.target.team_homeGround.value;
-  const team_headCount = e.target.team_headCount.value;
-  const team_area = e.target.team_area.value;
-  // try {
-  //   getTeamlist();
-  // } catch (err) {
-  //   console.error(err);
-  // }
-  console.log(team_name)
-  e.target.team_name = '';
-  e.target.team_homeGround = '';
-  e.target.team_headCount = '';
-  e.target.team_area = '';
-})
 
