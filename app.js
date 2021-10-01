@@ -34,8 +34,10 @@ sequelize.sync({force:false})
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+// express.json(): JSON으로 들어오는 요청 구문 분석(body-parser 기반)
+// 구문 분석된 데이터는 req.body에 채워짐 (구문 분석할 본문이 없거나 Content-Type이 다르면 빈 객체 반환 또는 에러 발생)
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 
 app.use('/', indexRouter);

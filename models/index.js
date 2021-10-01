@@ -15,7 +15,7 @@ const db = {};
 
 // config.json파일에 있는 MySQL connection 정보 불러옴
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
-
+console.log(sequelize);
 // db객체에 모든 테이블 넣기
 db.sequelize = sequelize;
 db.User = User;

@@ -6,15 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>구단 리스트 페이지</title>
   <style>
-      table{border: 1px solid blakc; border-collapse: collapse;}
+      table{border: 1px solid black; border-collapse: collapse;}
       table th, table td{border: 1px solid black}
   </style>
 </head>
 <body>
   <h1>구단 리스트</h1>
   <title>구단 리스트</title>
-  <table>
+  <table id="team-list">
     <tr>
+      <th>번호</th>
       <th>구단명</th>
       <th>홈구장</th>
       <th>인원수</th>
@@ -22,16 +23,19 @@
     </tr>
     {% for team in teams %}
     <tr>
+      <td>{{loop.index}}</td>
       <td>{{team.team_name}}</td>
       <td>{{team.team_homeGround}}</td>
       <td>{{team.team_headCount}}</td>
       <td>{{team.team_area}}</td>
+      <td><button name="edit-btn" id="edit-btn">수정</button></td>
+      <td><button name="del-btn" id="del-btn">삭제</button></td>
     </tr>
     {% endfor %}
   </table>
   <hr>
-  <form method="post">
-    <fieldset id="team-insert">
+  <form id="team-list-form">
+    <fieldset>
       <legend>구단 생성 양식</legend>
       <span>구단명</span>
       <input type="text" name="team_name" id="team_name">
@@ -41,7 +45,7 @@
       <input type="number" name="team_headCount" id="team_headCount" min="1" max="200">
       <span>지역</span>
       <input type="text" name="team_area" id="team_area">
-      <input type="submit" value="확인">
+      <input type="submit" name="submit-btn" id="submit-btn" value="확인">
     </fieldset>
   </form>  
 </body>
