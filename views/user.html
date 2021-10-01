@@ -11,8 +11,12 @@
         border-collapse: collapse;
       }
       table td,
-      table tr {
+      table tr,
+      table th {
         border: solid 1px black;
+      }
+      table {
+        width: 100%;
       }
     </style>
   </head>
@@ -20,7 +24,7 @@
     <br />
     <div>
       <form method="POST">
-        <table>
+        <table style="width: 30%">
           <tr>
             <td>아이디</td>
             <td><input type="text" name="user_id" id="user_id" /></td>
@@ -72,8 +76,21 @@
     <br />
     <title>회원 관리 테이블</title>
     <table>
+      <tr>
+        <th></th>
+        <th>아이디</th>
+        <th>이름</th>
+        <th>나이</th>
+        <th>지역</th>
+        <th>성별</th>
+        <th>이메일</th>
+        <th>포지션</th>
+        <th>팀</th>
+        <th>자기소개</th>
+      </tr>
       {% for a in user %}
       <tr>
+        <td>{{loop.index}}</td>
         <td>{{a.user_id}}</td>
         <td>{{a.user_name}}</td>
         <td>{{a.user_age}}</td>

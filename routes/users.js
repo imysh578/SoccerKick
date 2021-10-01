@@ -27,7 +27,7 @@ router
         user_mail: req.body.user_mail,
         user_position: req.body.user_position,
         user_team: req.body.user_team,
-        user_aboutme: req.body.user_aboutme,
+        user_aboutMe: req.body.user_aboutMe,
       });
       res.redirect("/user");
       // res.status(201).json(user);
