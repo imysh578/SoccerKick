@@ -9,7 +9,7 @@ const mysql = require('mysql2');
 const { sequelize } = require('./models');
 const indexRouter = require('./routes');
 const usersRouter = require('./routes/users');
-const teamsRouter = require('.routes/teams');
+const teamsRouter = require('./routes/teams');
 
 const app = express();
 
