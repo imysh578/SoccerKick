@@ -6,20 +6,32 @@ const fs = require("fs");
 const router = express.Router();
 
 router
+	.route('/')
+	.get(async(req, res, next) => {
+		try {
+			const teams = await Teams.findAll(); 
+			res.render('teams', {teams});
+		} catch (err) {
+			
+		}
+	});
+
+router
+	.route('/:team_name')
 	// Read
-	.get("/", async (req, res, next) => {
+	.get(async (req, res, next) => {
 		try {
 			// Teams 테이블 쿼리 후 teams 변수에 대입
 			const teams = await Teams.findAll();
 			// teams 테이블을 view 폴더의 teams.html에 연결
-			res.render("teams", { teams });
+			res.json(teams);
 		} catch (err) {
 			console.error(err);
 			next(err);
 		}
 	})
 	// Create
-	.post("/", async (req, res, next) => {
+	.post(async (req, res, next) => {
 		try {
 			const teams = await Teams.create({
 				team_name: req.body.team_name,
@@ -27,9 +39,11 @@ router
 				team_headCount: req.body.team_headCount,
 				team_area: req.body.team_area,
 			});
-			res.redirect(req.originalUrl);
+			res.status(201).json(teams);
+			// res.redirect(req.originalUrl);
 		} catch (err) {
 			console.error(err);
+			next(err);
 		}
 	});
 
@@ -38,6 +52,17 @@ router
 // 	// Update
 // 	.patch(async (req, res, next) => {
 // 		try {
+// 			const result = await Teams.update(
+// 				{
+// 					team_name: req.body.team_name,
+// 					team_homeGround: req.body.team_homeGround,
+// 					team_headCount: req.body.team_headCount,
+// 					team_area: req.body.team_area,
+// 				},
+// 				{
+// 					where: {team_name: req.body.team_name,},
+// 				}
+// 			)
 // 		} catch (err) {}
 // 	})
 // 	// Delete
