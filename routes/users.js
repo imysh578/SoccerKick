@@ -4,9 +4,8 @@ const User = require("../models/user");
 const router = express.Router();
 
 router
-  .get("/", async (req, res, next) => {
+  .get("/user", async (req, res, next) => {
     try {
-      // Teams 테이블 쿼리 후 teams 변수에 대입
       const user = await User.findAll();
 
       res.render("user", { user });
@@ -15,7 +14,7 @@ router
       next(err);
     }
   })
-  .post("/", async (req, res, next) => {
+  .post("/user", async (req, res, next) => {
     try {
       const user = await User.create({
         user_id: req.body.user_id,
@@ -28,9 +27,35 @@ router
         user_position: req.body.user_position,
         user_team: req.body.user_team,
         user_aboutMe: req.body.user_aboutMe,
+        user_grade: req.body.user_grade,
       });
       res.redirect("/user");
       // res.status(201).json(user);
+    } catch (err) {
+      console.error(err);
+    }
+  });
+
+router
+  .get("/edit", async (req, res, next) => {
+    try {
+      const user = await User.findAll();
+      res.render("edit", { user });
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  })
+  .post("/edit", async (res, req, next) => {
+    try {
+      const user = await User.update(
+        {
+          user_id: "",
+        },
+        {
+          where: { user_id },
+        }
+      );
     } catch (err) {
       console.error(err);
     }
