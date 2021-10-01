@@ -9,6 +9,7 @@ const mysql = require('mysql2');
 const { sequelize } = require('./models');
 const indexRouter = require('./routes');
 const usersRouter = require('./routes/users');
+const teamsRouter = require('.routes/teams');
 
 const app = express();
 
@@ -21,21 +22,6 @@ nunjucks.configure('views', {
   express: app,
   watch: true,
 });
-
-
-// const connection = mysql.createConnection({
-//   host: "jadu.cwmnyyljxyku.ap-northeast-2.rds.amazonaws.com",
-//   user: "jadu",
-//   password: "whwkdtjrgns",
-//   database: "soccer",
-// });
-
-// connection.connect();
-// let user;
-// connection.query("SELECT * FROM user", function (err, results, fields) {
-//     if (err) throw err;
-//     user = results;
-// });
 
 sequelize.sync({force:false})
 .then(()=>{
@@ -51,8 +37,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 app.use('/', indexRouter);
-// app.use('/user', usersRouter);
-// app.use('/teams', teamsRouter);
+app.use('/user', usersRouter);
+app.use('/teams', teamsRouter);
 // app.use('/team_board', teamBoardRouter);
 // app.use('/team_comment', teamCommentRouter);
 // app.use('/mercenary_board', mercenaryBoardRouter);
@@ -63,7 +49,7 @@ app.use('/', indexRouter);
 app.use((err, req, res, next)=>{
   res.locals.message = err.message;
   res.locals.error = process.env.NODE_ENV !== 'soccer' ? err:{};
-  res.status(err.static || 500);
+  res.status(err.status || 500);  //10-01 static 을 status로 수정
   res.render('error');
 });
 
