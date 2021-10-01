@@ -44,7 +44,7 @@ module.exports = class Teams extends Sequelize.Model{
   }
   static associate(db) {
     // 한판떠요 게시판
-    db.Teams.hasMany(db.Battle_board, {foreignKey: 'team_name', sourceKey: 'user_id'});
+    //db.Teams.hasMany(db.Battle_board, {foreignKey: 'team_name', sourceKey: 'user_id'});
 
     // 회원 관리 테이블 참조
     db.Teams.belongsTo(db.User, {foreignKey: 'team_leaderId', targetKey: 'user_id'});
