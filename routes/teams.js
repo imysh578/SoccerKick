@@ -14,14 +14,6 @@ router
       console.error(err);
       next(err);
     }
-  })
-  .post(async (req,res,next)=>{
-    try {
-      console.log(req.body);
-    } catch (err) {
-      console.error(err);
-      next(err);
-    }
   });
 
 // 구단 선택 시
