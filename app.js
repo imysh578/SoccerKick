@@ -37,7 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // app.use("/", indexRouter);
-app.use("/", usersRouter);
+app.use("/user", usersRouter);
 app.use("/", editsRotuer);
 // app.use('/teams', teamsRouter);
 // app.use('/team_board', teamBoardRouter);

@@ -4,7 +4,7 @@ const User = require("../models/user");
 const router = express.Router();
 
 router
-    .get("/user", async (req, res, next) => {
+    .get("/", async (req, res, next) => {
         try {
             const user = await User.findAll();
 
@@ -14,7 +14,7 @@ router
             next(err);
         }
     })
-    .post("/user", async (req, res, next) => {
+    .post("/", async (req, res, next) => {
         try {
             const user = await User.create({
                 user_id: req.body.user_id,

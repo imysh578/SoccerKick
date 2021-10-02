@@ -1,5 +1,3 @@
-const { get } = require("../routes/edits");
-
 document.getElementById("edit_button").addEventListener("click", (e) => {
     e.preventDefault();
 });
