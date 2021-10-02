@@ -8,7 +8,7 @@ const mysql = require("mysql2");
 const { sequelize } = require("./models");
 // const indexRouter = require("./routes");
 const usersRouter = require("./routes/users");
-const editRotuer = require("./routes/edits");
+const editsRotuer = require("./routes/edits");
 
 const app = express();
 
@@ -38,7 +38,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // app.use("/", indexRouter);
 app.use("/", usersRouter);
-// app.use("/", editRotuer);
+app.use("/", editsRotuer);
 // app.use('/teams', teamsRouter);
 // app.use('/team_board', teamBoardRouter);
 // app.use('/team_comment', teamCommentRouter);

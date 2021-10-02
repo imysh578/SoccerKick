@@ -29,33 +29,10 @@ router
         user_aboutMe: req.body.user_aboutMe,
         user_grade: req.body.user_grade,
       });
-      res.redirect("/user");
-      // res.status(201).json(user);
-    } catch (err) {
-      console.error(err);
-    }
-  });
 
-router
-  .get("/edit", async (req, res, next) => {
-    try {
-      const user = await User.findAll();
-      res.render("edit", { user });
-    } catch (err) {
-      console.error(err);
-      next(err);
-    }
-  })
-  .post("/edit", async (res, req, next) => {
-    try {
-      const user = await User.update(
-        {
-          user_id: "",
-        },
-        {
-          where: { user_id },
-        }
-      );
+      res.redirect("/user");
+
+      // res.status(201).json(user);
     } catch (err) {
       console.error(err);
     }

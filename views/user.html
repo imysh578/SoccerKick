@@ -74,44 +74,46 @@
       </form>
     </div>
     <br />
-    <title>회원 관리 테이블</title>
-    <table>
-      <tr>
-        <th></th>
-        <th>아이디</th>
-        <th>이름</th>
-        <th>나이</th>
-        <th>지역</th>
-        <th>성별</th>
-        <th>이메일</th>
-        <th>포지션</th>
-        <th>팀</th>
-        <th>자기소개</th>
-        <th>회원등급</th>
-      </tr>
-      {% for a in user %}
-      <tr>
-        <td>{{loop.index}}</td>
-        <td>{{a.user_id}}</td>
-        <td>{{a.user_name}}</td>
-        <td>{{a.user_age}}</td>
-        <td>{{a.user_area}}</td>
-        <td>{{a.user_gender}}</td>
-        <td>{{a.user_mail}}</td>
-        <td>{{a.user_position}}</td>
-        <td>{{a.user_team}}</td>
-        <td>{{a.user_aboutMe}}</td>
-        <td>{{a.user_grade}}</td>
-        <td>
-          <input type="button" value="수정" onclick="edit()" />
-        </td>
-      </tr>
-      {% endfor %}
-    </table>
-    <script>
+    <form method="POST">
+      <title>회원 관리 테이블</title>
+      <table>
+        <tr>
+          <th></th>
+          <th>아이디</th>
+          <th>이름</th>
+          <th>나이</th>
+          <th>지역</th>
+          <th>성별</th>
+          <th>이메일</th>
+          <th>포지션</th>
+          <th>팀</th>
+          <th>자기소개</th>
+          <th>회원등급</th>
+        </tr>
+        {% for a in user %}
+        <tr>
+          <td>{{loop.index}}</td>
+          <td>{{a.user_id}}</td>
+          <td>{{a.user_name}}</td>
+          <td>{{a.user_age}}</td>
+          <td>{{a.user_area}}</td>
+          <td>{{a.user_gender}}</td>
+          <td>{{a.user_mail}}</td>
+          <td>{{a.user_position}}</td>
+          <td>{{a.user_team}}</td>
+          <td>{{a.user_aboutMe}}</td>
+          <td>{{a.user_grade}}</td>
+          <td>
+            <a href="/edit"><input type="button" value="수정" /></a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </form>
+    <!-- <script>
       function edit() {
         location.href = "/edit";
       }
-    </script>
+    </script> -->
   </body>
 </html>
