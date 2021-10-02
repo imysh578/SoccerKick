@@ -12,41 +12,43 @@
   <div>
     <form method="post">
       <fieldset>
-        <legend>구단 생성하기</legend>
+        <legend>구단 관리</legend>
         <form method="POST" id="team-list-form">
+          {% for team in teams %}
           <div>
             <span>구단명</span>
-            <input type="text" name="team_name" id="team_name">
+            <input type="text" name="team_name" id="team_name" value="{{team.team_name}}">
           </div>
           <div>
             <span>지역</span>
-            <input type="text" name="team_homeGround" id="team_homeGround">
+            <input type="text" name="team_homeGround" id="team_homeGround" value="{{team.team_area}}">
           </div>
           <div>
             <span>인원수</span>
-            <input type="number" name="team_headCount" id="team_headCount" min="1" max="200">
+            <input type="number" name="team_headCount" id="team_headCount" min="1" max="200" value="{{team.team_headCount}}">
           </div>
           <div>
             <span>구단 정보</span>
-            <input type="text" name="team_info" id="team_info">
+            <input type="text" name="team_info" id="team_info" value="{{team.team_info}}">
           </div>
           <div>
             <span>구단 매너도</span>
             <select name="manner" id="manner">
               <option value="high">상</option>
-              <option value="mid">중</option>
+              <option value="mid" selected>중</option>
               <option value="low">하</option>
             </select>
           </div>
           <div>
             <span>홈구장</span>
-            <input type="text" name="team_area" id="team_area">
+            <input type="text" name="team_area" id="team_area" value="{{team.team_homeGround}}">
           </div>
           <div>
             <span>구단주 아이디</span>
-            <input type="text" name="team_leaderId" id="team_leaderId">
+            <input type="text" name="team_leaderId" id="team_leaderId" value="{{team.team_leaderId}}">
           </div>
           <input type="submit" name="submit-btn" id="submit-btn" value="확인">
+          {% endfor %}
         </form>
       </fieldset>
     </form>

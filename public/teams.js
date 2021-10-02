@@ -32,10 +32,15 @@ async function getTeamInfo(teamName){
     td = document.createElement('td');
     td.appendChild(edit);
     tr.appendChild(td);
+    edit.addEventListener('click', (e)=>{
+      e.preventDefault();
+      teamName = teamInfo[0].team_name;
+      // console.log(teamName);
+      window.location.href = `/teams/edit/${teamName}`;
+    })
 
     tbody.appendChild(tr);
   } catch (err) {
     console.error(err);
   }
 }
-
