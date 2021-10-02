@@ -4,7 +4,8 @@
     "password": "whwkdtjrgns",
     "database": "soccer",
     "host": "jadu.cwmnyyljxyku.ap-northeast-2.rds.amazonaws.com",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": false
   },
   "test": {
     "username": "root",
