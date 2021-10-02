@@ -13,33 +13,16 @@ async function getTeamInfo(teamName){
   try {
     const res = await axios.get(`/teams/${teamName}`);
     const teamInfo = res.data;
-    console.log(teamInfo);
     const tbody = document.querySelector('#selected tbody');
     tbody.innerHTML = '';
 
     teamInfo.map((team)=>{
       const tr = document.createElement('tr');
-      let td = document.createElement('td');
-      td.textContent = team.team_name;
-      tr.appendChild(td);
-      td = document.createElement('td');
-      td.textContent = team.team_leaderId;
-      tr.appendChild(td);
-      td = document.createElement('td');
-      td.textContent = team.team_homeGround;
-      tr.appendChild(td);
-      td = document.createElement('td');
-      td.textContent = team.team_headCount;
-      tr.appendChild(td);
-      td = document.createElement('td');
-      td.textContent = team.team_info;
-      tr.appendChild(td);
-      td = document.createElement('td');
-      td.textContent = team.team_manner;
-      tr.appendChild(td);
-      td = document.createElement('td');
-      td.textContent = team.team_area;
-      tr.appendChild(td);
+      for (const attr in team) {
+        let td = document.createElement('td');
+        td.textContent = team[attr];
+        tr.appendChild(td);
+      }
 
       const join = document.createElement('button');
       join.textContent = "가입 신청";
