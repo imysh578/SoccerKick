@@ -1,119 +1,169 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      table {
-        border: solid 1px black;
-        border-collapse: collapse;
-      }
-      table td,
-      table tr,
-      table th {
-        border: solid 1px black;
-      }
-      table {
-        width: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <br />
-    <div>
-      <form method="POST">
-        <table style="width: 30%">
-          <tr>
-            <td>아이디</td>
-            <td><input type="text" name="user_id" id="user_id" /></td>
-          </tr>
-          <tr>
-            <td>비밀번호</td>
-            <td>
-              <input type="password" name="user_password" id="user_password" />
-            </td>
-          </tr>
-          <tr>
-            <td>이름</td>
-            <td><input type="text" name="user_name" id="user_name" /></td>
-          </tr>
-          <tr>
-            <td>나이</td>
-            <td><input type="number" name="user_age" id="user_age" /></td>
-          </tr>
-          <tr>
-            <td>지역</td>
-            <td><input type="text" name="user_area" id="user_area" /></td>
-          </tr>
-          <tr>
-            <td>성별</td>
-            <td><input type="text" name="user_gender" id="user_gender" /></td>
-          </tr>
-          <tr>
-            <td>이메일</td>
-            <td><input type="text" name="user_mail" id="user_mail" /></td>
-          </tr>
-          <tr>
-            <td>포지션</td>
-            <td>
-              <input type="text" name="user_position" id="user_position" />
-            </td>
-          </tr>
-          <tr>
-            <td>소속팀</td>
-            <td><input type="text" name="user_team" id="user_team" /></td>
-          </tr>
-          <tr>
-            <td>자기소개</td>
-            <td><input type="text" name="user_aboutMe" id="user_aboutMe" /></td>
-          </tr>
-        </table>
-        <input type="submit" value="회원가입" />
-      </form>
-    </div>
-    <br />
-    <form method="POST">
-      <title>회원 관리 테이블</title>
-      <table>
-        <tr>
-          <th></th>
-          <th>아이디</th>
-          <th>이름</th>
-          <th>나이</th>
-          <th>지역</th>
-          <th>성별</th>
-          <th>이메일</th>
-          <th>포지션</th>
-          <th>팀</th>
-          <th>자기소개</th>
-          <th>회원등급</th>
-        </tr>
-        {% for a in user %}
-        <tr>
-          <td>{{loop.index}}</td>
-          <td>{{a.user_id}}</td>
-          <td>{{a.user_name}}</td>
-          <td>{{a.user_age}}</td>
-          <td>{{a.user_area}}</td>
-          <td>{{a.user_gender}}</td>
-          <td>{{a.user_mail}}</td>
-          <td>{{a.user_position}}</td>
-          <td>{{a.user_team}}</td>
-          <td>{{a.user_aboutMe}}</td>
-          <td>{{a.user_grade}}</td>
-          <td>
-            <a href="/edit"><input type="button" value="수정" /></a>
-          </td>
-        </tr>
-        {% endfor %}
-      </table>
-    </form>
-    <!-- <script>
-      function edit() {
-        location.href = "/edit";
-      }
-    </script> -->
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            table {
+                border: solid 1px black;
+                border-collapse: collapse;
+            }
+            table td,
+            table tr,
+            table th {
+                border: solid 1px black;
+            }
+            table {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <br />
+        <div>
+            <form method="POST">
+                <table style="width: 30%">
+                    <tr>
+                        <td>아이디</td>
+                        <td>
+                            <input type="text" name="user_id" id="user_id" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호</td>
+                        <td>
+                            <input
+                                type="password"
+                                name="user_password"
+                                id="user_password"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td>
+                            <input
+                                type="text"
+                                name="user_name"
+                                id="user_name"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>나이</td>
+                        <td>
+                            <input
+                                type="number"
+                                name="user_age"
+                                id="user_age"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>지역</td>
+                        <td>
+                            <input
+                                type="text"
+                                name="user_area"
+                                id="user_area"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>성별</td>
+                        <td>
+                            <input
+                                type="text"
+                                name="user_gender"
+                                id="user_gender"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>이메일</td>
+                        <td>
+                            <input
+                                type="text"
+                                name="user_mail"
+                                id="user_mail"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>포지션</td>
+                        <td>
+                            <input
+                                type="text"
+                                name="user_position"
+                                id="user_position"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>소속팀</td>
+                        <td>
+                            <input
+                                type="text"
+                                name="user_team"
+                                id="user_team"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>자기소개</td>
+                        <td>
+                            <input
+                                type="text"
+                                name="user_aboutMe"
+                                id="user_aboutMe"
+                            />
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" value="회원가입" />
+            </form>
+        </div>
+        <br />
+        <form method="POST">
+            <title>회원 관리 테이블</title>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>아이디</th>
+                    <th>이름</th>
+                    <th>나이</th>
+                    <th>지역</th>
+                    <th>성별</th>
+                    <th>이메일</th>
+                    <th>포지션</th>
+                    <th>팀</th>
+                    <th>자기소개</th>
+                    <th>회원등급</th>
+                </tr>
+                {% for a in user %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{a.user_id}}</td>
+                    <td>{{a.user_name}}</td>
+                    <td>{{a.user_age}}</td>
+                    <td>{{a.user_area}}</td>
+                    <td>{{a.user_gender}}</td>
+                    <td>{{a.user_mail}}</td>
+                    <td>{{a.user_position}}</td>
+                    <td>{{a.user_team}}</td>
+                    <td>{{a.user_aboutMe}}</td>
+                    <td>{{a.user_grade}}</td>
+                    <td>
+                        <a href="/edit"
+                            ><input type="button" value="수정" id="edit_button"
+                        /></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+        <script></script>
+    </body>
 </html>
