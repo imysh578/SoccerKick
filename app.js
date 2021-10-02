@@ -15,7 +15,7 @@ const app = express();
 
 const PORT = 3000;
 // 기존 포트 넘버 없으면 3000으로 설정
-app.set('port', process.env.PORT || PORT);
+app.set("port", process.env.PORT || PORT);
 // nunjucks를 기본 엔진으로 설정
 app.set('view engine', 'html');
 nunjucks.configure('views', {
@@ -50,6 +50,7 @@ app.use('/teams', teamsRouter);
 // app.use('/battle_board', battleBoardRouter);
 // app.use('/battle_comment', battleCommentRouter);
 
+
 app.use((err, req, res, next)=>{
   res.locals.message = err.message;
   res.locals.error = process.env.NODE_ENV !== 'production' ? err:{};
@@ -57,7 +58,6 @@ app.use((err, req, res, next)=>{
   res.render('error');
 });
 
-
-app.listen(app.get('port'), () => {
-  console.log(app.get('port'), 'port is ready');
+app.listen(app.get("port"), () => {
+    console.log(app.get("port"), "port is ready");
 });
