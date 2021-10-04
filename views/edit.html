@@ -11,6 +11,7 @@
             <legend>회원 정보를 수정해보자</legend>
             <form method="POST">
                 <table style="width: 30%">
+                    {% for a in user %}
                     <tr>
                         <td>아이디</td>
                         <td>
@@ -29,6 +30,7 @@
                                 type="password"
                                 name="user_password"
                                 id="user_password"
+                                value="{{a.user_password}}"
                             />
                         </td>
                     </tr>
@@ -39,6 +41,7 @@
                                 type="text"
                                 name="user_name"
                                 id="user_name"
+                                value="{{a.user_name}}"
                             />
                         </td>
                     </tr>
@@ -49,6 +52,7 @@
                                 type="number"
                                 name="user_age"
                                 id="user_age"
+                                value="{{a.user_age}}"
                             />
                         </td>
                     </tr>
@@ -59,6 +63,7 @@
                                 type="text"
                                 name="user_area"
                                 id="user_area"
+                                value="{{a.user_area}}"
                             />
                         </td>
                     </tr>
@@ -69,6 +74,7 @@
                                 type="text"
                                 name="user_gender"
                                 id="user_gender"
+                                value="{{a.user_gender}}"
                             />
                         </td>
                     </tr>
@@ -79,6 +85,7 @@
                                 type="text"
                                 name="user_mail"
                                 id="user_mail"
+                                value="{{a.user_mail}}"
                             />
                         </td>
                     </tr>
@@ -89,6 +96,7 @@
                                 type="text"
                                 name="user_position"
                                 id="user_position"
+                                value="{{a.user_position}}"
                             />
                         </td>
                     </tr>
@@ -99,6 +107,7 @@
                                 type="text"
                                 name="user_team"
                                 id="user_team"
+                                value="{{a.user_team}}"
                             />
                         </td>
                     </tr>
@@ -109,14 +118,16 @@
                                 type="text"
                                 name="user_aboutMe"
                                 id="user_aboutMe"
+                                value="{{a.user_aboutMe}}"
                             />
                         </td>
                     </tr>
+                    {% endfor %}
                 </table>
                 <input type="submit" value="정보수정" />
             </form>
         </fieldset>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="/edit.js"></script>
+        <script src="/user.js"></script>
     </body>
 </html>
