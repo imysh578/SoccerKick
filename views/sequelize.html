@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>테스트 페이지</title>
-        <style>
-            table {
-                border: 1px solid black;
-                border-collapse: collapse;
-            }
-            table th,
-            table td {
-                border: 1px solid black;
-            }
-        </style>
-    </head>
-    <body>
-        <title>회원 관리 테이블</title>
-        <table>
-            {% for a in user %}
-            <tr>
-                <td>{{a.user_id}}</td>
-                <td>{{a.user_name}}</td>
-                <td>{{a.user_gender}}</td>
-                <td>{{a.user_area}}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        <a href="/user">회원관리</a>
-        <a href="/teams">구단 리스트</a>
-        <a href="/battle_board">한판떠요</a>
-        <a href="/mercenary_board">용병 리스트</a>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>테스트 페이지</title>
+    <style>
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      table th,
+      table td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <title>회원 관리 테이블</title>
+    <table>
+      {% for a in user %}
+      <tr>
+        <td>{{a.user_id}}</td>
+        <td>{{a.user_name}}</td>
+        <td>{{a.user_gender}}</td>
+        <td>{{a.user_area}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <a href="/user">회원관리</a>
+    <a href="/teams">구단 리스트</a>
+    <a href="/battle_board">한판떠요</a>
+    <a href="/mercenary_board">용병 리스트</a>
+  </body>
 </html>
