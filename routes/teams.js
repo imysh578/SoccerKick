@@ -87,7 +87,7 @@ router
 // 구단 삭제
 router
 	.route("/edit/:team_name/delete")
-  .get(async (req,res,next)=>{
+  .delete(async (req,res,next)=>{
     try {
 			console.log('delete router');
       await Teams.destroy({
