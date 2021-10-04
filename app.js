@@ -10,10 +10,11 @@ const indexRouter = require("./routes");
 const usersRouter = require("./routes/users");
 const teamsRouter = require("./routes/teams");
 const mercenaryBoardRouter = require("./routes/mercenary_board");
+const battleBoardRouter = require("./routes/battle_boards");
 
 const app = express();
 
-const PORT = 3000;
+const PORT = 3001;
 // 기존 포트 넘버 없으면 3000으로 설정
 app.set("port", process.env.PORT || PORT);
 // nunjucks를 기본 엔진으로 설정
@@ -46,7 +47,7 @@ app.use("/teams", teamsRouter);
 // app.use('/team_comment', teamCommentRouter);
 app.use("/mercenary_board", mercenaryBoardRouter);
 // app.use('/mercenary_comment', mercenaryCommentRouter);
-// app.use('/battle_board', battleBoardRouter);
+app.use("/battle_board", battleBoardRouter);
 // app.use('/battle_comment', battleCommentRouter);
 
 app.use((err, req, res, next) => {
