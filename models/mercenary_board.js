@@ -7,6 +7,7 @@ module.exports = class Mercenary_board extends Sequelize.Model {
         number: {
           type: Sequelize.INTEGER,
           allowNull: false,
+          primaryKey: true,
         },
         user_id: {
           type: Sequelize.STRING(45),

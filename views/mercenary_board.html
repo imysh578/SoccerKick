@@ -17,52 +17,36 @@
     </style>
   </head>
   <body>
-    <h1>구단 리스트</h1>
+    <h1>용병게시팔</h1>
     <table>
-      <thead>
+      <tbody>
         <tr>
-          <th>구단명</th>
-          <!-- <th>구단주 아이디</th> -->
-          <th>홈구장</th>
-          <th>인원수</th>
-          <!-- <th>구단 정보</th> -->
-          <!-- <th>구단 매너도</th> -->
-          <th>지역</th>
+          <td id="mercenary_recruitment">용병구해요</td>
+          <td id="mercenary_want">용병할래요</td>
         </tr>
-      </thead>
-
-      <tbody id="team-list">
-        {% for team in mercenary_board %}
-        <tr>
-          <td>{{ team.mercenary_board_title }}</td>
-          <!-- <td>{{ team.team_leaderId }}</td> -->
-          <td>{{ team.team_homeGround }}</td>
-          <td>{{ team.team_headCount }}</td>
-          <!-- <td>{{ team.team_info }}</td>
-        <td>{{ team.team_manner }}</td> -->
-          <td>{{ team.team_area }}</td>
-        </tr>
-        {% endfor %}
       </tbody>
     </table>
 
     <table id="selected">
-      <h3>구단 상세 정보</h3>
       <thead>
-        <th>구단명</th>
-        <th>지역</th>
-        <th>인원수</th>
-        <th>구단 정보</th>
-        <th>구단 매너도</th>
-        <th>홈구장</th>
-        <th>구단주 아이디</th>
-        <th>가입 신청</th>
-        <th>구단 관리</th>
+        <th>글번호</th>
+        <th>글제목</th>
+        <th>글쓴이</th>
+        <th>게시일</th>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        {% for team in mercenary_board %}
+        <tr>
+          <td>{{ team.number }}</td>
+          <td>{{ team.mercenary_board_title }}</td>
+          <td>{{ team.user_id }}</td>
+          <td>{{ team.mercenary_board_date }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
     </table>
     <br />
-    <a href="teams/create"><button>구단 생성하기</button></a>
+    <a href="mercenary_board/new"><button>글쓰기</button></a>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/mercenary_board.js"></script>
   </body>
