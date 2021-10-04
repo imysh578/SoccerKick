@@ -11,9 +11,10 @@ router.get("/", async (req, res, next) => {
         // Teams 테이블 쿼리 후 teams 변수에 대입
         const battle_board = await Battle_board.findAll();
         // teams 테이블을 view 폴더의 teams.html에 연결
-        res.json(battle_board);
+        res.render("battle_board", { battle_board });
     } catch (err) {
         console.error(err);
         next(err);
     }
 });
+module.exports = router;
