@@ -17,8 +17,7 @@
         </style>
     </head>
     <body>
-        <h1>배틀</h1>
-        <title>구단 리스트</title>
+        <h1>배틀게시판</h1>
         <table>
             <tr>
                 <th>구단명</th>
@@ -46,23 +45,24 @@
             <fieldset id="battle-insert">
                 <legend>한판떠요</legend>
                 <span>구단명</span>
-                <input type="text" name="team_name" id="team_name" />
-                <span>홈구장</span>
-                <input
-                    type="text"
-                    name="team_homeGround"
-                    id="team_homeGround"
-                />
+                <input type="text" name="battle_board_teamName" />
+                <span>지역</span>
+                <input type="text" name="battle_board_area" />
+                <span>아이디</span>
+                <input type="text" name="battle_board_id" />
                 <span>인원수</span>
                 <input
                     type="number"
-                    name="team_headCount"
-                    id="team_headCount"
+                    name="battle_board_personnel"
                     min="1"
                     max="200"
                 />
-                <span>지역</span>
-                <input type="text" name="team_area" id="team_area" />
+                <span> 글제목 </span>
+                <input type="text" name="battle_board_title" />
+                <span>글내용</span>
+                <input type="text" name="battle_board_content" />
+                <span>날짜</span>
+                <input type="date" name="battle_board_date" />
                 <input type="submit" value="확인" />
             </fieldset>
         </form>
