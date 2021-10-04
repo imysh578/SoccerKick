@@ -32,6 +32,11 @@ module.exports = class Teams extends Sequelize.Model{
         type: Sequelize.STRING(45),
         allowNull: false,
       },
+      team_created_date: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.NOW
+      },
     }, {
       sequelize,
       timestamps: false,

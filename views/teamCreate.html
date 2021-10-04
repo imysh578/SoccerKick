@@ -16,23 +16,23 @@
         <form method="POST" id="team-list-form">
           <div>
             <span>구단명</span>
-            <input type="text" name="team_name" id="team_name">
+            <input type="text" name="team_name" required>
           </div>
           <div>
             <span>지역</span>
-            <input type="text" name="team_homeGround" id="team_homeGround">
+            <input type="text" name="team_homeGround" required>
           </div>
           <div>
             <span>인원수</span>
-            <input type="number" name="team_headCount" id="team_headCount" min="1" max="200">
+            <input type="number" name="team_headCount" min="1" max="200">
           </div>
           <div>
             <span>구단 정보</span>
-            <input type="text" name="team_info" id="team_info">
+            <input type="text" name="team_info" >
           </div>
           <div>
             <span>구단 매너도</span>
-            <select name="team_manner" id="team_manner">
+            <select name="team_manner" required>
               <option value="상">상</option>
               <option value="중">중</option>
               <option value="하">하</option>
@@ -40,13 +40,13 @@
           </div>
           <div>
             <span>홈구장</span>
-            <input type="text" name="team_area" id="team_area">
+            <input type="text" name="team_area" required>
           </div>
           <div>
             <span>구단주 아이디</span>
-            <input type="text" name="team_leaderId" id="team_leaderId">
+            <input type="text" name="team_leaderId" required>
           </div>
-          <input type="submit" name="submit-btn" id="submit-btn" value="확인">
+          <input type="submit" name="submit-btn" required value="확인">
         </form>
       </fieldset>
     </form>
