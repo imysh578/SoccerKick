@@ -95,7 +95,7 @@ router
           team_name : req.params.team_name,
         }
       });
-			res.send();
+			// res.send();
     } catch (err) {
       console.error(err);
       next(err);
