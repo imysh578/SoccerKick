@@ -9,7 +9,7 @@ router.get("/", async (req, res, next) => {
     // User 테이블 쿼리 후 user 변수에 대입
     const user = await User.findAll();
     // user 테이블을 view 폴더의 sequelize.html에 연결
-    res.render("user", { user });
+    res.render("sequelize", { user });
   } catch (err) {
     console.error(err);
     next(err);
