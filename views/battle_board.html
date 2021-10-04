@@ -28,17 +28,19 @@
                 <th>글내용</th>
                 <th>날짜</th>
             </tr>
-            {% for a in battle_board %}
-            <tr>
-                <td>{{a.battle_board_teamName}}</td>
-                <td>{{a.battle_board_area}}</td>
-                <td>{{a.battle_board_id}}</td>
-                <td>{{a.battle_board_personnel}}</td>
-                <td>{{a.battle_board_title}}</td>
-                <td>{{a.battle_board_content}}</td>
-                <td>{{a.battle_board_date}}</td>
-            </tr>
-            {% endfor %}
+            <tbody id="battle-list">
+                {% for a in battle_board %}
+                <tr>
+                    <td>{{a.battle_board_teamName}}</td>
+                    <td>{{a.battle_board_area}}</td>
+                    <td>{{a.battle_board_id}}</td>
+                    <td>{{a.battle_board_personnel}}</td>
+                    <td>{{a.battle_board_title}}</td>
+                    <td>{{a.battle_board_content}}</td>
+                    <td>{{a.battle_board_date}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
         <hr />
         <form method="post">
@@ -66,5 +68,20 @@
                 <input type="submit" value="확인" />
             </fieldset>
         </form>
+        <table id="selected">
+            <h3>매칭 상세 정보</h3>
+            <thead>
+                <th>구단명</th>
+                <th>지역</th>
+                <th>아이디</th>
+                <th>인원수</th>
+                <th>글제목</th>
+                <th>글내용</th>
+                <th>날짜</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="/battleboard.js"></script>
     </body>
 </html>

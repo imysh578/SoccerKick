@@ -1,6 +1,5 @@
 const express = require("express");
-const User = require("../models/user");
-const Teams = require("../models/teams");
+
 const fs = require("fs");
 const Battle_board = require("../models/battle_board");
 
@@ -8,6 +7,7 @@ const router = express.Router();
 
 router
     .get("/", async (req, res, next) => {
+        //배틀보드 리스트 화면
         try {
             // Teams 테이블 쿼리 후 teams 변수에 대입
             const battle_board = await Battle_board.findAll();
@@ -19,6 +19,7 @@ router
         }
     })
     .post("/", async (req, res, next) => {
+        //배틀보드 글쓰기
         try {
             console.log(req.body);
             const battle_board = await Battle_board.create({
@@ -35,5 +36,18 @@ router
             console.error(err);
         }
     });
-
+//배틀보드 클릭시 정보
+router.route("/:battle_board_teamName").get(async (req, res, next) => {
+    try {
+        const battle_board = await Battle_board.findAll({
+            where: {
+                battle_board_teamName: req.params.battle_board_teamName,
+            },
+        });
+        res.json(battle_board);
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
+});
 module.exports = router;
