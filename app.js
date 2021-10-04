@@ -14,7 +14,7 @@ const battleBoardRouter = require("./routes/battle_boards");
 
 const app = express();
 
-const PORT = 3001;
+const PORT = 3000;
 // 기존 포트 넘버 없으면 3000으로 설정
 app.set("port", process.env.PORT || PORT);
 // nunjucks를 기본 엔진으로 설정
