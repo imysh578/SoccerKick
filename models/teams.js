@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 
-module.exports = class Teams extends Sequelize.Model {
+module.exports = class Team extends Sequelize.Model {
 	static init(sequelize) {
 		return super.init(
 			{
@@ -43,7 +43,7 @@ module.exports = class Teams extends Sequelize.Model {
 			{
 				sequelize,
 				timestamps: false,
-				modelName: "Teams",
+				modelName: "Team",
 				tableName: "teams",
 				paranoid: false,
 				charset: "utf8mb4",
@@ -52,17 +52,10 @@ module.exports = class Teams extends Sequelize.Model {
 		);
 	}
 	static associate(db) {
-		// 한판떠요 게시판
-		// db.Teams.hasMany(db.Battle_board, {foreignKey: 'team_name', sourceKey: 'user_id'});
-
 		// 회원 관리 테이블 참조
 		db.Teams.belongsTo(db.User, {
 			foreignKey: "team_leaderId",
 			targetKey: "user_id",
 		});
-		// db.Teams.belongsTo(db.User, {
-		// 	foreignKey: "team_area",
-		// 	targetKey: "user_area",
-		// });
 	}
 };

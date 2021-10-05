@@ -1,12 +1,12 @@
 const Sequelize = require("sequelize");
-const User = require("./user");
+const User = require("./users");
 const Teams = require("./teams");
-const TeamsComment = require("./team_comment");
-const TeamBoard = require("./team_board");
-const MercenaryBoard = require("./mercenary_board");
-const MercenaryComment = require("./mercenary_comment");
-const BattleComment = require("./battle_comment");
-const BattleBoard = require("./battle_board");
+const TeamsComment = require("./team_comments");
+const TeamBoard = require("./team_boards");
+const MercenaryBoard = require("./mercenary_boards");
+const MercenaryComment = require("./mercenary_comments");
+const BattleComment = require("./battle_comments");
+const BattleBoard = require("./battle_boards");
 
 const env = process.env.NODE_ENV || "development";
 // config.json 파일 불러옴
