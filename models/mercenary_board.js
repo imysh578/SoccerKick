@@ -8,6 +8,7 @@ module.exports = class Mercenary_board extends Sequelize.Model {
           type: Sequelize.INTEGER,
           allowNull: false,
           primaryKey: true,
+          autoIncrement: true,
         },
         user_id: {
           type: Sequelize.STRING(45),
@@ -32,6 +33,7 @@ module.exports = class Mercenary_board extends Sequelize.Model {
         mercenary_board_date: {
           type: Sequelize.DATE,
           allowNull: false,
+          defaultValue: Sequelize.NOW,
         },
       },
       {

@@ -25,6 +25,8 @@ nunjucks.configure("views", {
 });
 
 sequelize
+// sync : MySQL에 테이블이 존재 하지 않을때 생성
+//      force: true   => 이미 테이블이 있으면 drop하고 다시 테이블 생성
   .sync({ force: false })
   .then(() => {
     console.log("Database connected successfully");
