@@ -1,7 +1,7 @@
 const express = require("express");
 
 const fs = require("fs");
-const Battle_board = require("../models/battle_board");
+const Battle_board = require("../models/battle_boards");
 
 const router = express.Router();
 

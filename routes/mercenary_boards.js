@@ -1,5 +1,5 @@
 const express = require("express");
-const Mercenary_board = require("../models/mercenary_board");
+const Mercenary_board = require("../models/mercenary_boards");
 
 const router = express.Router();
 

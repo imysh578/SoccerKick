@@ -10,7 +10,7 @@ const { sequelize } = require("./models");
 const indexRouter = require("./routes");
 const usersRouter = require("./routes/users");
 const teamsRouter = require("./routes/teams");
-const mercenaryBoardRouter = require("./routes/mercenary_board");
+const mercenaryBoardRouter = require("./routes/mercenary_boards");
 const battleBoardRouter = require("./routes/battle_boards");
 
 const app = express();
@@ -48,7 +48,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
 app.use("/user", usersRouter);
-app.use("/teams", teamsRouter);
+app.use("/team", teamsRouter);
 // app.use('/team_board', teamBoardRouter);
 // app.use('/team_comment', teamCommentRouter);
 app.use("/mercenary_board", mercenaryBoardRouter);

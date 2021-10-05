@@ -53,7 +53,7 @@ module.exports = class Team extends Sequelize.Model {
 	}
 	static associate(db) {
 		// 회원 관리 테이블 참조
-		db.Teams.belongsTo(db.User, {
+		db.Team.belongsTo(db.User, {
 			foreignKey: "team_leaderId",
 			targetKey: "user_id",
 		});

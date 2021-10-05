@@ -11,7 +11,7 @@ document.querySelectorAll('#team-list tr').forEach(el=>{
 // 구단 상세 정보 불러오기 함수
 async function getTeamInfo(teamName){
   try {
-    const res = await axios.get(`/teams/${teamName}`);
+    const res = await axios.get(`/team/${teamName}`);
     const teamInfo = res.data[0];
     const tbody = document.querySelector('#selected tbody');
     tbody.innerHTML = '';
@@ -42,7 +42,7 @@ async function getTeamInfo(teamName){
     // 구단 관리 버튼 이벤트
     edit.addEventListener('click', (e)=>{
       e.preventDefault();
-      window.location.href = `/teams/edit/${teamName}`;
+      window.location.href = `/team/edit/${teamName}`;
     })
 
     tbody.appendChild(tr);
@@ -57,13 +57,13 @@ let delBtn = document.getElementById('delete-btn');
 if(delBtn){
   delBtn.addEventListener('click', (e)=>{
     deleteTeam(delBtn.value); 
-    window.location.href = `/teams`;
+    window.location.href = `/team`;
   })
 }
 
 async function deleteTeam(teamName){
   try {
-    const res = await axios.delete(`/teams/edit/${teamName}/delete`);
+    const res = await axios.delete(`/team/edit/${teamName}/delete`);
   } catch (err) {
     console.error(err);
   }

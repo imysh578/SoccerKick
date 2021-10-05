@@ -7,7 +7,7 @@ const router = express.Router();
 router.route("/").get(async (req, res, next) => {
 	try {
 		const teams = await Teams.findAll();
-		res.render("teams", { teams });
+		res.render("team", { teams });
 	} catch (err) {
 		console.error(err);
 		next(err);
@@ -36,7 +36,7 @@ router
 				team_leaderId: req.body.team_leaderId,
 				team_info: req.body.team_info,
 			});
-			res.redirect("/teams");
+			res.redirect("/team");
 		} catch (err) {
 			console.error(err);
 			next(err);
@@ -76,7 +76,7 @@ router
       }
       );
 			
-      res.redirect('/teams');
+      res.redirect('/team');
     } catch (err) {
       console.error(err);
       next(err);

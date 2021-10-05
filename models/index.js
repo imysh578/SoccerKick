@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const User = require("./users");
-const Teams = require("./teams");
-const TeamsComment = require("./team_comments");
+const Team = require("./teams");
+const TeamComment = require("./team_comments");
 const TeamBoard = require("./team_boards");
 const MercenaryBoard = require("./mercenary_boards");
 const MercenaryComment = require("./mercenary_comments");
@@ -23,8 +23,8 @@ const sequelize = new Sequelize(
 // db객체에 모든 테이블 넣기
 db.sequelize = sequelize;
 db.User = User;
-db.Teams = Teams;
-db.TeamsComment = TeamsComment;
+db.Team = Team;
+db.TeamComment = TeamComment;
 db.TeamBoard = TeamBoard;
 db.MercenaryBoard = MercenaryBoard;
 db.MercenaryComment = MercenaryComment;
@@ -33,8 +33,8 @@ db.BattleBoard = BattleBoard;
 
 // MySQL이랑 연동 시작
 User.init(sequelize);
-Teams.init(sequelize);
-TeamsComment.init(sequelize);
+Team.init(sequelize);
+TeamComment.init(sequelize);
 TeamBoard.init(sequelize);
 MercenaryBoard.init(sequelize);
 MercenaryComment.init(sequelize);
@@ -43,8 +43,8 @@ BattleComment.init(sequelize);
 
 // 관계형으로 만들때
 User.associate(db);
-Teams.associate(db);
-// TeamsComment.associate(db);
+Team.associate(db);
+// TeamComment.associate(db);
 // TeamBoard.associate(db);
 // MercenaryBoard.associate(db);
 // MercenaryComment.associate(db);

@@ -1,5 +1,5 @@
 const express = require("express");
-const User = require("../models/user");
+const User = require("../models/users");
 
 const router = express.Router();
 
@@ -100,7 +100,7 @@ router
     try {
         const user = await User.findOne({
             where:{
-                user_id: 
+                user_id: req.params.user_id,
             }
         })
     } catch (err) {
