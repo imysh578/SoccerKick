@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>구단 게시판</title>
+  <style>
+    table{border: 1px solid black; border-collapse: collapse;}
+    table th, table td{border: 1px solid black}
+</style>
+</head>
+<body>
+  <h1>구단 게시판</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>작성자</th>
+        <th>작성글 제목</th>
+        <th>작성일자</th>
+        <th>조회수</th>
+      </tr>
+    </thead>
+    
+    <tbody id="team-board-list">
+      {% for post in posts %}
+      <tr>
+        <td>{{ post.team_board_writer }}</td>
+        <td>{{ post.team_board_title }}</td>
+        <td>{{ post.created_at }}</td>
+        <td>{{ post.team_board_views }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <table id="selected">
+    <h3>구단 상세 정보</h3>
+    <thead>
+      <th>구단명</th>
+      <th>구단주 아이디</th>
+      <th>지역</th>
+      <th>구단 매너도</th>
+      <th>인원수</th>
+      <th>홈구장</th>
+      <th>구단 정보</th>
+      <th>구단 생성날짜</th>
+      <th>가입 신청</th>
+      <th>구단 관리</th>
+    </thead>
+    <tbody>
+      <!-- 구단 상세정보 내용 넣을곳 -->
+    </tbody>
+  </table>
+  <br>
+  <a href="/"><button>홈으로</button></a>
+  <a href="team_board/create"><button>게시물 작성하기</button></a>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- <script src="/team.js"></script> -->
+</body>
+</html>
