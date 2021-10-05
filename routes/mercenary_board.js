@@ -27,14 +27,14 @@ router
   })
   .post(async (req, res, next) => {
     try {
+      console.log(2);
       const create = await Mercenary_board.create({
         mercenary_board_title: req.body.mercenary_board_title,
         mercenary_board_content: req.body.mercenary_board_content,
 
-        number: req.body.number,
-        user_area: req.body.user_area,
         user_id: req.body.user_id,
-        mercenary_board_date: req.body.mercenary_board_date,
+        user_area: req.body.user_area,
+        user_position: req.body.user_position,
       });
       res.redirect("/mercenary_board");
     } catch (err) {
