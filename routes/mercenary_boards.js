@@ -82,14 +82,14 @@ router
 //   })
 
 // 구단 선택 시
-router.route("/:team_name").get(async (req, res, next) => {
+router.route("/:number").get(async (req, res, next) => {
   try {
-    const team = await Teams.findAll({
+    const Mercenary_boardNUMBER = await Mercenary_board.findAll({
       where: {
-        team_name: req.params.team_name,
+        number: req.params.number,
       },
     });
-    res.json(team);
+    res.json(Mercenary_boardNUMBER);
   } catch (err) {
     console.error(err);
     next(err);

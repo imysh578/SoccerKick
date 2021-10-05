@@ -34,7 +34,7 @@
         <th>글쓴이</th>
         <th>게시일</th>
       </thead>
-      <tbody>
+      <tbody id="mercenary_recruitment-list">
         {% for team in mercenary_board %}
         <tr>
           <td>{{ team.number }}</td>
@@ -45,6 +45,16 @@
         {% endfor %}
       </tbody>
     </table>
+
+    <table>
+      <tbody id="mercenary_recruitment-title">
+        <!-- 글제목 나올곳 -->
+      </tbody>
+      <tbody id="mercenary_recruitment-content">
+        <!-- 글내용 나올곳 -->
+      </tbody>
+    </table>
+
     <br />
     <a href="mercenary_board/new"><button>글쓰기</button></a>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
