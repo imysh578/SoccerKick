@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require("../models/users");
+const Team = require("../models/teams");
 
 const router = express.Router();
 
@@ -96,18 +97,27 @@ router
   .get("/login", function (req, res) {
     res.render("login");
   })
-  .post("/login/:user_id", async (req, res, next) => {
+  .post("/login", async (req, res, next) => {
     try {
-        const user = await User.findOne({
-            where:{
-                user_id: req.params.user_id,
-            }
-        })
+      const user = await User.findOne({
+        where: {
+          user_id: req.body.user_id,
+          //   user_password: req.body.user_password,
+        },
+      });
+      //   console.log(Boolean(user));
+      if (!user) {
+        res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" });
+        res.write("<script>alert('다시 로그인하셈')</script>");
+        // res.redirect("/");
+      } else {
+        console.log("no");
+      }
+      //   res.redirect("/");
     } catch (err) {
       console.error(err);
       next(err);
     }
-    res.redirect("/");
   });
 
 router.get("/:user_id", async (req, res, next) => {
