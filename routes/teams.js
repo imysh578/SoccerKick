@@ -1,5 +1,4 @@
 const express = require("express");
-const { redirect } = require("express/lib/response");
 const Teams = require("../models/teams");
 
 const router = express.Router();
