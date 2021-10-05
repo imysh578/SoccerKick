@@ -11,10 +11,10 @@ module.exports = class Battle_board extends Sequelize.Model{
         type: Sequelize.STRING(45),
         allowNull: false,
       },
-      // battle_board_id: {
-      //   type: Sequelize.STRING(45),
-      //   allowNull: false,
-      // },
+      battle_board_id: {    //외래키 받는부분 모든부분 주석해야함. 칸 밀려서 주석풀어놓음..1005
+        type: Sequelize.STRING(45),
+        allowNull: false,
+      },
       battle_board_personnel: {
         type: Sequelize.INTEGER,
         allowNull: false,
