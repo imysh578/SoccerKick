@@ -3,7 +3,8 @@ const fs = require("fs");
 const path = require("path");
 const morgan = require("morgan");
 const nunjucks = require("nunjucks");
-const mysql = require("mysql2");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 
 const { sequelize } = require("./models");
 const indexRouter = require("./routes");
@@ -39,6 +40,9 @@ app.use(express.static(path.join(__dirname, "/public")));
 // 구문 분석된 데이터는 req.body에 채워짐 (구문 분석할 본문이 없거나 Content-Type이 다르면 빈 객체 반환 또는 에러 발생)
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.json());
+//url을 통해 전달되는 데이터에 한글, 공백과 같은 문자가 포함될 경우 인식을 못하는 문제를 해결
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
 app.use("/user", usersRouter);
