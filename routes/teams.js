@@ -1,5 +1,4 @@
 const express = require("express");
-const { redirect } = require("express/lib/response");
 const Teams = require("../models/teams");
 
 const router = express.Router();
@@ -87,7 +86,7 @@ router
 // 구단 삭제
 router
 	.route("/edit/:team_name/delete")
-  .get(async (req,res,next)=>{
+  .delete(async (req,res,next)=>{
     try {
 			console.log('delete router');
       await Teams.destroy({

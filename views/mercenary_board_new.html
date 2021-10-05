@@ -12,13 +12,26 @@
       <form method="post">
         <fieldset>
           <legend>글쓰기</legend>
-          <form method="POST" id="mercenary_board_new-list-form">
+          <form method="POST" id="team-list-form">
+            <div>
+              <span>글쓴이</span>
+              <input type="text" name="user_id" required value="김정은" />
+            </div>
+            <div>
+              <span>지역</span>
+              <input type="text" name="user_area" required value="가나다라" />
+            </div>
+            <div>
+              <span>포지션</span>
+              <input type="text" name="user_position" required value="수비수" />
+            </div>
             <div>
               <span>제목</span>
               <input
                 type="text"
                 name="mercenary_board_title"
-                id="mercenary_board_title"
+                required
+                value="나 제목"
               />
             </div>
             <div>
@@ -26,21 +39,17 @@
               <input
                 type="text"
                 name="mercenary_board_content"
-                id="mercenary_board_content"
+                required
+                value="가나다라"
               />
             </div>
 
-            <input
-              type="submit"
-              name="submit-btn"
-              id="submit-btn"
-              value="확인"
-            />
+            <input type="submit" name="submit-btn" required value="확인" />
           </form>
         </fieldset>
       </form>
     </div>
 
-    <a href="/mercenary_board"><button>구단 리스트로 돌아가기</button></a>
+    <a href="/mercenary_board"><button>글목록</button></a>
   </body>
 </html>
