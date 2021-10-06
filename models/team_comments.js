@@ -4,17 +4,27 @@ module.exports = class Team_comment extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        // team_comment_writer: {
-        //   type: Sequelize.STRING(45),
-        //   allowNull: false,
-        // },
-        team_comment_comment: {
+        post_no: {
+          type: Sequelize.INTEGER,
+          autoIncrement: true,
+          primaryKey: true,
+        },
+        writer_name: {
+          type: Sequelize.STRING(45),
+          allowNull: false,
+        },
+        writer_id: {
+          type: Sequelize.STRING(45),
+          allowNull: false,
+        },
+        comment: {
           type: Sequelize.TEXT,
           allowNull: false,
         },
-        team_comment_date: {
+        created_at: {
           type: Sequelize.DATE,
           allowNull: false,
+          defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         },
       },
       {
@@ -29,6 +39,9 @@ module.exports = class Team_comment extends Sequelize.Model {
     );
   }
   static associate(db) {
-
+    db.TeamComment.belongsTo(db.User,{
+      foreignKey: "writer_id",
+      targetKey: "user_id",
+    });
   }
 };

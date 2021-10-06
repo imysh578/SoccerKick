@@ -52,7 +52,7 @@ router
 //           team_name : req.params.team_name,
 //         }
 //       });
-//       res.render('teamEdit', {teams});
+//       res.render('team_edit', {teams});
 //     } catch (err) {
 //       console.error(err);
 //       next(err);

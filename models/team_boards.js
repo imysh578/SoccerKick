@@ -4,7 +4,7 @@ module.exports = class Team_board extends Sequelize.Model {
 	static init(sequelize) {
 		return super.init(
 			{
-        id: {
+        post_no: {
           type: Sequelize.INTEGER,
           autoIncrement: true,
           primaryKey: true,
@@ -13,24 +13,28 @@ module.exports = class Team_board extends Sequelize.Model {
           type: Sequelize.STRING(45),
           allowNull: false,
         },
-				team_board_writer: {
-					type: Sequelize.STRING(45),
-					allowNull: false,
-          // primaryKey: true,
-				},
-				team_board_title: {
+				writer_name: {
 					type: Sequelize.STRING(45),
 					allowNull: false,
 				},
-				team_board_contents: {
+				writer_id: {
+					type: Sequelize.STRING(45),
+					allowNull: false,
+				},
+				title: {
+					type: Sequelize.STRING(45),
+					allowNull: false,
+				},
+				contents: {
 					type: Sequelize.TEXT,
 					allowNull: true,
 				},
 				created_at: {
 					type: Sequelize.DATE,
 					allowNull: false,
+					defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
 				},
-				team_board_views: {
+				count_views: {
 					type: Sequelize.INTEGER.UNSIGNED,
 					allowNull: false,
           defaultValue: 0,
@@ -49,7 +53,7 @@ module.exports = class Team_board extends Sequelize.Model {
 	}
 	static associate(db) {
 		db.TeamBoard.belongsTo(db.User, {
-			foreignKey: "team_board_writer",
+			foreignKey: "writer_id",
 			targetKey: "user_id",
 		});
     db.TeamBoard.belongsTo(db.Team,{

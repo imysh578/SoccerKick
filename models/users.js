@@ -71,8 +71,12 @@ module.exports = class User extends Sequelize.Model {
       sourceKey: "user_id",
     });
     db.User.hasMany(db.TeamBoard,{
-      foreignKey: "team_board_writer",
+      foreignKey: "writer_id",
       sourceKey: "user_id",
     });
+    db.User.hasMany(db.TeamComment, {
+      foreignKey: "writer_id",
+      sourceKey: "user_id",
+    })
   }
 };
