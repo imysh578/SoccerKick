@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>왜 안돼</title>
+    <style>
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      table th,
+      table td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>용병게시팔</h1>
+
+    <table>
+      <tbody class="mercenary_recruitment mercenary_recruitment_title">
+        <!-- 글제목 나올곳 -->
+        <tr>
+          <td>{{ info[0].mercenary_board_title }}</td>
+          <td>{{ info[0].user_id }}</td>
+          <td class="date_info1">{{ info[0].mercenary_board_date }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <tbody class="mercenary_recruitment mercenary_recruitment_content">
+        <!-- 글내용 나올곳 -->
+        <tr>
+          <td>{{ info[0].mercenary_board_content }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <tbody class="mercenary_want mercenary_want_title">
+        <!-- 글제목 나올곳 -->
+        <tr>
+          <td>{{ info[0].mercenary_board_title }}</td>
+          <td>{{ info[0].user_id }}</td>
+          <td class="date_info1">{{ info[0].mercenary_board_date }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <tbody class="mercenary_want mercenary_want_content">
+        <!-- 글내용 나올곳 -->
+        <tr>
+          <td>{{ info[0].mercenary_board_content }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br />
+    <a href="mercenary_board/new"><button>글쓰기</button></a>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/mercenary_board.js"></script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시물 작성 페이지</title>
+</head>
+
+<body>
+  <div>
+      <fieldset>
+        <legend>게시물 작성</legend>
+        <form method="POST" id="team-list-form">
+          <div>
+            <span>구단명</span>
+            <input type="text" name="team_name" required value="포켓몬" >
+          </div>
+          <div>
+            <span>작성자</span>
+            <input type="text" name="writer_name" required>
+          </div>
+          <div>
+            <span>작성자 ID</span>
+            <input type="text" name="writer_id" required value="imysh578" >
+          <div>
+            <span>글 제목</span>
+            <input type="text" name="title">
+          </div>
+          <div>
+            <span>작성 내용</span>
+            <input type="text" name="contents" >
+          </div>
+          <input type="submit" name="submit-btn" required value="확인">
+        </form>
+      </fieldset>
+  </div>
+
+  <a href="/team"><button>구단 리스트로 돌아가기</button></a>
+</body>
+
+</html>

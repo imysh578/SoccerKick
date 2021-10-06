@@ -29,7 +29,7 @@ router
                 battle_board_personnel: req.body.battle_board_personnel,
                 battle_board_title: req.body.battle_board_title,
                 battle_board_content: req.body.battle_board_content,
-                battle_board_date: req.body.battle_board_date,
+               // battle_board_date: req.body.battle_board_date, 사용자입력부분x. 디펄트벨류 Sequelize.NOW()때문에 주석해봄.
             });
             res.status(201).json(battle_board); //제이슨으로 확인.
         } catch (err) {

@@ -44,11 +44,11 @@ BattleComment.init(sequelize);
 // 관계형으로 만들때
 User.associate(db);
 Team.associate(db);
-// TeamComment.associate(db);
-// TeamBoard.associate(db);
+TeamComment.associate(db);
+TeamBoard.associate(db);
 // MercenaryBoard.associate(db);
 // MercenaryComment.associate(db);
 // BattleComment.associate(db);
-// BattleBoard.associate(db);
+ BattleBoard.associate(db);
 
 module.exports = db;

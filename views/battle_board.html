@@ -25,8 +25,8 @@
                 <th>아이디</th>
                 <th>인원수</th>
                 <th>글제목</th>
-                <th>글내용</th>
-                <th>날짜</th>
+               <!--<th>글내용</th>-->
+                <!--<th>날짜</th>-->
             </tr>
             <tbody id="battle-list">
                 {% for a in battle_board %}
@@ -36,8 +36,8 @@
                     <td>{{a.battle_board_id}}</td>
                     <td>{{a.battle_board_personnel}}</td>
                     <td>{{a.battle_board_title}}</td>
-                    <td>{{a.battle_board_content}}</td>
-                    <td>{{a.battle_board_date}}</td>
+                    <!--<td>{{a.battle_board_content}}</td>-->
+                    <!--<td>{{a.battle_board_date}}</td>-->
                 </tr>
                 {% endfor %}
             </tbody>
@@ -63,13 +63,13 @@
                 <input type="text" name="battle_board_title" />
                 <span>글내용</span>
                 <input type="text" name="battle_board_content" />
-                <span>날짜</span>
-                <input type="date" name="battle_board_date" />
+               <!-- <span>날짜</span>
+                <input type="date" name="battle_board_date" /> 디폴트값.Sequelize.NOW()..--> 
                 <input type="submit" value="확인" />
             </fieldset>
         </form>
         <table id="selected">
-            <h3>매칭 상세 정보</h3>
+            <h3>매칭 상세 정보</h3> <!--상세정보 클릭 이벤트는 public에서.-->
             <thead>
                 <th>글번호</th>     <!--밀어쓸줄몰라서 글번호 칸만듦.1005-->
                 <th>구단명</th>
@@ -79,6 +79,7 @@
                 <th>글제목</th>
                 <th>글내용</th>
                 <th>날짜</th>
+                <th>글수정</th>
             </thead>
             <tbody></tbody>
         </table>

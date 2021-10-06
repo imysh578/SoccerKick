@@ -27,24 +27,48 @@
       </tbody>
     </table>
 
-    <table id="selected">
+    <table id="mercenary_recruitment_list">
       <thead>
         <th>글번호</th>
         <th>글제목</th>
         <th>글쓴이</th>
         <th>게시일</th>
       </thead>
-      <tbody>
+      <tbody class="mercenary_recruitment mercenary_recruitment_list">
         {% for team in mercenary_board %}
         <tr>
           <td>{{ team.number }}</td>
           <td>{{ team.mercenary_board_title }}</td>
           <td>{{ team.user_id }}</td>
-          <td>{{ team.mercenary_board_date }}</td>
+          <td class="date_info{{loop.index}}">
+            {{ team.mercenary_board_date }}
+          </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+
+    <table id="mercenary_want_list">
+      <thead>
+        <th>글번호</th>
+        <th>글제목</th>
+        <th>글쓴이</th>
+        <th>게시일</th>
+      </thead>
+      <tbody class="mercenary_want mercenary_want_list">
+        {% for team in mercenary_board %}
+        <tr>
+          <td>{{ team.number }}</td>
+          <td>{{ team.mercenary_board_title }}</td>
+          <td>{{ team.user_id }}</td>
+          <td class="date_info{{loop.index}}">
+            {{ team.mercenary_board_date }}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
     <br />
     <a href="mercenary_board/new"><button>글쓰기</button></a>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
