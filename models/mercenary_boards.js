@@ -33,7 +33,7 @@ module.exports = class Mercenary_board extends Sequelize.Model {
         mercenary_board_date: {
           type: Sequelize.DATE,
           allowNull: false,
-          defaultValue: Sequelize.NOW,
+          defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
         },
       },
       {
@@ -47,7 +47,5 @@ module.exports = class Mercenary_board extends Sequelize.Model {
       }
     );
   }
-  static associate(db) {
-
-  }
+  static associate(db) {}
 };

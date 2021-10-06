@@ -28,7 +28,5 @@ module.exports = class Battle_board extends Sequelize.Model {
       }
     );
   }
-  static associate(db) {
-
-  }
+  static associate(db) {}
 };
