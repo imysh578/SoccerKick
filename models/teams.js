@@ -11,33 +11,32 @@ module.exports = class Team extends Sequelize.Model {
 				},
 				team_leaderId: {
 					type: Sequelize.STRING(45),
-					allowNull: false,
-          unique: true,
+					allowNull: true,
 				},
 				team_homeGround: {
 					type: Sequelize.STRING(45),
 					allowNull: false,
 				},
-        team_manner: {
-          type: Sequelize.STRING(45),
-          allowNull: true,
-        },
+				team_manner: {
+					type: Sequelize.STRING(45),
+					allowNull: true,
+				},
 				team_headCount: {
 					type: Sequelize.INTEGER,
 					allowNull: true,
 				},
 				team_area: {
-          type: Sequelize.STRING(45),
+					type: Sequelize.STRING(45),
 					allowNull: false,
 				},
-        team_info: {
-          type: Sequelize.TEXT,
-          allowNull: true,
-        },
+				team_info: {
+					type: Sequelize.TEXT,
+					allowNull: true,
+				},
 				team_created_date: {
 					type: Sequelize.DATE,
 					allowNull: false,
-					defaultValue: Sequelize.NOW(),
+					defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
 				},
 			},
 			{
@@ -52,10 +51,13 @@ module.exports = class Team extends Sequelize.Model {
 		);
 	}
 	static associate(db) {
-		// 회원 관리 테이블 참조
 		db.Team.belongsTo(db.User, {
 			foreignKey: "team_leaderId",
 			targetKey: "user_id",
+		});
+		db.Team.hasMany(db.TeamBoard, {
+			foreignKey: "team_name",
+			sourceKey: "team_name",
 		});
 	}
 };
