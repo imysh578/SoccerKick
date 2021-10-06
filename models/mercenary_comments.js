@@ -15,6 +15,7 @@ module.exports = class Mercenary_comment extends Sequelize.Model {
         mercenary_comment_date: {
           type: Sequelize.DATE,
           allowNull: false,
+          defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
         },
       },
       {
@@ -28,7 +29,5 @@ module.exports = class Mercenary_comment extends Sequelize.Model {
       }
     );
   }
-  static associate(db) {
-
-  }
+  static associate(db) {}
 };

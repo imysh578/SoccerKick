@@ -21,14 +21,12 @@ module.exports = class User extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: "Battle_comment",
-        tablename: "battle_comments",
+        tableName: "battle_comments",
         paranoid: false,
         charset: "utf8mb4",
         collate: "utf8mb4_general_ci",
       }
     );
   }
-  static associate(db) {
-
-  }
+  static associate(db) {}
 };
