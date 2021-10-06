@@ -27,31 +27,45 @@
       </tbody>
     </table>
 
-    <table id="selected">
+    <table id="mercenary_recruitment_list">
       <thead>
         <th>글번호</th>
         <th>글제목</th>
         <th>글쓴이</th>
         <th>게시일</th>
       </thead>
-      <tbody id="mercenary_recruitment-list">
+      <tbody class="mercenary_recruitment mercenary_recruitment_list">
         {% for team in mercenary_board %}
         <tr>
           <td>{{ team.number }}</td>
           <td>{{ team.mercenary_board_title }}</td>
           <td>{{ team.user_id }}</td>
-          <td>{{ team.mercenary_board_date }}</td>
+          <td class="date_info{{loop.index}}">
+            {{ team.mercenary_board_date }}
+          </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
 
-    <table>
-      <tbody id="mercenary_recruitment-title">
-        <!-- 글제목 나올곳 -->
-      </tbody>
-      <tbody id="mercenary_recruitment-content">
-        <!-- 글내용 나올곳 -->
+    <table id="mercenary_want_list">
+      <thead>
+        <th>글번호</th>
+        <th>글제목</th>
+        <th>글쓴이</th>
+        <th>게시일</th>
+      </thead>
+      <tbody class="mercenary_want mercenary_want_list">
+        {% for team in mercenary_board %}
+        <tr>
+          <td>{{ team.number }}</td>
+          <td>{{ team.mercenary_board_title }}</td>
+          <td>{{ team.user_id }}</td>
+          <td class="date_info{{loop.index}}">
+            {{ team.mercenary_board_date }}
+          </td>
+        </tr>
+        {% endfor %}
       </tbody>
     </table>
 

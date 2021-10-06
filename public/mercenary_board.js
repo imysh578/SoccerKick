@@ -1,14 +1,34 @@
+// 날짜형식 만들기
+// 게시판 글목록의 행의 길이(개수)를 구해 length에 저장
+let length = document.querySelectorAll(".mercenary_recruitment tr").length;
+// for문으로 글목록의 길이만큼 반복
+for (let index = 1; index <= length; index++) {
+  // 글목록 하나하나에 class명을 1부터 넣어 DATE_INFO에 저장
+  let DATE_INFO = document.querySelector(`.date_info${index}`).textContent;
+  // DATE_INFO를 new Date로 string에서 날짜 object로 type 변환
+  let conversion = new Date(DATE_INFO);
+  // 연-월-일 시:분 으로 반들어주기
+  var year = conversion.getFullYear();
+  var month = ("0" + (conversion.getMonth() + 1)).slice(-2);
+  var day = ("0" + conversion.getDate()).slice(-2);
+  var hours = ("0" + conversion.getHours()).slice(-2);
+  var minutes = ("0" + conversion.getMinutes()).slice(-2);
+  var dateString = `${year}-${month}-${day} ${hours}:${minutes}`;
+  // 각 글목록의 날짜자리에 만든 날짜 집어넣기
+  document.querySelector(`.date_info${index}`).textContent = dateString;
+}
+
 document.querySelectorAll("#mercenary_recruitment").forEach((el) => {
   el.addEventListener("click", (e) => {
     e.preventDefault();
-    // const documentNumber = el.querySelector("td").textContent;
-    // if (documentNumber) {
-    //   getTeamInfo(documentNumber);
-    // }
+    const documentNumber = el.querySelector("td").textContent;
+    if (documentNumber) {
+      getTeamInfo(documentNumber);
+    }
   });
 });
 
-document.querySelectorAll("#mercenary_recruitment-list tr").forEach((el) => {
+document.querySelectorAll(".mercenary_recruitment tr").forEach((el) => {
   // 게시판의 글 목록 중 한 줄을 클릭하면
   el.addEventListener("click", (e) => {
     e.preventDefault();
@@ -17,7 +37,8 @@ document.querySelectorAll("#mercenary_recruitment-list tr").forEach((el) => {
     // 글번호를 documentNumber에 집어넣음
     const documentNumber = el.querySelector("td").textContent;
     if (documentNumber) {
-      getTeamInfo(documentNumber);
+      // getTeamInfo(documentNumber);
+      window.location.href = `/mercenary_board/content/${documentNumber}`;
     }
   });
 });
