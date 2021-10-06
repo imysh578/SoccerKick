@@ -36,7 +36,7 @@ router
             console.error(err);
         }
     });
-//배틀보드 클릭시 정보
+//배틀보드 클릭시 상세 정보 출력 라우터
 router.route("/:battle_board_teamName").get(async (req, res, next) => {
     try {
         const battle_board = await Battle_board.findAll({
@@ -50,4 +50,9 @@ router.route("/:battle_board_teamName").get(async (req, res, next) => {
         next(err);
     }
 });
+
+//배틀보드 게시글 수정 라우터
+router
+    .route('/edit/:battle_board_teamName')
+
 module.exports = router;
