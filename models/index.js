@@ -49,6 +49,6 @@ Team.associate(db);
 // MercenaryBoard.associate(db);
 // MercenaryComment.associate(db);
 // BattleComment.associate(db);
-// BattleBoard.associate(db);
+ BattleBoard.associate(db);
 
 module.exports = db;
