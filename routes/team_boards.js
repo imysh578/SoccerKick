@@ -13,6 +13,8 @@ router.get("/", async (req, res, next) => {
 		next(err);
 	}
 });
+
+// 게시글 생성
 router
 	.route("/create")
 	.get(async (req, res, next) => {
@@ -32,7 +34,7 @@ router
 				title: req.body.title,
 				contents: req.body.contents,
 			});
-			res.redirect("/team_boards");
+			res.redirect("/team_board");
 		} catch (err) {
 			console.error(err);
 		}
@@ -40,12 +42,12 @@ router
 
 // 리스트 선택
 router
-	.route("/:postNo")
+	.route("/:post_num")
 	.get(async (req, res, next) => {
 		try {
 			const team = await TeamBoards.findAll({
 				where: {
-					post_no: req.params.postNo,
+					post_num: req.params.post_num,
 				},
 			});
 			res.json(team);
@@ -63,7 +65,7 @@ router
 				},
 				{
 					where: {
-						post_no: req.params.postNo,
+						post_num: req.params.post_num,
 					},
 				}
 			);
