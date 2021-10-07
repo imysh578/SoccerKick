@@ -4,16 +4,13 @@ module.exports = class Team_board extends Sequelize.Model {
 	static init(sequelize) {
 		return super.init(
 			{
-        post_no: {
-          type: Sequelize.INTEGER,
-          autoIncrement: true,
-          primaryKey: true,
-        },
-        team_name:{
-          type: Sequelize.STRING(45),
-          allowNull: false,
-        },
-				writer_name: {
+				post_num: {
+					type: Sequelize.INTEGER,
+					autoIncrement: true,
+					allowNull: false,
+					primaryKey: true,
+				},
+				team_name: {
 					type: Sequelize.STRING(45),
 					allowNull: false,
 				},
@@ -32,12 +29,12 @@ module.exports = class Team_board extends Sequelize.Model {
 				created_at: {
 					type: Sequelize.DATE,
 					allowNull: false,
-					defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+					defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
 				},
 				count_views: {
 					type: Sequelize.INTEGER.UNSIGNED,
 					allowNull: false,
-          defaultValue: 0,
+					defaultValue: 0,
 				},
 			},
 			{
@@ -56,9 +53,14 @@ module.exports = class Team_board extends Sequelize.Model {
 			foreignKey: "writer_id",
 			targetKey: "user_id",
 		});
-    db.TeamBoard.belongsTo(db.Team,{
-      foreignKey: "team_name",
-      targetKey: "team_name",
-    })
+		db.TeamBoard.belongsTo(db.Team, {
+			foreignKey: "team_name",
+			targetKey: "team_name",
+		});
+
+		db.TeamBoard.hasMany(db.TeamComment, {
+			foreignKey: "post_num",
+			sourceKey: "post_num",
+		});
 	}
 };

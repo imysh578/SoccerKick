@@ -16,7 +16,6 @@
     <thead>
       <tr>
         <th>게시글 번호</th>
-        <th>작성자</th>
         <th>게시글 제목</th>
         <th>작성일자</th>
         <th>조회수</th>
@@ -26,13 +25,12 @@
     <tbody id="team-board-list">
       {% for post in posts %}
       <tr>
-        <td>{{ post.post_no }}</td>
-        <td>{{ post.writer_name }}</td>
+        <td>{{ post.post_num }}</td>
         <td>{{ post.title }}</td>
         <td>{{ post.created_at }}</td>
-        <td id="views-{{ post.post_no }}">{{ post.count_views }}</td>
+        <td id="views-{{ post.post_num }}">{{ post.count_views }}</td>
       </tr>
-      <tr id="hidden-{{ post.post_no }}" hidden>
+      <tr id="hidden-{{ post.post_num }}" hidden>
         <td colspan="5">
           {{post.contents}}
         </td>
