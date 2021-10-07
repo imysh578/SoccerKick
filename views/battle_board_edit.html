@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        <fieldset id="battle-insert">
+            <legend>글수정</legend>
+            {% for a in battle_board %} <!--뒤에 어디부분?-->
+            <div><!--div를 써서 세로로 정렬됨.-->
+                <span>구단명</span>
+                <input type="text" name="battle_board_teamName" value="{{a.battle_board_teamName}}" />
+            </div>
+            <div>
+                <span>지역</span>
+                <input type="text" name="battle_board_area" value = "{{a.battle_board_area}}"/>
+            </div>
+            <div>
+                <span>아이디</span>
+                <input type="text" name="battle_board_id" value = "{{a.battle_board_id}}" />
+            </div>
+            <div>    
+                <span>인원수</span>
+                <input
+                type="number"
+                name="battle_board_personnel"
+                min="1"
+                max="200"
+                value = "{{a.battle_board_personnel}}"/>
+            </div>
+            <div>
+                <span> 글제목 </span>
+                <input type="text" name="battle_board_title" value="{{a.battle_board_title}}" />
+            </div>
+            <div>   
+                <span>글내용</span>
+                <input type="text" name="battle_board_content" value="{{a.battle_board_content}}" />
+            </div>
+            <!-- <span>날짜</span>
+            <input type="date" name="battle_board_date" /> 디폴트값.Sequelize.NOW()..--> 
+            <input type="submit" value="확인" />
+            {% endfor %}
+        </fieldset>
+    </form>
+</body>
+</html>
