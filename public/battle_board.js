@@ -25,17 +25,12 @@ async function getBattleInfo(battle_board_teamName) {
             console.log(battleInfo[attr])
         }//여기까지 상세보기를 for문으로 돌려서.
 
-  // 가입신청 버튼
-//   const join = document.createElement('button');
-//   join.textContent = "가입 신청";
-//   td = document.createElement('td');
-//   td.appendChild(join);
-//   tr.appendChild(td);
+        
 
         //글 수정 버튼 생성 및 설정
-        const edit = document.createElement('button');  //edit은 <button></button>
+        const edit = document.createElement('button');  //edit 콘솔로그는 <button></button>
         td=document.createElement('td')
-        edit.textContent ="textcontent는 집어넣는곳" //문자넣는 textcontent
+        edit.textContent ="글 수정" //문자넣는 textcontent
         td.appendChild(edit); //edit을 td(열)에 넣고
         tr.appendChild(td); //td(열)을 행에 추가
 
@@ -45,8 +40,35 @@ async function getBattleInfo(battle_board_teamName) {
             window.location.href = `/battle_board/edit/${battle_board_teamName}`; //라우터 설정해줄것.
         })
         
+        // 글 삭제 버튼 생성
+        const delBB = document.createElement('button');
+        delBB.textContent = "글 삭제";
+        td = document.createElement('td');
+        td.appendChild(join);
+        tr.appendChild(td);
+
+       // delBB.addEventListener('click', (e)=>{}) 
+        
         tbody.appendChild(tr);  // 비어있는tbody부분에 append()해준다
     } catch (err) {
         console.error(err);
     }
 }
+//글삭제 클릭이벤트
+
+// let delBtn = document.getElementById("delete-btn");
+
+// if (delBtn) {
+// 	delBtn.addEventListener("click", (e) => {
+// 		deleteTeam(delBtn.value);
+// 		window.location.href = `/team`;
+// 	});
+// }
+
+// async function deleteTeam(teamName) {
+// 	try {
+// 		await axios.delete(`/team/edit/${teamName}/delete`);
+// 	} catch (err) {
+// 		console.error(err);
+// 	}
+// }
