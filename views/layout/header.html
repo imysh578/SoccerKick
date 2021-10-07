@@ -1,29 +1,38 @@
 <header>
-  <nav id="meun-nav">
-    <div class="dropdown">
-      <button class="dropbtn">메뉴</button>
-      <div class="dropdown-content">
-        <span>구단메뉴</span>
-        <ul>
-          <li><a href="#">구단 리스트</a></li>
-          <li><a href="#">구단 게시판</a></li>
-          <li><a href="#">구단 만들기</a></li>
-        </ul>
-        <span>구단메뉴</span>
-        <ul>
-          <li><a href="#">용병 게시판</a></li>
-          <li><a href="#">한판 떠요</a></li>
-          <li><a href="#">구단 만들기</a></li>
-        </ul>
+  <nav class="top-nav">
+    <div class="left-menu">
+      <div>
+        <img class="logo" src="/images/football-logo.png" alt="logo">
+      </div>
+      <a class="menu-btn" href="/">HOME</a>
+      <div class="dropdown">
+        <a class="drop-btn menu-btn">MENU</a>
+        <div class="dropdown-content">
+          <span>구단메뉴</span>
+          <ul>
+            <li><a href="/team">구단 리스트</a></li>
+            <li><a href="/team_board">구단 게시판</a></li>
+            <li><a href="/team_create">구단 만들기</a></li>
+          </ul>
+          <span>카테고리</span>
+          <ul>
+            <li><a href="/mercenary_board">용병 게시판</a></li>
+            <li><a href="/battle_board">한판 떠요</a></li>
+          </ul>
+        </div>
       </div>
     </div>
     <div>
-      <span>통합검색</span>
-      <input type="text">
+      <form class="search" method="post">
+        <input class="search-bar" type="text" placeholder="나는 검색왕" name="search-text">
+        <!-- <button class="search-btn">검색</button> -->
+        <input class="search-btn" type="submit" value="검색">
+      </form>
     </div>
-    <div>
-      <a href=""><img src=""> 회원가입</a>
-      <a href="/user/login">로그인</a>
+    <div class="right-menu">
+      <a href="/user" class="menu-btn"><img src="">SIGNIN</a>
+      <a href="/user/login" class="menu-btn">LOGIN</a>
     </div>
   </nav>
+
 </header>
