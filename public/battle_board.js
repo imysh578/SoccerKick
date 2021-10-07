@@ -41,34 +41,15 @@ async function getBattleInfo(battle_board_teamName) {
         })
         
         // 글 삭제 버튼 생성
-        const delBB = document.createElement('button');
-        delBB.textContent = "글 삭제";
+        const delBtn = document.createElement('button');
+        delBtn.textContent = "글 삭제";
         td = document.createElement('td');
-        td.appendChild(join);
+        td.appendChild(delBtn);
         tr.appendChild(td);
 
-       // delBB.addEventListener('click', (e)=>{}) 
         
         tbody.appendChild(tr);  // 비어있는tbody부분에 append()해준다
     } catch (err) {
         console.error(err);
     }
 }
-//글삭제 클릭이벤트
-
-// let delBtn = document.getElementById("delete-btn");
-
-// if (delBtn) {
-// 	delBtn.addEventListener("click", (e) => {
-// 		deleteTeam(delBtn.value);
-// 		window.location.href = `/team`;
-// 	});
-// }
-
-// async function deleteTeam(teamName) {
-// 	try {
-// 		await axios.delete(`/team/edit/${teamName}/delete`);
-// 	} catch (err) {
-// 		console.error(err);
-// 	}
-// }

@@ -71,7 +71,7 @@ router
     })
     .post(async (req, res, next)=>{
         try {
-            const battle_board = await Battle_board.update({    // 값을 읽을 수가없다는데 필요없는 부분? 수정할거니까 update
+            const battle_board = await Battle_board.update({    // 값을 읽을 수가없다는데 필요없는 부분? 수정: update
                 battle_board_teamName: req.body.battle_board_teamName,
                 battle_board_area: req.body.battle_board_area,
                 battle_board_id: req.body.battle_board_id,
