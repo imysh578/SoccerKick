@@ -29,7 +29,7 @@
                 <!--<th>날짜</th>-->
             </tr>
             <tbody id="battle-list">
-                {% for a in battle_board %}
+                {% for a in battle_board %} <!--뜻?-->
                 <tr>
                     <td>{{a.battle_board_teamName}}</td>
                     <td>{{a.battle_board_area}}</td>
@@ -80,10 +80,11 @@
                 <th>글내용</th>
                 <th>날짜</th>
                 <th>글수정</th>
+                <th>글삭제</th>
             </thead>
             <tbody></tbody>
         </table>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="/battleboard.js"></script>
+        <script src="/battle_board.js"></script>
     </body>
 </html>
