@@ -1,5 +1,8 @@
 const express = require("express");
 const User = require("../models/users");
+const cors = require("cors");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 
 const router = express.Router();
 
@@ -104,19 +107,35 @@ router
           user_password: req.body.user_password,
         },
       });
-      //   console.log(Boolean(user));
-      if (!user) {
+      if (user) {
+        res.cookie("user", user, {
+          maxAge: 60 * 60 * 1000,
+          httpOnly: true,
+          path: "/",
+        });
         res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-        res.write("<script>alert('다시 로그인하셈')</script>");
-        // res.redirect("/user/login");
+        res.write("<script>alert('로그인 성공')</script>");
+        res.write("<script>window.location='/'</script>");
       } else {
-        res.redirect("/");
+        res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+        res.write(
+          "<script>alert('아이디 또는 비밀번호를 확인해주세요')</script>"
+        );
+        res.write("<script>window.location='/user/login'</script>");
+        // res.redirect("/");
       }
     } catch (err) {
       console.error(err);
       next(err);
     }
   });
+
+router.get("/logout", (req, res) => {
+  req.session.destroy(function (err) {
+    if (err) console.error("err", err);
+    res.send('<script>alert("로그아웃 성공"); location.href="/"; </script>');
+  });
+});
 
 router.get("/:user_id", async (req, res, next) => {
   try {
@@ -131,4 +150,5 @@ router.get("/:user_id", async (req, res, next) => {
     next(err);
   }
 });
+
 module.exports = router;
