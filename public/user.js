@@ -22,7 +22,7 @@ async function getUserInfo(userId) {
       td.textContent = userInfo[0][attr];
       tr.appendChild(td);
     }
-
+    // 회원정보 수정
     const edit = document.createElement("button");
     edit.textContent = "회원정보수정";
     td = document.createElement("td");
@@ -32,7 +32,7 @@ async function getUserInfo(userId) {
       e.preventDefault;
       window.location.href = `user/edit/${userId}`;
     });
-
+    // 회원탈퇴
     const remove = document.createElement("button");
     remove.textContent = "회원탈퇴";
     td = document.createElement("td");
@@ -40,7 +40,6 @@ async function getUserInfo(userId) {
     tr.appendChild(td);
     remove.addEventListener("click", async (e) => {
       try {
-        console.log("test");
         axios.delete(`/user/${userId}`);
         window.location.href = "/user";
       } catch (err) {

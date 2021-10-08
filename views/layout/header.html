@@ -2,7 +2,7 @@
   <nav class="top-nav">
     <div class="left-menu">
       <div>
-        <img class="logo" src="/images/football-logo.png" alt="logo">
+        <img class="logo" src="/images/football-logo.png" alt="logo" />
       </div>
       <a class="menu-btn" href="/">HOME</a>
       <div class="dropdown">
@@ -24,15 +24,23 @@
     </div>
     <div>
       <form class="search" method="post">
-        <input class="search-bar" type="text" placeholder="나는 검색왕" name="search-text">
+        <input
+          class="search-bar"
+          type="text"
+          placeholder="나는 검색왕"
+          name="search-text"
+        />
         <!-- <button class="search-btn">검색</button> -->
-        <input class="search-btn" type="submit" value="검색">
+        <input class="search-btn" type="submit" value="검색" />
       </form>
     </div>
     <div class="right-menu">
-      <a href="/user" class="menu-btn"><img src="">SIGNIN</a>
-      <a href="/user/login" class="menu-btn">LOGIN</a>
+      {% if login %}
+      <a href="/user/myPage" class="menu-btn logined">MY PAGE</a>
+      {% else %}
+      <a href="/user" class="menu-btn not-logined"><img src="" />SIGNIN</a>
+      <a href="/user/login" class="menu-btn not-logined">LOGIN</a>
+      {% endif %}
     </div>
   </nav>
-
 </header>
