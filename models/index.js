@@ -15,10 +15,10 @@ const db = {};
 
 // config.json파일에 있는 MySQL connection 정보 불러옴
 const sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
+  config.database,
+  config.username,
+  config.password,
+  config
 );
 // db객체에 모든 테이블 넣기
 db.sequelize = sequelize;
@@ -46,9 +46,9 @@ User.associate(db);
 Team.associate(db);
 TeamComment.associate(db);
 TeamBoard.associate(db);
-// MercenaryBoard.associate(db);
-// MercenaryComment.associate(db);
+MercenaryBoard.associate(db);
+MercenaryComment.associate(db);
 // BattleComment.associate(db);
- BattleBoard.associate(db);
+BattleBoard.associate(db);
 
 module.exports = db;

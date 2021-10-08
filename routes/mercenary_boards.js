@@ -96,11 +96,11 @@ router
 //   }
 // });
 
-router.route("/content/:number").get(async (req, res, next) => {
+router.route("/content/:mercenary_board_number").get(async (req, res, next) => {
   try {
     const info = await Mercenary_board.findAll({
       where: {
-        number: req.params.number,
+        mercenary_board_number: req.params.mercenary_board_number,
       },
     });
     res.render("mercenary_content", { info });
