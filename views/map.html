@@ -6,6 +6,7 @@
 </head>
 <body>
 	<div id="map" style="width:750px;height:350px;"></div>
+    <button onclick="panTo('중랑')">중랑으로가자</button>
 
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=38416af7a9a81c330c23b9ff23a72711"></script>
 	<script>
@@ -24,7 +25,7 @@ var positions = [
     {
         title: '광명', 
         latlng: new kakao.maps.LatLng(33.450705, 126.570677),
-        content: '<div style="padding:5px;">광명 :D</div>'
+        content: '<div style="padding:5px;">광명</div>'
     },
     {
         title: '천호', 
@@ -35,7 +36,7 @@ var positions = [
     {
         title: '중랑', 
         latlng: new kakao.maps.LatLng(33.450879, 126.569940),
-        content: '<div style="padding:5px;">중랑 :D</div>'
+        content: '<div style="padding:5px;">중랑</div>'
     },
     {
         title: '경일',
@@ -43,6 +44,18 @@ var positions = [
         content: '<div style="padding:5px;">경일</div>'
     }
 ];
+function panTo(input) { //노가다부분
+    // 이동할 위도 경도 위치를 생성합니다 
+    positions.forEach(el =>{
+        var moveLatLon = el.latlng;
+        if (el.title==input){
+            map.panTo(moveLatLon);    
+        }
+    })
+    
+    // 지도 중심을 부드럽게 이동시킵니다
+    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+}               
 
 // 마커 이미지의 이미지 주소입니다
 var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
@@ -80,5 +93,6 @@ for (var i = 0; i < positions.length; i ++) {
 		//infowindow.open(map, marker);
 
 	</script>
+     
 </body>
 </html>
