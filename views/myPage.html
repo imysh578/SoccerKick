@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% include "./layout/header.html" %}
+    <main>
+      <table style="width: 30%">
+        {% for a in user %}
+        <tr>
+          <td>아이디</td>
+          <td>
+            <input
+              type="text"
+              name="user_id"
+              id="user_id"
+              value="{{a.user_id}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>비밀번호</td>
+          <td>
+            <input
+              type="password"
+              name="user_password"
+              id="user_password"
+              value="{{a.user_password}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>이름</td>
+          <td>
+            <input
+              type="text"
+              name="user_name"
+              id="user_name"
+              value="{{a.user_name}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>나이</td>
+          <td>
+            <input
+              type="number"
+              name="user_age"
+              id="user_age"
+              value="{{a.user_age}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>지역</td>
+          <td>
+            <input
+              type="text"
+              name="user_area"
+              id="user_area"
+              value="{{a.user_area}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>성별</td>
+          <td>
+            <input
+              type="text"
+              name="user_gender"
+              id="user_gender"
+              value="{{a.user_gender}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>이메일</td>
+          <td>
+            <input
+              type="text"
+              name="user_mail"
+              id="user_mail"
+              value="{{a.user_mail}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>포지션</td>
+          <td>
+            <input
+              type="text"
+              name="user_position"
+              id="user_position"
+              value="{{a.user_position}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>소속팀</td>
+          <td>
+            <input
+              type="text"
+              name="user_team"
+              id="user_team"
+              value="{{a.user_team}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>자기소개</td>
+          <td>
+            <input
+              type="text"
+              name="user_aboutMe"
+              id="user_aboutMe"
+              value="{{a.user_aboutMe}}"
+            />
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <a href="/user/edit/${userId}"><button>회원정보 수정</button></a>
+    </main>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/user.js"></script>
+  </body>
+</html>
