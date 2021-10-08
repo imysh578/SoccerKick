@@ -10,44 +10,47 @@
 
 <body>
   <div>
-      <fieldset>
-        <legend>구단 생성하기</legend>
-        <form method="POST" id="team-list-form">
-          <div>
-            <span>구단명</span>
-            <input type="text" name="team_name" required>
-          </div>
-          <div>
-            <span>지역</span>
-            <input type="text" name="team_homeGround" required>
-          </div>
-          <div>
-            <span>인원수</span>
-            <input type="number" name="team_headCount" min="1" max="200">
-          </div>
-          <div>
-            <span>구단 정보</span>
-            <input type="text" name="team_info" >
-          </div>
-          <div>
-            <span>구단 매너도</span>
-            <select name="team_manner" required>
-              <option value="상">상</option>
-              <option value="중">중</option>
-              <option value="하">하</option>
-            </select>
-          </div>
-          <div>
-            <span>홈구장</span>
-            <input type="text" name="team_area" required>
-          </div>
-          <div>
-            <span>구단주 아이디</span>
-            <input type="text" name="team_leaderId" required>
-          </div>
-          <input type="submit" name="submit-btn" required value="확인">
-        </form>
-      </fieldset>
+    {% include "./layout/header.html" %}
+    <fieldset>
+      <legend>구단 생성하기</legend>
+      <form method="POST" id="team-list-form" enctype="multipart/form-data">
+        <div>
+          <span>구단명</span>
+          <input type="text" name="team_name" required>
+        </div>
+        <div>
+          <span>지역</span>
+          <input type="text" name="team_homeGround" required>
+        </div>
+        <div>
+          <span>인원수</span>
+          <input type="number" name="team_headCount" min="1" max="200">
+        </div>
+        <div>
+          <span>구단 정보</span>
+          <input type="text" name="team_info">
+        </div>
+        <div>
+          <span>구단 매너도</span>
+          <select name="team_manner" required>
+            <option value="상">상</option>
+            <option value="중">중</option>
+            <option value="하">하</option>
+          </select>
+        </div>
+        <div>
+          <span>홈구장</span>
+          <input type="text" name="team_area" required>
+        </div>
+        <div>
+          <span>구단주 아이디</span>
+          <input type="text" name="team_leaderId" required>
+        </div>
+        <input type="submit" name="submit-btn" required value="확인">
+        <input type="file" name="uploaded_file">
+        <input type="submit" value="파일 업로드하기">
+      </form>
+    </fieldset>
   </div>
 
   <a href="/team"><button>구단 리스트로 돌아가기</button></a>
