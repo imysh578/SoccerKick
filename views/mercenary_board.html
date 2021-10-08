@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>왜 안돼</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
     <style>
       table {
         border: 1px solid black;
@@ -27,21 +29,35 @@
       </tbody>
     </table>
 
-    <table id="mercenary_recruitment_list">
+    <table id="mercenary_table">
       <thead>
         <th>글번호</th>
         <th>글제목</th>
         <th>글쓴이</th>
         <th>게시일</th>
       </thead>
+
       <tbody class="mercenary_recruitment mercenary_recruitment_list">
-        {% for team in mercenary_board %}
+        {% for board_list in mercenary_board %}
         <tr>
-          <td>{{ team.number }}</td>
-          <td>{{ team.mercenary_board_title }}</td>
-          <td>{{ team.user_id }}</td>
+          <td>{{ board_list.mercenary_board_number }}</td>
+          <td>{{ board_list.mercenary_board_title }}</td>
+          <td>{{ board_list.user_id }}</td>
           <td class="date_info{{loop.index}}">
-            {{ team.mercenary_board_date }}
+            {{ board_list.mercenary_board_date }}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+
+      <tbody class="mercenary_want mercenary_want_list">
+        {% for board_list in mercenary_board %}
+        <tr>
+          <td>{{ board_list.mercenary_board_number }}</td>
+          <td>{{ board_list.mercenary_board_title }}</td>
+          <td>{{ board_list.user_id }}</td>
+          <td class="date_info{{loop.index}}">
+            {{ board_list.mercenary_board_date }}
           </td>
         </tr>
         {% endfor %}
@@ -56,7 +72,7 @@
         <th>게시일</th>
       </thead>
       <tbody class="mercenary_want mercenary_want_list">
-        {% for team in mercenary_board %}
+        <!-- {% for team in mercenary_board %}
         <tr>
           <td>{{ team.number }}</td>
           <td>{{ team.mercenary_board_title }}</td>
@@ -65,12 +81,12 @@
             {{ team.mercenary_board_date }}
           </td>
         </tr>
-        {% endfor %}
+        {% endfor %} -->
       </tbody>
     </table>
 
     <br />
-    <a href="mercenary_board/new"><button>글쓰기</button></a>
+    <a href="/mercenary_board/new"><button>글쓰기</button></a>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/mercenary_board.js"></script>
   </body>

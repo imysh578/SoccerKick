@@ -4,7 +4,7 @@ module.exports = class Mercenary_board extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        number: {
+        mercenary_board_number: {
           type: Sequelize.INTEGER,
           allowNull: false,
           primaryKey: true,
@@ -47,5 +47,14 @@ module.exports = class Mercenary_board extends Sequelize.Model {
       }
     );
   }
-  static associate(db) {}
+  static associate(db) {
+    db.MercenaryBoard.belongsTo(db.User, {
+      foreignKey: "user_id",
+      targetKey: "user_id",
+    });
+    db.MercenaryBoard.hasMany(db.MercenaryComment, {
+      foreignKey: "mercenary_board_number",
+      sourceKey: "mercenary_board_number",
+    });
+  }
 };
