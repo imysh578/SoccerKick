@@ -7,8 +7,6 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const compression = require("compression");
-const FileStore = require("session-file-store")(session);
-const bcrypt = require("bcrypt");
 
 const { sequelize } = require("./models");
 const indexRouter = require("./routes");

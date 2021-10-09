@@ -34,7 +34,7 @@ router
         user_grade: req.body.user_grade,
       });
 
-      res.redirect("/user");
+      res.redirect("/user/login");
 
       // res.status(201).json(user);
     } catch (err) {
@@ -79,21 +79,41 @@ router
   });
 
 // 마이페이지
-router.get("/myPage", async (req, res, next) => {
-  try {
-    const user = await User.findAll({
-      where: { user_id: req.cookies.user.user_id },
-    });
-    if (req.cookies.hasOwnProperty("user")) {
-      res.render("myPage", { user, login: req.cookies.user.user_id });
-    } else {
-      res.render("myPage");
+router
+  .get("/myPage", async (req, res, next) => {
+    try {
+      const user = await User.findAll({
+        where: { user_id: req.cookies.user.user_id },
+      });
+      if (req.cookies.hasOwnProperty("user")) {
+        res.render("myPage", { user, login: req.cookies.user.user_id });
+      } else {
+        res.render("myPage");
+      }
+      // res.render("myPage", { user });
+    } catch (err) {
+      console.error(err);
+      next(err);
     }
-    // res.render("myPage", { user });
-  } catch (err) {
-    console.error(err);
-    next(err);
-  }
+  })
+  .post("/:user_id", async (req, res, next) => {
+    try {
+      const user = await User.destroy({
+        where: { user_id: req.cookies.user.user_id },
+      });
+      res.clearCookie("user", user);
+      res.redirect("/");
+    } catch (err) {
+      console.error(err);
+    }
+  });
+
+router.get("/logout", (req, res) => {
+  const user = User.findAll({
+    where: { user_id: req.cookies.user.user_id },
+  });
+  res.clearCookie("user", user);
+  res.redirect("/");
 });
 
 //회원 정보 수정
@@ -140,16 +160,6 @@ router
     } catch (err) {
       console.error(err);
       next(err);
-    }
-  })
-  .delete("/:user_id", async (req, res, next) => {
-    try {
-      const user = await User.destroy({
-        where: { user_id: req.params.user_id },
-      });
-      res.redirect();
-    } catch (err) {
-      console.error(err);
     }
   });
 
