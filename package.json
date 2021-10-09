@@ -17,9 +17,7 @@
   },
   "homepage": "https://github.com/imysh578/Create-Football-community-site#readme",
   "devDependencies": {
-    "aws-sdk": "^2.1003.0",
     "multer": "^1.4.3",
-    "multer-s3": "^2.9.0",
     "nodemon": "^2.0.13"
   },
   "dependencies": {

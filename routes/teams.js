@@ -1,16 +1,23 @@
 const express = require("express");
 const Teams = require("../models/teams");
-const { upload, bucket } = require("./multer");
-const aws = require("aws-sdk");
+const upload = require("./multer");
 const fs = require("fs");
-const s3 = new aws.S3();
+const path = require("path");
+const { QueryTypes } = require("sequelize");
+const { sequelize } = require("../models");
 
 const router = express.Router();
 
+function getDateWithoutTime(date) {
+	return require("moment")(date).format("YYYY-MM-DD");
+}
 // 구단 리스트 화면
 router.route("/").get(async (req, res, next) => {
 	try {
-		const teams = await Teams.findAll();
+		const teams = await sequelize.query("SELECT * FROM `teams`", {
+			type: QueryTypes.SELECT,
+		});
+		// const teams = await Teams.findAll();
 		res.render("team", { teams });
 	} catch (err) {
 		console.error(err);
@@ -23,6 +30,12 @@ router
 	.route("/create")
 	.get(async (req, res, next) => {
 		try {
+			console.log(upload.storage);
+			// uploads 폴더가 없으면 public/uploads 경로에 새폴더 생성
+			const dir = path.join(__dirname, "../public/uploads");
+			if (!fs.existsSync(dir)) {
+				fs.mkdirSync(dir, { recursive: true });
+			}
 			res.render("team_create");
 		} catch (err) {
 			console.error(err);
@@ -39,7 +52,9 @@ router
 				team_area: req.body.team_area,
 				team_leaderId: req.body.team_leaderId,
 				team_info: req.body.team_info,
+				// logo_file: fileDirectory,
 			});
+
 			res.redirect("/team");
 		} catch (err) {
 			console.error(err);
@@ -57,31 +72,6 @@ router
 					team_name: req.params.team_name,
 				},
 			});
-			// 연결할 버킷 설정
-			let params = {
-				Bucket: bucket,
-				Key: "",
-			};
-			// 불러올 파일 key 설정
-			params.Key = "football-logo-1633710981983.png";
-			const fileName = "test.png";
-			if (params.Key) {
-				s3.getObject(params)
-					.promise()
-					.then((data) => {
-						// downloads 폴더에 저장
-						fs.writeFileSync("./public/downloads/" + fileName, data.Body);
-						console.log("Loaded " + data.ContentLength + " bytes");
-						console.log("file downloaded successfully");
-						console.log(data.Body.toString("utf8"));
-						console.log(typeof data);
-						// do something with data.Body
-					})
-					.catch((err) => {
-						console.log("Failed to retrieve an object: " + error);
-						throw err;
-					});
-			}
 			res.render("team_edit", { teams });
 		} catch (err) {
 			console.error(err);
