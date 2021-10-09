@@ -10,6 +10,10 @@ module.exports = class Mercenary_board extends Sequelize.Model {
           primaryKey: true,
           autoIncrement: true,
         },
+        mercenary_select: {
+          type: Sequelize.STRING(45),
+          allowNull: false,
+        },
         user_id: {
           type: Sequelize.STRING(45),
           allowNull: false,

@@ -31,6 +31,7 @@ router
       const create = await Mercenary_board.create({
         mercenary_board_title: req.body.mercenary_board_title,
         mercenary_board_content: req.body.mercenary_board_content,
+        mercenary_select: req.body.mercenary_select,
 
         user_id: req.body.user_id,
         user_area: req.body.user_area,
