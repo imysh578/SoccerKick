@@ -38,28 +38,24 @@
       </tbody>
     </table>
 
-    <table>
-      <tbody class="mercenary_want mercenary_want_title">
-        <!-- 글제목 나올곳 -->
-        <tr>
-          <td>{{ info[0].mercenary_board_title }}</td>
-          <td>{{ info[0].user_id }}</td>
-          <td class="date_info1">{{ info[0].mercenary_board_date }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <table>
-      <tbody class="mercenary_want mercenary_want_content">
-        <!-- 글내용 나올곳 -->
-        <tr>
-          <td>{{ info[0].mercenary_board_content }}</td>
-        </tr>
-      </tbody>
-    </table>
-
     <br />
     <a href="mercenary_board/new"><button>글쓰기</button></a>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/mercenary_board.js"></script>
+    <!-- <script src="/mercenary_board.js"></script> -->
+    <script>
+      // 글목록 하나하나에 class명을 1부터 넣어 DATE_INFO에 저장
+      let DATE_INFO = document.querySelector(`.date_info1`).textContent;
+      // DATE_INFO를 new Date로 string에서 날짜 object로 type 변환
+      let conversion = new Date(DATE_INFO);
+      // 연-월-일 시:분 으로 만들어주기
+      var year = conversion.getFullYear();
+      var month = ("0" + (conversion.getMonth() + 1)).slice(-2);
+      var day = ("0" + conversion.getDate()).slice(-2);
+      var hours = ("0" + conversion.getHours()).slice(-2);
+      var minutes = ("0" + conversion.getMinutes()).slice(-2);
+      var dateString = `${year}-${month}-${day} ${hours}:${minutes}`;
+      // 각 글목록의 날짜자리에 만든 날짜 집어넣기
+      document.querySelector(`.date_info1`).textContent = dateString;
+    </script>
   </body>
 </html>

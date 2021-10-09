@@ -23,8 +23,8 @@
     <table>
       <tbody>
         <tr>
-          <td id="mercenary_recruitment">용병구해요</td>
-          <td id="mercenary_want">용병할래요</td>
+          <td class="tab-btn" id="구해요">용병구해요</td>
+          <td class="tab-btn" id="할래요">용병할래요</td>
         </tr>
       </tbody>
     </table>
@@ -32,15 +32,23 @@
     <table id="mercenary_table">
       <thead>
         <th>글번호</th>
+        <th>용병</th>
         <th>글제목</th>
         <th>글쓴이</th>
         <th>게시일</th>
       </thead>
 
-      <tbody class="mercenary_recruitment mercenary_recruitment_list">
-        {% for board_list in mercenary_board %}
-        <tr>
+      <tbody class="mercenary_recruitment">
+        {% for board_list in mercenary_board %} {% if
+        board_list.mercenary_select == "할래요" %}
+        <tr class="{{ board_list.mercenary_select }}" hidden>
+          {% else %}
+        </tr>
+
+        <tr class="{{ board_list.mercenary_select }}">
+          {% endif %}
           <td>{{ board_list.mercenary_board_number }}</td>
+          <td>{{ board_list.mercenary_select }}</td>
           <td>{{ board_list.mercenary_board_title }}</td>
           <td>{{ board_list.user_id }}</td>
           <td class="date_info{{loop.index}}">
@@ -48,40 +56,6 @@
           </td>
         </tr>
         {% endfor %}
-      </tbody>
-
-      <tbody class="mercenary_want mercenary_want_list">
-        {% for board_list in mercenary_board %}
-        <tr>
-          <td>{{ board_list.mercenary_board_number }}</td>
-          <td>{{ board_list.mercenary_board_title }}</td>
-          <td>{{ board_list.user_id }}</td>
-          <td class="date_info{{loop.index}}">
-            {{ board_list.mercenary_board_date }}
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-
-    <table id="mercenary_want_list">
-      <thead>
-        <th>글번호</th>
-        <th>글제목</th>
-        <th>글쓴이</th>
-        <th>게시일</th>
-      </thead>
-      <tbody class="mercenary_want mercenary_want_list">
-        <!-- {% for team in mercenary_board %}
-        <tr>
-          <td>{{ team.number }}</td>
-          <td>{{ team.mercenary_board_title }}</td>
-          <td>{{ team.user_id }}</td>
-          <td class="date_info{{loop.index}}">
-            {{ team.mercenary_board_date }}
-          </td>
-        </tr>
-        {% endfor %} -->
       </tbody>
     </table>
 
