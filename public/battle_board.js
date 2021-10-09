@@ -34,8 +34,7 @@ async function getBattleInfo(battle_board_teamName) {
 
         //글 수정 버튼 관리 이벤트
         edit.addEventListener("click", (e) => {
-            //?
-            e.preventDefault(); //?
+            e.preventDefault(); //클릭했을때 기본값설정을 막는다?
             window.location.href = `/battle_board/edit/${battle_board_teamName}`; //라우터 설정해줄것.
         });
 

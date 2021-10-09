@@ -1,3 +1,4 @@
+//===============================기본 지도 세팅===============================
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
   mapOption = {
     center: new kakao.maps.LatLng(33.450705, 126.570677), // 지도의 중심좌표
@@ -7,13 +8,30 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 // 지도를 생성한다
 var map = new kakao.maps.Map(mapContainer, mapOption);
-///
 
+//===============================노가다부분===============================
 var positions = [
   {
     title: '광명',
     latlng: new kakao.maps.LatLng(33.450705, 126.570677),
-    content: '<div style="padding:5px;">광명</div>',
+    content: '<div class="wrap">' + 
+    '    <div class="info">' + 
+    '        <div class="title">' + 
+    '            카카오 스페이스닷원' + 
+    '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+    '        </div>' + 
+    '        <div class="body">' + 
+    '            <div class="img">' +
+    '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+    '           </div>' + 
+    '            <div class="desc">' + 
+    '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' + 
+    '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
+    '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
+    '            </div>' + 
+    '        </div>' + 
+    '    </div>' +    
+    '</div>',
   },
   {
     title: '천호',
@@ -31,8 +49,8 @@ var positions = [
     content: '<div style="padding:5px;">경일</div>',
   },
 ];
+//===============================마커세팅===============================
 function panTo(where) {
-  //노가다부분
   // 이동할 위도 경도 위치를 생성합니다
   positions.forEach((el) => {
     var moveLatLon = el.latlng; // var moveLatLon = 뉴카카맵(좌표)에서 수정, position들의 좌표로 반복으로받아온다
@@ -63,6 +81,7 @@ for (var i = 0; i < positions.length; i++) {
     title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
     image: markerImage, // 마커 이미지
   });
+  //===============================커스텀오버레이,인포윈도===============================
   //인포윈도우 생성.
   var infowindow = new kakao.maps.InfoWindow({
     content: positions[i].content,
@@ -70,11 +89,18 @@ for (var i = 0; i < positions.length; i++) {
   infowindow.open(map, marker);
 }
 
+
+//===============================버튼함수들===============================
 //검색버튼 설정 addeventlist가 onclick보다 호환성빼고 다좋음. 여러가지실행가능.
 var mapbtn = document.getElementById('mapbtn');
 var input = document.getElementById('input');
 
-mapbtn.addEventListener('click', function () {
-  //두번째 인자에 콜백함수안에 함수?
+mapbtn.addEventListener('click', function () {//두번째 인자에 콜백함수안에 함수?
   panTo(input.value); //panTo()의 값을 그냥 input이아닌 .value로 받아옴.
+});
+
+input.addEventListener('keypress', function (e) {  //enter키로도 함수실행하게함..
+  if (e.key === 'Enter') {  //그 키가 enter라는것을 수동으로 설정해줌
+    panTo(input.value);
+  }
 });
