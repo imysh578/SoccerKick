@@ -17,7 +17,7 @@ var positions = [
     content: '<div class="wrap">' + 
     '    <div class="info">' + 
     '        <div class="title">' + 
-    '            카카오 스페이스닷원' + 
+    '            광명' + 
     '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
     '        </div>' + 
     '        <div class="body">' + 
@@ -25,7 +25,7 @@ var positions = [
     '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
     '           </div>' + 
     '            <div class="desc">' + 
-    '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' + 
+    '                <div class="ellipsis">경기도 광명</div>' + 
     '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
     '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
     '            </div>' + 
@@ -36,17 +36,68 @@ var positions = [
   {
     title: '천호',
     latlng: new kakao.maps.LatLng(33.450936, 126.569477),
-    content: '<div style="padding:5px;">천호</div>',
+    content: '<div class="wrap">' + 
+    '    <div class="info">' + 
+    '        <div class="title">' + 
+    '            천호' + 
+    '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+    '        </div>' + 
+    '        <div class="body">' + 
+    '            <div class="img">' +
+    '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+    '           </div>' + 
+    '            <div class="desc">' + 
+    '                <div class="ellipsis">서울특별시 강동구 천호동</div>' + 
+    '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
+    '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
+    '            </div>' + 
+    '        </div>' + 
+    '    </div>' +    
+    '</div>',
   },
   {
     title: '중랑',
     latlng: new kakao.maps.LatLng(33.450879, 126.56994),
-    content: '<div style="padding:5px;">중랑</div>',
+    content: '<div class="wrap">' + 
+    '    <div class="info">' + 
+    '        <div class="title">' + 
+    '            중랑' + 
+    '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+    '        </div>' + 
+    '        <div class="body">' + 
+    '            <div class="img">' +
+    '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+    '           </div>' + 
+    '            <div class="desc">' + 
+    '                <div class="ellipsis">서울특별시 중랑구 면목동</div>' + 
+    '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
+    '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
+    '            </div>' + 
+    '        </div>' + 
+    '    </div>' +    
+    '</div>',
   },
   {
     title: '경일',
     latlng: new kakao.maps.LatLng(33.451393, 126.570738),
-    content: '<div style="padding:5px;">경일</div>',
+    content: '<div class="wrap">' + 
+    '    <div class="info">' + 
+    '        <div class="title">' + 
+    '            경일' + 
+    '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+    '        </div>' + 
+    '        <div class="body">' + 
+    '            <div class="img">' +
+    '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+    '           </div>' + 
+    '            <div class="desc">' + 
+    '                <div class="ellipsis">게임아카데미</div>' + 
+    '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
+    '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
+    '            </div>' + 
+    '        </div>' + 
+    '    </div>' +    
+    '</div>',
   },
 ];
 //===============================마커세팅===============================
@@ -82,12 +133,24 @@ for (var i = 0; i < positions.length; i++) {
     image: markerImage, // 마커 이미지
   });
   //===============================커스텀오버레이,인포윈도===============================
-  //인포윈도우 생성.
-  var infowindow = new kakao.maps.InfoWindow({
+  //dhqjfpdl 생성
+  var overlay = new kakao.maps.CustomOverlay({
     content: positions[i].content,
-  });
-  infowindow.open(map, marker);
+    map: map,
+    position: marker.getPosition()//좌표를 가져오는 카카오고유함수positions[i].latlng 와 같음.     
+});
+
+// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+kakao.maps.event.addListener(marker, 'click', function() {
+    overlay.setMap(map);
+});
+
+// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+function closeOverlay() {
+    overlay.setMap(null);     
+}    
 }
+
 
 
 //===============================버튼함수들===============================
