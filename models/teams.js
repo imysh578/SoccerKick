@@ -36,7 +36,12 @@ module.exports = class Team extends Sequelize.Model {
 				team_created_date: {
 					type: Sequelize.DATE,
 					allowNull: false,
-					defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+					defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+				},
+				logo_filename: {
+					type: Sequelize.STRING(45),
+					allowNull: false,
+					defaultValue: "",
 				},
 			},
 			{

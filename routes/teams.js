@@ -1,29 +1,23 @@
 const express = require("express");
 const Teams = require("../models/teams");
-const multer = require("multer");
-const path = require("path");
+const upload = require("./multer");
 const fs = require("fs");
+const path = require("path");
+const { QueryTypes } = require("sequelize");
+const { sequelize } = require("../models");
 
-const app = express();
 const router = express.Router();
 
-const storage = multer.diskStorage({
-	destination: function (req, file, cb) {
-		cb(null, "public/uploads");
-	},
-	filename: function (req, file, cb) {
-		const extension = path.extname(file.originalname);
-		const basename = path.basename(file.originalname, extension);
-		cb(null, basename + "-" + Date.now() + extension);
-	},
-});
-
-const upload = multer({ storage: storage });
-
+function getDateWithoutTime(date) {
+	return require("moment")(date).format("YYYY-MM-DD");
+}
 // 구단 리스트 화면
 router.route("/").get(async (req, res, next) => {
 	try {
-		const teams = await Teams.findAll();
+		const teams = await sequelize.query("SELECT * FROM `teams`", {
+			type: QueryTypes.SELECT,
+		});
+		// const teams = await Teams.findAll();
 		res.render("team", { teams });
 	} catch (err) {
 		console.error(err);
@@ -36,6 +30,7 @@ router
 	.route("/create")
 	.get(async (req, res, next) => {
 		try {
+			console.log(upload.storage);
 			// uploads 폴더가 없으면 public/uploads 경로에 새폴더 생성
 			const dir = path.join(__dirname, "../public/uploads");
 			if (!fs.existsSync(dir)) {
@@ -57,7 +52,9 @@ router
 				team_area: req.body.team_area,
 				team_leaderId: req.body.team_leaderId,
 				team_info: req.body.team_info,
+				// logo_file: fileDirectory,
 			});
+
 			res.redirect("/team");
 		} catch (err) {
 			console.error(err);
