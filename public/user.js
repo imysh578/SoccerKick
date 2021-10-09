@@ -33,15 +33,10 @@ async function getUserInfo(userId) {
       window.location.href = `user/edit/${userId}`;
     });
     // 회원탈퇴
-    const remove = document.createElement("button");
-    remove.textContent = "회원탈퇴";
-    td = document.createElement("td");
-    td.appendChild(remove);
-    tr.appendChild(td);
+    const remove = querySelector("#remove");
     remove.addEventListener("click", async (e) => {
       try {
-        axios.delete(`/user/${userId}`);
-        window.location.href = "/user";
+        axios.delete(`/myPage/${userId}`);
       } catch (err) {
         console.error(err);
       }

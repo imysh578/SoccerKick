@@ -128,6 +128,9 @@
         {% endfor %}
       </table>
       <a href="/user/edit/${userId}"><button>회원정보 수정</button></a>
+      <form method="post">
+        <button id="remove">회원탈퇴</button>
+      </form>
     </main>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/user.js"></script>

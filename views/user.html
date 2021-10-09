@@ -19,7 +19,9 @@
               <tr>
                 <td>아이디</td>
                 <td>
-                  <input type="text" name="user_id" id="user_id" />
+                  <input type="text" name="user_id" id="user_id" /><button>
+                    중복확인
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -53,14 +55,23 @@
               <tr>
                 <td>성별</td>
                 <td>
-                  <input type="text" name="user_gender" id="user_gender" />
+                  <select name="user_gender">
+                    <option value="男">남자</option>
+                    <option value="女">여자</option>
+                  </select>
                 </td>
               </tr>
               <tr>
                 <td>이메일</td>
                 <td>
-                  <input type="text" name="user_mail" id="user_mail" />
+                  <input type="text" name="user_mail" id="user_mail" /><button>
+                    인증번호받기
+                  </button>
                 </td>
+              </tr>
+              <tr>
+                <td>인증번호</td>
+                <td><input type="text" id="" /></td>
               </tr>
               <tr>
                 <td>포지션</td>
@@ -86,60 +97,6 @@
         </fieldset>
       </div>
       <br />
-      <!-- <form method="POST">
-        <title>회원 관리 테이블</title>
-        <table>
-          <thead>
-            <tr>
-              <th>아이디</th>
-              <th>이름</th>
-              <th>나이</th>
-              <th>지역</th>
-              <th>성별</th>
-              <th>이메일</th>
-              <th>포지션</th>
-              <th>팀</th>
-              <th>자기소개</th>
-              <th>회원등급</th>
-            </tr>
-          </thead>
-          <tbody id="user-list">
-            {% for a in user %}
-            <tr>
-              <td>{{a.user_id}}</td>
-              <td>{{a.user_name}}</td>
-              <td>{{a.user_age}}</td>
-              <td>{{a.user_area}}</td>
-              <td>{{a.user_gender}}</td>
-              <td>{{a.user_mail}}</td>
-              <td>{{a.user_position}}</td>
-              <td>{{a.user_team}}</td>
-              <td>{{a.user_aboutMe}}</td>
-              <td>{{a.user_grade}}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </form>
-      <br />
-
-      <table id="selected">
-        <thead>
-          <th>아이디</th>
-          <th>비밀번호</th>
-          <th>이름</th>
-          <th>나이</th>
-          <th>지역</th>
-          <th>성별</th>
-          <th>이메일</th>
-          <th>포지션</th>
-          <th>팀</th>
-          <th>자기소개</th>
-          <th>회원등급</th>
-        </thead>
-        <tbody></tbody>
-      </table>
-      <a href="/">시퀄라이즈~</a> -->
     </main>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/user.js"></script>
