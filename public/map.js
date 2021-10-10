@@ -1,7 +1,7 @@
 //===============================기본 지도 세팅===============================
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
   mapOption = {
-    center: new kakao.maps.LatLng(33.450705, 126.570677), // 지도의 중심좌표
+    center: new kakao.maps.LatLng(37.52649345069, 127.11995798720277), // 지도의 중심좌표
     level: 5, // 지도의 확대 레벨
     mapTypeId: kakao.maps.MapTypeId.ROADMAP, // 지도종류
   };
@@ -12,7 +12,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 //===============================노가다부분===============================
 var positions = [
   {
-    title: '광명',
+    title: '광명띠',
     latlng: new kakao.maps.LatLng(33.450705, 126.570677),
     content: '<div class="wrap">' + 
     '    <div class="info">' + 
@@ -22,7 +22,7 @@ var positions = [
     '        </div>' + 
     '        <div class="body">' + 
     '            <div class="img">' +
-    '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+    '                <img src="" width="73" height="70">' +
     '           </div>' + 
     '            <div class="desc">' + 
     '                <div class="ellipsis">경기도 광명</div>' + 
@@ -32,10 +32,11 @@ var positions = [
     '        </div>' + 
     '    </div>' +    
     '</div>',
+    tag:['광명구장','광명']
   },
-  {
-    title: '천호',
-    latlng: new kakao.maps.LatLng(33.450936, 126.569477),
+  { 
+    title: '천호제목',
+    latlng: new kakao.maps.LatLng(37.52649345069, 127.11995798720277),
     content: '<div class="wrap">' + 
     '    <div class="info">' + 
     '        <div class="title">' + 
@@ -44,7 +45,7 @@ var positions = [
     '        </div>' + 
     '        <div class="body">' + 
     '            <div class="img">' +
-    '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+    '                <img src="" width="73" height="70">' +
     '           </div>' + 
     '            <div class="desc">' + 
     '                <div class="ellipsis">서울특별시 강동구 천호동</div>' + 
@@ -54,6 +55,7 @@ var positions = [
     '        </div>' + 
     '    </div>' +    
     '</div>',
+    tag:['영번째인덱스', '강동']
   },
   {
     title: '중랑',
@@ -66,7 +68,7 @@ var positions = [
     '        </div>' + 
     '        <div class="body">' + 
     '            <div class="img">' +
-    '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+    '                <img src="" width="73" height="70">' +
     '           </div>' + 
     '            <div class="desc">' + 
     '                <div class="ellipsis">서울특별시 중랑구 면목동</div>' + 
@@ -76,6 +78,7 @@ var positions = [
     '        </div>' + 
     '    </div>' +    
     '</div>',
+    tag:['중랑영번째','중랑첫번째']
   },
   {
     title: '경일',
@@ -88,7 +91,7 @@ var positions = [
     '        </div>' + 
     '        <div class="body">' + 
     '            <div class="img">' +
-    '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+    '                <img src="" width="73" height="70">' +
     '           </div>' + 
     '            <div class="desc">' + 
     '                <div class="ellipsis">게임아카데미</div>' + 
@@ -105,7 +108,7 @@ function panTo(where) {
   // 이동할 위도 경도 위치를 생성합니다
   positions.forEach((el) => {
     var moveLatLon = el.latlng; // var moveLatLon = 뉴카카맵(좌표)에서 수정, position들의 좌표로 반복으로받아온다
-    if (el.title == where) {
+    if (el.tag[0] == where) { //el.title에서바꿈.
       map.panTo(moveLatLon);
     }
   });
@@ -133,7 +136,7 @@ for (var i = 0; i < positions.length; i++) {
     image: markerImage, // 마커 이미지
   });
   //===============================커스텀오버레이,인포윈도===============================
-  //dhqjfpdl 생성
+  //오버레이 생성
   var overlay = new kakao.maps.CustomOverlay({
     content: positions[i].content,
     map: map,
