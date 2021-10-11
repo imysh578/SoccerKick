@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,700");
+
+* {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	box-sizing: border-box;
+	font-family: "Raleway", sans-serif;
+}
+
+body {
+	background: linear-gradient(to right, #d6d6d6, #ffffff);
+	perspective: 600px;
+}
+
+.cont {
+	position: relative;
+	width: 28%;
+	height: 600px;
+	margin: 50px auto;
+	transition: all 0.4s linear;
+}
+
+/* .cont:hover{
+  transform: rotateX(45deg) rotateY(10deg) rotateZ(-60deg)
+} */
+
+.main-box {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	box-shadow: 0px 20px 50px 0px #000000;
+}
+
+.contents-box {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 18px 15px;
+	background: rgba(19, 20, 27, 0.72);
+}
+
+h2,
+.user,
+.email,
+.pass {
+	display: block;
+}
+
+#page-title {
+	text-align: center;
+	color: #f7f3f2;
+	font-weight: 400;
+	font-size: 22px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.user,
+.email,
+.pass {
+	width: 85%;
+	height: 45px;
+	border: none;
+	color: white;
+	margin: 10px auto;
+	padding-left: 40px;
+	font-size: 18px;
+	font-weight: 500;
+	border-radius: 25px;
+	margin-bottom: 0;
+	background: rgba(158, 158, 158, 0.49);
+}
+
+input::placeholder {
+	color: #fff;
+	font-size: 16px;
+	font-weight: 100;
+	transition: all 0.4s ease;
+}
+
+input:focus::placeholder {
+	opacity: 0;
+}
+
+.submit-btn {
+	color: #fff;
+	cursor: pointer;
+	width: 85%;
+	height: 50px;
+	border: none;
+	font-size: 18px;
+	font-weight: 500;
+	margin-top: 20%;
+	background: #67c5e7;
+	border-radius: 25px;
+	transition: background 0.4s ease;
+}
+
+button.submit-btn:hover {
+	background: #2196f3;
+}
+
+@media only screen and (min-width: 280px) {
+	.cont {
+		width: 90%;
+	}
+}
+
+@media only screen and (min-width: 480px) {
+	.cont {
+		width: 60%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.cont {
+		width: 40%;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.cont {
+		width: 30%;
+	}
+}

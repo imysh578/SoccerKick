@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>구단 상세정보 페이지</title>
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/team_detail.css">
+</head>
+
+<body>
+  {% include "./layout/header.html" %}
+  <div class="cont">
+    <div class="main-box">
+      <div class="contents-box">
+        <form action="">
+          <h2 id="page-title">{{team.team_name}}</h2>
+          {% for info in team %}
+          <span type="text" class="user">{{team.team_name}}</span>
+          {% endfor %}
+          <button class="submit-btn">가입 신청</button>
+          <a href="/team"><button>구단 리스트로 돌아가기</button></a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/team.js"></script>
+</body>
+
+</html>

@@ -1,67 +1,58 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>구단 리스트 페이지</title>
-  <style>
-    table{border: 1px solid black; border-collapse: collapse;}
-    table th, table td{border: 1px solid black}
-</style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원 관리 테이블</title>
+    {% include "./layout/style.html" %}
+    <link rel="stylesheet" href="css/board.css">
 </head>
-<body>
-  <h1>구단 리스트</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>구단명</th>
-        <!-- <th>구단주 아이디</th> -->
-        <th>홈구장</th>
-        <th>인원수</th>
-        <!-- <th>구단 정보</th> -->
-        <!-- <th>구단 매너도</th> -->
-        <th>지역</th>
-      </tr>
-    </thead>
-    
-    <tbody id="team-list">
-      {% for team in teams %}
-      <tr>
-        <td>{{ team.team_name }}</td>
-        <!-- <td>{{ team.team_leaderId }}</td> -->
-        <td>{{ team.team_homeGround }}</td>
-        <td>{{ team.team_headCount }}</td>
-        <!-- <td>{{ team.team_info }}</td>
-        <td>{{ team.team_manner }}</td> -->
-        <td>{{ team.team_area }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
-  <table id="selected">
-    <h3>구단 상세 정보</h3>
-    <thead>
-      <th>구단명</th>
-      <th>구단주 아이디</th>
-      <th>지역</th>
-      <th>구단 매너도</th>
-      <th>인원수</th>
-      <th>홈구장</th>
-      <th>구단 정보</th>
-      <th>구단 생성날짜</th>
-      <th>가입 신청</th>
-      <th>구단 관리</th>
-    </thead>
-    <tbody>
-      <!-- 구단 상세정보 내용 넣을곳 -->
-    </tbody>
-  </table>
-  <br>
-  <a href="/"><button>홈으로</button></a>
-  <a href="team/create"><button>구단 생성하기</button></a>
+<body class="wrapper">
+  {% include "./layout/header.html" %}
+  <main class="site-content">
+    <div class="forum-index">
+      <section>
+        <h2 class="site-content__subtitle">구단 리스트</h2>
+        <div class="board-list">
+          {% for team in teams %}
+          {% if loop.index <= 10 %}
+          <div class="board-list__item">
+            <div class="board-list__icon">
+              <i class="fa fa-comments-o" aria-hidden="true"></i>
+            </div>
+            <div class="board-list__info">
+              <a class="board-list__info__name">{{team.team_name}}</a>
+            </div>
+            <div class="board-list__stats">
+              <div class="board-list__stats__value">{{team.team_headCount}}</div>
+              <div class="board-list__stats__key">인원수</div>
+            </div>
+            <div class="board-list__lastpost board-list__item--last">
+              <div class="board-list__avatar">
+                <img class="board-list__avatar__image" src="" alt="Team logo">
+              </div>
+              <div>
+                <div class="board-list__lastpost__topic">
+                  팀 리더
+                </div>
+                <div class="board-list__lastpost__user">
+                  <a class="board-list__link">{{team.team_leaderId}}</a>
+                </div>
+                <div class="board-list__created__date">
+                  {{team.team_created_date}}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </section>
+  </main>
+  {% include "./layout/footer.html" %}
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/team.js"></script>
 </body>
 </html>
+

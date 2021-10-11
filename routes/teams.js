@@ -62,6 +62,21 @@ router
 		}
 	});
 
+// 구단 상세 정보 페이지
+router.route("/detail/:team_name").get(async (req, res, next) => {
+	try {
+		const team = await Teams.findAll({
+			where: {
+				team_name: req.params.team_name,
+			},
+		});
+		res.render("team_detail", { team });
+	} catch (err) {
+		console.error(err);
+		next(err);
+	}
+});
+
 // 구단 관리
 router
 	.route("/edit/:team_name")
