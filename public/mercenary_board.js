@@ -33,6 +33,7 @@ document.querySelectorAll(".tab-btn").forEach((el) => {
   });
 });
 
+// 날짜형식 새로 만들기
 function dateMaker(e) {
   // 게시판 글목록의 행의 길이(개수)를 구해 length에 저장
   let length = e.length;
@@ -55,57 +56,6 @@ function dateMaker(e) {
   }
 }
 
-// // 용병구해요 탭 클릭
-// document.querySelectorAll("#mercenary_recruitment").forEach((el) => {
-//   el.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     const boardSelectR = el.querySelector("td").textContent;
-//   });
-// });
-
-// async function getTeamInfo(documentNumber) {
-//   try {
-//     // (클릭한) 행의 데이터베이스를 '전부' 가져옴
-//     const res = await axios.get(`/mercenary_board/${documentNumber}`);
-//     // 가져온 res 데이터베이스의 data[0], 테이블에 있는
-//     // mercenary_board_title과 mercenary_board_content 열의
-//     // 값들을 변수 documentTitle, documentContent 에 각각 집어넣음
-//     const documentTitle = res.data[0].mercenary_board_title;
-//     const documentContent = res.data[0].mercenary_board_content;
-//     const titleTbody = document.querySelector("#mercenary_recruitment-title");
-//     const contentTbody = document.querySelector(
-//       "#mercenary_recruitment-content"
-//     );
-//     titleTbody.innerHTML = "";
-//     contentTbody.innerHTML = "";
-
-//     // 행 만들기
-//     let titleTr = document.createElement("tr");
-//     // 각 열에 들어갈 데이터 입력
-//     let titleTd = document.createElement("td");
-//     console.log(titleTr);
-//     console.log(titleTd);
-//     titleTd.textContent = documentTitle;
-//     console.log(titleTd.textContent);
-//     titleTr.appendChild(titleTd);
-
-//     titleTbody.appendChild(titleTr);
-
-//     // 행 만들기
-//     let contentTr = document.createElement("tr");
-//     // 각 열에 들어갈 데이터 입력
-//     let contentTd = document.createElement("td");
-//     console.log(contentTr);
-//     console.log(contentTd);
-//     contentTd.textContent = documentContent;
-//     console.log(contentTd.textContent);
-//     contentTr.appendChild(contentTd);
-
-//     contentTbody.appendChild(contentTr);
-//   } catch (err) {
-//     console.error(err);
-//   }
-// }
 document.querySelectorAll(".mercenary_recruitment tr").forEach((el) => {
   // 게시판의 글 목록 중 한 줄을 클릭하면
   el.addEventListener("click", (e) => {
