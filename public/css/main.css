@@ -1,12 +1,12 @@
 main {
-	margin-top: 6rem;
+  font: 16px/1 "Roboto", sans-serif;
+  width: 100vw;
 }
-
 table {
-	border: 1px solid black;
-	border-collapse: collapse;
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 table th,
 table td {
-	border: 1px solid black;
+  border: 1px solid black;
 }
