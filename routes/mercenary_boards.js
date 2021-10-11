@@ -27,7 +27,6 @@ router
   })
   .post(async (req, res, next) => {
     try {
-      console.log(2);
       const create = await Mercenary_board.create({
         mercenary_board_title: req.body.mercenary_board_title,
         mercenary_board_content: req.body.mercenary_board_content,
@@ -38,6 +37,49 @@ router
         user_position: req.body.user_position,
       });
       res.redirect("/mercenary_board");
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  });
+
+router
+  // .route("/content/:mercenary_board_number/edit")
+  .get("/content/:mercenary_board_number/edit", async (req, res, next) => {
+    try {
+      const info = await Mercenary_board.findAll({
+        where: {
+          mercenary_board_number: req.params.mercenary_board_number,
+        },
+      });
+      res.render("mercenary_content_edit", { info });
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  })
+  .post("/content/:mercenary_board_number", async (req, res, next) => {
+    try {
+      const changeContent = await Mercenary_board.update(
+        {
+          mercenary_board_title: req.body.mercenary_board_title,
+          mercenary_board_content: req.body.mercenary_board_content,
+
+          // team_name: req.body.team_name,
+          // team_homeGround: req.body.team_homeGround,
+          // team_headCount: req.body.team_headCount,
+          // team_manner: req.body.team_manner,
+          // team_area: req.body.team_area,
+          // team_leaderId: req.body.team_leaderId,
+          // team_info: req.body.team_info,
+        },
+        {
+          where: {
+            mercenary_board_number: req.params.mercenary_board_number,
+          },
+        }
+      );
+      res.redirect("/content/:mercenary_board_number");
     } catch (err) {
       console.error(err);
       next(err);

@@ -1,17 +1,13 @@
-console.log("나 준비됐어");
-dateMaker(document.querySelectorAll(".mercenary_recruitment tr"));
+function back() {
+  window.history.back();
+}
+const CONTENT_EDIT_CANCLE = document.querySelector(".cancle_btn");
+$(CONTENT_EDIT_CANCLE).click(function () {
+  back();
+  console.log("취소");
+});
 
-// $("#mercenary_recruitment").click(function () {
-//   $(".mercenary_recruitment").show();
-//   $(".mercenary_want").hide();
-//   dateMaker($(".mercenary_recruitment_list"));
-// });
-// $("#mercenary_want").click(function () {
-//   $(".mercenary_recruitment").hide();
-//   $(".mercenary_want").show();
-//   dateMaker($(".mercenary_want_list"));
-// });
-// 날짜형식 만들기
+dateMaker(document.querySelectorAll(".mercenary_recruitment tr"));
 
 document.querySelectorAll(".tab-btn").forEach((el) => {
   el.addEventListener("click", (e) => {
@@ -69,3 +65,12 @@ document.querySelectorAll(".mercenary_recruitment tr").forEach((el) => {
     }
   });
 });
+
+// const deleteContent = querySelector("#remove");
+// remove.addEventListener("click", async (e) => {
+//   try {
+//     axios.delete(`/myPage/${userId}`);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
