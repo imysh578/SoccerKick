@@ -3,12 +3,10 @@
 	padding: 1rem 2rem;
 	background: #8e4586e0;
 	color: rgba(255, 255, 255, 0.38);
-	clear: both;
-	position: fixed;
 	bottom: 0;
 	width: 100vw;
 	height: 5rem;
-	overflow: hidden;
+	position: relative;
 }
 .site-footer > h2 {
 	color: rgba(255, 255, 255, 0.87);

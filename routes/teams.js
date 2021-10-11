@@ -5,20 +5,22 @@ const fs = require("fs");
 const path = require("path");
 const { QueryTypes } = require("sequelize");
 const { sequelize } = require("../models");
+const formattedDate = require("../public/dateformat");
 
 const router = express.Router();
 
-function getDateWithoutTime(date) {
-	return require("moment")(date).format("YYYY-MM-DD");
-}
 // 구단 리스트 화면
 router.route("/").get(async (req, res, next) => {
 	try {
-		const teams = await sequelize.query("SELECT * FROM `teams`", {
-			type: QueryTypes.SELECT,
+		// const teams = await sequelize.query("SELECT * FROM `teams`", {
+		// 	type: QueryTypes.SELECT,
+		// });
+		const teams = await Teams.findAll();
+
+		res.render("team", {
+			teams,
+			date: formattedDate(teams, "team_created_date"),
 		});
-		// const teams = await Teams.findAll();
-		res.render("team", { teams });
 	} catch (err) {
 		console.error(err);
 		next(err);
@@ -70,7 +72,10 @@ router.route("/detail/:team_name").get(async (req, res, next) => {
 				team_name: req.params.team_name,
 			},
 		});
-		res.render("team_detail", { team });
+		res.render("team_detail", {
+			team,
+			date: formattedDate(team, "team_created_date"),
+		});
 	} catch (err) {
 		console.error(err);
 		next(err);

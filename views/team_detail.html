@@ -10,27 +10,59 @@
   <link rel="stylesheet" href="/css/header.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/team_detail.css">
+  <link rel="stylesheet" href="/css/footer.css">
 </head>
 
 <body>
   {% include "./layout/header.html" %}
-  <div class="cont">
+  <main>
     <div class="main-box">
       <div class="contents-box">
         <form action="">
-          <h2 id="page-title">{{team.team_name}}</h2>
-          {% for info in team %}
-          <span type="text" class="user">{{team.team_name}}</span>
-          {% endfor %}
-          <button class="submit-btn">가입 신청</button>
-          <a href="/team"><button>구단 리스트로 돌아가기</button></a>
+          <h2 id="page-title">{{team[0].team_name}}</h2>
+          <div class="detail-info">
+            <span id="info-name">구단주</span>
+            <span id="info-value">{{team[0].team_leaderId}}</span>
+          </div>
+          <div class="detail-info">
+            <span id="info-name">지역</span>
+            <span id="info-value">{{team[0].team_area}}</span>
+          </div>
+          <div class="detail-info">
+            <span id="info-name">홈구장</span>
+            <span id="info-value">{{team[0].team_homeGround}}</span>
+          </div>
+          <div class="detail-info">
+            <span id="info-name">매너도</span>
+            <span id="info-value">{{team[0].team_manner}}</span>
+          </div>
+          <div class="detail-info">
+            <span id="info-name">인원수</span>
+            <span id="info-value">{{team[0].team_headCount}}</span>
+          </div>
+          <div class="detail-info">
+            <span id="info-name">구단 생성 날짜</span>
+            <span id="info-value">{{date[0]}}</span>
+          </div>
+          <div class="detail-info introduction">
+            <div id="introduction-name">
+              <span id="info-name">구단 소개</span>
+            </div>
+            <div id="introduction-value">
+              <span id="info-value">{{team[0].team_info}}</span>
+            </div>
+          </div>
         </form>
-      </div>
+        <div class="btn-list">
+          <button class="submit-btn">가입 신청</button>
+          <a href="/team/edit/{{team[0].team_name}}"><button class="edit-btn">구단 정보 수정</button></a>
+          <a href="/team"><button class="back-btn">구단 리스트</button></a>
+        </div>
     </div>
-  </div>
-
+  </main>
+  {% include "./layout/footer.html" %}
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="/team.js"></script>
+  <!-- <script src="/team.js"></script> -->
 </body>
 
 </html>

@@ -16,7 +16,7 @@
         <h2 class="site-content__subtitle">구단 리스트</h2>
         <div class="board-list">
           {% for team in teams %}
-          {% if loop.index <= 10 %}
+          {% if loop.index <= 5 %}
           <div class="board-list__item">
             <div class="board-list__icon">
               <i class="fa fa-comments-o" aria-hidden="true"></i>
@@ -40,7 +40,7 @@
                   <a class="board-list__link">{{team.team_leaderId}}</a>
                 </div>
                 <div class="board-list__created__date">
-                  {{team.team_created_date}}
+                  {{date[loop.index]}}
                 </div>
               </div>
             </div>
