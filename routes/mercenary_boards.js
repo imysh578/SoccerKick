@@ -14,6 +14,18 @@ router.route("/").get(async (req, res, next) => {
   }
 });
 
+// 글 선택시
+router.route("/content/:mercenary_board_number").get(async (req, res, next) => {
+  try {
+    const info = await Mercenary_board.findAll({
+      where: {
+        mercenary_board_number: req.params.mercenary_board_number,
+      },
+    });
+    res.render("mercenary_content", { info });
+  } catch (err) {}
+});
+
 // 용병게시판 새 글쓰기
 router
   .route("/new")
@@ -27,7 +39,6 @@ router
   })
   .post(async (req, res, next) => {
     try {
-      console.log(2);
       const create = await Mercenary_board.create({
         mercenary_board_title: req.body.mercenary_board_title,
         mercenary_board_content: req.body.mercenary_board_content,
@@ -38,6 +49,56 @@ router
         user_position: req.body.user_position,
       });
       res.redirect("/mercenary_board");
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  });
+
+// 게시글 삭제
+
+router.post("/content/:mercenary_board_number", async (req, res, next) => {
+  try {
+    const DELETE = await Mercenary_board.destroy({
+      where: {
+        mercenary_board_number: req.cookies.user.mercenary_board_number,
+      },
+    });
+    res.redirect("/");
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+router
+  // .route("/content/:mercenary_board_number/edit")
+  .get("/content/:mercenary_board_number/edit", async (req, res, next) => {
+    try {
+      const info = await Mercenary_board.findAll({
+        where: {
+          mercenary_board_number: req.params.mercenary_board_number,
+        },
+      });
+      res.render("mercenary_content_edit", { info });
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  })
+  .post("/content/:mercenary_board_number", async (req, res, next) => {
+    try {
+      const changeContent = await Mercenary_board.update(
+        {
+          mercenary_board_title: req.body.mercenary_board_title,
+          mercenary_board_content: req.body.mercenary_board_content,
+        },
+        {
+          where: {
+            mercenary_board_number: req.params.mercenary_board_number,
+          },
+        }
+      );
+      res.redirect("/content/:mercenary_board_number");
     } catch (err) {
       console.error(err);
       next(err);
@@ -96,16 +157,5 @@ router
 //     next(err);
 //   }
 // });
-
-router.route("/content/:mercenary_board_number").get(async (req, res, next) => {
-  try {
-    const info = await Mercenary_board.findAll({
-      where: {
-        mercenary_board_number: req.params.mercenary_board_number,
-      },
-    });
-    res.render("mercenary_content", { info });
-  } catch (err) {}
-});
 
 module.exports = router;

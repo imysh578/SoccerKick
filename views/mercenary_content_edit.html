@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ info[0].mercenary_board_title }}</title>
+
+    <!-- 공통CSS -->
+    {% include "./layout/style.html" %}
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <style>
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      table th,
+      table td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 공통 헤더 html -->
+    {% include "./layout/header.html" %}
+
+    <h1>용병게시판</h1>
+    <form method="POST" id="team-list-form">
+      <table>
+        <tbody class="mercenary_recruitment_title">
+          <!-- 글제목 나올곳 -->
+          <tr>
+            <td>
+              <input type="text" value="{{ info[0].mercenary_board_title }}" />
+            </td>
+          </tr>
+        </tbody>
+        <tbody class="mercenary_recruitment_content">
+          <!-- 글내용 나올곳 -->
+          <tr>
+            <td>
+              <input
+                type="text"
+                value="{{ info[0].mercenary_board_content }}"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br />
+      <button type="submit" name="submit-btn">확인</button>
+      <button type="button" class="cancle_btn">취소</button>
+    </form>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/mercenary_board.js"></script>
+  </body>
+</html>

@@ -1,17 +1,37 @@
-console.log("나 준비됐어");
-dateMaker(document.querySelectorAll(".mercenary_recruitment tr"));
+function back() {
+  window.history.back();
+}
+const CONTENT_EDIT_CANCLE = document.querySelector(".cancle_btn");
+$(CONTENT_EDIT_CANCLE).click(function () {
+  back();
+});
 
-// $("#mercenary_recruitment").click(function () {
-//   $(".mercenary_recruitment").show();
-//   $(".mercenary_want").hide();
-//   dateMaker($(".mercenary_recruitment_list"));
-// });
-// $("#mercenary_want").click(function () {
-//   $(".mercenary_recruitment").hide();
-//   $(".mercenary_want").show();
-//   dateMaker($(".mercenary_want_list"));
-// });
-// 날짜형식 만들기
+document.querySelectorAll(".mercenary_recruitment tr").forEach((el) => {
+  // 게시판의 글 목록 중 한 줄을 클릭하면
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+    // querySelector는 [글번호, 글제목, 글쓴이, 게시일] 중
+    // 첫번째 td인 글번호만 가져오고 땡
+    // 글번호를 documentNumber에 집어넣음
+    const documentNumber = el.querySelector("td").textContent;
+    if (documentNumber) {
+      window.location.href = `/mercenary_board/content/${documentNumber}`;
+    }
+  });
+});
+
+const remove = document.querySelector(".delete-MB");
+console.log(remove);
+remove.addEventListener("click", async (e) => {
+  try {
+    console.log(555);
+    // axios.delete(`/content/${mercenary_board_number}`);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+dateMaker(document.querySelectorAll(".mercenary_recruitment tr"));
 
 document.querySelectorAll(".tab-btn").forEach((el) => {
   el.addEventListener("click", (e) => {
@@ -33,6 +53,7 @@ document.querySelectorAll(".tab-btn").forEach((el) => {
   });
 });
 
+// 날짜형식 새로 만들기
 function dateMaker(e) {
   // 게시판 글목록의 행의 길이(개수)를 구해 length에 저장
   let length = e.length;
@@ -55,67 +76,11 @@ function dateMaker(e) {
   }
 }
 
-// // 용병구해요 탭 클릭
-// document.querySelectorAll("#mercenary_recruitment").forEach((el) => {
-//   el.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     const boardSelectR = el.querySelector("td").textContent;
-//   });
-// });
-
-// async function getTeamInfo(documentNumber) {
+// const deleteContent = querySelector("#remove");
+// remove.addEventListener("click", async (e) => {
 //   try {
-//     // (클릭한) 행의 데이터베이스를 '전부' 가져옴
-//     const res = await axios.get(`/mercenary_board/${documentNumber}`);
-//     // 가져온 res 데이터베이스의 data[0], 테이블에 있는
-//     // mercenary_board_title과 mercenary_board_content 열의
-//     // 값들을 변수 documentTitle, documentContent 에 각각 집어넣음
-//     const documentTitle = res.data[0].mercenary_board_title;
-//     const documentContent = res.data[0].mercenary_board_content;
-//     const titleTbody = document.querySelector("#mercenary_recruitment-title");
-//     const contentTbody = document.querySelector(
-//       "#mercenary_recruitment-content"
-//     );
-//     titleTbody.innerHTML = "";
-//     contentTbody.innerHTML = "";
-
-//     // 행 만들기
-//     let titleTr = document.createElement("tr");
-//     // 각 열에 들어갈 데이터 입력
-//     let titleTd = document.createElement("td");
-//     console.log(titleTr);
-//     console.log(titleTd);
-//     titleTd.textContent = documentTitle;
-//     console.log(titleTd.textContent);
-//     titleTr.appendChild(titleTd);
-
-//     titleTbody.appendChild(titleTr);
-
-//     // 행 만들기
-//     let contentTr = document.createElement("tr");
-//     // 각 열에 들어갈 데이터 입력
-//     let contentTd = document.createElement("td");
-//     console.log(contentTr);
-//     console.log(contentTd);
-//     contentTd.textContent = documentContent;
-//     console.log(contentTd.textContent);
-//     contentTr.appendChild(contentTd);
-
-//     contentTbody.appendChild(contentTr);
+//     axios.delete(`/myPage/${userId}`);
 //   } catch (err) {
 //     console.error(err);
 //   }
-// }
-document.querySelectorAll(".mercenary_recruitment tr").forEach((el) => {
-  // 게시판의 글 목록 중 한 줄을 클릭하면
-  el.addEventListener("click", (e) => {
-    e.preventDefault();
-    // querySelector는 [글번호, 글제목, 글쓴이, 게시일] 중
-    // 첫번째 td인 글번호만 가져오고 땡
-    // 글번호를 documentNumber에 집어넣음
-    const documentNumber = el.querySelector("td").textContent;
-    if (documentNumber) {
-      window.location.href = `/mercenary_board/content/${documentNumber}`;
-    }
-  });
-});
+// });

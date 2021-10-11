@@ -5,9 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>왜 안돼</title>
+
+    <!-- 공통CSS -->
+    {% include "./layout/style.html" %}
+
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-    <style>
+    <!-- <style>
       table {
         border: 1px solid black;
         border-collapse: collapse;
@@ -16,10 +20,13 @@
       table td {
         border: 1px solid black;
       }
-    </style>
+    </style> -->
   </head>
   <body>
-    <h1>용병게시팔</h1>
+    <!-- 공통 헤더 html -->
+    {% include "./layout/header.html" %}
+
+    <h1 class=".site-content__subtitle">용병게시팔</h1>
     <table>
       <tbody>
         <tr>

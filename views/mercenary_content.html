@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>왜 안돼</title>
+    <title>{{ info[0].mercenary_board_title }}</title>
+
+    <!-- 공통CSS -->
+    {% include "./layout/style.html" %}
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
     <style>
       table {
         border: 1px solid black;
@@ -17,7 +23,10 @@
     </style>
   </head>
   <body>
-    <h1>용병게시팔</h1>
+    <!-- 공통 헤더 html -->
+    {% include "./layout/header.html" %}
+
+    <h1>용병게시판</h1>
 
     <table>
       <tbody class="mercenary_recruitment mercenary_recruitment_title">
@@ -28,33 +37,28 @@
           <td class="date_info1">{{ info[0].mercenary_board_date }}</td>
         </tr>
       </tbody>
-    </table>
-    <table>
       <tbody class="mercenary_recruitment mercenary_recruitment_content">
         <!-- 글내용 나올곳 -->
         <tr>
-          <td>{{ info[0].mercenary_board_content }}</td>
+          <td colspan="3">{{ info[0].mercenary_board_content }}</td>
         </tr>
       </tbody>
     </table>
 
     <br />
-    <a href="mercenary_board/new"><button>글쓰기</button></a>
+    <a href="{{ info[0].mercenary_board_number}}/edit"><button>수정</button></a>
+    <a><button class="delete-MB">삭제</button></a>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- <script src="/mercenary_board.js"></script> -->
+    <script src="/mercenary_board.js"></script>
     <script>
-      // 글목록 하나하나에 class명을 1부터 넣어 DATE_INFO에 저장
       let DATE_INFO = document.querySelector(`.date_info1`).textContent;
-      // DATE_INFO를 new Date로 string에서 날짜 object로 type 변환
       let conversion = new Date(DATE_INFO);
-      // 연-월-일 시:분 으로 만들어주기
       var year = conversion.getFullYear();
       var month = ("0" + (conversion.getMonth() + 1)).slice(-2);
       var day = ("0" + conversion.getDate()).slice(-2);
       var hours = ("0" + conversion.getHours()).slice(-2);
       var minutes = ("0" + conversion.getMinutes()).slice(-2);
       var dateString = `${year}-${month}-${day} ${hours}:${minutes}`;
-      // 각 글목록의 날짜자리에 만든 날짜 집어넣기
       document.querySelector(`.date_info1`).textContent = dateString;
     </script>
   </body>
