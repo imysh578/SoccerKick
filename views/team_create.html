@@ -5,55 +5,78 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>구단 생성 페이지</title>
+  <title>구단 만들기 페이지</title>
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/team_create.css">
+  <link rel="stylesheet" href="/css/footer.css">
 </head>
 
 <body>
-  <div>
-    {% include "./layout/header.html" %}
-    <fieldset>
-      <legend>구단 생성하기</legend>
-      <form method="POST" id="team-list-form" enctype="multipart/form-data">
-        <div>
-          <span>구단명</span>
-          <input type="text" name="team_name" required>
-        </div>
-        <div>
-          <span>지역</span>
-          <input type="text" name="team_homeGround" required>
-        </div>
-        <div>
-          <span>인원수</span>
-          <input type="number" name="team_headCount" min="1" max="200">
-        </div>
-        <div>
-          <span>구단 정보</span>
-          <input type="text" name="team_info">
-        </div>
-        <div>
-          <span>구단 매너도</span>
-          <select name="team_manner" required>
-            <option value="상">상</option>
-            <option value="중">중</option>
-            <option value="하">하</option>
-          </select>
-        </div>
-        <div>
-          <span>홈구장</span>
-          <input type="text" name="team_area" required>
-        </div>
-        <div>
-          <span>구단주 아이디</span>
-          <input type="text" name="team_leaderId" required>
-        </div>
-        <input type="submit" name="submit-btn" required value="확인">
-        <input type="file" name="uploaded_file">
-        <input type="submit" value="파일 업로드하기">
-      </form>
-    </fieldset>
-  </div>
-
-  <a href="/team"><button>구단 리스트로 돌아가기</button></a>
+  {% include "./layout/header.html" %}
+  <main>
+    <div class="main-box">
+      <div class="contents-box">
+        <form method="post" enctype="multipart/form-data">
+          <h2 id="page-title">나만의 구단 만들기</h2>
+          <div class="detail-info">
+            <img src="/images/football.png" alt="">
+            <span class="info-name">구단명</span>
+            <input class="info-value" id="team-name" name="team_name" autofocus required></input>
+          </div>
+          <div class="detail-info">
+            <img src="/images/team-owner.png" alt="">
+            <span class="info-name">구단주</span>
+            <input type="text" class="info-value disabled" name="team_leaderId"></input>
+          </div>
+          <div class="detail-info">
+            <img src="/images/location.png" alt="">
+            <span class="info-name">지역</span>
+            <input type="text" class="info-value" name="team_area"></input>
+          </div>
+          <div class="detail-info">
+            <img src="/images/playground1.png" alt="">
+            <span class="info-name">홈구장</span>
+            <input type="text" class="info-value" name="team_homeGround"></input>
+          </div>
+          <div class="detail-info">
+            <img src="/images/injury.png" alt="">
+            <span class="info-name">매너점수</span>
+            <input type="text" class="info-value disabled" value="50" disabled></input>
+          </div>
+          <div class="detail-info">
+            <img src="/images/football-player.png" alt="">
+            <span class="info-name">인원수</span>
+            <input type="text" class="info-value disabled" value="1" disabled></input>
+          </div>
+          <div class="detail-info">
+            <img src="/images/team-logo.png" alt="">
+            <span class="info-name">구단 로고</span>
+            <div class="info-value filebox bs3-primary">
+              <input class="upload-name" value="파일선택" disabled="disabled">
+              <label for="ex_filename">업로드</label> 
+              <input class="info-image upload-hidden" id="ex_filename" type="file" name="uploaded_file" value="파일 업로드">
+            </div>
+          </div>
+          <div class="detail-info introduction">
+            <div id="introduction-name">
+              <span class="info-name">구단 소개</span>
+            </div>
+            <div id="introduction-value">
+              <textarea type="text" class="info-value" name="team_info">{{team[0].team_info}}</textarea>
+            </div>
+          </div>
+          <div class="btn-list">
+            <a class="back-btn"><button>뒤로가기</button></a>
+            <a class="create-btn"><button type="submit">생성하기</button></a>
+          </div>
+        </form>
+    </div>
+  </main>
+  {% include "./layout/footer.html" %}
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/team.js"></script>
 </body>
 
 </html>

@@ -1,20 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,700");
 main {
-<<<<<<< HEAD
-  font: 16px/1 "Roboto", sans-serif;
-  width: 100vw;
-=======
-	font: 16px/1 "Roboto", sans-serif;
-	width: 100vw;
+	/* font: 16px/1 "Roboto", sans-serif; */
+	width: 100%;
 	font-family: "Raleway", sans-serif;
 	min-height: 100vh;
->>>>>>> 20211009_YSH_1146
 }
 table {
-  border: 1px solid black;
-  border-collapse: collapse;
+	border: 1px solid black;
+	border-collapse: collapse;
 }
 table th,
 table td {
-  border: 1px solid black;
+	border: 1px solid black;
 }

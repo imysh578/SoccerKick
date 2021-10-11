@@ -1,8 +1,3 @@
-body {
-	background: linear-gradient(to right, #d6d6d6, #ffffff);
-	perspective: 600px;
-}
-
 .main-box {
 	position: relative;
 	width: 800px;
@@ -47,6 +42,12 @@ body {
 	align-items: center;
 }
 
+.detail-info img {
+	height: 32px;
+	width: 32px;
+	margin-right: 10px;
+}
+
 .introduction {
 	flex-direction: column;
 	height: 200px;
@@ -64,7 +65,7 @@ body {
 	width: 70%;
 	text-align: left;
 	font-weight: bold;
-	color: teal;
+	color: #d6eb7a;
 }
 
 #introduction-name {
@@ -79,7 +80,8 @@ body {
 	display: flex;
 	justify-content: center;
 }
-.btn-list button {
+.btn-list button,
+.btn-list div {
 	color: #fff;
 	cursor: pointer;
 	width: 100%;
@@ -99,6 +101,7 @@ body {
 .contents-box textarea {
 	width: 100%;
 	height: 100%;
+	resize: none;
 }
 .contents-box input,
 .contents-box textarea {
@@ -117,12 +120,49 @@ body {
 .contents-box input:focus::placeholder {
 	opacity: 0;
 }
-button:hover {
+.btn-list button:hover,
+.btn-list div:hover {
 	background: orange;
 }
+.btn-list div {
+	display: inline-block;
+	text-align: center;
+	line-height: 50px;
+}
 
-.disabled::placeholder {
-	color: orangered !important;
+.disabled {
+	color: #fff;
+}
+
+.filebox input[type="file"] {
+	display: none;
+}
+.filebox label {
+	/* display: inline-block; */
+	padding: 0.5em 0.75em;
+	color: #fff;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #aaa;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.5rem;
+}
+.filebox .upload-name {
+	color: orange;
+	width: 65%;
+	display: inline-block;
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: transparent;
+	border: none;
+	border-radius: 0.5em;
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
 }
 
 /* 반응형 */

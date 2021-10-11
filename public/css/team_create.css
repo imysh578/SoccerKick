@@ -11,7 +11,6 @@
 
 .contents-box {
 	position: relative;
-	z-index: 1;
 	width: 100%;
 	padding: 18px 15px;
 	background: #8e4586e0;
@@ -71,9 +70,11 @@
 
 #introduction-name {
 	height: 30px;
+	width: 100%;
 }
 #introduction-value {
 	height: 130px;
+	width: 100%;
 }
 .btn-list {
 	display: flex;
@@ -96,9 +97,64 @@
 	align-items: center;
 	width: 26%;
 }
-
+.contents-box textarea {
+	width: 100%;
+	height: 100%;
+	resize: none;
+}
+.contents-box input,
+.contents-box textarea {
+	background: transparent;
+}
+.contents-box input:focus,
+.contents-box textarea:focus {
+	outline: none;
+}
+.contents-box input::placeholder {
+	color: #fff;
+	font-size: 16px;
+	font-weight: 100;
+	transition: all 0.4s ease;
+}
+.contents-box input:focus::placeholder {
+	opacity: 0;
+}
 button:hover {
 	background: orange;
+}
+.disabled {
+	color: #fff;
+}
+
+.filebox input[type="file"] {
+	display: none;
+}
+.filebox label {
+	/* display: inline-block; */
+	padding: 0.5em 0.75em;
+	color: #fff;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #aaa;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.5rem;
+}
+.filebox .upload-name {
+	color: orange;
+	width: 65%;
+	display: inline-block;
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: transparent;
+	border: none;
+	border-radius: 0.5em;
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
 }
 
 /* 반응형 */

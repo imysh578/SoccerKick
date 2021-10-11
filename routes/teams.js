@@ -17,10 +17,7 @@ router.route("/").get(async (req, res, next) => {
 		// });
 		const teams = await Teams.findAll();
 
-		res.render("team", {
-			teams,
-			date: formattedDate(teams, "team_created_date"),
-		});
+		res.render("team", { teams });
 	} catch (err) {
 		console.error(err);
 		next(err);
@@ -32,7 +29,6 @@ router
 	.route("/create")
 	.get(async (req, res, next) => {
 		try {
-			console.log(upload.storage);
 			// uploads 폴더가 없으면 public/uploads 경로에 새폴더 생성
 			const dir = path.join(__dirname, "../public/uploads");
 			if (!fs.existsSync(dir)) {
@@ -48,13 +44,13 @@ router
 		try {
 			await Teams.create({
 				team_name: req.body.team_name,
-				team_homeGround: req.body.team_homeGround,
-				team_headCount: req.body.team_headCount,
-				team_manner: req.body.team_manner,
-				team_area: req.body.team_area,
 				team_leaderId: req.body.team_leaderId,
+				team_homeGround: req.body.team_homeGround,
+				team_manner: req.body.team_manner,
+				team_headCount: req.body.team_headCount,
+				team_area: req.body.team_area,
 				team_info: req.body.team_info,
-				// logo_file: fileDirectory,
+				logo_filename: req.file.filename,
 			});
 
 			res.redirect("/team");
@@ -101,10 +97,10 @@ router
 			next(err);
 		}
 	})
-	.post(async (req, res, next) => {
+	.post(upload.single("uploaded_file"), async (req, res, next) => {
 		try {
 			console.log(Date.now());
-			console.log(req.params);
+			console.log(req.file);
 			await Teams.update(
 				{
 					team_name: req.body.team_name,
@@ -114,6 +110,7 @@ router
 					team_area: req.body.team_area,
 					team_leaderId: req.body.team_leaderId,
 					team_info: req.body.team_info,
+					logo_filename: req.file.filename,
 				},
 				{
 					where: { team_name: req.params.team_name },
@@ -128,34 +125,42 @@ router
 	});
 
 // 구단 삭제
-router.route("/detail/:team_name/edit/delete").get(async (req, res, next) => {
-	try {
-		console.log("delete router");
-		await Teams.destroy({
-			where: {
-				team_name: req.params.team_name,
-			},
-		});
-		res.redirect("/team");
-	} catch (err) {
-		console.error(err);
-		next(err);
-	}
-});
+router
+	.route("/detail/:team_name/edit/delete")
+	.delete(async (req, res, next) => {
+		try {
+			// 삭제하려는 구단의 로고 파일도 같이 삭제
+			const team = await Teams.findOne({
+				attributes: ["logo_filename"],
+				where: {
+					team_name: req.params.team_name,
+				},
+			});
+			const fileName = team.dataValues.logo_filename;
+			const dir = path.join(__dirname, "../public/uploads");
+			const fileDir = path.join(dir, "/" + fileName);
+			console.log(fileDir);
+			if (fileName) {
+				fs.unlink(fileDir, async function (err) {
+					try {
+						console.log("*** Team logo file is deleted! ***");
+					} catch (err) {
+						console.error(err);
+					}
+				});
+			}
 
-// 구단 선택 시
-router.route("/:team_name").get(async (req, res, next) => {
-	try {
-		const team = await Teams.findAll({
-			where: {
-				team_name: req.params.team_name,
-			},
-		});
-		res.json(team);
-	} catch (err) {
-		console.error(err);
-		next(err);
-	}
-});
+			// 구단을 DB에서 삭제
+			const res = await Teams.destroy({
+				where: {
+					team_name: req.params.team_name,
+				},
+			});
+			res.redirect("/team");
+		} catch (err) {
+			console.error(err);
+			next(err);
+		}
+	});
 
 module.exports = router;

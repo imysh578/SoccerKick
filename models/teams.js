@@ -18,12 +18,14 @@ module.exports = class Team extends Sequelize.Model {
 					allowNull: false,
 				},
 				team_manner: {
-					type: Sequelize.STRING(45),
-					allowNull: true,
+					type: Sequelize.INTEGER,
+					allowNull: false,
+					defaultValue: "50",
 				},
 				team_headCount: {
 					type: Sequelize.INTEGER,
-					allowNull: true,
+					allowNull: false,
+					defaultValue: "1",
 				},
 				team_area: {
 					type: Sequelize.STRING(45),

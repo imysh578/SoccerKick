@@ -29,6 +29,7 @@
 	padding: 0.5rem 0;
 	border-bottom: 1px solid rgba(31, 35, 50, 0.12);
 	transition: background 0.2s ease;
+	background-color: rgba(221, 221, 221, 0.9);
 }
 .board-list__item--last {
 	padding-right: 1rm;
@@ -80,6 +81,11 @@
 .board-list__stats__key,
 .board-list__info__description {
 	color: rgba(31, 35, 50, 0.7);
+}
+
+.board-list img {
+	width: 64px;
+	height: 64px;
 }
 
 /* 반응형 */
