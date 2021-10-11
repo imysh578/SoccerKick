@@ -1,11 +1,10 @@
 const express = require("express");
 const User = require("../models/users");
 const session = require("express-session");
-const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser"); //
 
 const router = express.Router();
-
-let sess;
+router.use(cookieParser("12345!@#$%"));
 //회원 가입
 router
   .get("/", async (req, res, next) => {
@@ -47,6 +46,7 @@ router
   .get("/login", function (req, res) {
     res.render("login");
   })
+
   .post("/login", async (req, res, next) => {
     try {
       const user = await User.findOne({
@@ -62,15 +62,17 @@ router
         );
         res.write("<script>window.location='/user/login'</script>");
       } else {
+        //여기서 쿠키 암호화
+
         res.cookie("user", user, {
-          maxAge: 60 * 60 * 1000,
-          httpOnly: true,
+          maxAge: 60 * 60 * 1000 * 24,
+          httpOnly: true, //
           path: "/",
+          // signed: true,
         });
         res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
         res.write("<script>alert('로그인 성공')</script>");
         res.write("<script>window.location='/'</script>");
-        // console.log(req.cookies);
       }
     } catch (err) {
       console.error(err);

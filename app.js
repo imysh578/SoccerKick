@@ -7,8 +7,9 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const compression = require("compression");
+const crypto = require("crypto");
 
-const { sequelize } = require("./models");
+const { sequelize, User } = require("./models");
 const indexRouter = require("./routes");
 const usersRouter = require("./routes/users");
 const teamsRouter = require("./routes/teams");
@@ -51,14 +52,16 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 //url을 통해 전달되는 데이터에 한글, 공백과 같은 문자가 포함될 경우 인식을 못하는 문제를 해결
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
-const oneDay = 1000 * 60 * 60 * 24;
+app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(
   session({
-    secret: "node-session",
     resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: oneDay },
+    saveUninitialized: false,
+    secret: process.env.COOKIE_SECRET,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+    },
   })
 );
 
