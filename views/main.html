@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% include "./layout/style.html" %}
     <title>회원 관리 테이블</title>
-</head>
-<body>
-  {% include "./layout/header.html" %}
-  <main>
-    <table>
-      {% for a in user %}
+  </head>
+  <body>
+    {% include "./layout/header.html" %}
+    <main>
+      <table>
+        {% for a in user %}
         <tr>
           <td>{{a.user_id}}</td>
           <td>{{a.user_name}}</td>
@@ -20,9 +20,8 @@
         </tr>
         {% endfor %}
       </table>
-  </main>
+    </main>
 
     {% include "./layout/footer.html" %}
-
   </body>
 </html>
