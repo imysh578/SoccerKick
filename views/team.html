@@ -16,7 +16,6 @@
         <h2 class="site-content__subtitle">구단 리스트</h2>
         <div class="board-list">
           {% for team in teams %}
-          {% if loop.index <= 5 %}
           <div class="board-list__item">
             <div class="board-list__icon">
               <i class="fa fa-comments-o" aria-hidden="true"></i>
@@ -45,7 +44,6 @@
               </div>
             </div>
           </div>
-          {% endif %}
           {% endfor %}
         </div>
       </section>

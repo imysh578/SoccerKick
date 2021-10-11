@@ -69,9 +69,11 @@ body {
 
 #introduction-name {
 	height: 30px;
+	width: 100%;
 }
 #introduction-value {
 	height: 130px;
+	width: 100%;
 }
 .btn-list {
 	display: flex;
@@ -94,9 +96,33 @@ body {
 	align-items: center;
 	width: 26%;
 }
-
+.contents-box textarea {
+	width: 100%;
+	height: 100%;
+}
+.contents-box input,
+.contents-box textarea {
+	background: transparent;
+}
+.contents-box input:focus,
+.contents-box textarea:focus {
+	outline: none;
+}
+.contents-box input::placeholder {
+	color: #fff;
+	font-size: 16px;
+	font-weight: 100;
+	transition: all 0.4s ease;
+}
+.contents-box input:focus::placeholder {
+	opacity: 0;
+}
 button:hover {
 	background: orange;
+}
+
+.disabled::placeholder {
+	color: orangered !important;
 }
 
 /* 반응형 */

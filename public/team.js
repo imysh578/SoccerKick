@@ -17,3 +17,36 @@ document.querySelectorAll(".board-list__item").forEach((el) => {
 		}
 	});
 });
+
+// document.querySelector(".submit-btn").addEventListener("click", (e) => {
+// 	e.preventDefault();
+// 	async function edit() {
+// 		document.querySelectorAll(".detail-info input").forEach((el) => {
+// 			const placeholder = el.placeholder;
+// 			const value = el.value;
+// 			if (!value) {
+// 				el.value = placeholder;
+// 			}
+// 		});
+// 		const teamName = document.querySelector("#team-name").value;
+// 		console.log(Date.now());
+// 		console.log("*************");
+// 		await axios.post(`/team/detail/${teamName}/edit`);
+// 		// window.location.href = `/team/detail`;
+// 	}
+// 	edit();
+// });
+// document.querySelector(".delete-btn").addEventListener("click", (e) => {
+// 	e.preventDefault();
+// 	async function deleteTeam() {
+// 		try {
+// 			const teamName = document.querySelector("#team-name").value;
+// 			console.log(teamName);
+// 			const res = await axios.delete(`/team/detail/${teamName}/edit/delete`);
+// 		} catch (err) {
+// 			console.error(err);
+// 		}
+// 	}
+// 	deleteTeam();
+// 	// window.location.href = `/team/detail/${teamName}/edit/delete`;
+// });

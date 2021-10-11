@@ -82,17 +82,20 @@ router.route("/detail/:team_name").get(async (req, res, next) => {
 	}
 });
 
-// 구단 관리
+// 구단 정보 수정
 router
-	.route("/edit/:team_name")
+	.route("/detail/:team_name/edit")
 	.get(async (req, res, next) => {
 		try {
-			const teams = await Teams.findAll({
+			const team = await Teams.findAll({
 				where: {
 					team_name: req.params.team_name,
 				},
 			});
-			res.render("team_edit", { teams });
+			res.render("team_edit", {
+				team,
+				date: formattedDate(team, "team_created_date"),
+			});
 		} catch (err) {
 			console.error(err);
 			next(err);
@@ -100,7 +103,9 @@ router
 	})
 	.post(async (req, res, next) => {
 		try {
-			const teams = await Teams.update(
+			console.log(Date.now());
+			console.log(req.params);
+			await Teams.update(
 				{
 					team_name: req.body.team_name,
 					team_homeGround: req.body.team_homeGround,
@@ -114,8 +119,8 @@ router
 					where: { team_name: req.params.team_name },
 				}
 			);
-
-			res.redirect("/team");
+			console.log(req.body);
+			res.redirect(`/team/detail/${req.body.team_name}`);
 		} catch (err) {
 			console.error(err);
 			next(err);
@@ -123,7 +128,7 @@ router
 	});
 
 // 구단 삭제
-router.route("/edit/:team_name/delete").delete(async (req, res, next) => {
+router.route("/detail/:team_name/edit/delete").get(async (req, res, next) => {
 	try {
 		console.log("delete router");
 		await Teams.destroy({
@@ -131,7 +136,7 @@ router.route("/edit/:team_name/delete").delete(async (req, res, next) => {
 				team_name: req.params.team_name,
 			},
 		});
-		// res.send();
+		res.redirect("/team");
 	} catch (err) {
 		console.error(err);
 		next(err);
