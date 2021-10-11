@@ -1,3 +1,4 @@
+require("dotenv").config();
 const Sequelize = require("sequelize");
 const User = require("./users");
 const Team = require("./teams");
@@ -9,18 +10,18 @@ const BattleComment = require("./battle_comments");
 const BattleBoard = require("./battle_boards");
 
 const env = process.env.NODE_ENV || "development";
-// config.json 파일 불러옴
-const config = require(__dirname + "/../config/config.json")[env];
-const db = {};
 
-// config.json파일에 있는 MySQL connection 정보 불러옴
+// MYSQL Connecttion 설정 불러오기
+const config = require("../config/config")[env];
 const sequelize = new Sequelize(
 	config.database,
 	config.username,
 	config.password,
 	config
 );
+
 // db객체에 모든 테이블 넣기
+const db = {};
 db.sequelize = sequelize;
 db.User = User;
 db.Team = Team;

@@ -1,0 +1,17 @@
+.site-footer {
+	display: inline-block;
+	padding: 1rem 2rem;
+	background: #8e4586e0;
+	color: rgba(255, 255, 255, 0.38);
+	bottom: 0;
+	width: 100vw;
+	height: 5rem;
+	position: relative;
+}
+.site-footer > h2 {
+	color: rgba(255, 255, 255, 0.87);
+	font-size: 1.2rem;
+}
+.site-footer > p {
+	font-size: 0.8rem;
+}

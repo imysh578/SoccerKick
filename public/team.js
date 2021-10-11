@@ -1,69 +1,52 @@
-document.querySelectorAll("#team-list tr").forEach((el) => {
+document.querySelectorAll(".board-list__item").forEach((el) => {
+	// 마우스 올렸을때 게시물 색상 변경
+	el.addEventListener("mouseover", (e) => {
+		el.style.backgroundColor = "#8e45865e";
+		el.style.cursor = "pointer";
+	});
+	// 마우스 지나가면 게시물 색상 원상 복귀
+	el.addEventListener("mouseout", (e) => {
+		el.style.backgroundColor = "transparent";
+	});
+	// 마우스 클릭 시 구단 관리 페이지로 이동
 	el.addEventListener("click", (e) => {
 		e.preventDefault();
-		const teamName = el.querySelector("td").textContent;
+		const teamName = el.querySelector(".board-list__info__name").textContent;
 		if (teamName) {
-			getTeamInfo(teamName);
+			window.location.href = `/team/detail/${teamName}`;
 		}
 	});
 });
 
-// 구단 상세 정보 불러오기 함수
-async function getTeamInfo(teamName) {
-	try {
-		const res = await axios.get(`/team/${teamName}`);
-		const teamInfo = res.data[0];
-		const tbody = document.querySelector("#selected tbody");
-		tbody.innerHTML = "";
-
-		// 행 만들기
-		const tr = document.createElement("tr");
-		for (const attr in teamInfo) {
-			// 각 열에 들어갈 데이터 입력
-			let td = document.createElement("td");
-			td.textContent = teamInfo[attr];
-			tr.appendChild(td);
-		}
-
-		// 가입신청 버튼
-		const join = document.createElement("button");
-		join.textContent = "가입 신청";
-		td = document.createElement("td");
-		td.appendChild(join);
-		tr.appendChild(td);
-
-		// 구단 관리 버튼
-		const edit = document.createElement("button");
-		edit.textContent = "구단 관리";
-		td = document.createElement("td");
-		td.appendChild(edit);
-		tr.appendChild(td);
-
-		// 구단 관리 버튼 이벤트
-		edit.addEventListener("click", (e) => {
-			e.preventDefault();
-			window.location.href = `/team/edit/${teamName}`;
-		});
-
-		tbody.appendChild(tr);
-	} catch (err) {
-		console.error(err);
-	}
-}
-
-let delBtn = document.getElementById("delete-btn");
-
-if (delBtn) {
-	delBtn.addEventListener("click", (e) => {
-		deleteTeam(delBtn.value);
-		window.location.href = `/team`;
-	});
-}
-
-async function deleteTeam(teamName) {
-	try {
-		await axios.delete(`/team/edit/${teamName}/delete`);
-	} catch (err) {
-		console.error(err);
-	}
-}
+// document.querySelector(".submit-btn").addEventListener("click", (e) => {
+// 	e.preventDefault();
+// 	async function edit() {
+// 		document.querySelectorAll(".detail-info input").forEach((el) => {
+// 			const placeholder = el.placeholder;
+// 			const value = el.value;
+// 			if (!value) {
+// 				el.value = placeholder;
+// 			}
+// 		});
+// 		const teamName = document.querySelector("#team-name").value;
+// 		console.log(Date.now());
+// 		console.log("*************");
+// 		await axios.post(`/team/detail/${teamName}/edit`);
+// 		// window.location.href = `/team/detail`;
+// 	}
+// 	edit();
+// });
+// document.querySelector(".delete-btn").addEventListener("click", (e) => {
+// 	e.preventDefault();
+// 	async function deleteTeam() {
+// 		try {
+// 			const teamName = document.querySelector("#team-name").value;
+// 			console.log(teamName);
+// 			const res = await axios.delete(`/team/detail/${teamName}/edit/delete`);
+// 		} catch (err) {
+// 			console.error(err);
+// 		}
+// 	}
+// 	deleteTeam();
+// 	// window.location.href = `/team/detail/${teamName}/edit/delete`;
+// });
