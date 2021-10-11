@@ -27,9 +27,9 @@
     {% include "./layout/header.html" %}
 
     <h1>용병게시판</h1>
-    <form id="team-list-form">
+    <form method="POST" id="team-list-form">
       <table>
-        <tbody class="mercenary_recruitment mercenary_recruitment_title">
+        <tbody class="mercenary_recruitment_title">
           <!-- 글제목 나올곳 -->
           <tr>
             <td>
@@ -37,7 +37,7 @@
             </td>
           </tr>
         </tbody>
-        <tbody class="mercenary_recruitment mercenary_recruitment_content">
+        <tbody class="mercenary_recruitment_content">
           <!-- 글내용 나올곳 -->
           <tr>
             <td>
@@ -51,9 +51,9 @@
       </table>
 
       <br />
-      <input type="submit" name="submit-btn" required value="확인" />
+      <button type="submit" name="submit-btn">확인</button>
+      <button type="button" class="cancle_btn">취소</button>
     </form>
-    <button class="cancle_btn">취소</button>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/mercenary_board.js"></script>
   </body>

@@ -14,6 +14,18 @@ router.route("/").get(async (req, res, next) => {
   }
 });
 
+// 글 선택시
+router.route("/content/:mercenary_board_number").get(async (req, res, next) => {
+  try {
+    const info = await Mercenary_board.findAll({
+      where: {
+        mercenary_board_number: req.params.mercenary_board_number,
+      },
+    });
+    res.render("mercenary_content", { info });
+  } catch (err) {}
+});
+
 // 용병게시판 새 글쓰기
 router
   .route("/new")
@@ -43,6 +55,21 @@ router
     }
   });
 
+// 게시글 삭제
+
+router.post("/content/:mercenary_board_number", async (req, res, next) => {
+  try {
+    const DELETE = await Mercenary_board.destroy({
+      where: {
+        mercenary_board_number: req.cookies.user.mercenary_board_number,
+      },
+    });
+    res.redirect("/");
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 router
   // .route("/content/:mercenary_board_number/edit")
   .get("/content/:mercenary_board_number/edit", async (req, res, next) => {
@@ -64,14 +91,6 @@ router
         {
           mercenary_board_title: req.body.mercenary_board_title,
           mercenary_board_content: req.body.mercenary_board_content,
-
-          // team_name: req.body.team_name,
-          // team_homeGround: req.body.team_homeGround,
-          // team_headCount: req.body.team_headCount,
-          // team_manner: req.body.team_manner,
-          // team_area: req.body.team_area,
-          // team_leaderId: req.body.team_leaderId,
-          // team_info: req.body.team_info,
         },
         {
           where: {
@@ -138,16 +157,5 @@ router
 //     next(err);
 //   }
 // });
-
-router.route("/content/:mercenary_board_number").get(async (req, res, next) => {
-  try {
-    const info = await Mercenary_board.findAll({
-      where: {
-        mercenary_board_number: req.params.mercenary_board_number,
-      },
-    });
-    res.render("mercenary_content", { info });
-  } catch (err) {}
-});
 
 module.exports = router;

@@ -4,7 +4,31 @@ function back() {
 const CONTENT_EDIT_CANCLE = document.querySelector(".cancle_btn");
 $(CONTENT_EDIT_CANCLE).click(function () {
   back();
-  console.log("취소");
+});
+
+document.querySelectorAll(".mercenary_recruitment tr").forEach((el) => {
+  // 게시판의 글 목록 중 한 줄을 클릭하면
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+    // querySelector는 [글번호, 글제목, 글쓴이, 게시일] 중
+    // 첫번째 td인 글번호만 가져오고 땡
+    // 글번호를 documentNumber에 집어넣음
+    const documentNumber = el.querySelector("td").textContent;
+    if (documentNumber) {
+      window.location.href = `/mercenary_board/content/${documentNumber}`;
+    }
+  });
+});
+
+const remove = document.querySelector(".delete-MB");
+console.log(remove);
+remove.addEventListener("click", async (e) => {
+  try {
+    console.log(555);
+    // axios.delete(`/content/${mercenary_board_number}`);
+  } catch (err) {
+    console.error(err);
+  }
 });
 
 dateMaker(document.querySelectorAll(".mercenary_recruitment tr"));
@@ -51,20 +75,6 @@ function dateMaker(e) {
     document.querySelector(`.date_info${index}`).textContent = dateString;
   }
 }
-
-document.querySelectorAll(".mercenary_recruitment tr").forEach((el) => {
-  // 게시판의 글 목록 중 한 줄을 클릭하면
-  el.addEventListener("click", (e) => {
-    e.preventDefault();
-    // querySelector는 [글번호, 글제목, 글쓴이, 게시일] 중
-    // 첫번째 td인 글번호만 가져오고 땡
-    // 글번호를 documentNumber에 집어넣음
-    const documentNumber = el.querySelector("td").textContent;
-    if (documentNumber) {
-      window.location.href = `/mercenary_board/content/${documentNumber}`;
-    }
-  });
-});
 
 // const deleteContent = querySelector("#remove");
 // remove.addEventListener("click", async (e) => {
