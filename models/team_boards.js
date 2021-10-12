@@ -57,7 +57,6 @@ module.exports = class Team_board extends Sequelize.Model {
 			foreignKey: "team_name",
 			targetKey: "team_name",
 		});
-
 		db.TeamBoard.hasMany(db.TeamComment, {
 			foreignKey: "post_num",
 			sourceKey: "post_num",
