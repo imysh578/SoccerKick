@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>검색결과</title>
+    <title>검색결과테이블</title>
     {% include "./layout/style.html" %}
     <link rel="stylesheet" href="css/board.css">
 </head>
@@ -16,7 +16,7 @@
         <h2 class="site-content__subtitle">구단 리스트</h2>
         <div class="board-list">
           {% for team in teams %}
-          {% if loop.index <= 10 %}
+          {% if loop.index <= 3 %}
           <div class="board-list__item">
             <div class="board-list__icon">
               <i class="fa fa-comments-o" aria-hidden="true"></i>
@@ -40,7 +40,7 @@
                   <a class="board-list__link">{{team.team_leaderId}}</a>
                 </div>
                 <div class="board-list__created__date">
-                  {{team.team_created_date}}
+                  {{date[loop.index]}}
                 </div>
               </div>
             </div>
@@ -52,7 +52,7 @@
   </main>
   {% include "./layout/footer.html" %}
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="/search.js"></script>
+  <script src="/team.js"></script>
 </body>
 </html>
 
