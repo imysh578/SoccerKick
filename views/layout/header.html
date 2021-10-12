@@ -1,48 +1,52 @@
 <header>
-  <nav class="top-nav">
-    <div class="left-menu">
-      <div>
-        <img class="logo" src="/images/football-logo.png" alt="logo" />
-      </div>
-      <a class="menu-btn" href="/">HOME</a>
-      <div class="dropdown">
-        <a class="drop-btn menu-btn">MENU</a>
-        <div class="dropdown-content">
-          <span>구단메뉴</span>
-          <ul>
-            <li><a href="/team">구단 리스트</a></li>
-            <li><a href="/team_board">구단 게시판</a></li>
-            <li><a href="/team/create">구단 만들기</a></li>
-          </ul>
-          <span>카테고리</span>
-          <ul>
-            <li><a href="/mercenary_board">용병 게시판</a></li>
-            <li><a href="/battle_board">한판 떠요</a></li>
-          </ul>
+    <nav class="top-nav">
+        <div class="left-menu">
+            <div>
+                <img class="logo" src="/images/football-logo.png" alt="logo" />
+            </div>
+            <a class="menu-btn" href="/">HOME</a>
+            <div class="dropdown">
+                <a class="drop-btn menu-btn">MENU</a>
+                <div class="dropdown-content">
+                    <span>구단메뉴</span>
+                    <ul>
+                        <li><a href="/team">구단 리스트</a></li>
+                        <li><a href="/team_board">구단 게시판</a></li>
+                        <li><a href="/team/create">구단 만들기</a></li>
+                    </ul>
+                    <span>카테고리</span>
+                    <ul>
+                        <li><a href="/mercenary_board">용병 게시판</a></li>
+                        <li><a href="/battle_board">한판 떠요</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div>
-      <form class="search" method="post">
-        <input
-          class="search-bar search-event"
-          type="text"
-          placeholder="나는 검색왕"
-          name="q"
-        />
-        <!-- <button class="search-btn">검색</button> -->
-        <input class="search-btn search-event" type="submit" value="검색" />
-      </form>
-    </div>
-    <div class="right-menu">
-      {% if login %}
-      <a href="/user/myPage" class="menu-btn logined">MY PAGE</a>
-      <a href="/user/logout" class="menu-btn logined">LOGOUT</a>
-      {% else %}
-      <a href="/user" class="menu-btn not-logined">SIGNIN</a>
-      <a href="/user/login" class="menu-btn not-logined">LOGIN</a>
-      {% endif %}
-    </div>
-  </nav>
-  <div id="empty-box"></div>
+        <div>
+            <form class="search" method="get" action="search">
+                <input
+                    class="search-bar search-event"
+                    type="text"
+                    placeholder="나는 검색왕"
+                    name="q"
+                />
+                <!-- <button class="search-btn">검색</button> -->
+                <input
+                    class="search-btn search-event"
+                    type="submit"
+                    value="검색"
+                />
+            </form>
+        </div>
+        <div class="right-menu">
+            {% if login %}
+            <a href="/user/myPage" class="menu-btn logined">MY PAGE</a>
+            <a href="/user/logout" class="menu-btn logined">LOGOUT</a>
+            {% else %}
+            <a href="/user" class="menu-btn not-logined">SIGNIN</a>
+            <a href="/user/login" class="menu-btn not-logined">LOGIN</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div id="empty-box"></div>
 </header>
