@@ -32,10 +32,9 @@ router
         user_aboutMe: req.body.user_aboutMe,
         user_grade: req.body.user_grade,
       });
-
-      res.redirect("/user/login");
-
-      // res.status(201).json(user);
+      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+      res.write("<script>alert('회원가입 완료')</script>");
+      res.write("<script>window.location='/user/login'</script>");
     } catch (err) {
       console.error(err);
     }
@@ -63,7 +62,6 @@ router
         res.write("<script>window.location='/user/login'</script>");
       } else {
         //여기서 쿠키 암호화
-
         res.cookie("user", user, {
           maxAge: 60 * 60 * 1000 * 24,
           httpOnly: true, //
@@ -92,19 +90,22 @@ router
       } else {
         res.render("myPage");
       }
-      // res.render("myPage", { user });
     } catch (err) {
       console.error(err);
       next(err);
     }
   })
   .post("/:user_id", async (req, res, next) => {
+    //회원탈퇴
     try {
       const user = await User.destroy({
         where: { user_id: req.cookies.user.user_id },
       });
       res.clearCookie("user", user);
-      res.redirect("/");
+      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+      res.write("<script>alert('탈퇴 되었습니다')</script>");
+      res.write("<script>window.location='/'</script>");
+      // res.redirect("/");
     } catch (err) {
       console.error(err);
     }
@@ -132,7 +133,6 @@ router
       } else {
         res.render("edit");
       }
-      // res.render("edit", { user });
     } catch (err) {
       console.error(err);
       next(err);
@@ -158,7 +158,12 @@ router
           where: { user_id: req.cookies.user.user_id },
         }
       );
-      res.redirect("/");
+      res.clearCookie("user", user);
+      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+      res.write(
+        "<script>alert('수정되었습니다. 다시 로그인해주세요')</script>"
+      );
+      res.write("<script>window.location='/user/login'</script>");
     } catch (err) {
       console.error(err);
       next(err);

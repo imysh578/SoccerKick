@@ -34,6 +34,7 @@
     "nunjucks": "^3.2.3",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0",
-    "session-file-store": "^1.5.0"
+    "session-file-store": "^1.5.0",
+    "start": "^5.1.0"
   }
 }

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../css/header.css" />
     <link rel="stylesheet" href="../../css/footer.css" />
     <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/edit.css" />
   </head>
   <body>
     {% include "./layout/header.html" %}
@@ -19,7 +20,7 @@
           <table style="width: 30%">
             {% for a in user %}
             <tr>
-              <td>아이디</td>
+              <td id="tdWidth">아이디</td>
               <td>
                 <input
                   type="text"
@@ -30,7 +31,7 @@
               </td>
             </tr>
             <tr>
-              <td>비밀번호</td>
+              <td id="tdWidth">비밀번호</td>
               <td>
                 <input
                   type="password"
@@ -41,7 +42,7 @@
               </td>
             </tr>
             <tr>
-              <td>이름</td>
+              <td id="tdWidth">이름</td>
               <td>
                 <input
                   type="text"
@@ -52,7 +53,7 @@
               </td>
             </tr>
             <tr>
-              <td>나이</td>
+              <td id="tdWidth">나이</td>
               <td>
                 <input
                   type="number"
@@ -63,7 +64,7 @@
               </td>
             </tr>
             <tr>
-              <td>지역</td>
+              <td id="tdWidth">지역</td>
               <td>
                 <input
                   type="text"
@@ -74,7 +75,7 @@
               </td>
             </tr>
             <tr>
-              <td>성별</td>
+              <td id="tdWidth">성별</td>
               <td>
                 <select
                   name="user_gender"
@@ -87,7 +88,7 @@
               </td>
             </tr>
             <tr>
-              <td>이메일</td>
+              <td id="tdWidth">이메일</td>
               <td>
                 <input
                   type="text"
@@ -98,7 +99,7 @@
               </td>
             </tr>
             <tr>
-              <td>포지션</td>
+              <td id="tdWidth">포지션</td>
               <td>
                 <input
                   type="text"
@@ -109,7 +110,7 @@
               </td>
             </tr>
             <tr>
-              <td>소속팀</td>
+              <td id="tdWidth">소속팀</td>
               <td>
                 <input
                   type="text"
@@ -120,7 +121,7 @@
               </td>
             </tr>
             <tr>
-              <td>자기소개</td>
+              <td id="tdWidth">자기소개</td>
               <td>
                 <input
                   type="text"
