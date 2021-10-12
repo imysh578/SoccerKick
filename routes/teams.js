@@ -19,7 +19,7 @@ router.route("/").get(async (req, res, next) => {
 		// 	type: QueryTypes.SELECT,
 		// });
 		const teams = await Teams.findAll();
-
+		const users = await Users.findAll();
 		res.render("team", { teams, login: req.cookies.user.user_id });
 	} catch (err) {
 		console.error(err);
@@ -48,7 +48,7 @@ router
 	.post(upload.single("uploaded_file"), async (req, res, next) => {
 		try {
 			if (req.file) {
-				await Teams.create({
+				const teams = await Teams.create({
 					team_name: req.body.team_name,
 					team_leaderId: req.cookies.user.user_id,
 					team_homeGround: req.body.team_homeGround,
@@ -58,7 +58,7 @@ router
 					logo_filename: req.file.filename,
 				});
 			} else {
-				await Teams.create({
+				const teams = await Teams.create({
 					team_name: req.body.team_name,
 					team_leaderId: req.cookies.user.user_id,
 					team_homeGround: req.body.team_homeGround,
@@ -83,10 +83,17 @@ router.route("/detail/:team_name").get(async (req, res, next) => {
 				team_name: req.params.team_name,
 			},
 		});
+		const wannaJoin = await WannaJoin.findOne({
+			where: {
+				team_name: req.params.team_name,
+				user_id: req.cookies.user.user_id,
+			},
+		});
 		res.render("team_detail", {
 			team,
 			date: formattedDate(team, "team_created_date"),
 			login: req.cookies.user.user_id,
+			wannaJoin: wannaJoin,
 		});
 	} catch (err) {
 		console.error(err);
@@ -109,10 +116,7 @@ router.route("/detail/:team_name/join").get(async (req, res, next) => {
 				user_id: req.cookies.user.user_id,
 			},
 		});
-		console.log(team.dataValues.team_name);
-		console.log(team.dataValues.team_leaderId);
-		console.log(user.dataValues.user_id);
-		await WannaJoin.create({
+		const wannaJoin = await WannaJoin.create({
 			team_name: team.dataValues.team_name,
 			team_leaderId: team.dataValues.team_leaderId,
 			user_id: user.dataValues.user_id,
@@ -148,7 +152,7 @@ router
 	.post(upload.single("uploaded_file"), async (req, res, next) => {
 		try {
 			if (req.file === undefined) {
-				await Teams.update(
+				const team = await Teams.update(
 					{
 						team_name: req.body.team_name,
 						team_homeGround: req.body.team_homeGround,
@@ -166,7 +170,7 @@ router
 				// 이전 구단의 로고 파일 삭제
 				deleteTeamLogo(req.params.team_name);
 
-				await Teams.update(
+				const team = await Teams.update(
 					{
 						team_name: req.body.team_name,
 						team_homeGround: req.body.team_homeGround,
@@ -195,10 +199,10 @@ router
 	.delete(async (req, res, next) => {
 		try {
 			// 삭제하려는 구단의 로고 파일도 같이 삭제
-			await deleteTeamLogo(req.params.team_name);
+			const deleteFile = await deleteTeamLogo(req.params.team_name);
 
 			// 구단을 DB에서 삭제
-			await Teams.destroy({
+			const team = await Teams.destroy({
 				where: {
 					team_name: req.params.team_name,
 				},

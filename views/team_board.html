@@ -6,12 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title> 구단 게시판</title>
     {% include "./layout/style.html" %}
-    <link rel="stylesheet" href="css/board.css">
-    <!-- <style>
-    img{ 
-      height: 32px;
-      width: 32px;}
-    </style> -->
+    <link rel="stylesheet" href="css/team_board.css">
 </head>
 <body class="wrapper">
   {% include "./layout/header.html" %}
@@ -19,17 +14,27 @@
     <div class="forum-index">
       <section>
         <div class="team-info-box">
-          <div class="board-list__avatar">
+          <div class="board-list__team">
             {% if post.logo_filename %}
-            <img class="board-list__avatar__image" src="/uploads/{{team.logo_filename}}" alt="Team-logo">
+            <img class="board-list__logo__image" src="/uploads/{{team.logo_filename}}" alt="Team-logo">
             {% else %}
-            <img class="board-list__avatar__image" src="/images/team-logo-empty.png" alt="Team-logo">
+            <img class="board-list__logo__image" src="/images/team-logo-empty.png" alt="Team-logo">
             {% endif %}
           </div>
           <h1 class="team-name">{{posts[0].team_name}}</h1>
         </div>
         <h2 class="site-content__subtitle">구단 게시판</h2>
         <div class="board-list">
+        {% if posts %}
+          <div class="board-list__item"></div>
+          <div class="board-list__item"></div>
+          <div class="board-list__item"></div>
+          <div class="board-list__item"></div>
+          <div class="board-list__item"></div>
+          <div class="board-list__item"></div>
+          <div class="board-list__item"></div>
+          <div class="board-list__item"></div>
+        {% else %}
           {% for post in posts %}
           <div class="board-list__item">
             <div class="board-list__icon">
@@ -61,6 +66,7 @@
             </div>
           </div>
           {% endfor %}
+        {% endif %}
         </div>
       </section>
   </main>

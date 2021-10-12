@@ -6,13 +6,11 @@ const router = express.Router();
 
 router.get("/", async (req, res, next) => {
 	try {
-		console.log(req.cookies.user);
 		const posts = await TeamBoards.findAll({
 			where: {
 				team_name: req.cookies.user.user_team,
 			},
 		});
-		console.log(posts);
 
 		res.render("team_board", { posts });
 		// if (!req.cookies.user.user_team == null) {

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	backBtnClick();
 	createBtnClick();
 	fileUploadBtnClick();
+	signupBtnClick();
 });
 
 // 게시물 클릭 및 마우스 hover 기능
@@ -30,6 +31,24 @@ function boardListClick() {
 					window.location.href = `/team/detail/${teamName}`;
 				}
 			});
+		});
+	}
+}
+
+// 가입 신청 버튼
+function signupBtnClick() {
+	const signupBtn = document.querySelector(".signup-btn");
+	if (signupBtn) {
+		signupBtn.addEventListener("click", (e) => {
+			console.log(1);
+			e.preventDefault();
+			async function joinTeam() {
+				const teamName = document.querySelector("#team-name").textContent;
+				const res = await axios.get(`/team/detail/${teamName}/join`);
+			}
+			joinTeam();
+			window.alert("가입 신청이 완료되었습니다.");
+			window.location.href = "/team";
 		});
 	}
 }
@@ -118,22 +137,3 @@ function fileUploadBtnClick() {
 		});
 	}
 }
-
-// document.querySelector(".submit-btn").addEventListener("click", (e) => {
-// 	e.preventDefault();
-// 	async function edit() {
-// 		document.querySelectorAll(".detail-info input").forEach((el) => {
-// 			const placeholder = el.placeholder;
-// 			const value = el.value;
-// 			if (!value) {
-// 				el.value = placeholder;
-// 			}
-// 		});
-// 		const teamName = document.querySelector("#team-name").value;
-// 		console.log(Date.now());
-// 		console.log("*************");
-// 		await axios.post(`/team/detail/${teamName}/edit`);
-// 		// window.location.href = `/team/detail`;
-// 	}
-// 	edit();
-// });
