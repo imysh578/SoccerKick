@@ -1,13 +1,16 @@
 const express = require("express");
 const Mercenary_board = require("../models/mercenary_boards");
-
+const formattedDate = require("../public/dateformat");
 const router = express.Router();
 
 // 게시판
 router.route("/").get(async (req, res, next) => {
   try {
     const mercenary_board = await Mercenary_board.findAll();
-    res.render("mercenary_board", { mercenary_board });
+    res.render("mercenary_board", {
+      mercenary_board,
+      date: formattedDate(mercenary_board, "mercenary_board_date"),
+    });
   } catch (err) {
     console.error(err);
     next(err);

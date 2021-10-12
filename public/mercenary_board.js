@@ -20,16 +20,16 @@ document.querySelectorAll(".mercenary_recruitment tr").forEach((el) => {
   });
 });
 
-const remove = document.querySelector(".delete-MB");
-console.log(remove);
-remove.addEventListener("click", async (e) => {
-  try {
-    console.log(555);
-    // axios.delete(`/content/${mercenary_board_number}`);
-  } catch (err) {
-    console.error(err);
-  }
-});
+// const remove = document.querySelector(".delete-MB");
+// console.log(remove);
+// remove.addEventListener("click", async (e) => {
+//   try {
+//     console.log(555);
+//     // axios.delete(`/content/${mercenary_board_number}`);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
 
 dateMaker(document.querySelectorAll(".mercenary_recruitment tr"));
 
