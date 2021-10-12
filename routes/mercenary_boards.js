@@ -25,7 +25,11 @@ router.route("/content/:mercenary_board_number").get(async (req, res, next) => {
         mercenary_board_number: req.params.mercenary_board_number,
       },
     });
-    res.render("mercenary_content", { info });
+    res.render("mercenary_content", {
+      info,
+
+      date: formattedDate(info, "mercenary_board_date"),
+    });
   } catch (err) {}
 });
 
