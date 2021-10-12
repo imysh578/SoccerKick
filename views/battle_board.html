@@ -15,75 +15,82 @@
                 border: 1px solid black;
             }
         </style>
+        {% include "./layout/style.html" %}
     </head>
     <body>
-        <h1>배틀게시판</h1>
-        <table>
-            <tr>
-                <th>구단명</th>
-                <th>지역</th>
-                <th>아이디</th>
-                <th>인원수</th>
-                <th>글제목</th>
-               <!--<th>글내용</th>-->
-                <!--<th>날짜</th>-->
-            </tr>
-            <tbody id="battle-list">
-                {% for a in battle_board %} <!--뜻?-->
+        {% include "./layout/header.html" %}
+
+        <main>
+
+            <h1>배틀게시판</h1>
+            <table>
                 <tr>
-                    <td>{{a.battle_board_teamName}}</td>
-                    <td>{{a.battle_board_area}}</td>
-                    <td>{{a.battle_board_id}}</td>
-                    <td>{{a.battle_board_personnel}}</td>
-                    <td>{{a.battle_board_title}}</td>
-                    <!--<td>{{a.battle_board_content}}</td>-->
-                    <!--<td>{{a.battle_board_date}}</td>-->
+                    <th>구단명</th>
+                    <th>지역</th>
+                    <th>아이디</th>
+                    <th>인원수</th>
+                    <th>글제목</th>
+                   <!--<th>글내용</th>-->
+                    <!--<th>날짜</th>-->
                 </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <hr />
-        <form method="post">
-            <fieldset id="battle-insert">
-                <legend>한판떠요</legend>
-                <span>구단명</span>
-                <input type="text" name="battle_board_teamName" />
-                <span>지역</span>
-                <input type="text" name="battle_board_area" />
-                <span>아이디</span>
-                <input type="text" name="battle_board_id" />
-                <span>인원수</span>
-                <input
-                    type="number"
-                    name="battle_board_personnel"
-                    min="1"
-                    max="200"
-                />
-                <span> 글제목 </span>
-                <input type="text" name="battle_board_title" />
-                <span>글내용</span>
-                <input type="text" name="battle_board_content" />
-               <!-- <span>날짜</span>
-                <input type="date" name="battle_board_date" /> 디폴트값.Sequelize.NOW()..--> 
-                <input type="submit" value="확인" />
-            </fieldset>
-        </form>
-        <table id="selected">
-            <h3>매칭 상세 정보</h3> <!--상세정보 클릭 이벤트는 public에서.-->
-            <thead>
-                <th>글번호</th>     <!--밀어쓸줄몰라서 글번호 칸만듦.1005-->
-                <th>구단명</th>
-                <th>지역</th>
-                <th>아이디</th>
-                <th>인원수</th>
-                <th>글제목</th>
-                <th>글내용</th>
-                <th>날짜</th>
-                <th>글수정</th>
-                <th>글삭제</th>
-            </thead>
-            <tbody></tbody>
-        </table>
+                <tbody id="battle-list">
+                    {% for a in battle_board %} <!--뜻?-->
+                    <tr>
+                        <td>{{a.battle_board_teamName}}</td>
+                        <td>{{a.battle_board_area}}</td>
+                        <td>{{a.battle_board_id}}</td>
+                        <td>{{a.battle_board_personnel}}</td>
+                        <td>{{a.battle_board_title}}</td>
+                        <!--<td>{{a.battle_board_content}}</td>-->
+                        <!--<td>{{a.battle_board_date}}</td>-->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <hr />
+            <form method="post">
+                <fieldset id="battle-insert">
+                    <legend>한판떠요</legend>
+                    <span>구단명</span>
+                    <input type="text" name="battle_board_teamName" />
+                    <span>지역</span>
+                    <input type="text" name="battle_board_area" />
+                    <span>아이디</span>
+                    <input type="text" name="battle_board_id" />
+                    <span>인원수</span>
+                    <input
+                        type="number"
+                        name="battle_board_personnel"
+                        min="1"
+                        max="200"
+                    />
+                    <span> 글제목 </span>
+                    <input type="text" name="battle_board_title" />
+                    <span>글내용</span>
+                    <input type="text" name="battle_board_content" />
+                   <!-- <span>날짜</span>
+                    <input type="date" name="battle_board_date" /> 디폴트값.Sequelize.NOW()..--> 
+                    <input type="submit" value="확인" />
+                </fieldset>
+            </form>
+            <table id="selected">
+                <h3>매칭 상세 정보</h3> <!--상세정보 클릭 이벤트는 public에서.-->
+                <thead>
+                    <th>글번호</th>     <!--밀어쓸줄몰라서 글번호 칸만듦.1005-->
+                    <th>구단명</th>
+                    <th>지역</th>
+                    <th>아이디</th>
+                    <th>인원수</th>
+                    <th>글제목</th>
+                    <th>글내용</th>
+                    <th>날짜</th>
+                    <th>글수정</th>
+                    <th>글삭제</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </main>
+        {% include "./layout/footer.html" %}
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="/battle_board.js"></script>
     </body>
