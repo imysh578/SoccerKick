@@ -1,0 +1,21 @@
+main {
+  text-align: center;
+}
+table {
+  text-align: left;
+  margin-left: 35%;
+  height: 500px;
+}
+main input {
+  border: solid 1px;
+}
+fieldset {
+  margin-left: 33%;
+  margin-right: 33%;
+  margin-top: 40px;
+  border: 1px solid;
+  width: 700px;
+}
+#tdWidth {
+  width: 100px;
+}
