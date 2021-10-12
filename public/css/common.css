@@ -6,8 +6,6 @@
 	box-sizing: border-box;
 }
 body {
-	/* background: linear-gradient(to right, #d6d6d6, #ffffff); */
-	/* perspective: 600px; */
 	background-image: url("/images/main-background1.jpg");
 	background-size: cover;
 }

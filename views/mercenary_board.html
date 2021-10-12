@@ -25,7 +25,6 @@
   <body>
     <!-- 공통 헤더 html -->
     {% include "./layout/header.html" %}
-
     <h1 class=".site-content__subtitle">용병게시팔</h1>
     <table>
       <tbody>
@@ -58,9 +57,7 @@
           <td>{{ board_list.mercenary_select }}</td>
           <td>{{ board_list.mercenary_board_title }}</td>
           <td>{{ board_list.user_id }}</td>
-          <td class="date_info{{loop.index}}">
-            {{ board_list.mercenary_board_date }}
-          </td>
+          <td class="date_info{{loop.index}}">{{ date[loop.index-1] }}</td>
         </tr>
         {% endfor %}
       </tbody>

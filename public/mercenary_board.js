@@ -1,9 +1,5 @@
-function back() {
-  window.history.back();
-}
-const CONTENT_EDIT_CANCLE = document.querySelector(".cancle_btn");
-$(CONTENT_EDIT_CANCLE).click(function () {
-  back();
+$(document.querySelector(".cancle_btn")).click(function () {
+  history.back();
 });
 
 document.querySelectorAll(".mercenary_recruitment tr").forEach((el) => {
@@ -20,18 +16,18 @@ document.querySelectorAll(".mercenary_recruitment tr").forEach((el) => {
   });
 });
 
-const remove = document.querySelector(".delete-MB");
-console.log(remove);
-remove.addEventListener("click", async (e) => {
-  try {
-    console.log(555);
-    // axios.delete(`/content/${mercenary_board_number}`);
-  } catch (err) {
-    console.error(err);
-  }
-});
+// const remove = document.querySelector(".delete-MB");
+// console.log(remove);
+// remove.addEventListener("click", async (e) => {
+//   try {
+//     console.log(555);
+//     // axios.delete(`/content/${mercenary_board_number}`);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
 
-dateMaker(document.querySelectorAll(".mercenary_recruitment tr"));
+// dateMaker(document.querySelectorAll(".mercenary_recruitment tr"));
 
 document.querySelectorAll(".tab-btn").forEach((el) => {
   el.addEventListener("click", (e) => {
@@ -54,27 +50,27 @@ document.querySelectorAll(".tab-btn").forEach((el) => {
 });
 
 // 날짜형식 새로 만들기
-function dateMaker(e) {
-  // 게시판 글목록의 행의 길이(개수)를 구해 length에 저장
-  let length = e.length;
+// function dateMaker(e) {
+//   // 게시판 글목록의 행의 길이(개수)를 구해 length에 저장
+//   let length = e.length;
 
-  // for문으로 글목록의 길이만큼 반복
-  for (let index = 1; index <= length; index++) {
-    // 글목록 하나하나에 class명을 1부터 넣어 DATE_INFO에 저장
-    let DATE_INFO = document.querySelector(`.date_info${index}`).textContent;
-    // DATE_INFO를 new Date로 string에서 날짜 object로 type 변환
-    let conversion = new Date(DATE_INFO);
-    // 연-월-일 시:분 으로 만들어주기
-    var year = conversion.getFullYear();
-    var month = ("0" + (conversion.getMonth() + 1)).slice(-2);
-    var day = ("0" + conversion.getDate()).slice(-2);
-    var hours = ("0" + conversion.getHours()).slice(-2);
-    var minutes = ("0" + conversion.getMinutes()).slice(-2);
-    var dateString = `${year}-${month}-${day} ${hours}:${minutes}`;
-    // 각 글목록의 날짜자리에 만든 날짜 집어넣기
-    document.querySelector(`.date_info${index}`).textContent = dateString;
-  }
-}
+//   // for문으로 글목록의 길이만큼 반복
+//   for (let index = 1; index <= length; index++) {
+//     // 글목록 하나하나에 class명을 1부터 넣어 DATE_INFO에 저장
+//     let DATE_INFO = document.querySelector(`.date_info${index}`).textContent;
+//     // DATE_INFO를 new Date로 string에서 날짜 object로 type 변환
+//     let conversion = new Date(DATE_INFO);
+//     // 연-월-일 시:분 으로 만들어주기
+//     var year = conversion.getFullYear();
+//     var month = ("0" + (conversion.getMonth() + 1)).slice(-2);
+//     var day = ("0" + conversion.getDate()).slice(-2);
+//     var hours = ("0" + conversion.getHours()).slice(-2);
+//     var minutes = ("0" + conversion.getMinutes()).slice(-2);
+//     var dateString = `${year}-${month}-${day} ${hours}:${minutes}`;
+//     // 각 글목록의 날짜자리에 만든 날짜 집어넣기
+//     document.querySelector(`.date_info${index}`).textContent = dateString;
+//   }
+// }
 
 // const deleteContent = querySelector("#remove");
 // remove.addEventListener("click", async (e) => {
