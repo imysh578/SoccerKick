@@ -18,32 +18,46 @@
   <main>
     <div class="main-box">
       <div class="contents-box">
-        <h2 id="page-title">구단 상세 정보</h2>
+        <div class="title-box">
+          {% if team[0].logo_filename !== 'empty' %}
+          <img src="/uploads/{{team[0].logo_filename}}" alt="">
+          {% else %}
+          <img src="/images/team-logo-empty.png" alt="">    
+          {% endif %}
+          <h2 id="page-title">구단 상세 정보</h2>
+        </div>
         <div class="detail-info">
+          <img src="/images/football.png" alt="">
           <span class="info-name" id="team-name">구단명</span>
           <span class="info-value">{{team[0].team_name}}</span>
         </div>
         <div class="detail-info">
+          <img src="/images/team-owner.png" alt="">
           <span class="info-name">구단주</span>
           <span class="info-value">{{team[0].team_leaderId}}</span>
         </div>
         <div class="detail-info">
+          <img src="/images/location.png" alt="">
           <span class="info-name">지역</span>
           <span class="info-value">{{team[0].team_area}}</span>
         </div>
         <div class="detail-info">
+          <img src="/images/playground1.png" alt="">
           <span class="info-name">홈구장</span>
           <span class="info-value">{{team[0].team_homeGround}}</span>
         </div>
         <div class="detail-info">
-          <span class="info-name">매너도</span>
+          <img src="/images/injury.png" alt="">
+          <span class="info-name">매너점수</span>
           <span class="info-value">{{team[0].team_manner}}</span>
         </div>
         <div class="detail-info">
+          <img src="/images/football-player.png" alt="">
           <span class="info-name">인원수</span>
           <span class="info-value">{{team[0].team_headCount}}</span>
         </div>
         <div class="detail-info">
+          <img src="/images/team-logo.png" alt="">
           <span class="info-name">구단 생성 날짜</span>
           <span class="info-value">{{date[0]}}</span>
         </div>
@@ -52,13 +66,16 @@
             <span class="info-name">구단 소개</span>
           </div>
           <div id="introduction-value">
-            <span class="info-value">{{team[0].team_info}}</span>
+            <span class="info-value"><pre>{{team[0].team_info}}</pre></span>
           </div>
         </div>
       <div class="btn-list">
         <a href="/team" class="back-btn"><button>뒤로가기</button></a>
+        {% if login == team[0].team_leaderId %}
         <a href="/team/detail/{{team[0].team_name}}/edit" class="edit-btn"><button>구단 정보 수정</button></a>
+        {% else  %}
         <a href="" class="signin-btn"><button>가입신청</button></a>
+        {% endif %}
       </div>
     </div>
   </main>

@@ -4,8 +4,8 @@
 	background: #8e4586e0;
 	color: rgba(255, 255, 255, 0.38);
 	bottom: 0;
-	width: 100vw;
-	height: 5rem;
+	width: 100%;
+	height: 7rem;
 	position: relative;
 }
 .site-footer > h2 {

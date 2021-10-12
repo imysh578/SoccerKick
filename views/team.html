@@ -7,6 +7,11 @@
     <title>회원 관리 테이블</title>
     {% include "./layout/style.html" %}
     <link rel="stylesheet" href="css/board.css">
+    <!-- <style>
+    img{ 
+      height: 32px;
+      width: 32px;}
+    </style> -->
 </head>
 <body class="wrapper">
   {% include "./layout/header.html" %}
@@ -29,17 +34,18 @@
             </div>
             <div class="board-list__lastpost board-list__item--last">
               <div class="board-list__avatar">
-                <img class="board-list__avatar__image" src="" alt="Team logo">
+                {% if team.logo_filename !== 'empty' %}
+                <img class="board-list__avatar__image" src="/uploads/{{team.logo_filename}}" alt="Team-logo">
+                {% else %}
+                <img class="board-list__avatar__image" src="/images/team-logo-empty.png" alt="Team-logo">
+                {% endif %}
               </div>
               <div>
                 <div class="board-list__lastpost__topic">
-                  팀 리더
+                  구단주
                 </div>
                 <div class="board-list__lastpost__user">
                   <a class="board-list__link">{{team.team_leaderId}}</a>
-                </div>
-                <div class="board-list__created__date">
-                  {{date[loop.index]}}
                 </div>
               </div>
             </div>

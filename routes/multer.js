@@ -4,7 +4,12 @@ const path = require("path");
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
-		cb(null, "public/uploads");
+		const extension = path.extname(file.originalname);
+		if (extension == ".png" || extension == ".jpeg" || extension == ".jpg") {
+			cb(null, "public/uploads");
+		} else {
+			console.log("업로드 실패!! PNG, JPEG, JPG 파일 형식만 가능합니다.");
+		}
 	},
 	filename: function (req, file, cb) {
 		const extension = path.extname(file.originalname);
@@ -13,6 +18,11 @@ const storage = multer.diskStorage({
 	},
 });
 
-upload = multer({ storage: storage });
+upload = multer({
+	storage: storage,
+	// limits: {
+	// 	fileSize: 1000, //size of u file
+	// },
+});
 
 module.exports = upload;
