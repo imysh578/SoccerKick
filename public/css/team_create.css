@@ -8,7 +8,21 @@
 	border-radius: 30px;
 	box-shadow: 0px 20px 50px 0px #8e4586;
 }
+.title-box {
+	display: flex;
+	justify-content: center;
+}
 
+.title-box img {
+	width: 64px;
+	height: 64px;
+	margin-right: 20px;
+	border-radius: 50%;
+}
+
+.title-box h2 {
+	margin-right: 64px;
+}
 .contents-box {
 	position: relative;
 	width: 100%;
@@ -166,10 +180,5 @@ button:hover {
 @media (max-width: 1020px) {
 	.main-box {
 		width: 500px;
-	}
-}
-@media (max-width: 820px) {
-	.main-box {
-		width: 400px;
 	}
 }

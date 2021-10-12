@@ -40,18 +40,37 @@ function removeBtnClick() {
 	if (removeBtn) {
 		removeBtn.addEventListener("click", (e) => {
 			e.preventDefault();
-			async function deleteTeam() {
-				try {
-					const teamName = document.querySelector("#team-name").value;
-					const res = await axios.delete(
-						`/team/detail/${teamName}/edit/delete`
-					);
-				} catch (err) {
-					console.error(err);
+			if (
+				window.confirm(
+					"피와 땀으로 만들어진 당신의 구단이 사라집니다." +
+						"\n" +
+						"계속 하시겠습니까?"
+				)
+			) {
+				if (window.confirm("진심이세요? 정말 삭제하실건가요?")) {
+					if (window.confirm("팀원 버려? 팀원버려???!?")) {
+						async function deleteTeam() {
+							try {
+								const teamName = document.querySelector("#team-name").value;
+								const res = await axios.delete(
+									`/team/detail/${teamName}/edit/delete`
+								);
+							} catch (err) {
+								console.error(err);
+							}
+						}
+						deleteTeam();
+						window.alert("삭제 되었습니다. 퉤");
+						window.location.href = `/team`;
+					} else {
+						history.back();
+					}
+				} else {
+					history.back();
 				}
+			} else {
+				history.back();
 			}
-			deleteTeam();
-			window.location.href = `/`;
 		});
 	}
 }
@@ -89,8 +108,12 @@ function fileUploadBtnClick() {
 				.pop();
 			if (fileName) {
 				document.querySelector(".upload-name").value = fileName;
+				document.querySelector(".title-box img").src = `/images/${fileName}`;
 			} else {
 				document.querySelector(".upload-name").value = "파일 선택";
+				document.querySelector(
+					".title-box img"
+				).src = `/images/team-logo-empty.png`;
 			}
 		});
 	}

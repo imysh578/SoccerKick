@@ -6,8 +6,25 @@ const router = express.Router();
 
 router.get("/", async (req, res, next) => {
 	try {
-		const posts = await TeamBoards.findAll();
+		console.log(req.cookies.user);
+		const posts = await TeamBoards.findAll({
+			where: {
+				team_name: req.cookies.user.user_team,
+			},
+		});
+		console.log(posts);
+
 		res.render("team_board", { posts });
+		// if (!req.cookies.user.user_team == null) {
+		// 	res.render("team_board", { posts });
+		// } else {
+		// 	res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+		// 	res.write(
+		// 		"<script>alert('소속 구단이 없습니다. 먼저 구단에 가입하세요')</script>"
+		// 	);
+		// 	res.write("<script>window.location='/team'</script>");
+		// 	res.end();
+		// }
 	} catch (err) {
 		console.error(err);
 		next(err);
@@ -28,7 +45,7 @@ router
 	.post(async (req, res, next) => {
 		try {
 			await TeamBoards.create({
-				team_name: req.body.team_name,
+				team_name: req.cookies.user.user_team,
 				writer_name: req.body.writer_name,
 				writer_id: req.body.writer_id,
 				title: req.body.title,

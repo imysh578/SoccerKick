@@ -19,7 +19,14 @@
     <div class="main-box">
       <div class="contents-box">
         <form method="post" enctype="multipart/form-data">
-          <h2 id="page-title">구단 정보 수정</h2>
+          <div class="title-box">
+            {% if team[0].logo_filename !== 'empty' %}
+            <img src="/uploads/{{team[0].logo_filename}}" alt="">
+            {% else %}
+            <img src="/images/team-logo-empty.png" alt="">    
+            {% endif %}
+            <h2 id="page-title">구단 정보 수정</h2>
+          </div>
           <div class="detail-info">
             <img src="/images/football.png" alt="">
             <span class="info-name">구단명</span>

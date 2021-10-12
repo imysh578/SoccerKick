@@ -43,7 +43,7 @@ module.exports = class Team extends Sequelize.Model {
 				logo_filename: {
 					type: Sequelize.STRING(45),
 					allowNull: false,
-					defaultValue: "",
+					defaultValue: "empty",
 				},
 			},
 			{
@@ -62,9 +62,19 @@ module.exports = class Team extends Sequelize.Model {
 			foreignKey: "team_leaderId",
 			targetKey: "user_id",
 		});
+
 		db.Team.hasMany(db.TeamBoard, {
 			foreignKey: "team_name",
 			sourceKey: "team_name",
+		});
+
+		db.Team.hasMany(db.WannaJoin, {
+			foreignKey: "team_name",
+			sourceKey: "team_name",
+		});
+		db.Team.hasMany(db.WannaJoin, {
+			foreignKey: "team_leaderId",
+			sourceKey: "team_leaderId",
 		});
 	}
 };

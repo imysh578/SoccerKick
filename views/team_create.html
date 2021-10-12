@@ -19,7 +19,14 @@
     <div class="main-box">
       <div class="contents-box">
         <form method="post" enctype="multipart/form-data">
-          <h2 id="page-title">나만의 구단 만들기</h2>
+          <div class="title-box">
+            {% if team[0].logo_filename %}
+            <img src="/uploads/{{team[0].logo_filename}}" alt="">
+            {% else %}
+            <img src="/images/team-logo-empty.png" alt="">    
+            {% endif %}
+            <h2 id="page-title">나만의 구단 만들기</h2>
+          </div>
           <div class="detail-info">
             <img src="/images/football.png" alt="">
             <span class="info-name">구단명</span>
@@ -28,7 +35,7 @@
           <div class="detail-info">
             <img src="/images/team-owner.png" alt="">
             <span class="info-name">구단주</span>
-            <input type="text" class="info-value disabled" name="team_leaderId"></input>
+            <input type="text" class="info-value disabled" name="team_leaderId" value="{{login}}" disabled></input>
           </div>
           <div class="detail-info">
             <img src="/images/location.png" alt="">

@@ -34,10 +34,10 @@
             </div>
             <div class="board-list__lastpost board-list__item--last">
               <div class="board-list__avatar">
-                {% if team.logo_filename %}
+                {% if team.logo_filename !== 'empty' %}
                 <img class="board-list__avatar__image" src="/uploads/{{team.logo_filename}}" alt="Team-logo">
                 {% else %}
-                <img class="board-list__avatar__image" src="/images/team.png" alt="Team-logo">
+                <img class="board-list__avatar__image" src="/images/team-logo-empty.png" alt="Team-logo">
                 {% endif %}
               </div>
               <div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>구단 게시판</title>
+  <style>
+    table{border: 1px solid black; border-collapse: collapse;}
+    table th, table td{border: 1px solid black}
+</style>
+</head>
+<body>
+  <h1>구단 게시판</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>게시글 번호</th>
+        <th>게시글 제목</th>
+        <th>작성일자</th>
+        <th>조회수</th>
+      </tr>
+    </thead>
+    
+    <tbody id="team-board-list">
+      {% for post in posts %}
+      <tr>
+        <td>{{ post.post_num }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.created_at }}</td>
+        <td id="views-{{ post.post_num }}">{{ post.count_views }}</td>
+      </tr>
+      <tr id="hidden-{{ post.post_num }}" hidden>
+        <td colspan="5">
+          {{post.contents}}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <br>
+  <a href="/"><button>홈으로</button></a>
+  <a href="team_board/create"><button>게시물 작성하기</button></a>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/team_board.js"></script>
+</body>
+</html>
