@@ -1,9 +1,5 @@
-function back() {
-  window.history.back();
-}
-const CONTENT_EDIT_CANCLE = document.querySelector(".cancle_btn");
-$(CONTENT_EDIT_CANCLE).click(function () {
-  back();
+$(document.querySelector(".cancle_btn")).click(function () {
+  history.back();
 });
 
 document.querySelectorAll(".mercenary_recruitment tr").forEach((el) => {
