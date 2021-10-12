@@ -9,6 +9,7 @@ const router = express.Router("12345!@#$%");
 router.get("/", async (req, res, next) => {
 	try {
 		console.log(req.signedCookies);
+		console.log(req.cookies);
 		// User 테이블 쿼리 후 user 변수에 대입
 		const user = await User.findAll();
 		// user 테이블을 view 폴더의 sequelize.html에 연결
