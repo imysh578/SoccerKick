@@ -39,7 +39,6 @@ router.get('/', async (req, res, next) => {
         },
         order: [['team_name', 'DESC']],
       });
-      console.log(teamS)
       //---------------------용병
       const merceS = await Mercenary_boards.findAll({
         where: {
@@ -61,7 +60,7 @@ router.get('/', async (req, res, next) => {
         },
         order: [['mercenary_select', 'DESC']],
       });
-      console.log(merceS)
+      //console.log(merceS)
 
       //---------------------배틀
       const battleS = await Battle_boards.findAll({
@@ -84,7 +83,8 @@ router.get('/', async (req, res, next) => {
         },
         order: [['battle_board_title', 'DESC']],
       });
-      console.log(battleS)
+     // console.log(battleS)
+    console.log(typeof q)
   
     //   /* 내용 검색 */
     //   const contents = await Teams.findAll({
