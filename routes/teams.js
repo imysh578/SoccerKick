@@ -6,9 +6,10 @@ const upload = require("./multer");
 const fs = require("fs");
 const path = require("path");
 const { QueryTypes } = require("sequelize");
-const { sequelize } = require("../models");
+const { sequelize, User } = require("../models");
 const formattedDate = require("../public/dateformat");
 const deleteTeamLogo = require("../public/deleteTeamLogo");
+const { logined, notLogined } = require("../public/loginCheck");
 
 const router = express.Router();
 const area_options = [
@@ -40,13 +41,9 @@ const area_options = [
 ];
 
 // 구단 리스트 화면
-router.route("/").get(async (req, res, next) => {
+router.route("/").get(logined, async (req, res, next) => {
   try {
-    // const teams = await sequelize.query("SELECT * FROM `teams`", {
-    // 	type: QueryTypes.SELECT,
-    // });
     const teams = await Teams.findAll();
-    const users = await Users.findAll();
     res.render("team", { teams, login: req.cookies.user.user_id });
   } catch (err) {
     console.error(err);
@@ -57,13 +54,19 @@ router.route("/").get(async (req, res, next) => {
 // 구단 생성
 router
   .route("/create")
-  .get(async (req, res, next) => {
+  .get(logined, async (req, res, next) => {
     try {
       // uploads 폴더가 없으면 public/uploads 경로에 새폴더 생성
       const dir = path.join(__dirname, "../public/uploads");
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
+      // if (req.cookies.user == undefined) {
+      //   res.render("team_create", {
+      //     area: area_options,
+      //   });
+      // } else {
+      // }
       res.render("team_create", {
         login: req.cookies.user.user_id,
         area: area_options,
@@ -95,7 +98,14 @@ router
           team_info: req.body.team_info,
         });
       }
-
+      const updateUser = await Users.update(
+        {
+          user_team: req.body.team_name,
+        },
+        {
+          where: { user_id: req.cookies.user.user_id },
+        }
+      );
       res.redirect("/team");
     } catch (err) {
       console.error(err);
@@ -111,18 +121,30 @@ router.route("/detail/:team_name").get(async (req, res, next) => {
         team_name: req.params.team_name,
       },
     });
-    const wannaJoin = await WannaJoin.findOne({
-      where: {
-        team_name: req.params.team_name,
-        user_id: req.cookies.user.user_id,
-      },
-    });
-    res.render("team_detail", {
-      team,
-      date: formattedDate(team, "team_created_date"),
-      login: req.cookies.user.user_id,
-      wannaJoin: wannaJoin,
-    });
+    if (req.cookies.user == undefined) {
+      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+      res.write("<script>alert('로그인 후 이용해주세요!')</script>");
+      res.write("<script>window.location='/team'</script>");
+    } else {
+      const user = await Users.findOne({
+        where: {
+          user_id: req.cookies.user.user_id,
+        },
+      });
+      const wannaJoin = await WannaJoin.findOne({
+        where: {
+          team_name: req.params.team_name,
+          user_id: req.cookies.user.user_id,
+        },
+      });
+      res.render("team_detail", {
+        team,
+        date: formattedDate(team, "team_created_date"),
+        login: req.cookies.user.user_id,
+        userTeam: user.user_team,
+        wannaJoin: wannaJoin,
+      });
+    }
   } catch (err) {
     console.error(err);
     next(err);
@@ -181,7 +203,7 @@ router
   .post(upload.single("uploaded_file"), async (req, res, next) => {
     try {
       if (req.file === undefined) {
-        const team = await Teams.update(
+        const updateTeam = await Teams.update(
           {
             team_name: req.body.team_name,
             team_homeGround: req.body.team_homeGround,
@@ -193,6 +215,14 @@ router
           },
           {
             where: { team_name: req.params.team_name },
+          }
+        );
+        const updateUser = await Users.update(
+          {
+            user_team: req.body.team_name,
+          },
+          {
+            where: { user_team: req.params.team_name },
           }
         );
       } else {
