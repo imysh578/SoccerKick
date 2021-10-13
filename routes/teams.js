@@ -10,9 +10,6 @@ const { sequelize } = require("../models");
 const formattedDate = require("../public/dateformat");
 const deleteTeamLogo = require("../public/deleteTeamLogo");
 
-if (req.cookies.user == undefined) {
-  res.cookie("user", 0);
-}
 const router = express.Router();
 const area_options = [
   "도봉구",
@@ -45,12 +42,12 @@ const area_options = [
 // 구단 리스트 화면
 router.route("/").get(async (req, res, next) => {
   try {
-    // const teams = await sequelize.query("SELECT * FROM `teams`", {
-    // 	type: QueryTypes.SELECT,
-    // });
     const teams = await Teams.findAll();
-    const users = await Users.findAll();
-    res.render("team", { teams, login: req.cookies.user.user_id });
+    if (req.cookies.user == undefined) {
+      res.render("team", { teams });
+    } else {
+      res.render("team", { teams, login: req.cookies.user.user_id });
+    }
   } catch (err) {
     console.error(err);
     next(err);
@@ -67,10 +64,16 @@ router
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
-      res.render("team_create", {
-        login: req.cookies.user.user_id,
-        area: area_options,
-      });
+      if (req.cookies.user == undefined) {
+        res.render("team_create", {
+          area: area_options,
+        });
+      } else {
+        res.render("team_create", {
+          login: req.cookies.user.user_id,
+          area: area_options,
+        });
+      }
     } catch (err) {
       console.error(err);
       next(err);
@@ -114,18 +117,24 @@ router.route("/detail/:team_name").get(async (req, res, next) => {
         team_name: req.params.team_name,
       },
     });
-    const wannaJoin = await WannaJoin.findOne({
-      where: {
-        team_name: req.params.team_name,
-        user_id: req.cookies.user.user_id,
-      },
-    });
-    res.render("team_detail", {
-      team,
-      date: formattedDate(team, "team_created_date"),
-      login: req.cookies.user.user_id,
-      wannaJoin: wannaJoin,
-    });
+    if (req.cookies.user == undefined) {
+      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+      res.write("<script>alert('로그인 후 이용해주세요!')</script>");
+      res.write("<script>window.location='/team'</script>");
+    } else {
+      const wannaJoin = await WannaJoin.findOne({
+        where: {
+          team_name: req.params.team_name,
+          user_id: req.cookies.user.user_id,
+        },
+      });
+      res.render("team_detail", {
+        team,
+        date: formattedDate(team, "team_created_date"),
+        login: req.cookies.user.user_id,
+        wannaJoin: wannaJoin,
+      });
+    }
   } catch (err) {
     console.error(err);
     next(err);

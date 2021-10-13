@@ -25,16 +25,6 @@
         </div>
         <h2 class="site-content__subtitle">구단 게시판</h2>
         <div class="board-list">
-        {% if posts %}
-          <div class="board-list__item"></div>
-          <div class="board-list__item"></div>
-          <div class="board-list__item"></div>
-          <div class="board-list__item"></div>
-          <div class="board-list__item"></div>
-          <div class="board-list__item"></div>
-          <div class="board-list__item"></div>
-          <div class="board-list__item"></div>
-        {% else %}
           {% for post in posts %}
           <div class="board-list__item">
             <div class="board-list__icon">
@@ -66,7 +56,6 @@
             </div>
           </div>
           {% endfor %}
-        {% endif %}
         </div>
       </section>
   </main>
