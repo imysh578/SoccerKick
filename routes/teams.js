@@ -61,12 +61,6 @@ router
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
-      // if (req.cookies.user == undefined) {
-      //   res.render("team_create", {
-      //     area: area_options,
-      //   });
-      // } else {
-      // }
       res.render("team_create", {
         login: req.cookies.user.user_id,
         area: area_options,
@@ -76,7 +70,7 @@ router
       next(err);
     }
   })
-  .post(upload.single("uploaded_file"), async (req, res, next) => {
+  .post(logined, upload.single("uploaded_file"), async (req, res, next) => {
     try {
       if (req.file) {
         const teams = await Teams.create({
