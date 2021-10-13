@@ -12,6 +12,7 @@
           <ul>
             <li><a href="/team">구단 리스트</a></li>
             <li><a href="/team_board">구단 게시판</a></li>
+
             <li><a href="/team/create">구단 만들기</a></li>
           </ul>
           <span>카테고리</span>
@@ -47,13 +48,17 @@
   <div id="empty-box"></div>
 </header>
 <script>
-  window.addEventListener("scroll", function(event) {
-    if(window.scrollY){
-      document.querySelector('.top-nav').style.backgroundColor = '#ddd';
-      document.querySelector('.search-bar').style.color = '#8e4585'
-    } else{
-      document.querySelector('.top-nav').style.backgroundColor = '#e9e9e93d';
-      document.querySelector('.search-bar').style.color = '#eee'
-    }
-  }, false);
+  window.addEventListener(
+    "scroll",
+    function (event) {
+      if (window.scrollY) {
+        document.querySelector(".top-nav").style.backgroundColor = "#ddd";
+        document.querySelector(".search-bar").style.color = "#8e4585";
+      } else {
+        document.querySelector(".top-nav").style.backgroundColor = "#e9e9e93d";
+        document.querySelector(".search-bar").style.color = "#eee";
+      }
+    },
+    false
+  );
 </script>
