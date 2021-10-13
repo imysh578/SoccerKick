@@ -6,6 +6,7 @@ exports.logined = (req, res, next) => {
     res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
     res.write("<script>alert('로그인 후 이용해주세요!')</script>");
     res.write("<script>window.location='/user/login'</script>");
+    res.end();
   } else {
     next(); // 로그인이 돼있으면 다음 미들웨어로 넘어가
   }
