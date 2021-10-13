@@ -4,9 +4,8 @@ module.exports = class Battle_board extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-
         battle_board_postnumber: {
-          type:Sequelize.INTEGER,
+          type: Sequelize.INTEGER,
           allowNull: false,
           primaryKey: true,
           autoIncrement: true,
@@ -38,7 +37,7 @@ module.exports = class Battle_board extends Sequelize.Model {
         battle_board_date: {
           type: Sequelize.DATE,
           allowNull: false,
-          defaultValue: Sequelize.NOW(),  //입력시간
+          defaultValue: Sequelize.NOW(), //입력시간
         },
       },
       {
@@ -52,7 +51,5 @@ module.exports = class Battle_board extends Sequelize.Model {
       }
     );
   }
-  static associate(db) {
-
-  }
+  static associate(db) {}
 };
