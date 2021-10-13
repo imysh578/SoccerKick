@@ -19,22 +19,31 @@ router
   })
   .post("/", async (req, res, next) => {
     try {
-      const user = await User.create({
-        user_id: req.body.user_id,
-        user_password: req.body.user_password,
-        user_name: req.body.user_name,
-        user_age: req.body.user_age,
-        user_area: req.body.user_area,
-        user_gender: req.body.user_gender,
-        user_mail: req.body.user_mail,
-        user_position: req.body.user_position,
-        user_team: req.body.user_team,
-        user_aboutMe: req.body.user_aboutMe,
-        user_grade: req.body.user_grade,
+      const userCreated = await User.findOne({
+        where: { user_id: req.body.user_id },
       });
-      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-      res.write("<script>alert('회원가입 완료')</script>");
-      res.write("<script>window.location='/user/login'</script>");
+      if (!userCreated) {
+        const user = await User.create({
+          user_id: req.body.user_id,
+          user_password: req.body.user_password,
+          user_name: req.body.user_name,
+          user_age: req.body.user_age,
+          user_area: req.body.user_area,
+          user_gender: req.body.user_gender,
+          user_mail: req.body.user_mail,
+          user_position: req.body.user_position,
+          user_team: req.body.user_team,
+          user_aboutMe: req.body.user_aboutMe,
+          user_grade: req.body.user_grade,
+        });
+        res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+        res.write("<script>alert('회원가입 완료')</script>");
+        res.write("<script>window.location='/user/login'</script>");
+      } else {
+        res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+        res.write("<script>alert('이미 존재하는 아이디')</script>");
+        res.write("<script>window.location='/user/login'</script>");
+      }
     } catch (err) {
       console.error(err);
     }
@@ -45,7 +54,6 @@ router
   .get("/login", function (req, res) {
     res.render("login");
   })
-
   .post("/login", async (req, res, next) => {
     try {
       const user = await User.findOne({
@@ -66,7 +74,6 @@ router
           maxAge: 60 * 60 * 1000 * 24,
           httpOnly: true, //
           path: "/",
-          // signed: true,
         });
         res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
         res.write("<script>alert('로그인 성공')</script>");
@@ -76,6 +83,21 @@ router
       console.error(err);
       next(err);
     }
+  });
+
+//비밀번호 찾기
+router
+  .get("/findPWD", (req, res) => {
+    res.render("findPWD");
+  })
+  .post("/findPWD", async (req, res, next) => {
+    const user = await User.findOne({
+      where: {
+        user_mail: req.body.user_mail,
+      },
+    });
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+    res.write("<script>alert('메일발송 되었습니다')</script>");
   });
 
 // 마이페이지
@@ -104,6 +126,7 @@ router
       res.clearCookie("user", user);
       res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
       res.write("<script>alert('탈퇴 되었습니다')</script>");
+      res.write("<script>alert('퉤')</script>");
       res.write("<script>window.location='/'</script>");
       // res.redirect("/");
     } catch (err) {

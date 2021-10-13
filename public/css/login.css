@@ -1,7 +1,6 @@
 body {
   margin: 0;
   color: #6a6f8c;
-  background: #c8c8c8;
   font: 600 16px/18px "Open Sans", sans-serif;
 }
 *,
@@ -27,7 +26,7 @@ a {
   width: 100%;
   margin: auto;
   max-width: 525px;
-  min-height: 670px;
+  min-height: 920px;
   position: relative;
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
