@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>구단 게시판</title>
+    <title>내 소속 구단 페이지</title>
     {% include "./layout/style.html" %}
     <link rel="stylesheet" href="/css/team_board.css" />
   </head>
@@ -31,29 +31,35 @@
             </div>
             <h1 class="team-name">{{posts[0].team_name}}</h1>
           </div>
-          <h2 class="site-content__subtitle">구단 게시판</h2>
+          <h2 class="site-content__subtitle">구단원 목록</h2>
           <div class="board-list">
-            {% for post in posts %}
+            {% for user in users %}
             <div class="board-list__item">
               <div class="board-list__icon">
                 <i class="fa fa-comments-o" aria-hidden="true"></i>
               </div>
               <div class="board-list__info">
-                <a class="board-list__info__name">{{post.post_num}}</a>
+                <a class="board-list__info__name">{{user.user_id}}</a>
               </div>
               <div class="board-list__info">
-                <a class="board-list__info__name">{{post.title}}</a>
+                <a class="board-list__info__name">{{user.user_gender}}</a>
+              </div>
+              <div class="board-list__info">
+                <a class="board-list__info__name">{{user.user_position}}</a>
+              </div>
+              <div class="board-list__info">
+                <a class="board-list__info__name">{{user.user_aboutMe}}</a>
               </div>
 
               <div class="board-list__stats">
-                <div class="board-list__stats__value">{{post.count_views}}</div>
+                <div class="board-list__stats__value">{{user.count_views}}</div>
                 <div class="board-list__stats__key">조회수</div>
               </div>
               <div class="board-list__lastpost board-list__item--last">
                 <div>
                   <div class="board-list__lastpost__topic">작성자</div>
                   <div class="board-list__lastpost__user">
-                    <a class="board-list__link">{{post.writer_id}}</a>
+                    <a class="board-list__link">{{user.writer_id}}</a>
                   </div>
                 </div>
                 <div class="board-list__info">
@@ -65,9 +71,6 @@
             </div>
             {% endfor %}
           </div>
-          <a href="/team_board/create"
-            ><button class="write_btn">글쓰기</button></a
-          >
         </section>
       </div>
     </main>

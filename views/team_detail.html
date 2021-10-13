@@ -74,7 +74,7 @@
         {% if login == team[0].team_leaderId %}
         <a href="/team/detail/{{team[0].team_name}}/edit" class="edit-btn"><button>구단 정보 수정</button></a>
         {% else  %}
-          {% if wannaJoin == null and userTeam == null %}
+          {% if wannaJoin == null or userTeam == null %}
           <a href="" class="signup-btn"><button>가입신청</button></a>
           {% endif %}
         {% endif %}
@@ -82,7 +82,6 @@
     </div>
   </main>
   {% include "./layout/footer.html" %}
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/team.js"></script>
 </body>
 

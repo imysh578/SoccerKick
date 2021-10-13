@@ -41,10 +41,11 @@
             <img src="/images/location.png" alt="">
             <span class="info-name">지역</span>
             <div class="info-value">
-              <select name="team_area" id="">
+              <select name="team_area" value="중랑구">
                 {% for index in area %}
                 <option value="{{area[loop.index-1]}}">{{area[loop.index-1]}}</option>
                 {% endfor %}
+                <option value="{{team[0].team_area}}" selected hidden>{{team[0].team_area}}</option>
               </select>
             </div>
           </div>
@@ -89,7 +90,6 @@
     </div>
   </main>
   {% include "./layout/footer.html" %}
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/team.js"></script>
 </body>
 
