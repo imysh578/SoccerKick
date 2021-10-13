@@ -40,7 +40,13 @@
           <div class="detail-info">
             <img src="/images/location.png" alt="">
             <span class="info-name">지역</span>
-            <input type="text" class="info-value" name="team_area" value="{{team[0].team_area}}"></input>
+            <div class="info-value">
+              <select name="team_area" id="">
+                {% for index in area %}
+                <option value="{{area[loop.index-1]}}">{{area[loop.index-1]}}</option>
+                {% endfor %}
+              </select>
+            </div>
           </div>
           <div class="detail-info">
             <img src="/images/playground1.png" alt="">

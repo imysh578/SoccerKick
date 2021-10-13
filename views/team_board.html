@@ -4,62 +4,76 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> 구단 게시판</title>
+    <title>구단 게시판</title>
     {% include "./layout/style.html" %}
-    <link rel="stylesheet" href="css/board.css">
-    <!-- <style>
-    img{ 
-      height: 32px;
-      width: 32px;}
-    </style> -->
-</head>
-<body class="wrapper">
-  {% include "./layout/header.html" %}
-  <main class="site-content">
-    <div class="forum-index">
-      <section>
-        <div class="team-info-box">
-          <div class="board-list__avatar">
-            {% if post.logo_filename %}
-            <img class="board-list__avatar__image" src="/uploads/{{team.logo_filename}}" alt="Team-logo">
-            {% else %}
-            <img class="board-list__avatar__image" src="/images/team-logo-empty.png" alt="Team-logo">
-            {% endif %}
+    <link rel="stylesheet" href="css/team_board.css" />
+  </head>
+  <body class="wrapper">
+    {% include "./layout/header.html" %}
+    <main class="site-content">
+      <div class="forum-index">
+        <section>
+          <div class="team-info-box">
+            <div class="board-list__team">
+              {% if post.logo_filename %}
+              <img
+                class="board-list__logo__image"
+                src="/uploads/{{team.logo_filename}}"
+                alt="Team-logo"
+              />
+              {% else %}
+              <img
+                class="board-list__logo__image"
+                src="/images/team-logo-empty.png"
+                alt="Team-logo"
+              />
+              {% endif %}
+            </div>
+            <h1 class="team-name">{{posts[0].team_name}}</h1>
           </div>
-          <h1 class="team-name">{{posts[0].team_name}}</h1>
-        </div>
-        <h2 class="site-content__subtitle">구단 게시판</h2>
-        <div class="board-list">
-          {% for post in posts %}
-          <div class="board-list__item">
-            <div class="board-list__icon">
-              <i class="fa fa-comments-o" aria-hidden="true"></i>
-            </div>
-            <div class="board-list__info">
-              <a class="board-list__info__name">{{post.post_num}}</a>
-            </div>
-            <div class="board-list__info">
-              <a class="board-list__info__name">{{post.title}}</a>
-            </div>
-            
-            <div class="board-list__stats">
-              <div class="board-list__stats__value">{{post.count_views}}</div>
-              <div class="board-list__stats__key">조회수</div>
-            </div>
-            <div class="board-list__lastpost board-list__item--last">
-              <div>
-                <div class="board-list__lastpost__topic">
-                  작성자
-                </div>
-                <div class="board-list__lastpost__user">
-                  <a class="board-list__link">{{post.writer_id}}</a>
-                </div>
+          <h2 class="site-content__subtitle">구단 게시판</h2>
+          <div class="board-list">
+            {% for post in posts %}
+            <div class="board-list__item">
+              <div class="board-list__icon">
+                <i class="fa fa-comments-o" aria-hidden="true"></i>
               </div>
               <div class="board-list__info">
-                <div class="board-list__info__name">{{post.created_at}}</div>
+                <a class="board-list__info__name">{{post.post_num}}</a>
+              </div>
+              <div class="board-list__info">
+                <a class="board-list__info__name">{{post.title}}</a>
+              </div>
+
+              <div class="board-list__stats">
+                <div class="board-list__stats__value">{{post.count_views}}</div>
+                <div class="board-list__stats__key">조회수</div>
+              </div>
+              <div class="board-list__lastpost board-list__item--last">
+                <div>
+                  <div class="board-list__lastpost__topic">작성자</div>
+                  <div class="board-list__lastpost__user">
+                    <a class="board-list__link">{{post.writer_id}}</a>
+                  </div>
+                </div>
+                <div class="board-list__info">
+                  <div class="board-list__info__name">
+                    {{ date[loop.index-1] }}
+                  </div>
+                </div>
               </div>
             </div>
+            {% endfor %}
           </div>
+<<<<<<< HEAD
+          <a href="/team_board/create"
+            ><button class="write_btn">글쓰기</button></a
+          >
+        </section>
+      </div>
+    </main>
+    {% include "./layout/footer.html" %}
+=======
           {% endfor %}
         </div>
       </section>
@@ -69,4 +83,9 @@
   <script src="/team_board.js"></script>
 </body>
 </html>
+>>>>>>> c3e8410121a29dea942b2f7e88d380b78265c8d6
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/team_board.js"></script>
+  </body>
+</html>
