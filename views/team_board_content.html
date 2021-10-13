@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>구단 게시판</title>
     {% include "./layout/style.html" %}
-    <link rel="stylesheet" href="/css/team_board.css" />
+    <link rel="stylesheet" href="/css/team_board_content.css" />
   </head>
   <body class="wrapper">
     {% include "./layout/header.html" %}
@@ -29,41 +29,36 @@
               />
               {% endif %}
             </div>
-            <h1 class="team-name">{{posts[0].team_name}}</h1>
           </div>
-          <h2 class="site-content__subtitle">구단 게시판</h2>
-          <div class="board-list">
-            {% for post in posts %}
-            <div class="board-list__item">
+          <div class="content-title">
+            <div class="content-title-list">
               <div class="board-list__icon">
                 <i class="fa fa-comments-o" aria-hidden="true"></i>
               </div>
-              <div class="board-list__info">
-                <a class="board-list__info__name">{{post.post_num}}</a>
+              <div class="content-title-list_ post_title">
+                <a>{{post[0].title}}</a>
               </div>
-              <div class="board-list__info">
-                <a class="board-list__info__name">{{post.title}}</a>
-              </div>
-
-              <div class="board-list__stats">
-                <div class="board-list__stats__value">{{post.count_views}}</div>
-                <div class="board-list__stats__key">조회수</div>
-              </div>
-              <div class="board-list__lastpost board-list__item--last">
+              <div class="content-title-list_ writer">
                 <div>
-                  <div class="board-list__lastpost__topic">작성자</div>
-                  <div class="board-list__lastpost__user">
-                    <a class="board-list__link">{{post.writer_id}}</a>
-                  </div>
+                  <a>{{post[0].writer_id}}</a>
                 </div>
-                <div class="board-list__info">
-                  <div class="board-list__info__name">
-                    {{ date[loop.index-1] }}
-                  </div>
+              </div>
+              <div class="content-title-list_ views">
+                <div>{{post[0].count_views}}</div>
+              </div>
+              <div class="content-title-list_ date">
+                <div>
+                  <div>{{ date[0] }}</div>
                 </div>
               </div>
             </div>
-            {% endfor %}
+          </div>
+          <div class="content-content">
+            <div>
+              <div>
+                <a>{{post[0].contents}}</a>
+              </div>
+            </div>
           </div>
           <a href="/team_board/create"
             ><button class="write_btn">글쓰기</button></a
