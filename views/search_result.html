@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>검색결과테이블</title>
     {% include "./layout/style.html" %}
-    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/search_result.css">
 </head>
 <body class="wrapper">
   {% include "./layout/header.html" %}
@@ -14,19 +14,24 @@
     <div class="forum-index">
       <section>
         <h2 class="site-content__subtitle">구단 리스트</h2>
+        <div>
+          <span>구단명</span>
+          <span>인원수</span>
+          <span>팀로고</span>        
+          <span>구단주 아이디</span></div>        
         <div class="board-list">
           {% for team in teams %}
-          {% if loop.index <= 3 %}
-          <div class="board-list__item">
+          {% if loop.index <= 4 %}
+          <div class="board-list__item team_section">
             <div class="board-list__icon">
               <i class="fa fa-comments-o" aria-hidden="true"></i>
             </div>
             <div class="board-list__info">
-              <a class="board-list__info__name">{{team.team_name}}</a>
+              <a class="board-list__info__name_1">{{team.team_name}}</a>
             </div>
             <div class="board-list__stats">
               <div class="board-list__stats__value">{{team.team_headCount}}</div>
-              <div class="board-list__stats__key">인원수</div>
+              <div class="board-list__stats__key"><!--인원수--></div>
             </div>
             <div class="board-list__lastpost board-list__item--last">
               <div class="board-list__avatar">
@@ -34,10 +39,86 @@
               </div>
               <div>
                 <div class="board-list__lastpost__topic">
-                  팀 리더
+                  <!--팀 리더-->
                 </div>
                 <div class="board-list__lastpost__user">
                   <a class="board-list__link">{{team.team_leaderId}}</a>
+                </div>
+                <div class="board-list__created__date">
+                  {{date[loop.index]}}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        
+      </section>
+      <br>
+      <!--=====================================용병게시판=====================================-->
+      <section>
+        <h2 class="site-content__subtitle">용병 게시판</h2>
+        <div class="board-list">
+          {% for mer in merces %} <!--(merces):merceS의 (merce)를 받아와-->
+          {% if loop.index <= 3 %}
+          <div class="board-list__item mercenary_section">
+            <div class="board-list__icon">
+              <i class="fa fa-comments-o" aria-hidden="true"></i>
+            </div>
+            <div class="board-list__info">
+              <a class="board-list__info__name_2">{{mer.mercenary_board_number}}</a>
+            </div>
+            <div>
+              {{mer.mercenary_board_title}}
+            </div>
+            <div class="board-list__stats">
+              <div class="board-list__stats__value">{{mer.mercenary_select}}</div>
+              <div class="board-list__stats__key"><!--할래요/구해요--></div>
+            </div>
+            
+              <div>
+                <div class="board-list__lastpost__topic">
+                <!--팀 리더-->
+                </div>
+                <div class="board-list__lastpost__user">
+                  <a class="board-list__link">{{mer.user_area}}</a>
+                </div>
+                <div class="board-list__created__date">
+                  {{date[loop.index]}}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </section>
+      <br>
+      <!--=====================================배틀=====================================-->
+      <section>
+        <h2 class="site-content__subtitle">배틀 게시판</h2>
+        <div class="board-list">
+          {% for bat in battles %} <!--(battles):battleS의 (battles)를 받아와-->
+          {% if loop.index <= 3 %}
+          <div class="board-list__item battle_section">
+            <div class="board-list__icon">
+              <i class="fa fa-comments-o" aria-hidden="true"></i>
+            </div>
+            <div class="board-list__info">
+              <a class="board-list__info__name_3">{{bat.battle_board_teamName}}</a>
+            </div>
+            <div class="board-list__stats">
+              <div class="board-list__stats__value">{{bat.battle_board_title}}</div>
+              <div class="board-list__stats__key"><!--할래요/구해요--></div>
+            </div>
+            
+              <div>
+                <div class="board-list__lastpost__topic">
+                <!--팀 리더-->
+                </div>
+                <div class="board-list__lastpost__user">
+                  <a class="board-list__link">{{bat.battle_board_area}}</a>
                 </div>
                 <div class="board-list__created__date">
                   {{date[loop.index]}}
@@ -52,7 +133,8 @@
   </main>
   {% include "./layout/footer.html" %}
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="/team.js"></script>
+  <script src="/search.js"></script>
+  
 </body>
 </html>
 
