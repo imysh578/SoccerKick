@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("../models/users");
 const session = require("express-session");
 const cookieParser = require("cookie-parser"); //
+const { logined, notLogined } = require("../public/loginCheck");
 
 const router = express.Router();
 router.use(cookieParser("12345!@#$%"));
@@ -69,7 +70,6 @@ router
         );
         res.write("<script>window.location='/user/login'</script>");
       } else {
-        //여기서 쿠키 암호화
         res.cookie("user", user, {
           maxAge: 60 * 60 * 1000 * 24,
           httpOnly: true, //
@@ -102,16 +102,12 @@ router
 
 // 마이페이지
 router
-  .get("/myPage", async (req, res, next) => {
+  .get("/myPage", logined, async (req, res, next) => {
     try {
       const user = await User.findAll({
         where: { user_id: req.cookies.user.user_id },
       });
-      if (req.cookies.hasOwnProperty("user")) {
-        res.render("myPage", { user, login: req.cookies.user.user_id });
-      } else {
-        res.render("myPage");
-      }
+      res.render("myPage", { user, login: req.cookies.user.user_id });
     } catch (err) {
       console.error(err);
       next(err);
@@ -144,18 +140,14 @@ router.get("/logout", (req, res) => {
 
 //회원 정보 수정
 router
-  .get("/edit/:user_id", async (req, res, next) => {
+  .get("/edit/:user_id", logined, async (req, res, next) => {
     try {
       const user = await User.findAll({
         where: {
           user_id: req.cookies.user.user_id,
         },
       });
-      if (req.cookies.hasOwnProperty("user")) {
-        res.render("edit", { user, login: req.cookies.user.user_id });
-      } else {
-        res.render("edit");
-      }
+      res.render("edit", { user, login: req.cookies.user.user_id });
     } catch (err) {
       console.error(err);
       next(err);
