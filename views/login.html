@@ -9,108 +9,154 @@
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/footer.css" />
     <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/login.css" />
   </head>
   <body>
     {% include "./layout/header.html" %}
     <main>
-      <!-- <form method="POST">
-        <div id="table-div">
-          <table>
-            <tr>
-              <td>아이디</td>
-              <td><input type="text" name="user_id" /></td>
-            </tr>
-            <br />
-            <tr>
-              <td>비밀번호</td>
-              <td><input type="password" name="user_password" /></td>
-            </tr>
-            <br />
-          </table>
-        </div>
-        <input type="submit" value="로그인" id="submit-btn" />
-      </form>
-      <div id="find-id">
-        <a href="">아이디찾기</a>/<a href="">비밀번호찾기</a>
-      </div> -->
       <!-- 로그인 -->
-      <form  method="post">
-      <div class="login-wrap">
-        <div class="login-html">
-          <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
-          <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
-          <div class="login-form">
-            <div class="sign-in-htm">
-              <div class="group">
-                <label for="user" class="label">UserID</label>
-                <input id="user" type="text" class="input" name="user_id">
+      <form method="post">
+        <div class="login-wrap">
+          <div class="login-html">
+            <input
+              id="tab-1"
+              type="radio"
+              name="tab"
+              class="sign-in"
+              checked
+            /><label for="tab-1" class="tab">로그인</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up" /><label
+              for="tab-2"
+              class="tab"
+              >회원가입</label
+            >
+            <div class="login-form">
+              <div class="sign-in-htm">
+                <div class="group">
+                  <label for="user" class="label">ID</label>
+                  <input id="user" type="text" class="input" name="user_id" />
+                </div>
+                <div class="group">
+                  <label for="pass" class="label">비밀번호</label>
+                  <input
+                    id="pass"
+                    type="password"
+                    class="input"
+                    data-type="password"
+                    name="user_password"
+                  />
+                </div>
+
+                <div class="group">
+                  <input
+                    type="submit"
+                    class="button"
+                    value="로그인"
+                    id="signIn-btn"
+                    formaction="/user/login"
+                  />
+                </div>
+                <div class="hr"></div>
+                <div class="foot-lnk">
+                  <a href="/user/findPWD">비밀번호찾기</a>
+                </div>
               </div>
-              <div class="group">
-                <label for="pass" class="label">Password</label>
-                <input id="pass" type="password" class="input" data-type="password" name="user_password">
-              </div>
-              <div class="group">
-                <input id="check" type="checkbox" class="check" checked>
-                <label for="check"><span class="icon"></span> Keep me Signed in</label>
-              </div>
-              <div class="group">
-                <input type="submit" class="button" value="Sign In" id="signIn-btn" formaction="/user/login">
-              </div>
-              <div class="hr"></div>
-              <div class="foot-lnk">
-                <a href="#forgot">Forgot Password?</a>
+            </form>
+              <form method="post">
+              <!-- 회원가입 -->
+              <div class="sign-up-htm">
+                <div class="group">
+                  <label for="user" class="label">Id</label>
+                  <input id="user" type="text" class="input" name="user_id" />
+                </div>
+                <div class="group">
+                  <label for="pass" class="label">비밀번호</label>
+                  <input
+                    id="pass"
+                    type="password"
+                    class="input"
+                    data-type="password"
+                    name="user_password"
+                  />
+                </div>
+                <div class="group">
+                  <label for="pass" class="label">이름</label>
+                  <input
+                    id="pass"
+                    type="text"
+                    class="input"
+                    data-type="text"
+                    name="user_name"
+                  />
+                </div>
+                <div class="group">
+                  <label for="pass" class="label">나이</label>
+                  <input
+                    id="pass"
+                    type="text"
+                    class="input"
+                    data-type="text"
+                    name="user_age"
+                  />
+                </div>
+                <div class="group">
+                  <label for="pass" class="label">지역</label>
+                  <input
+                    id="pass"
+                    type="text"
+                    class="input"
+                    data-type="text"
+                    name="user_area"
+                  />
+                </div>
+                <div class="group">
+                  <label for="pass" class="label">성별</label>
+                  <input
+                    id="pass"
+                    type="text"
+                    class="input"
+                    data-type="text"
+                    name="user_gender"
+                  />
+                </div>
+
+                <div class="group">
+                  <label for="pass" class="label">Email Address</label>
+                  <input id="pass" type="text" class="input" name="user_mail" />
+                </div>
+                <div class="group">
+                  <label for="pass" class="label">포지션</label>
+                  <input
+                    id="pass"
+                    type="text"
+                    class="input"
+                    name="user_position"
+                  />
+                </div>
+                <div class="group">
+                  <label for="pass" class="label">자기소개</label>
+                  <input
+                    id="pass"
+                    type="text"
+                    class="input"
+                    name="user_aboutMe"
+                  />
+                </div>
+                <div class="group">
+                  <input
+                    type="submit"
+                    class="button"
+                    value="회원가입"
+                    id="signUp-btn"
+                    formaction="/user"
+                  />
+                </div>
+                <div class="hr"></div>
               </div>
             </div>
-          </form>
-          <!-- 회원가입 -->
-            <form method="post">
-            <div class="sign-up-htm">
-              <div class="group">
-                <label for="user" class="label">UserId</label>
-                <input id="user" type="text" class="input" name="user_id">
-              </div>
-              <div class="group">
-                <label for="pass" class="label">Password</label>
-                <input id="pass" type="password" class="input" data-type="password" name="user_password">
-              </div>
-              <div class="group">
-                <label for="pass" class="label">이름</label>
-                <input id="pass" type="password" class="input" data-type="password" name="user_name">
-              </div>
-              <div class="group">
-                <label for="pass" class="label">나이</label>
-                <input id="pass" type="password" class="input" data-type="password" name="user_age">
-              </div>
-              <div class="group">
-                <label for="pass" class="label">지역</label>
-                <input id="pass" type="password" class="input" data-type="password" name="user_area">
-              </div>
-              <div class="group">
-                <label for="pass" class="label">성별</label>
-                <input id="pass" type="password" class="input" data-type="password" name="user_gender">
-              </div>
-              
-              <div class="group">
-                <label for="pass" class="label">Email Address</label>
-                <input id="pass" type="text" class="input" name="user_mail">
-              </div>
-              <div class="group">
-                <label for="pass" class="label">포지션</label>
-                <input id="pass" type="text" class="input" name="user_position">
-              </div>
-              <div class="group">
-                <label for="pass" class="label">자기소개</label>
-                <input id="pass" type="text" class="input" name="user_aboutMe">
-              </div>
-              <div class="group">
-                <input type="submit" class="button" value="Sign Up" id="signUp-btn" formaction="/user">
-              </div>
-              <div class="hr"></div>
-              <div class="foot-lnk">
-                <label for="tab-1">Already Member?</a>
-              </div>
-    </form>
+          </div>
+        </div>
+      </form>
     </main>
     <!--  -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

@@ -1,0 +1,56 @@
+.find-password-page {
+  width: 550px;
+  text-align: center;
+  overflow-x: hidden;
+  margin: 11% auto;
+  background-color: #f9f9f9;
+  vertical-align: middle;
+}
+
+.find-password-header {
+  text-align: left;
+  margin: 60px 75px 0 75px;
+  padding-bottom: 10px;
+  font-size: 16pt;
+  border-bottom: 3px solid #8e4585;
+}
+
+.find-password-content {
+  margin: 30px 0 20px 85px;
+  text-align: left;
+}
+
+.find-password-div {
+  margin-bottom: 15px;
+}
+
+.find-password-div span {
+  font-size: 14pt;
+  color: #8e4585;
+}
+
+.find-password-content input[type="text"] {
+  width: 380px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 14pt;
+  padding-left: 10px;
+  color: #666666;
+}
+
+.find-password-button {
+  padding-bottom: 50px;
+}
+
+.find-password-button button {
+  height: 33px;
+  background-color: #8e4585;
+  border: none;
+  color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}

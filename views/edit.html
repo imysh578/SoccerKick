@@ -14,128 +14,122 @@
   <body>
     {% include "./layout/header.html" %}
     <main>
-      <fieldset>
-        <legend>회원 정보를 수정해보자</legend>
-        <form method="POST">
-          <table style="width: 30%">
-            {% for a in user %}
-            <tr>
-              <td id="tdWidth">아이디</td>
-              <td>
-                <input
-                  type="text"
-                  name="user_id"
-                  id="user_id"
-                  value="{{a.user_id}}"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td id="tdWidth">비밀번호</td>
-              <td>
-                <input
-                  type="password"
-                  name="user_password"
-                  id="user_password"
-                  value="{{a.user_password}}"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td id="tdWidth">이름</td>
-              <td>
-                <input
-                  type="text"
-                  name="user_name"
-                  id="user_name"
-                  value="{{a.user_name}}"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td id="tdWidth">나이</td>
-              <td>
-                <input
-                  type="number"
-                  name="user_age"
-                  id="user_age"
-                  value="{{a.user_age}}"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td id="tdWidth">지역</td>
-              <td>
-                <input
-                  type="text"
-                  name="user_area"
-                  id="user_area"
-                  value="{{a.user_area}}"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td id="tdWidth">성별</td>
-              <td>
-                <select
-                  name="user_gender"
-                  id="user_gender"
-                  value="{{a.user_gender}}"
-                >
-                  <option value="男">남자</option>
-                  <option value="女">여자</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdWidth">이메일</td>
-              <td>
-                <input
-                  type="text"
-                  name="user_mail"
-                  id="user_mail"
-                  value="{{a.user_mail}}"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td id="tdWidth">포지션</td>
-              <td>
-                <input
-                  type="text"
-                  name="user_position"
-                  id="user_position"
-                  value="{{a.user_position}}"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td id="tdWidth">소속팀</td>
-              <td>
-                <input
-                  type="text"
-                  name="user_team"
-                  id="user_team"
-                  value="{{a.user_team}}"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td id="tdWidth">자기소개</td>
-              <td>
-                <input
-                  type="text"
-                  name="user_aboutMe"
-                  id="user_aboutMe"
-                  value="{{a.user_aboutMe}}"
-                />
-              </td>
-            </tr>
-            {% endfor %}
-          </table>
-          <input type="submit" value="제출" />
+        <form method="post">
+          <div class="login-wrap">
+            <div class="login-html">
+              
+              <input id="tab-2" type="radio" name="tab" class="sign-up" /><label
+                for="tab-2"
+                class="tab"
+                style="color: #fff;"
+                >정보수정을 하자^^</label
+              >
+              <div class="login-form">
+                
+              
+                <form method="post">
+                <!-- 회원가입 -->
+                <div class="sign-up-htm">
+                  {% for a in user %}
+                  <div class="group">
+                    <label for="user" class="label">Id</label>
+                    <input id="user" type="text" class="input" name="user_id" value="{{a.user_id}}"/>
+                  </div>
+                  <div class="group">
+                    <label for="pass" class="label">비밀번호</label>
+                    <input
+                      id="pass"
+                      type="password"
+                      class="input"
+                      data-type="password"
+                      name="user_password"
+                      value="{{a.user_password}}"
+                    />
+                  </div>
+                  <div class="group">
+                    <label for="pass" class="label">이름</label>
+                    <input
+                      id="pass"
+                      type="text"
+                      class="input"
+                      data-type="text"
+                      name="user_name"
+                      value="{{a.user_name}}"
+                    />
+                  </div>
+                  <div class="group">
+                    <label for="pass" class="label">나이</label>
+                    <input
+                      id="pass"
+                      type="text"
+                      class="input"
+                      data-type="text"
+                      name="user_age"
+                      value="{{a.user_age}}"
+                    />
+                  </div>
+                  <div class="group">
+                    <label for="pass" class="label">지역</label>
+                    <input
+                      id="pass"
+                      type="text"
+                      class="input"
+                      data-type="text"
+                      name="user_area"
+                      value="{{a.user_area}}"
+                    />
+                  </div>
+                  <div class="group">
+                    <label for="pass" class="label">성별</label>
+                    <input
+                      id="pass"
+                      type="text"
+                      class="input"
+                      data-type="text"
+                      name="user_gender"
+                      value="{{a.user_gender}}"
+                    />
+                  </div>
+  
+                  <div class="group">
+                    <label for="pass" class="label">Email Address</label>
+                    <input id="pass" type="text" class="input" name="user_mail" value="{{a.user_mail}}"/>
+                  </div>
+                  <div class="group">
+                    <label for="pass" class="label">포지션</label>
+                    <input
+                      id="pass"
+                      type="text"
+                      class="input"
+                      name="user_position"
+                      value="{{a.user_position}}"
+                    />
+                  </div>
+                  <div class="group">
+                    <label for="pass" class="label">자기소개</label>
+                    <input
+                      id="pass"
+                      type="text"
+                      class="input"
+                      name="user_aboutMe"
+                      value="{{a.user_aboutMe}}"
+                    />
+                  </div>
+                  <div class="group">
+                    <input
+                      type="submit"
+                      class="button"
+                      value="제출"
+                      id="signUp-btn"
+                    />
+                  </div>
+                  <div class="hr"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
-      </fieldset>
+            {% endfor %}
     </main>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/user.js"></script>
