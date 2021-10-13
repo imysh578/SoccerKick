@@ -27,7 +27,6 @@ router.route("/content/:mercenary_board_number").get(async (req, res, next) => {
     });
     res.render("mercenary_content", {
       info,
-
       date: formattedDate(info, "mercenary_board_date"),
     });
   } catch (err) {}

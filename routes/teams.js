@@ -10,9 +10,6 @@ const { sequelize } = require("../models");
 const formattedDate = require("../public/dateformat");
 const deleteTeamLogo = require("../public/deleteTeamLogo");
 
-if (req.cookies.user == undefined) {
-  res.cookie("user", 0);
-}
 const router = express.Router();
 const area_options = [
   "도봉구",
