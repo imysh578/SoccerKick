@@ -13,12 +13,7 @@
   <main class="site-content">
     <div class="forum-index">
       <section>
-        <h2 class="site-content__subtitle">구단 리스트</h2>
-        <div class="category_names_team">
-          <span class="cn_team_name">구단명</span>
-          <span class="cn_team_area">지역</span>
-          <span class="cn_team_logo">팀로고</span>        
-          <span class="cn_team_leaderID">구단주 아이디</span></div>        
+        <h2 class="site-content__subtitle">구단 리스트</h2>       
         <div class="board-list">
           {% for team in teams %}
           {% if loop.index <= 4 %}
@@ -59,12 +54,6 @@
       <!--=====================================용병게시판=====================================-->
       <section>
         <h2 class="site-content__subtitle">용병 게시판</h2>
-        <div class="category_names_mercenary">
-          <span class="cn_mercenary_postnumber">글 번호</span>
-          <span class="cn_mercenary_title">제목</span>
-          <span class="cn_mercenary_what">분류</span>        
-          <span class="cn_mercenary_writer">글쓴이</span>
-          <span class="cn_mercenary_date">게시일</span></div>
         <div class="board-list">
           {% for mer in merces %} <!--(merces):merceS의 (merce)를 받아와-->
           {% if loop.index <= 4 %}
