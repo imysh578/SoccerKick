@@ -7,7 +7,6 @@ const router = express.Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    console.log(res.locals);
     const posts = await TeamBoards.findAll({
       where: {
         team_name: req.cookies.user.user_team,
@@ -39,10 +38,9 @@ router
   .route("/create")
   .get(async (req, res, next) => {
     try {
-      console.log("create router");
       res.render("team_board_create");
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   })
   .post(async (req, res, next) => {
@@ -92,7 +90,6 @@ router.route("/:post_num").get(async (req, res, next) => {
 router
   .get("/:post_num/edit", async (req, res, next) => {
     try {
-      console.log(1111);
       const post = await TeamBoards.findAll({
         where: {
           post_num: req.params.post_num,
@@ -132,7 +129,6 @@ router.route("/:post_num/delete").get(async (req, res, next) => {
         post_num: req.params.post_num,
       },
     });
-    console.log(contentDelete);
     res.redirect("/team_board");
   } catch (err) {
     console.error(err);

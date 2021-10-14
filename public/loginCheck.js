@@ -52,7 +52,10 @@ exports.loginDataParser = async (req, res, next) => {
           team_name: req.cookies.user.user_team,
         },
       });
-      res.locals.team_logo = team_info.dataValues.logo_filename;
+      if (team_info) {
+        res.locals.team_logo = team_info.dataValues.logo_filename;
+        res.locals.team_leaderId = team_info.dataValues.team_leaderId;
+      }
       res.locals.teamName = team;
     }
   }

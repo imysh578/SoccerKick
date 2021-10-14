@@ -237,4 +237,20 @@ router.route("/myTeam/:team_name").get(async (req, res, next) => {
   }
 });
 
+// 내 소속 구단
+router.route("/myTeam/:team_name/wannaJoin").get(async (req, res, next) => {
+  try {
+    const wannaJoin = await WannaJoin.findAll({
+      include: { model: User },
+      where: {
+        team_name: req.params.team_name,
+      },
+    });
+    console.log(wannaJoin[1].dataValues.User);
+    res.render("wannaJoin", { wannaJoin });
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 module.exports = router;

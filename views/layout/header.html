@@ -14,7 +14,11 @@
             {% if teamName %}
             <li><a href="/team_board">구단 게시판</a></li>
             <li><a href="/team/myTeam/{{teamName}}">내 소속 구단</a></li>
-            {% else %}
+            {% if team_leaderId == login %}
+            <li>
+              <a href="/team/myTeam/{{teamName}}/wannaJoin">가입 신청 목록</a>
+            </li>
+            {% endif %} {% else %}
             <li><a href="/team/create">구단 만들기</a></li>
             {% endif %}
           </ul>

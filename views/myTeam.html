@@ -15,10 +15,10 @@
         <section>
           <div class="team-info-box">
             <div class="board-list__team">
-              {% if post.logo_filename %}
+              {% if team_logo %}
               <img
                 class="board-list__logo__image"
-                src="/uploads/{{team.logo_filename}}"
+                src="/uploads/{{team_logo}}"
                 alt="Team-logo"
               />
               {% else %}
@@ -29,17 +29,16 @@
               />
               {% endif %}
             </div>
-            <h1 class="team-name">{{posts[0].team_name}}</h1>
+            <h1 class="team-name">{{teamName}}</h1>
           </div>
           <h2 class="site-content__subtitle">구단원 목록</h2>
           <div class="board-list">
             <div class="list_names">
               <div class="list_names_num"></div>
-
               <div class="list_names_title">이름</div>
               <div class="list_names-bundle">
                 <div class="list_names_view">성별</div>
-                <div class="list_names_writer">포지션</div>
+                <div class="list_names_position">포지션</div>
                 <div class="list_names_date">아이디</div>
               </div>
             </div>
@@ -49,23 +48,23 @@
                 <i class="fa fa-comments-o" aria-hidden="true"></i>
               </div>
               <div class="board-list__info post_num">
-                <a class="board-list__info__name">{{post.post_num}}</a>
+                <a class="board-list__info__name"></a>
               </div>
               <div class="board-list__info post_title">
                 <a class="board-list__info__name">{{user.user_name}}</a>
               </div>
 
               <div class="board-list__stats">
-                <a class="board-list__info__name">{{user.user_gender}}</a>
+                <div class="board-list__stats__value">{{user.user_gender}}</div>
               </div>
               <div class="board-list__lastpost board-list__item--last">
                 <div>
                   <div class="board-list__lastpost__user">
-                    <a class="board-list__info__name">{{user.user_position}}</a>
+                    <a class="board-list__link">{{user.user_position}}</a>
                   </div>
                 </div>
                 <div class="board-list__info">
-                  <div class="board-list__info__name user__id">
+                  <div class="board-list__info__name date user__id">
                     {{user.user_id}}
                   </div>
                 </div>
