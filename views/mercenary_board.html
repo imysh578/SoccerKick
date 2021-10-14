@@ -42,54 +42,96 @@
 
               <div class="list_names_title">제목</div>
               <div class="list_names-bundle">
-                <div class="list_names_view">조회수</div>
+                <div class="list_names_view">구분　</div>
                 <div class="list_names_writer">작성자</div>
                 <div class="list_names_date">게시일</div>
               </div>
             </div>
-            {% for post in posts %}
-            <div class="board-list__item">
-              <div class="board-list__icon">
-                <i class="fa fa-comments-o" aria-hidden="true"></i>
-              </div>
-              <div class="board-list__info post_num">
-                <a class="board-list__info__name"
-                  >{{post.mercenary_board_number}}</a
-                >
-              </div>
-              <div class="board-list__info post_title">
-                <a class="board-list__info__name"
-                  >{{post.mercenary_board_title}}</a
-                >
-              </div>
-
-              <div class="board-list__stats">
-                <div class="board-list__stats__value">{{post.count_views}}</div>
-              </div>
-              <div class="board-list__lastpost board-list__item--last">
-                <div>
-                  <div class="board-list__lastpost__user">
-                    <a class="board-list__link">{{post.user_id}}</a>
-                  </div>
+            <!-- 구해요 -->
+            {% for post in posts %} {% if post.mercenary_select == '구해요'%}
+            <div class="want_player">
+              <div class="board-list__item">
+                <div class="board-list__icon">
+                  <i class="fa fa-comments-o" aria-hidden="true"></i>
                 </div>
-                <div class="board-list__info">
-                  <div class="board-list__info__name date">
-                    {{ date[loop.index-1] }}
+                <div class="board-list__info post_num">
+                  <a class="board-list__info__name"
+                    >{{post.mercenary_board_number}}</a
+                  >
+                </div>
+                <div class="board-list__info post_title">
+                  <a class="board-list__info__name"
+                    >{{post.mercenary_board_title}}</a
+                  >
+                </div>
+
+                <div class="board-list__lastpost board-list__item--last">
+                  <div class="board-list__stats">
+                    <div class="board-list__stats__value mercenary_select">
+                      {{post.mercenary_select}}
+                    </div>
+                  </div>
+                  <div>
+                    <div class="board-list__lastpost__user">
+                      <a class="board-list__link">{{post.user_id}}</a>
+                    </div>
+                  </div>
+                  <div class="board-list__info">
+                    <div class="board-list__info__name date">
+                      {{ date[loop.index-1] }}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            {% endfor %}
+            {% endif %} {% endfor %}
+            <!-- 할래요 -->
+            {% for post in posts %} {% if post.mercenary_select == '할래요'%}
+            <div class="want_to_play" hidden>
+              <div class="board-list__item">
+                <div class="board-list__icon">
+                  <i class="fa fa-comments-o" aria-hidden="true"></i>
+                </div>
+                <div class="board-list__info post_num">
+                  <a class="board-list__info__name"
+                    >{{post.mercenary_board_number}}</a
+                  >
+                </div>
+                <div class="board-list__info post_title">
+                  <a class="board-list__info__name"
+                    >{{post.mercenary_board_title}}</a
+                  >
+                </div>
+
+                <div class="board-list__lastpost board-list__item--last">
+                  <div class="board-list__stats">
+                    <div class="board-list__stats__value mercenary_select">
+                      {{post.mercenary_select}}
+                    </div>
+                  </div>
+                  <div>
+                    <div class="board-list__lastpost__user">
+                      <a class="board-list__link">{{post.user_id}}</a>
+                    </div>
+                  </div>
+                  <div class="board-list__info">
+                    <div class="board-list__info__name date">
+                      {{ date[loop.index-1] }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %} {% endfor %}
           </div>
-          <a href="/mercenary_board/asdf"
+          <a href="/mercenary_board/new"
             ><button class="write_btn">글쓰기</button></a
           >
-          <a href="/"><button class="write_btn">ㅎㅇ</button></a>
         </section>
       </div>
     </main>
     {% include "./layout/footer.html" %}
 
-    <!-- <script src="/mercenary_board.js"></script> -->
+    <script src="/mercenary_board.js"></script>
   </body>
 </html>
