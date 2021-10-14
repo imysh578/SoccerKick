@@ -27,7 +27,7 @@ exports.notLogined = async (req, res, next) => {
   }
 };
 
-// 필요한 데이터를 res.local.[변수명] = [값] 형태로 보내기
+// 필요한 데이터를 res.locals.[변수명] = [값] 형태로 보내기
 // 이 미들웨어는 '/'에서 불러오기 때문에 모든 페이지에서 다 사용 가능함
 exports.loginDataParser = async (req, res, next) => {
   const cookie = req.cookies.user;
@@ -43,8 +43,16 @@ exports.loginDataParser = async (req, res, next) => {
       path: "/",
     });
     res.locals.login = req.cookies.user.user_id;
+
+    // 팀이 있으면 req.locals에 아래 항목들 추가
     const team = req.cookies.user.user_team;
     if (team) {
+      const team_info = await Team.findOne({
+        where: {
+          team_name: req.cookies.user.user_team,
+        },
+      });
+      res.locals.team_logo = team_info.dataValues.logo_filename;
       res.locals.teamName = team;
     }
   }
