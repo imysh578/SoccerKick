@@ -15,10 +15,10 @@
         <section>
           <div class="team-info-box">
             <div class="board-list__team">
-              {% if post.logo_filename %}
+              {% if team_logo %}
               <img
                 class="board-list__logo__image"
-                src="/uploads/{{team.logo_filename}}"
+                src="/uploads/{{team_logo}}"
                 alt="Team-logo"
               />
               {% else %}
@@ -29,7 +29,7 @@
               />
               {% endif %}
             </div>
-            <h1 class="team-name">{{posts[0].team_name}}</h1>
+            <h1 class="team-name">{{teamName}}</h1>
           </div>
           <h2 class="site-content__subtitle">구단 게시판</h2>
           <div class="board-list">

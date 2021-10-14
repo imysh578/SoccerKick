@@ -15,10 +15,10 @@
         <section>
           <div class="team-info-box">
             <div class="board-list__team">
-              {% if post.logo_filename %}
+              {% if team_logo %}
               <img
                 class="board-list__logo__image"
-                src="/uploads/{{team.logo_filename}}"
+                src="/uploads/{{team_logo}}"
                 alt="Team-logo"
               />
               {% else %}
@@ -29,6 +29,7 @@
               />
               {% endif %}
             </div>
+            <h1 class="team-name">{{teamName}}</h1>
           </div>
           <div class="content-title">
             <div class="content-title-list">
@@ -36,7 +37,7 @@
                 <i class="fa fa-comments-o" aria-hidden="true"></i>
               </div>
               <div class="content-title-list_ post_title">
-                <a>{{post[0].title}}</a>
+                <a><span>{{post[0].title}}</span></a>
               </div>
               <div class="content-title-list_bundle">
                 <div class="content-title-list_ writer">
@@ -56,12 +57,15 @@
               <pre>{{post[0].contents}}</pre>
             </div>
           </div>
+          {% if login == post[0].writer_id %}
           <a href="/team_board/{{ post[0].post_num}}/edit"
             ><button class="content-btn">수정</button></a
           >
-          <a href="/team_board/create"
+          <a href="/team_board/{{ post[0].post_num}}/delete"
             ><button class="content-btn">삭제</button></a
           >
+
+          {% endif %}
         </section>
       </div>
     </main>
