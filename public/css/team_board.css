@@ -5,6 +5,10 @@
   width: 1200px;
   margin: 0 auto;
 }
+.site-content button:hover {
+  cursor: pointer;
+  background-color: #8e4586bd;
+}
 .site-content__subtitle {
   font-size: 1.1rem;
   font-weight: 300;
@@ -47,6 +51,11 @@
   flex: 1;
   padding-left: 2rem;
 }
+.list_names_btn {
+  width: 5rem;
+  text-align: center;
+  padding-right: 0.7rem;
+}
 .list_names_view {
   padding-left: 2rem;
   padding-right: 1rem;
@@ -88,6 +97,18 @@
 .post_title {
   flex: 1;
 }
+.post_btn {
+  text-align: center;
+  width: 5rem;
+  padding-left: 0.2rem;
+}
+.post_btn button {
+  width: 80%;
+  height: 100%;
+  line-height: 2rem;
+  border-radius: 20px;
+}
+
 .board-list__info__description {
   margin: 0.5rem 0 0 0;
   line-height: 1.3;
