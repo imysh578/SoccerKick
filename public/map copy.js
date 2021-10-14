@@ -3,13 +3,14 @@ var markers = [];
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        center: new kakao.maps.LatLng(37.57943874417839, 126.99104195887664), // 지도의 중심좌표
+        level: 8 // 지도의 확대 레벨
     };  
 
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption);
 var positions = [
+    //==강동구==
     {
         title: "광나루한강공원축구장",
         latlng: new kakao.maps.LatLng(37.55242480860552, 127.1221643613391),
@@ -452,7 +453,7 @@ function searchPlaces() {
     var keyword = document.getElementById('keyword').value;
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('키워드를 입력해주세요!');
+        // alert('키워드를 입력해주세요!');
         return false;
     }
 
