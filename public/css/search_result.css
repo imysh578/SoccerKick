@@ -1,11 +1,12 @@
-.site-content {
+/*구단 리스트*/
+.site-content_M {
 	padding: 3rem 2rem;
 	flex: 1;
 	color: #8e4585;
 	width: 1200px;
 	margin: 0 auto;
-}
-.site-content__subtitle {
+  }
+  .site-content__subtitle_M {
 	font-size: 1.1rem;
 	font-weight: 300;
 	background: #8e4585;
@@ -13,89 +14,277 @@
 	border-radius: 0.1rem;
 	padding: 1rem;
 	margin-bottom: 0;
-}
-
-/* Board list */
-.board-list {
+  }
+  
+  /* Board list */
+  .board-list_M {
 	color: rgba(31, 35, 50, 0.83);
-}
-.board-list__link {
+  }
+  .board-list__link_M{
 	color: #5bace4;
 	text-decoration: none;
-}
-.board-list__item {
+  }
+  .board-list__item_M {
 	display: flex;
 	align-items: center;
+	height: 5.5rem;
 	padding: 0.5rem 0;
 	border-bottom: 1px solid rgba(31, 35, 50, 0.12);
 	transition: background 0.2s ease;
 	background-color: rgba(221, 221, 221, 0.9);
-}
-.board-list__item--last {
+  }
+  .board-list__item--last_M {
 	padding-right: 1rm;
-}
-.board-list__icon {
+  }
+  .board-list__icon_M {
 	flex: 0 0 2rem;
 	font-size: 2rem;
 	text-align: center;
-}
-.board-list__info {
+  }
+  .board-list__info_M {
 	flex: 1;
-}
-.board-list__info__name {
+  }
+  .board-list__info__name_1 {
 	font-size: 1.05rem;
 	font-weight: 500;
 	color: inherit;
-}
-.board-list__info__description {
+  }
+  .board-list__info__description_M {
 	margin: 0.5rem 0 0 0;
 	line-height: 1.3;
-}
-.board-list__stats {
+  }
+  .board-list__area_M {
+	width: 100px;
+  }
+  .board-list__area__info_M {
+	display: block;
+	padding-right: 20px;
+	width: 100%;
 	text-align: right;
-}
-.board-list__stats__key {
-	font-size: 0.9rem;
-}
-.board-list__stats__value {
-	font-size: 1.3rem;
-}
-.board-list__avatar {
+  }
+  .board-list__stats_M {
+	width: 50px;
+	text-align: right;
+  }
+  .board-list__stats__key_M {
+	font-size: 1rem;
+  }
+  .board-list__stats__value_M {
+	font-size: 1rem;
+  }
+  .board-list__avatar_M {
 	margin: 0 1.5rem;
-}
-.board-list__avatar__image {
+	width: 80px;
+  }
+  .board-list__avatar__image_M {
 	border-radius: 50%;
-}
-.board-list__lastpost {
+  }
+  .board-list__lastpost_M {
 	line-height: 1.4;
 	font-size: 0.9rem;
 	display: flex;
 	align-items: center;
 	flex: 0 0 22rem;
-}
-.board-list__lastpost__topic {
+  }
+  .board-list__lastpost__topic_M {
 	font-weight: 500;
-}
-.board-list__lastpost__user,
-.board-list__created__date,
-.board-list__stats__key,
-.board-list__info__description {
+  }
+  .board-list__lastpost__user_M,
+  .board-list__created__date_M,
+  .board-list__stats__key_M,
+  .board-list__info__description_M {
 	color: rgba(31, 35, 50, 0.7);
-}
-
-.board-list img {
+  }
+  
+  .board-list_M img {
 	width: 64px;
 	height: 64px;
-}
+  }
+  
+  /* 반응형 */
+  @media (max-width: 1220px) {
+	.site-content {
+	  width: 1000px;
+	}
+  }
+  @media (max-width: 1020px) {
+	.site-content {
+	  width: 800px;
+	}
+  }
+  
+  /*나머지 게시판들*/
 
-/* 반응형 */
-@media (max-width: 1220px) {
-	.site-content {
-		width: 1000px;
-	}
-}
-@media (max-width: 1020px) {
-	.site-content {
-		width: 800px;
-	}
-}
+  .site-content {
+	padding: 3rem 2rem;
+	flex: 1;
+	color: #8e4585;
+	width: 1200px;
+	margin: 0 auto;
+  }
+  .site-content button:hover {
+	cursor: pointer;
+	background-color: #8e4586bd;
+  }
+  .site-content__subtitle {
+	font-size: 1.1rem;
+	font-weight: 300;
+	background: #8e4585;
+	color: rgba(255, 255, 255, 0.87);
+	border-radius: 0.1rem;
+	padding: 1rem;
+	margin-bottom: 0;
+  }
+  .team-name {
+	font-size: 1.5rem;
+	color: rgba(221, 221, 221, 0.9);
+	text-shadow: 2px 2px #8e4585;
+  }
+  
+  /* Board list */
+  .board-list {
+	color: rgba(31, 35, 50, 0.83);
+  }
+  .list_names {
+	height: 2rem;
+	padding: 0 1.6rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgba(221, 221, 221, 0.9);
+	border-bottom: 1px solid rgba(31, 35, 50, 0.12);
+  }
+  .list_names div {
+	font-size: 0.8rem;
+  }
+  .list_names-bundle {
+	width: 17rem;
+	display: flex;
+	justify-content: space-between;
+  }
+  .list_names_num {
+	width: 2rem;
+  }
+  .list_names_title {
+	flex: 1;
+	padding-left: 2rem;
+  }
+  .list_names_btn {
+	width: 5rem;
+	text-align: center;
+	padding-right: 0.7rem;
+  }
+  .list_names_view {
+	padding-left: 2rem;
+	padding-right: 1rem;
+  }
+  .list_names_writer {
+	padding-right: 4rem;
+  }
+  .list_names_position {
+	padding-right: 3rem;
+  }
+  .board-list__item {
+	display: flex;
+	align-items: center;
+	height: 3rem;
+	padding: 0.5rem 0;
+	border-bottom: 1px solid rgba(31, 35, 50, 0.12);
+	transition: background 0.2s ease;
+	background-color: rgba(221, 221, 221, 0.9);
+  }
+  .board-list__item--last {
+	padding-right: 1rm;
+  }
+  .board-list__icon {
+	flex: 0 0 1rem;
+	font-size: 2rem;
+	text-align: center;
+  }
+  
+  .board-list__info__name {
+	font-size: 1.05rem;
+	font-weight: 500;
+	color: inherit;
+  }
+  .post_num {
+	width: 4rem;
+	text-align: center;
+	padding-right: 1rem;
+  }
+  .post_title {
+	flex: 1;
+  }
+  .post_btn {
+	text-align: center;
+	width: 5rem;
+	padding-left: 0.2rem;
+  }
+  .post_btn button {
+	width: 80%;
+	height: 100%;
+	line-height: 2rem;
+	border-radius: 20px;
+  }
+  
+  .board-list__info__description {
+	margin: 0.5rem 0 0 0;
+	line-height: 1.3;
+  }
+  .board-list__stats {
+	text-align: right;
+	width: 4rem;
+  }
+  .board-list__stats__key {
+	font-size: 0.9rem;
+  }
+  .board-list__stats__value {
+	font-size: 1.3rem;
+  }
+  .board-list__avatar {
+	margin: 0 1.5rem;
+	width: 80px;
+  }
+  .board-list__avatar__image {
+	border-radius: 50%;
+  }
+  .board-list__lastpost {
+	line-height: 1.4;
+	font-size: 0.9rem;
+	display: flex;
+	align-items: center;
+	justify-content: right;
+  }
+  .board-list__lastpost__topic {
+	font-weight: 500;
+  }
+  .board-list__lastpost__user,
+  .board-list__created__date,
+  .board-list__stats__key,
+  .board-list__info__description {
+	color: rgba(31, 35, 50, 0.7);
+  }
+  .board-list__lastpost__user {
+	width: 9rem;
+	text-align: center;
+  }
+  
+  .board-list img,
+  .board-list__team img {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+  }
+  .date {
+	width: 6rem;
+	text-align: center;
+  }
+  .write_btn,
+  .back_btn {
+	float: right;
+	margin: 5px;
+	width: 6rem;
+	height: 2.5rem;
+	background-color: rgba(221, 221, 221, 0.9);
+  }
+  
