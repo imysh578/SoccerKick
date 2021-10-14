@@ -10,19 +10,21 @@
     {% include "./layout/header.html" %}
     <main>
 <div class="map_wrap">
-    <div id="map"></div>
-    <div id="menu_wrap" class="bg_white">
-        <div class="option">
-            <div>
-                <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="" id="keyword" size="15"> 
-                    <button type="submit">검색하기</button> 
-                </form>
+    <div class="map-container">
+        <div id="menu_wrap" class="bg_white">
+            <div class="option">
+                <div>
+                    <form onsubmit="searchPlaces(); return false;">
+                        키워드 : <input type="text" value="" id="keyword" size="15"> 
+                        <button type="submit">검색하기</button> 
+                    </form>
+                </div>
             </div>
+            <hr>
+            <ul id="placesList"></ul>
+            <div id="pagination"></div>
         </div>
-        <hr>
-        <ul id="placesList"></ul>
-        <div id="pagination"></div>
+        <div id="map"></div>
     </div>
 </div>
 </main>
