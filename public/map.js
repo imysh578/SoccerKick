@@ -9,6 +9,10 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
 // 지도를 생성한다
 var map = new kakao.maps.Map(mapContainer, mapOption);
 
+// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+var zoomControl = new kakao.maps.ZoomControl();
+map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
 //===============================노가다부분===============================
 var positions = [
     {

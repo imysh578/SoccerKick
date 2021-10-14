@@ -1,3 +1,19 @@
+.content-title {
+  background: #8e4585;
+  color: rgba(255, 255, 255, 0.87);
+}
+.content-title-list {
+  display: flex;
+  align-items: center;
+}
+.content-title-list_ {
+  flex: 1;
+}
+
+.content-content {
+  background-color: rgba(221, 221, 221, 0.9);
+}
+
 .site-content {
   padding: 3rem 2rem;
   flex: 1;

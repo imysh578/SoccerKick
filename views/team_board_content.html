@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>구단 게시판</title>
+    {% include "./layout/style.html" %}
+    <link rel="stylesheet" href="/css/team_board_content.css" />
+  </head>
+  <body class="wrapper">
+    {% include "./layout/header.html" %}
+    <main class="site-content">
+      <div class="forum-index">
+        <section>
+          <div class="team-info-box">
+            <div class="board-list__team">
+              {% if post.logo_filename %}
+              <img
+                class="board-list__logo__image"
+                src="/uploads/{{team.logo_filename}}"
+                alt="Team-logo"
+              />
+              {% else %}
+              <img
+                class="board-list__logo__image"
+                src="/images/team-logo-empty.png"
+                alt="Team-logo"
+              />
+              {% endif %}
+            </div>
+          </div>
+          <div class="content-title">
+            <div class="content-title-list">
+              <div class="board-list__icon">
+                <i class="fa fa-comments-o" aria-hidden="true"></i>
+              </div>
+              <div class="content-title-list_ post_title">
+                <a>{{post[0].title}}</a>
+              </div>
+              <div class="content-title-list_ writer">
+                <div>
+                  <a>{{post[0].writer_id}}</a>
+                </div>
+              </div>
+              <div class="content-title-list_ views">
+                <div>{{post[0].count_views}}</div>
+              </div>
+              <div class="content-title-list_ date">
+                <div>
+                  <div>{{ date[0] }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-content">
+            <div>
+              <div>
+                <a>{{post[0].contents}}</a>
+              </div>
+            </div>
+          </div>
+          <a href="/team_board/create"
+            ><button class="write_btn">글쓰기</button></a
+          >
+        </section>
+      </div>
+    </main>
+    {% include "./layout/footer.html" %}
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/team_board.js"></script>
+  </body>
+</html>
