@@ -1,3 +1,6 @@
+const User = require("../models/users");
+const Team = require("../models/teams");
+
 exports.logined = (req, res, next) => {
   // 로그인 검증
   const cookie = req.cookies.user;
@@ -24,11 +27,21 @@ exports.notLogined = async (req, res, next) => {
   }
 };
 
-// 로그인 시 필요한 데이터를 res.local.[변수명] = [값] 형태로 보내기
+// 필요한 데이터를 res.local.[변수명] = [값] 형태로 보내기
 // 이 미들웨어는 '/'에서 불러오기 때문에 모든 페이지에서 다 사용 가능함
 exports.loginDataParser = async (req, res, next) => {
   const cookie = req.cookies.user;
   if (cookie != undefined) {
+    const user = await User.findOne({
+      where: {
+        user_id: req.cookies.user.user_id,
+      },
+    });
+    res.cookie("user", user, {
+      maxAge: 60 * 60 * 1000 * 24,
+      httpOnly: true, //
+      path: "/",
+    });
     res.locals.login = req.cookies.user.user_id;
     const team = req.cookies.user.user_team;
     if (team) {

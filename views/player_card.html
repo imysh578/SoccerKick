@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="card">
+    <div class="card-aside">
+      <div class="card-overall">
+        <span class="card-rating">94</span
+        ><span class="card-position">{{user.user_position}}</span>
+      </div>
+
+      <div class="card-team">
+        {% if team.logo_filename == 'empty' %}
+        <img class="card-club" src="/images/team-logo-empty.png" />
+        {% else %}
+        <img class="card-club" src="/uploads/{{team.logo_filename}}" />
+        {% endif %}
+      </div>
+      <div class="card-info"><span>7</span></div>
+    </div>
+    <div class="card-main">
+      <div class="card-header">
+        <div class="card-header-bg"></div>
+        <img
+          class="card-image"
+          src="https://media.contentapi.ea.com/content/dam/ea/easports/fifa/features/2017/cristiano-ronaldo/june5/fifa18-ronaldopage-ronaldo-fg-xs.png"
+          alt=""
+        />
+      </div>
+      <h1 class="card-name">{{user.user_name}}</h1>
+      <div class="card-attributes">
+        <div class="card-attribute">
+          <span class="card-attribute__name">ID</span>
+          <span class="card-attribute__value">{{user.user_id}}</span>
+        </div>
+        <div class="card-attribute">
+          <span class="card-attribute__name">AGE</span>
+          <span class="card-attribute__value">{{user.user_age}}</span>
+        </div>
+        <div class="card-attribute">
+          <span class="card-attribute__name">AREA</span>
+          <span class="card-attribute__value">{{user.user_area}}</span>
+        </div>
+        <div class="card-attribute">
+          <span class="card-attribute__name">GENDER</span>
+          <span class="card-attribute__value">{{user.user_gender}}</span>
+        </div>
+        <div class="card-attribute">
+          <span class="card-attribute__name">user_team</span>
+          <span class="card-attribute__value">{{user.user_team}}</span>
+        </div>
+        <div class="card-attribute">
+          <span class="card-attribute__name">user_mail</span>
+          <span class="card-attribute__value card-attribute__value__mail"
+            >{{user.user_mail}}</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
