@@ -19,14 +19,40 @@
 .board-list {
   color: rgba(31, 35, 50, 0.83);
 }
-.board-list__link {
-  color: #5bace4;
-  text-decoration: none;
+.list_names {
+  height: 2rem;
+  padding: 0 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(221, 221, 221, 0.9);
+}
+.list_names div {
+  font-size: 0.8rem;
+}
+.list_names-bundle {
+  width: 17rem;
+  display: flex;
+  justify-content: space-between;
+}
+.list_names_num {
+  width: 2rem;
+}
+.list_names_title {
+  flex: 1;
+  padding-left: 2rem;
+}
+.list_names_view {
+  padding-left: 1rem;
+  padding-right: 2rem;
+}
+.list_names_writer {
+  padding-right: 4rem;
 }
 .board-list__item {
   display: flex;
   align-items: center;
-  height: 5.5rem;
+  height: 3rem;
   padding: 0.5rem 0;
   border-bottom: 1px solid rgba(31, 35, 50, 0.12);
   transition: background 0.2s ease;
@@ -36,17 +62,23 @@
   padding-right: 1rm;
 }
 .board-list__icon {
-  flex: 0 0 2rem;
+  flex: 0 0 1rem;
   font-size: 2rem;
   text-align: center;
 }
-.board-list__info {
-  flex: 1;
-}
+
 .board-list__info__name {
   font-size: 1.05rem;
   font-weight: 500;
   color: inherit;
+}
+.post_num {
+  width: 4rem;
+  text-align: center;
+  padding-right: 1rem;
+}
+.post_title {
+  flex: 1;
 }
 .board-list__info__description {
   margin: 0.5rem 0 0 0;
@@ -54,6 +86,7 @@
 }
 .board-list__stats {
   text-align: right;
+  width: 4rem;
 }
 .board-list__stats__key {
   font-size: 0.9rem;
@@ -73,7 +106,7 @@
   font-size: 0.9rem;
   display: flex;
   align-items: center;
-  flex: 0 0 22rem;
+  justify-content: right;
 }
 .board-list__lastpost__topic {
   font-weight: 500;
@@ -84,12 +117,20 @@
 .board-list__info__description {
   color: rgba(31, 35, 50, 0.7);
 }
+.board-list__lastpost__user {
+  width: 9rem;
+  text-align: center;
+}
 
 .board-list img,
 .board-list__team img {
   width: 64px;
   height: 64px;
   border-radius: 50%;
+}
+.date {
+  width: 6rem;
+  text-align: center;
 }
 .write_btn {
   float: right;

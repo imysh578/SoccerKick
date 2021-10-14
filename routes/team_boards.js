@@ -68,6 +68,17 @@ router.route("/:post_num").get(async (req, res, next) => {
         post_num: req.params.post_num,
       },
     });
+    const updateVeiwCount = await TeamBoards.update(
+      {
+        count_views: ++post[0].dataValues.count_views,
+      },
+      {
+        attributes: ["count_views"],
+        where: {
+          post_num: req.params.post_num,
+        },
+      }
+    );
     res.render("team_board_content", {
       post,
       date: formattedDate(post, "created_at"),
@@ -77,6 +88,60 @@ router.route("/:post_num").get(async (req, res, next) => {
     next(err);
   }
 });
+
+router
+  .get("/:post_num/edit", async (req, res, next) => {
+    try {
+      console.log(1111);
+      const post = await TeamBoards.findAll({
+        where: {
+          post_num: req.params.post_num,
+        },
+      });
+      res.render("team_board_content_edit", { post });
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  })
+  .post("/:post_num/edit", async (req, res, next) => {
+    try {
+      const updateContents = await TeamBoards.update(
+        {
+          title: req.body.title,
+          contents: req.body.contents,
+        },
+        {
+          where: {
+            post_num: req.params.post_num,
+          },
+        }
+      );
+      res.redirect(`/team_board/${req.params.post_num}`);
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  });
+//   .post("/content/:mercenary_board_number", async (req, res, next) => {
+//     try {
+//       const changeContent = await Mercenary_board.update(
+//         {
+//           mercenary_board_title: req.body.mercenary_board_title,
+//           mercenary_board_content: req.body.mercenary_board_content,
+//         },
+//         {
+//           where: {
+//             mercenary_board_number: req.params.mercenary_board_number,
+//           },
+//         }
+//       );
+//       res.redirect("/content/:mercenary_board_number");
+//     } catch (err) {
+//       console.error(err);
+//       next(err);
+//     }
+//   });
 
 // 조회수 업데이트
 

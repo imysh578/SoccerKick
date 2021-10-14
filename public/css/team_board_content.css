@@ -1,17 +1,41 @@
+textarea {
+  width: 100%;
+  background-color: transparent;
+  height: 36rem;
+  resize: none;
+}
 .content-title {
   background: #8e4585;
   color: rgba(255, 255, 255, 0.87);
 }
 .content-title-list {
   display: flex;
+  height: 2rem;
   align-items: center;
 }
 .content-title-list_ {
-  flex: 1;
+  padding-right: 1.5rem;
+}
+.content-title-list_bundle {
+  display: flex;
+  align-items: center;
 }
 
+.post_title {
+  flex: 1;
+}
+.content-title .views div {
+  font-size: 0.8rem;
+}
 .content-content {
+  word-break: break-all;
+  padding: 1rem 2.5rem;
+  min-height: 40rem;
   background-color: rgba(221, 221, 221, 0.9);
+}
+.content-content pre {
+  white-space: pre-wrap;
+  height: 36rem;
 }
 
 .site-content {
@@ -107,7 +131,7 @@
   height: 64px;
   border-radius: 50%;
 }
-.write_btn {
+.content-btn {
   float: right;
   margin: 5px;
   width: 6rem;
