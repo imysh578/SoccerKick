@@ -39,7 +39,6 @@ router
   .route("/create")
   .get(async (req, res, next) => {
     try {
-      console.log("create router");
       res.render("team_board_create");
     } catch (err) {
       console.log(err);
