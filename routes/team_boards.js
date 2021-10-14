@@ -60,42 +60,22 @@ router
   });
 
 // 리스트 선택
-router
-  .route("/:post_num")
-  .get(async (req, res, next) => {
-    try {
-      const team = await TeamBoards.findAll({
-        where: {
-          post_num: req.params.post_num,
-        },
-      });
-      res.render("mercenary_content", {
-        team,
-        date: formattedDate(team, "mercenary_board_date"),
-      });
-    } catch (err) {
-      console.error(err);
-      next(err);
-    }
-  })
-  .post(async (req, res, next) => {
-    try {
-      console.log(req.body);
-      await TeamBoards.update(
-        {
-          count_views: req.body.views,
-        },
-        {
-          where: {
-            post_num: req.params.post_num,
-          },
-        }
-      );
-    } catch (err) {
-      console.error(err);
-      next(err);
-    }
-  });
+router.route("/:post_num").get(async (req, res, next) => {
+  try {
+    const post = await TeamBoards.findAll({
+      where: {
+        post_num: req.params.post_num,
+      },
+    });
+    res.render("team_board_content", {
+      post,
+      date: formattedDate(post, "created_at"),
+    });
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
 
 // 조회수 업데이트
 
