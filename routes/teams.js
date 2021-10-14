@@ -202,7 +202,7 @@ router
 				}
 			);
 			// 유저-구단 테이블 수정
-			const updateUsersinTeam = await usersInTeam.update(
+			const updateUsersinTeam = await UsersInTeam.update(
 				{
 					team_name: req.body.team_name,
 				},
