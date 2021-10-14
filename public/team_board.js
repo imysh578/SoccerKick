@@ -29,7 +29,6 @@ function backBtnClick() {
 // DB에 조회수 전송
 async function updateViews(post_num, views) {
   try {
-    await axios.post(`/team_board/${post_num}`, { views: views });
   } catch (err) {
     console.log(err);
   }

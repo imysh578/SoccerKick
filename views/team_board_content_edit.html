@@ -30,43 +30,37 @@
               {% endif %}
             </div>
           </div>
-          <div class="content-title">
-            <div class="content-title-list">
-              <div class="board-list__icon">
-                <i class="fa fa-comments-o" aria-hidden="true"></i>
-              </div>
-              <div class="content-title-list_ post_title">
-                <a>{{post[0].title}}</a>
-              </div>
-              <div class="content-title-list_bundle">
-                <div class="content-title-list_ writer">
-                  <a>{{post[0].writer_id}}</a>
+          <form method="post">
+            <div class="content-title">
+              <div class="content-title-list">
+                <div class="board-list__icon">
+                  <i class="fa fa-comments-o" aria-hidden="true"></i>
                 </div>
-                <div class="content-title-list_ views">
-                  <div>조회수 : {{post[0].count_views}}</div>
-                </div>
-                <div class="content-title-list_ date">
-                  <div>{{ date[0] }}</div>
+                <div class="content-title-list_ post_title">
+                  <a
+                    ><input
+                      type="text"
+                      value="{{ post[0].title }}"
+                      name="title"
+                  /></a>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="content-content">
-            <div>
-              <pre>{{post[0].contents}}</pre>
+            <div class="content-content">
+              <div>
+                <textarea name="contents">{{ post[0].contents }}</textarea>
+              </div>
             </div>
-          </div>
-          <a href="/team_board/{{ post[0].post_num}}/edit"
-            ><button class="content-btn">수정</button></a
-          >
-          <a href="/team_board/create"
-            ><button class="content-btn">삭제</button></a
-          >
+            <a><button type="submit" class="content-btn">완료</button></a>
+          </form>
+          <a href="/team_board/{{ post[0].post_num}}">
+            <button class="content-btn">취소</button>
+          </a>
         </section>
       </div>
     </main>
     {% include "./layout/footer.html" %}
-
+    <!-- <script src="/inputEnterDisable.js"></script> -->
     <script src="/team_board.js"></script>
   </body>
 </html>
