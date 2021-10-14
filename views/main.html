@@ -9,7 +9,25 @@
   </head>
   <body>
     {% include "./layout/header.html" %}
-    <main></main>
+    <main>
+      <iframe
+        style="
+          position: fixed;
+          margin: 0 auto;
+          left: 0;
+          right: 0;
+          margin-top: 80px;
+          border-radius: 5%;
+        "
+        width="980"
+        height="620"
+        src="https://www.youtube.com/embed/tbPyU8odCKw?autoplay=1&mute=1"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </main>
     {% include "./layout/footer.html" %}
   </body>
 </html>
