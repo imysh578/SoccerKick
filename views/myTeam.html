@@ -15,23 +15,30 @@
         <section>
           <div class="team-info-box">
             <div class="board-list__team">
-              {% if team_logo %}
+              {% if team_logo == 'empty' or team_logo == NULL %}
               <img
                 class="board-list__logo__image"
-                src="/uploads/{{team_logo}}"
+                src="/images/team-logo-empty.png"
                 alt="Team-logo"
               />
               {% else %}
               <img
                 class="board-list__logo__image"
-                src="/images/team-logo-empty.png"
+                src="/uploads/{{team_logo}}"
                 alt="Team-logo"
               />
               {% endif %}
             </div>
             <h1 class="team-name">{{teamName}}</h1>
           </div>
-          <h2 class="site-content__subtitle">구단원 목록</h2>
+          <div class="site-content__subtitle__box">
+            <h2 class="site-content__subtitle">구단원 목록</h2>
+            {% if login == team_leaderId %}
+            <div class="btn-box">
+              <a href="/team/detail/{{teamName}}/edit"><button class="write_btn">구단 관리</button></a>
+            </div>
+            {% endif %}
+          </div>
           <div class="board-list">
             <div class="list_names">
               <div class="list_names_num"></div>
