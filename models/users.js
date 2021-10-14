@@ -65,7 +65,6 @@ module.exports = class User extends Sequelize.Model {
 		);
 	}
 	static associate(db) {
-		// 구단 관리
 		db.User.hasMany(db.Team, {
 			foreignKey: "team_leaderId",
 			sourceKey: "user_id",
@@ -82,6 +81,10 @@ module.exports = class User extends Sequelize.Model {
 		});
 
 		db.User.hasMany(db.WannaJoin, {
+			foreignKey: "user_id",
+			sourceKey: "user_id",
+		});
+		db.User.hasMany(db.UsersInTeam, {
 			foreignKey: "user_id",
 			sourceKey: "user_id",
 		});
