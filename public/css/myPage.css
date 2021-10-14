@@ -21,7 +21,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
+#pass {
+  height: 48px;
+}
 .login-wrap {
   width: 100%;
   margin: auto;
@@ -30,6 +32,8 @@ a {
   position: relative;
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 .login-html {
   width: 100%;

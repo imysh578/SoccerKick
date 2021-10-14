@@ -20,7 +20,7 @@
             for="tab-2"
             class="tab"
             style="color: #fff"
-            >나으 정보</label
+            >나의 정보</label
           >
           <div class="login-form">
             <div class="sign-up-htm">
@@ -31,17 +31,6 @@
                   {{a.user_id}}
                 </div>
               </div>
-              <!-- <div class="group">
-                <label for="pass" class="label">비밀번호</label>
-                <input
-                  id="pass"
-                  type="password"
-                  class="input"
-                  data-type="password"
-                  name="user_password"
-                  value="{{a.user_password}}"
-                />
-              </div> -->
               <div class="group">
                 <label for="pass" class="label">이름</label>
                 <div id="pass" class="input" name="user_name">
@@ -126,6 +115,7 @@
       </div>
       {% endfor %}
     </main>
+    {% include "./layout/footer.html" %}
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/user.js"></script>
   </body>
