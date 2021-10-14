@@ -33,7 +33,7 @@
                   {% for a in user %}
                   <div class="group">
                     <label for="user" class="label">Id</label>
-                    <input id="user" type="text" class="input" name="user_id" value="{{a.user_id}}"/>
+                    <div id="user" type="text" class="input" name="user_id">{{a.user_id}}</div>
                   </div>
                   <div class="group">
                     <label for="pass" class="label">비밀번호</label>
@@ -68,42 +68,11 @@
                       value="{{a.user_age}}"
                     />
                   </div>
-                  <div class="group">
-                    <label for="pass" class="label">지역</label>
-                    <input
-                      id="pass"
-                      type="text"
-                      class="input"
-                      data-type="text"
-                      name="user_area"
-                      value="{{a.user_area}}"
-                    />
-                  </div>
-                  <div class="group">
-                    <label for="pass" class="label">성별</label>
-                    <input
-                      id="pass"
-                      type="text"
-                      class="input"
-                      data-type="text"
-                      name="user_gender"
-                      value="{{a.user_gender}}"
-                    />
-                  </div>
   
                   <div class="group">
-                    <label for="pass" class="label">Email Address</label>
+                    <label for="pass" class="label">이메일</label>
                     <input id="pass" type="text" class="input" name="user_mail" value="{{a.user_mail}}"/>
                   </div>
-                  <div class="group">
-                    <label for="pass" class="label">포지션</label>
-                    <input
-                      id="pass"
-                      type="text"
-                      class="input"
-                      name="user_position"
-                      value="{{a.user_position}}"
-                    />
                   </div>
                   <div class="group">
                     <label for="pass" class="label">자기소개</label>
@@ -114,6 +83,35 @@
                       name="user_aboutMe"
                       value="{{a.user_aboutMe}}"
                     />
+                  </div>
+                  <div class="group select-group" >
+                    <span class="custom-dropdown">
+                      <label for="pass" class="label" >포지션</label>
+                      <select name="user_position">
+                        <option value="{{a.user_position}}" hidden>{{a.user_position}}</option>
+                        <option value="FW">FW</option>
+                        <option value="MF">MF</option>
+                        <option value="DF">DF</option>
+                        <option value="GK">GK</option>
+                      </select>
+                    </span>
+                    <span class="custom-dropdown">
+                      <label for="pass" class="label">성별</label>
+                      <select name="user_gender" >
+                        <option value="{{a.user_gender}}" hidden>{{a.user_gender}}</option>
+                        <option value="남자">남자</option>
+                        <option value="여자">여자</option>
+                      </select>
+                    </span>
+                    <span class="custom-dropdown">
+                      <label for="pass" class="label">지역</label>
+                      <select name="user_area">
+                        <option value="{{a.user_area}}" hidden>{{a.user_area}}</option>
+                        {% for area in areas %}
+                        <option value="{{area}}">{{area}}</option>
+                        {% endfor %}
+                      </select>
+                    </span>
                   </div>
                   <div class="group">
                     <input
@@ -131,7 +129,7 @@
         </form>
             {% endfor %}
     </main>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/user.js"></script>
+    <!--  -->
+    {% include "./layout/footer.html" %}
   </body>
 </html>

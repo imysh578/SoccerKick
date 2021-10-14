@@ -26,10 +26,11 @@ a {
   width: 100%;
   margin: auto;
   max-width: 525px;
-  min-height: 920px;
+  min-height: 800px;
   position: relative;
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 40px;
 }
 .login-html {
   width: 100%;
@@ -48,6 +49,9 @@ a {
   transform: rotateY(180deg);
   backface-visibility: hidden;
   transition: all 0.4s linear;
+}
+.select-group {
+  display: flex;
 }
 .login-html .sign-in,
 .login-html .sign-up,
@@ -165,4 +169,34 @@ a {
 }
 .foot-lnk {
   text-align: center;
+}
+/* 성별 포지션 select box */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+
+  /* demo only */
+  margin: 10px;
+}
+
+.custom-dropdown select {
+  background-color: #2980b9;
+  color: #fff;
+  font-size: inherit;
+  padding: 0.5em;
+  padding-right: 2.5em;
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: "";
+}
+
+.custom-dropdown::before {
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
 }
