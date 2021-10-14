@@ -1,15 +1,17 @@
 const express = require("express");
 const Mercenary_board = require("../models/mercenary_boards");
+const { QueryTypes } = require("sequelize");
 const formattedDate = require("../public/dateformat");
 const router = express.Router();
 
 // 게시판
 router.route("/").get(async (req, res, next) => {
   try {
-    const mercenary_board = await Mercenary_board.findAll();
+    const post = await Mercenary_board.findAll();
+    console.log("용병게시판");
     res.render("mercenary_board", {
-      mercenary_board,
-      date: formattedDate(mercenary_board, "mercenary_board_date"),
+      post,
+      date: formattedDate(post, "mercenary_board_date"),
     });
   } catch (err) {
     console.error(err);
@@ -18,7 +20,7 @@ router.route("/").get(async (req, res, next) => {
 });
 
 // 글 선택시
-router.route("/content/:mercenary_board_number").get(async (req, res, next) => {
+router.route("/:mercenary_board_number").get(async (req, res, next) => {
   try {
     const info = await Mercenary_board.findAll({
       where: {
@@ -34,10 +36,11 @@ router.route("/content/:mercenary_board_number").get(async (req, res, next) => {
 
 // 용병게시판 새 글쓰기
 router
-  .route("/new")
+  .route("/asdf")
   .get(async (req, res, next) => {
     try {
-      res.render("mercenary_board_new");
+      console.log(1111111111111111111111);
+      // res.render("mercenary_board_new");
     } catch (err) {
       console.error(err);
       next(err);
@@ -45,7 +48,13 @@ router
   })
   .post(async (req, res, next) => {
     try {
-      const create = await Mercenary_board.create({
+      await Mercenary_board.create({
+        team_name: req.cookies.user.user_team,
+        writer_name: req.cookies.user.user_name,
+        writer_id: req.cookies.user.user_id,
+        title: req.body.mercenary_board_title,
+        contents: req.body.mercenary_board_content,
+
         mercenary_board_title: req.body.mercenary_board_title,
         mercenary_board_content: req.body.mercenary_board_content,
         mercenary_select: req.body.mercenary_select,
@@ -62,17 +71,18 @@ router
   });
 
 // 게시글 삭제
-
-router.post("/content/:mercenary_board_number", async (req, res, next) => {
+router.route("/:post_num/delete").get(async (req, res, next) => {
   try {
-    const DELETE = await Mercenary_board.destroy({
+    const contentDelete = await Mercenary_board.destroy({
       where: {
-        mercenary_board_number: req.cookies.user.mercenary_board_number,
+        mercenary_board_number: req.params.mercenary_board_number,
       },
     });
-    res.redirect("/");
+    console.log(contentDelete);
+    res.redirect("/mercenary_board");
   } catch (err) {
     console.error(err);
+    next(err);
   }
 });
 
@@ -110,58 +120,4 @@ router
       next(err);
     }
   });
-
-// // 구단 관리
-// router
-//   .get("/edit/:team_name", async (req,res,next)=>{
-//     try {
-//       const teams = await Teams.findAll({
-//         where: {
-//           team_name : req.params.team_name,
-//         }
-//       });
-//       res.render('team_edit', {teams});
-//     } catch (err) {
-//       console.error(err);
-//       next(err);
-//     }
-//   })
-//   .post("/edit/:team_name", async(req,res,next)=>{
-//     try {
-//       const teams = await Teams.update(
-//         {
-//         // team_name: req.body.team_name,
-// 				// team_homeGround: req.body.team_homeGround,
-// 				team_headCount: req.body.team_headCount,
-// 				// team_manner: req.body.team_manner,
-// 				// team_area: req.body.team_area,
-// 				// team_leaderId: req.body.team_leaderId,
-// 				// team_info: req.body.team_info,
-//       },
-//       {
-//         where: {team_name: req.params.team_name}
-//       }
-//       )
-//       res.redirect('/teams');
-//     } catch (err) {
-//       console.error(err);
-//       next(err);
-//     }
-//   })
-
-// 구단 선택 시
-// router.route("/:number").get(async (req, res, next) => {
-//   try {
-//     const Mercenary_boardNUMBER = await Mercenary_board.findAll({
-//       where: {
-//         number: req.params.number,
-//       },
-//     });
-//     res.json(Mercenary_boardNUMBER);
-//   } catch (err) {
-//     console.error(err);
-//     next(err);
-//   }
-// });
-
 module.exports = router;
