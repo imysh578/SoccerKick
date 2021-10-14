@@ -5,6 +5,6 @@ const router = express.Router();
 
 router
     .get("/", (req,res,next)=>{
-        res.send('**')
+        res.render('map.html')
         });
     module.exports = router;

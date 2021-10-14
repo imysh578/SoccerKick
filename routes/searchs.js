@@ -52,7 +52,7 @@ router.get('/', async (req, res, next) => {
             }
           },
             {
-            user_area : {
+              mercenary_board_content : {
               [Op.like]: "%" + q + "%"
             }
           },
