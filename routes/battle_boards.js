@@ -31,10 +31,9 @@ router
 	.post(async (req, res, next) => {
 		try {
 			await Battle_board.create({
-				user_id: req.cookies.user.user_id,
+				battle_board_id: req.cookies.user.user_id,
 				battle_board_title: req.body.battle_board_title,
 				battle_board_content: req.body.battle_board_content,
-				mercenary_select: req.body.mercenary_select,
 			});
 			res.redirect("/battle_board");
 		} catch (err) {
