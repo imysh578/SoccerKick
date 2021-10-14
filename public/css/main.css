@@ -1,8 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,700");
 main {
-	/* font: 16px/1 "Roboto", sans-serif; */
 	width: 100%;
-	font-family: "Raleway", sans-serif;
 	min-height: 100vh;
 }
 table {
