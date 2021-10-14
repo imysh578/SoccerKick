@@ -88,38 +88,6 @@
 	height: 64px;
 }
 
-.category_names_team{
-	background: #b21848;
-	color: rgba(209, 201, 201, 0.9);
-}
-.cn_team_name{
-	padding-left: 31px;
-}
-.cn_team_area{
-	padding-left: 655px;
-}
-.cn_team_logo{
-	padding-left: 50px;
-}
-.cn_team_leaderID{
-	padding-left: 22px;
-}
-.category_names_mercenary{
-	background: #b21848;
-	color: rgba(209, 201, 201, 0.9);
-}
-.cn_mercenary_postnumber{
-	padding-left: 31px;
-}
-.cn_mercenary_title{
-	padding-left: 655px;
-}
-.cn_mercenary_writer{
-	padding-left: 50px;
-}
-.cn_team_date{
-	padding-left: 22px;
-}
 /* 반응형 */
 @media (max-width: 1220px) {
 	.site-content {
