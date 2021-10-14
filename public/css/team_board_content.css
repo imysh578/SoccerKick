@@ -1,184 +1,193 @@
+.team-info-box {
+	display: flex;
+	align-items: center;
+	margin-bottom: 0.5rem;
+}
+.site-content button:hover {
+	cursor: pointer;
+	background-color: rgba(255, 166, 0, 0.808);
+}
 .site-content input {
-  padding: 3px 0;
-  padding-left: 3px;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: transparent;
-  width: 100%;
+	padding: 3px 0;
+	padding-left: 3px;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: transparent;
+	width: 100%;
 }
 .site-content textarea {
-  padding: 3px 0;
-  padding-left: 3px;
-  width: 100%;
-  background-color: transparent;
-  height: 36rem;
-  resize: none;
-  color: #8e4585;
+	padding: 3px 0;
+	padding-left: 3px;
+	width: 100%;
+	background-color: transparent;
+	height: 36rem;
+	resize: none;
+	color: #8e4585;
 }
 .site-content input:focus {
-  outline: solid 2px rgba(255, 255, 255, 0.87);
-  background-color: transparent;
-  width: 100%;
-  color: rgba(255, 255, 255, 0.87);
+	outline: solid 2px rgba(255, 255, 255, 0.87);
+	background-color: transparent;
+	width: 100%;
+	color: rgba(255, 255, 255, 0.87);
 }
 
 .site-content textarea:focus {
-  outline: solid 2px #8e4585;
-  background-color: transparent;
-  width: 100%;
-  color: #8e4585;
+	outline: solid 2px #8e4585;
+	background-color: transparent;
+	width: 100%;
+	color: #8e4585;
 }
 .content-title {
-  background: #8e4585;
-  color: rgba(255, 255, 255, 0.87);
+	background: #8e4585;
+	color: rgba(255, 255, 255, 0.87);
 }
 .content-title-list {
-  display: flex;
-  height: 3rem;
-  align-items: center;
+	display: flex;
+	height: 3rem;
+	align-items: center;
 }
 .content-title-list_ {
-  padding-right: 1.5rem;
+	padding-right: 1.5rem;
 }
 .content-title-list_bundle {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .post_title {
-  flex: 1;
+	flex: 1;
 }
 .post_title a span {
-  padding-left: 3px;
+	padding-left: 3px;
 }
 .content-title .views div {
-  font-size: 0.8rem;
+	font-size: 0.8rem;
 }
 .content-content {
-  word-break: break-all;
-  padding: 1rem 2.5rem;
-  min-height: 40rem;
-  background-color: rgba(221, 221, 221, 0.9);
+	word-break: break-all;
+	padding: 1rem 2.5rem;
+	min-height: 40rem;
+	background-color: rgba(221, 221, 221, 0.9);
 }
 .content-content pre {
-  padding: 3px 0;
-  padding-left: 3px;
-  white-space: pre-wrap;
-  height: 36rem;
+	padding: 3px 0;
+	padding-left: 3px;
+	white-space: pre-wrap;
+	height: 36rem;
 }
 
 .site-content {
-  padding: 3rem 2rem;
-  flex: 1;
-  color: #8e4585;
-  width: 1200px;
-  margin: 0 auto;
+	padding: 3rem 2rem;
+	flex: 1;
+	color: #8e4585;
+	width: 1200px;
+	margin: 0 auto;
 }
 .site-content__subtitle {
-  font-size: 1.1rem;
-  font-weight: 300;
-  background: #8e4585;
-  color: rgba(255, 255, 255, 0.87);
-  border-radius: 0.1rem;
-  padding: 1rem;
-  margin-bottom: 0;
+	font-size: 1.1rem;
+	font-weight: 300;
+	background: #8e4585;
+	color: rgba(255, 255, 255, 0.87);
+	border-radius: 0.1rem;
+	padding: 1rem;
+	margin-bottom: 0;
 }
 .team-name {
-  font-size: 1.5rem;
-  color: rgba(221, 221, 221, 0.9);
-  text-shadow: 2px 2px #8e4585;
+	font-size: 1.5rem;
+	color: rgba(221, 221, 221, 0.9);
+	text-shadow: 2px 2px #8e4585;
 }
 /* Board list */
 .board-list {
-  color: rgba(31, 35, 50, 0.83);
+	color: rgba(31, 35, 50, 0.83);
 }
 .board-list__link {
-  color: #5bace4;
-  text-decoration: none;
+	color: #5bace4;
+	text-decoration: none;
 }
 .board-list__item {
-  display: flex;
-  align-items: center;
-  height: 5.5rem;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(31, 35, 50, 0.12);
-  transition: background 0.2s ease;
-  background-color: rgba(221, 221, 221, 0.9);
+	display: flex;
+	align-items: center;
+	height: 5.5rem;
+	padding: 0.5rem 0;
+	border-bottom: 1px solid rgba(31, 35, 50, 0.12);
+	transition: background 0.2s ease;
+	background-color: rgba(221, 221, 221, 0.9);
 }
 .board-list__item--last {
-  padding-right: 1rm;
+	padding-right: 1rm;
 }
 .board-list__icon {
-  flex: 0 0 2rem;
-  font-size: 2rem;
-  text-align: center;
+	flex: 0 0 2rem;
+	font-size: 2rem;
+	text-align: center;
 }
 .board-list__info {
-  flex: 1;
+	flex: 1;
 }
 .board-list__info__name {
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: inherit;
+	font-size: 1.05rem;
+	font-weight: 500;
+	color: inherit;
 }
 .board-list__info__description {
-  margin: 0.5rem 0 0 0;
-  line-height: 1.3;
+	margin: 0.5rem 0 0 0;
+	line-height: 1.3;
 }
 .board-list__stats {
-  text-align: right;
+	text-align: right;
 }
 .board-list__stats__key {
-  font-size: 0.9rem;
+	font-size: 0.9rem;
 }
 .board-list__stats__value {
-  font-size: 1.3rem;
+	font-size: 1.3rem;
 }
 .board-list__avatar {
-  margin: 0 1.5rem;
-  width: 80px;
+	margin: 0 1.5rem;
+	width: 80px;
 }
 .board-list__avatar__image {
-  border-radius: 50%;
+	border-radius: 50%;
 }
 .board-list__lastpost {
-  line-height: 1.4;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  flex: 0 0 22rem;
+	line-height: 1.4;
+	font-size: 0.9rem;
+	display: flex;
+	align-items: center;
+	flex: 0 0 22rem;
 }
 .board-list__lastpost__topic {
-  font-weight: 500;
+	font-weight: 500;
 }
 .board-list__lastpost__user,
 .board-list__created__date,
 .board-list__stats__key,
 .board-list__info__description {
-  color: rgba(31, 35, 50, 0.7);
+	color: rgba(31, 35, 50, 0.7);
 }
 
 .board-list img,
 .board-list__team img {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
 }
 .content-btn {
-  float: right;
-  margin: 5px;
-  width: 6rem;
-  height: 2.5rem;
-  background-color: rgba(221, 221, 221, 0.9);
+	float: right;
+	margin: 5px;
+	width: 6rem;
+	height: 2.5rem;
+	background-color: rgba(221, 221, 221, 0.9);
 }
 
 /* 반응형 */
 @media (max-width: 1220px) {
-  .site-content {
-    width: 1000px;
-  }
+	.site-content {
+		width: 1000px;
+	}
 }
 @media (max-width: 1020px) {
-  .site-content {
-    width: 800px;
-  }
+	.site-content {
+		width: 800px;
+	}
 }

@@ -5,6 +5,11 @@
 	width: 1200px;
 	margin: 0 auto;
 }
+.team-info-box {
+	display: flex;
+	align-items: center;
+	margin-bottom: 0.5rem;
+}
 .site-content button:hover {
 	cursor: pointer;
 	background-color: rgba(255, 166, 0, 0.808);
@@ -37,6 +42,8 @@
 	font-size: 1.5rem;
 	color: rgba(221, 221, 221, 0.9);
 	text-shadow: 2px 2px #8e4585;
+	padding-left: 1rem;
+	/* margin-bottom: 1rem; */
 }
 
 /* Board list */
