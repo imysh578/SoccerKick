@@ -67,7 +67,10 @@ module.exports = class Team extends Sequelize.Model {
 			foreignKey: "team_name",
 			sourceKey: "team_name",
 		});
-
+		db.Team.hasMany(db.UsersInTeam, {
+			foreignKey: "team_name",
+			sourceKey: "team_name",
+		});
 		db.Team.hasMany(db.WannaJoin, {
 			foreignKey: "team_name",
 			sourceKey: "team_name",

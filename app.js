@@ -31,21 +31,21 @@ app.set("port", process.env.PORT || PORT);
 // nunjucks를 기본 엔진으로 설정
 app.set("view engine", "html");
 nunjucks.configure("views", {
-  express: app,
-  autoescape: true,
-  watch: true,
+	express: app,
+	autoescape: true,
+	watch: true,
 });
 
 sequelize
-  // sync : MySQL에 테이블이 존재 하지 않을때 생성
-  //      force: true   => 이미 테이블이 있으면 drop하고 다시 테이블 생성
-  .sync({ force: false })
-  .then(() => {
-    console.log("Database connected successfully");
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+	// sync : MySQL에 테이블이 존재 하지 않을때 생성
+	//      force: true   => 이미 테이블이 있으면 drop하고 다시 테이블 생성
+	.sync({ force: false })
+	.then(() => {
+		console.log("Database connected successfully");
+	})
+	.catch((err) => {
+		console.error(err);
+	});
 
 app.use(morgan("dev"));
 // 기본 파일 경로를 public으로 지정
@@ -59,15 +59,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(
-  session({
-    resave: false,
-    saveUninitialized: false,
-    secret: process.env.COOKIE_SECRET,
-    cookie: {
-      httpOnly: true,
-      secure: false,
-    },
-  })
+	session({
+		resave: false,
+		saveUninitialized: false,
+		secret: process.env.COOKIE_SECRET,
+		cookie: {
+			httpOnly: true,
+			secure: false,
+		},
+	})
 );
 
 app.use("/", loginDataParser, indexRouter);
@@ -83,12 +83,12 @@ app.use("/search", searchRouter);
 app.use("/map", mapRouter);
 
 app.use((err, req, res, next) => {
-  res.locals.message = err.message;
-  res.locals.error = process.env.NODE_ENV !== "production" ? err : {};
-  res.status(err.static || 500);
-  res.render("error");
+	res.locals.message = err.message;
+	res.locals.error = process.env.NODE_ENV !== "production" ? err : {};
+	res.status(err.static || 500);
+	res.render("error");
 });
 
 app.listen(app.get("port"), () => {
-  console.log(app.get("port"), "port is ready");
+	console.log(app.get("port"), "port is ready");
 });

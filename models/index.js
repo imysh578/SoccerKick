@@ -9,6 +9,7 @@ const MercenaryComment = require("./mercenary_comments");
 const BattleComment = require("./battle_comments");
 const BattleBoard = require("./battle_boards");
 const WannaJoin = require("./wanna_joins");
+const UsersInTeam = require("./usersInTeam");
 
 const env = process.env.NODE_ENV || "development";
 
@@ -33,6 +34,7 @@ db.MercenaryComment = MercenaryComment;
 db.BattleComment = BattleComment;
 db.BattleBoard = BattleBoard;
 db.WannaJoin = WannaJoin;
+db.UsersInTeam = UsersInTeam;
 
 // MySQL이랑 연동 시작
 User.init(sequelize);
@@ -44,6 +46,7 @@ MercenaryComment.init(sequelize);
 BattleBoard.init(sequelize);
 BattleComment.init(sequelize);
 WannaJoin.init(sequelize);
+UsersInTeam.init(sequelize);
 
 // 관계형으로 만들때
 User.associate(db);
@@ -55,5 +58,6 @@ MercenaryComment.associate(db);
 // BattleComment.associate(db);
 BattleBoard.associate(db);
 WannaJoin.associate(db);
+UsersInTeam.associate(db);
 
 module.exports = db;

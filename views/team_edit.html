@@ -20,11 +20,19 @@
       <div class="contents-box">
         <form method="post" enctype="multipart/form-data">
           <div class="title-box">
-            {% if team[0].logo_filename !== 'empty' %}
-            <img src="/uploads/{{team[0].logo_filename}}" alt="">
-            {% else %}
-            <img src="/images/team-logo-empty.png" alt="">    
-            {% endif %}
+            {% if team_logo == 'empty' or team_logo == NULL %}
+              <img
+                class="board-list__logo__image"
+                src="/images/team-logo-empty.png"
+                alt="Team-logo"
+              />
+              {% else %}
+              <img
+                class="board-list__logo__image"
+                src="/uploads/{{team_logo}}"
+                alt="Team-logo"
+              />
+              {% endif %}
             <h2 id="page-title">구단 정보 수정</h2>
           </div>
           <div class="detail-info">
@@ -54,7 +62,7 @@
             <span class="info-name">홈구장</span>
             <input type="text" class="info-value" name="team_homeGround" value="{{team[0].team_homeGround}}"></input>
           </div>
-          <div class="detail-info">
+          <!-- <div class="detail-info">
             <img src="/images/injury.png" alt="">
             <span class="info-name">매너점수</span>
             <input type="text" class="info-value disabled" value="{{team[0].team_manner}}" disabled></input>
@@ -63,7 +71,7 @@
             <img src="/images/football-player.png" alt="">
             <span class="info-name">인원수</span>
             <input type="text" class="info-value disabled" value="{{team[0].team_headCount}}"></input>
-          </div>
+          </div> -->
           <div class="detail-info">
             <img src="/images/team-logo.png" alt="">
             <span class="info-name">구단 로고</span>
