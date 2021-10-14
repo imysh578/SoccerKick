@@ -107,7 +107,7 @@ router
       const user = await User.findAll({
         where: { user_id: req.cookies.user.user_id },
       });
-      res.render("myPage", { user, login: req.cookies.user.user_id });
+      res.render("myPage", { user });
     } catch (err) {
       console.error(err);
       next(err);
@@ -147,7 +147,7 @@ router
           user_id: req.cookies.user.user_id,
         },
       });
-      res.render("edit", { user, login: req.cookies.user.user_id });
+      res.render("edit", { user });
     } catch (err) {
       console.error(err);
       next(err);

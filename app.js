@@ -10,6 +10,8 @@ const session = require("express-session");
 const compression = require("compression");
 const crypto = require("crypto");
 
+const { logined, notLogined, loginDataParser } = require("./public/loginCheck");
+
 const { sequelize, User } = require("./models");
 const indexRouter = require("./routes");
 const usersRouter = require("./routes/users");
@@ -67,14 +69,14 @@ app.use(
   })
 );
 
-app.use("/", indexRouter);
+app.use("/", loginDataParser, indexRouter);
 app.use("/user", usersRouter);
-app.use("/team", teamsRouter);
-app.use("/team_board", teamBoardRouter);
-app.use("/team_comment", teamCommentRouter);
+app.use("/team", logined, teamsRouter);
+app.use("/team_board", logined, teamBoardRouter);
+app.use("/team_comment", logined, teamCommentRouter);
 app.use("/mercenary_board", mercenaryBoardRouter);
 // app.use('/mercenary_comment', mercenaryCommentRouter);
-app.use("/battle_board", battleBoardRouter);
+app.use("/battle_board", logined, battleBoardRouter);
 // app.use('/battle_comment', battleCommentRouter);
 app.use("/search", searchRouter);
 

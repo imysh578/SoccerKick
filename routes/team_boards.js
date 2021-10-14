@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.get("/", async (req, res, next) => {
   try {
+    console.log(res.locals);
     const posts = await TeamBoards.findAll({
       where: {
         team_name: req.cookies.user.user_team,

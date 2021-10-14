@@ -11,8 +11,12 @@
           <span>구단메뉴</span>
           <ul>
             <li><a href="/team">구단 리스트</a></li>
+            {% if teamName %}
             <li><a href="/team_board">구단 게시판</a></li>
+            <li><a href="/team/myTeam/{{teamName}}">내 소속 구단</a></li>
+            {% else %}
             <li><a href="/team/create">구단 만들기</a></li>
+            {% endif %}
           </ul>
           <span>카테고리</span>
           <ul>
