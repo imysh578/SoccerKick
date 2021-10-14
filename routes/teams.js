@@ -104,17 +104,12 @@ router.route("/detail/:team_name").get(async (req, res, next) => {
         team_name: req.params.team_name,
       },
     });
-    const user = await Users.findOne({
-      where: {
-        user_id: req.cookies.user.user_id,
-      },
-    });
     const wannaJoin = await WannaJoin.findOne({
       where: {
-        team_name: req.params.team_name,
         user_id: req.cookies.user.user_id,
       },
     });
+    console.log(wannaJoin);
     res.render("team_detail", {
       team,
       date: formattedDate(team, "team_created_date"),

@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require("../models/users");
+const Team = require("../models/teams");
 const session = require("express-session");
 const cookieParser = require("cookie-parser"); //
 const { logined, notLogined } = require("../public/loginCheck");
@@ -104,10 +105,16 @@ router
 router
   .get("/myPage", logined, async (req, res, next) => {
     try {
-      const user = await User.findAll({
+      const user = await User.findOne({
         where: { user_id: req.cookies.user.user_id },
       });
-      res.render("myPage", { user });
+      const team = await Team.findOne({
+        attributes: ["team_name", "logo_filename"],
+        where: { team_name: req.cookies.user.user_team },
+      });
+      console.log(req.cookies.user.user_team);
+      console.log(team);
+      res.render("myPage", { user, team });
     } catch (err) {
       console.error(err);
       next(err);
@@ -173,12 +180,13 @@ router
           where: { user_id: req.cookies.user.user_id },
         }
       );
-      res.clearCookie("user", user);
-      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-      res.write(
-        "<script>alert('수정되었습니다. 다시 로그인해주세요')</script>"
-      );
-      res.write("<script>window.location='/user/login'</script>");
+      // res.clearCookie("user", user);
+      // res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+      // res.write(
+      //   "<script>alert('수정되었습니다. 다시 로그인해주세요')</script>"
+      // );
+      // res.write("<script>window.location='/user/login'</script>");
+      res.redirect("/");
     } catch (err) {
       console.error(err);
       next(err);

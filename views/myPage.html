@@ -7,126 +7,27 @@
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/footer.css" />
-    <!-- <link rel="stylesheet" href="../css/main.css" /> -->
-    <link rel="stylesheet" href="../css/myPage.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/player_card.css" />
     <title>Document</title>
   </head>
   <body>
     {% include "./layout/header.html" %}
     <main>
-      <div class="login-wrap">
-        <div class="login-html">
-          <input id="tab-2" type="radio" name="tab" class="sign-up" /><label
-            for="tab-2"
-            class="tab"
-            style="color: #fff"
-            >나으 정보</label
-          >
-          <div class="login-form">
-            <div class="sign-up-htm">
-              {% for a in user %}
-              <div class="group">
-                <label for="user" class="label">Id</label>
-                <div id="user" type="text" class="input" name="user_id">
-                  {{a.user_id}}
-                </div>
-              </div>
-              <!-- <div class="group">
-                <label for="pass" class="label">비밀번호</label>
-                <input
-                  id="pass"
-                  type="password"
-                  class="input"
-                  data-type="password"
-                  name="user_password"
-                  value="{{a.user_password}}"
-                />
-              </div> -->
-              <div class="group">
-                <label for="pass" class="label">이름</label>
-                <div id="pass" class="input" name="user_name">
-                  {{a.user_name}}
-                </div>
-              </div>
-              <div class="group">
-                <label for="pass" class="label">나이</label>
-                <div
-                  id="pass"
-                  type="text"
-                  class="input"
-                  data-type="text"
-                  name="user_age"
-                >
-                  {{a.user_age}}
-                </div>
-              </div>
-              <div class="group">
-                <label for="pass" class="label">지역</label>
-                <div
-                  id="pass"
-                  type="text"
-                  class="input"
-                  data-type="text"
-                  name="user_area"
-                >
-                  {{a.user_area}}
-                </div>
-              </div>
-              <div class="group">
-                <label for="pass" class="label">성별</label>
-                <div
-                  id="pass"
-                  type="text"
-                  class="input"
-                  data-type="text"
-                  name="user_gender"
-                >
-                  {{a.user_gender}}
-                </div>
-              </div>
-              <div class="group">
-                <label for="pass" class="label">Email Address</label>
-                <div id="pass" type="text" class="input" name="user_mail">
-                  {{a.user_mail}}
-                </div>
-              </div>
-              <div class="group">
-                <label for="pass" class="label">포지션</label>
-                <div id="pass" type="text" class="input" name="user_position">
-                  {{a.user_position}}
-                </div>
-              </div>
-              <div class="group">
-                <label for="pass" class="label">자기소개</label>
-                <div id="pass" type="text" class="input" name="user_aboutMe">
-                  {{a.user_aboutMe}}
-                </div>
-              </div>
-              <div class="group" style="text-align: center">
-                <a href="/user/edit/${userId}"
-                  ><button class="button" id="signUp-btn">
-                    회원정보 수정
-                  </button></a
-                >
-              </div>
-              <form method="post">
-                <div class="group">
-                  <a href="/user/edit/${userId}"
-                    ><input
-                      type="submit"
-                      class="button"
-                      value="탈퇴"
-                      id="signUp-btn remove"
-                  /></a>
-                </div>
-              </form>
-            </div>
-          </div>
+      <div class="main-wrap">
+        {% include "player_card.html" %}
+        <div class="btn-list">
+          <form method="post">
+            <a>
+              <button class="button" id="signOut-btn">회원 탈퇴</button>
+            </a>
+          </form>
+          <a href="/user/edit/${userId}">
+            <button class="button" id="signUp-btn">회원정보 수정</button>
+          </a>
         </div>
       </div>
-      {% endfor %}
     </main>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/user.js"></script>
+    {% include "./layout/footer.html" %}
   </body>
 </html>
