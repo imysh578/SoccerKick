@@ -21,6 +21,7 @@ const teamCommentRouter = require("./routes/team_comments");
 const mercenaryBoardRouter = require("./routes/mercenary_boards");
 const battleBoardRouter = require("./routes/battle_boards");
 const searchRouter = require("./routes/searchs");
+const mapRouter = require("./routes/maps");
 
 const app = express();
 
@@ -79,6 +80,7 @@ app.use("/mercenary_board", mercenaryBoardRouter);
 app.use("/battle_board", logined, battleBoardRouter);
 // app.use('/battle_comment', battleCommentRouter);
 app.use("/search", searchRouter);
+app.use("/map", mapRouter);
 
 app.use((err, req, res, next) => {
   res.locals.message = err.message;

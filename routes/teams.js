@@ -114,6 +114,7 @@ router.route("/detail/:team_name").get(async (req, res, next) => {
         user_id: req.cookies.user.user_id,
       },
     });
+    console.log(wannaJoin);
     res.render("team_detail", {
       team,
       date: formattedDate(team, "team_created_date"),
@@ -210,23 +211,25 @@ router
   });
 
 // 구단 삭제
-router.route("/detail/:team_name/edit/delete").get(async (req, res, next) => {
-  try {
-    // 삭제하려는 구단의 로고 파일도 같이 삭제
-    const deleteFile = await deleteTeamLogo(req.params.team_name);
+router
+  .route("/detail/:team_name/edit/delete")
+  .delete(async (req, res, next) => {
+    try {
+      // 삭제하려는 구단의 로고 파일도 같이 삭제
+      const deleteFile = await deleteTeamLogo(req.params.team_name);
 
-    // 구단을 DB에서 삭제
-    const team = await Teams.destroy({
-      where: {
-        team_name: req.params.team_name,
-      },
-    });
-    res.redirect("/team");
-  } catch (err) {
-    console.error(err);
-    next(err);
-  }
-});
+      // 구단을 DB에서 삭제
+      const team = await Teams.destroy({
+        where: {
+          team_name: req.params.team_name,
+        },
+      });
+      res.redirect("/team");
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  });
 
 // 내 소속 구단
 router.route("/myTeam/:team_name").get(async (req, res, next) => {
@@ -236,6 +239,8 @@ router.route("/myTeam/:team_name").get(async (req, res, next) => {
         user_team: req.cookies.user.user_team,
       },
     });
+    console.log(users);
+    console.log(req.cookies.user);
     res.render("myTeam", { users });
   } catch (err) {
     console.error(err);

@@ -18,14 +18,6 @@ module.exports = class Mercenary_board extends Sequelize.Model {
           type: Sequelize.STRING(45),
           allowNull: false,
         },
-        user_area: {
-          type: Sequelize.STRING(45),
-          allowNull: false,
-        },
-        user_position: {
-          type: Sequelize.STRING(45),
-          allowNull: false,
-        },
         mercenary_board_title: {
           type: Sequelize.STRING(45),
           allowNull: false,
