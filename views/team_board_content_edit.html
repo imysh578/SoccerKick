@@ -15,10 +15,10 @@
         <section>
           <div class="team-info-box">
             <div class="board-list__team">
-              {% if post.logo_filename %}
+              {% if team_logo %}
               <img
                 class="board-list__logo__image"
-                src="/uploads/{{team.logo_filename}}"
+                src="/uploads/{{team_logo}}"
                 alt="Team-logo"
               />
               {% else %}
@@ -29,6 +29,7 @@
               />
               {% endif %}
             </div>
+            <h1 class="team-name">{{teamName}}</h1>
           </div>
           <form method="post">
             <div class="content-title">
@@ -39,28 +40,32 @@
                 <div class="content-title-list_ post_title">
                   <a
                     ><input
+                      spellcheck="false"
                       type="text"
                       value="{{ post[0].title }}"
                       name="title"
+                      autofocus
                   /></a>
                 </div>
               </div>
             </div>
             <div class="content-content">
               <div>
-                <textarea name="contents">{{ post[0].contents }}</textarea>
+                <textarea spellcheck="false" name="contents">
+{{ post[0].contents }}</textarea
+                >
               </div>
             </div>
             <a><button type="submit" class="content-btn">완료</button></a>
           </form>
-          <a href="/team_board/{{ post[0].post_num}}">
-            <button class="content-btn">취소</button>
+          <a>
+            <button class="content-btn back-btn">취소</button>
           </a>
         </section>
       </div>
     </main>
     {% include "./layout/footer.html" %}
-    <!-- <script src="/inputEnterDisable.js"></script> -->
+    <script src="/inputEnterDisable.js"></script>
     <script src="/team_board.js"></script>
   </body>
 </html>

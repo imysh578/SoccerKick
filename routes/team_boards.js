@@ -49,8 +49,8 @@ router
     try {
       await TeamBoards.create({
         team_name: req.cookies.user.user_team,
-        writer_name: req.body.writer_name,
-        writer_id: req.body.writer_id,
+        writer_name: req.cookies.user.user_name,
+        writer_id: req.cookies.user.user_id,
         title: req.body.title,
         contents: req.body.contents,
       });
@@ -123,25 +123,22 @@ router
       next(err);
     }
   });
-//   .post("/content/:mercenary_board_number", async (req, res, next) => {
-//     try {
-//       const changeContent = await Mercenary_board.update(
-//         {
-//           mercenary_board_title: req.body.mercenary_board_title,
-//           mercenary_board_content: req.body.mercenary_board_content,
-//         },
-//         {
-//           where: {
-//             mercenary_board_number: req.params.mercenary_board_number,
-//           },
-//         }
-//       );
-//       res.redirect("/content/:mercenary_board_number");
-//     } catch (err) {
-//       console.error(err);
-//       next(err);
-//     }
-//   });
+
+// 게시글 삭제
+router.route("/:post_num/delete").get(async (req, res, next) => {
+  try {
+    const contentDelete = await TeamBoards.destroy({
+      where: {
+        post_num: req.params.post_num,
+      },
+    });
+    console.log(contentDelete);
+    res.redirect("/team_board");
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
 
 // 조회수 업데이트
 

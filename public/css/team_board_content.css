@@ -1,8 +1,31 @@
-textarea {
+.site-content input {
+  padding: 3px 0;
+  padding-left: 3px;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: transparent;
+  width: 100%;
+}
+.site-content textarea {
+  padding: 3px 0;
+  padding-left: 3px;
   width: 100%;
   background-color: transparent;
   height: 36rem;
   resize: none;
+  color: #8e4585;
+}
+.site-content input:focus {
+  outline: solid 2px rgba(255, 255, 255, 0.87);
+  background-color: transparent;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.site-content textarea:focus {
+  outline: solid 2px #8e4585;
+  background-color: transparent;
+  width: 100%;
+  color: #8e4585;
 }
 .content-title {
   background: #8e4585;
@@ -10,7 +33,7 @@ textarea {
 }
 .content-title-list {
   display: flex;
-  height: 2rem;
+  height: 3rem;
   align-items: center;
 }
 .content-title-list_ {
@@ -24,6 +47,9 @@ textarea {
 .post_title {
   flex: 1;
 }
+.post_title a span {
+  padding-left: 3px;
+}
 .content-title .views div {
   font-size: 0.8rem;
 }
@@ -34,6 +60,8 @@ textarea {
   background-color: rgba(221, 221, 221, 0.9);
 }
 .content-content pre {
+  padding: 3px 0;
+  padding-left: 3px;
   white-space: pre-wrap;
   height: 36rem;
 }
@@ -54,7 +82,11 @@ textarea {
   padding: 1rem;
   margin-bottom: 0;
 }
-
+.team-name {
+  font-size: 1.5rem;
+  color: rgba(221, 221, 221, 0.9);
+  text-shadow: 2px 2px #8e4585;
+}
 /* Board list */
 .board-list {
   color: rgba(31, 35, 50, 0.83);
