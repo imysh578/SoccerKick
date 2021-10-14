@@ -4,7 +4,44 @@ const Team = require("../models/teams");
 const session = require("express-session");
 const cookieParser = require("cookie-parser"); //
 const { logined, notLogined } = require("../public/loginCheck");
-
+//비밀번호 찾기, 초기화
+// const crypto = require("crypto");
+// User.findOne(user_password).then((user) => {
+//   const token = crypto.randomBytes(20).toString("hex");
+//   const data = {
+//     token,
+//     user_id: user.user_id,
+//     ttl: 300,
+//   };
+//   User.create(data)
+// });
+const area_options = [
+  "도봉구",
+  "노원구",
+  "강북구",
+  "성북구",
+  "동대문구",
+  "중랑구",
+  "성동구",
+  "광진구",
+  "중구",
+  "종로구",
+  "용산구",
+  "은평구",
+  "서대문구",
+  "마포구",
+  "강서구",
+  "양천구",
+  "영등포구",
+  "구로구",
+  "동작구",
+  "금천구",
+  "관악구",
+  "서초구",
+  "강남구",
+  "송파구",
+  "강동구",
+].sort();
 const router = express.Router();
 router.use(cookieParser("12345!@#$%"));
 //회원 가입
@@ -54,7 +91,7 @@ router
 //로그인 라우터
 router
   .get("/login", function (req, res) {
-    res.render("login");
+    res.render("login", { areas: area_options });
   })
   .post("/login", async (req, res, next) => {
     try {
@@ -87,19 +124,26 @@ router
   });
 
 //비밀번호 찾기
-router
-  .get("/findPWD", (req, res) => {
-    res.render("findPWD");
-  })
-  .post("/findPWD", async (req, res, next) => {
-    const user = await User.findOne({
-      where: {
-        user_mail: req.body.user_mail,
-      },
-    });
-    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-    res.write("<script>alert('메일발송 되었습니다')</script>");
-  });
+// router
+//   .get("/findPWD", (req, res) => {
+//     res.render("findPWD");
+//   })
+//   .post("/findPWD", async (req, res, next) => {
+//     if (req.body.user_mail === "") {
+//       res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+//       res.write("<script>alert('이메일을 적어주세요')</script>");
+//       res.write("<script>window.location='/user/findPWD'</script>");
+//     } else {
+//       const user = await User.findOne({
+//         where: {
+//           user_mail: req.body.user_mail,
+//         },
+//       });
+//       res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+//       res.write("<script>alert('메일발송 되었습니다')</script>");
+//       res.write("<script>window.location='/user/login'</script>");
+//     }
+//   });
 
 // 마이페이지
 router
@@ -154,7 +198,7 @@ router
           user_id: req.cookies.user.user_id,
         },
       });
-      res.render("edit", { user });
+      res.render("edit", { user, areas: area_options });
     } catch (err) {
       console.error(err);
       next(err);

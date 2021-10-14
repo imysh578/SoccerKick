@@ -46,7 +46,6 @@
                     name="user_password"
                   />
                 </div>
-
                 <div class="group">
                   <input
                     type="submit"
@@ -56,10 +55,10 @@
                     formaction="/user/login"
                   />
                 </div>
-                <div class="hr"></div>
+                <!-- <div class="hr"></div>
                 <div class="foot-lnk">
                   <a href="/user/findPWD">비밀번호찾기</a>
-                </div>
+                </div> -->
               </div>
             </form>
               <form method="post">
@@ -67,7 +66,7 @@
               <div class="sign-up-htm">
                 <div class="group">
                   <label for="user" class="label">Id</label>
-                  <input id="user" type="text" class="input" name="user_id" />
+                  <input id="user" type="text" class="input" name="user_id" placeholder="활동할 아이디를 적어주세요^^"/>
                 </div>
                 <div class="group">
                   <label for="pass" class="label">비밀번호</label>
@@ -77,6 +76,7 @@
                     class="input"
                     data-type="password"
                     name="user_password"
+                    placeholder="어렵게 만들어주세요^^"
                   />
                 </div>
                 <div class="group">
@@ -87,6 +87,7 @@
                     class="input"
                     data-type="text"
                     name="user_name"
+                    placeholder="실명을 적어주세요^^"
                   />
                 </div>
                 <div class="group">
@@ -97,9 +98,10 @@
                     class="input"
                     data-type="text"
                     name="user_age"
+                    placeholder="당신의 나이는?^^"
                   />
                 </div>
-                <div class="group">
+                <!-- <div class="group">
                   <label for="pass" class="label">지역</label>
                   <input
                     id="pass"
@@ -107,31 +109,12 @@
                     class="input"
                     data-type="text"
                     name="user_area"
+                    placeholder="구만 적어주세요^^ex)중랑구"
                   />
-                </div>
+                </div> -->
                 <div class="group">
-                  <label for="pass" class="label">성별</label>
-                  <input
-                    id="pass"
-                    type="text"
-                    class="input"
-                    data-type="text"
-                    name="user_gender"
-                  />
-                </div>
-
-                <div class="group">
-                  <label for="pass" class="label">Email Address</label>
-                  <input id="pass" type="text" class="input" name="user_mail" />
-                </div>
-                <div class="group">
-                  <label for="pass" class="label">포지션</label>
-                  <input
-                    id="pass"
-                    type="text"
-                    class="input"
-                    name="user_position"
-                  />
+                  <label for="pass" class="label">이메일</label>
+                  <input id="pass" type="text" class="input" name="user_mail" placeholder="이메일을 적어주세요^^"/>
                 </div>
                 <div class="group">
                   <label for="pass" class="label">자기소개</label>
@@ -140,7 +123,34 @@
                     type="text"
                     class="input"
                     name="user_aboutMe"
+                    placeholder="빈칸으로 제출해도 됩니다^^"
                   />
+                </div>
+                <div class="group select-group" >
+                  <span class="custom-dropdown">
+                    <label for="pass" class="label">포지션</label>
+                    <select name="user_position" >
+                      <option value="FW">FW</option>
+                      <option value="MF">MF</option>
+                      <option value="DF">DF</option>
+                      <option value="GK">GK</option>
+                    </select>
+                  </span>
+                  <span class="custom-dropdown">
+                    <label for="pass" class="label">성별</label>
+                    <select name="user_gender" >
+                      <option value="남자">남자</option>
+                      <option value="여자">여자</option>
+                    </select>
+                  </span>
+                  <span class="custom-dropdown">
+                    <label for="pass" class="label">지역</label>
+                    <select name="user_area" >
+                      {% for area in areas %}
+                      <option value="{{area}}">{{area}}</option>
+                      {% endfor %}
+                    </select>
+                  </span>
                 </div>
                 <div class="group">
                   <input
@@ -151,15 +161,14 @@
                     formaction="/user"
                   />
                 </div>
-                <div class="hr"></div>
               </div>
             </div>
           </div>
         </div>
       </form>
     </main>
-    <!--  -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/user.js"></script>
+    <!-- footer -->
+    {% include "./layout/footer.html" %}
+    
   </body>
 </html>
