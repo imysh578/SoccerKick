@@ -43,6 +43,11 @@ const area_options = [
 router.route("/").get(async (req, res, next) => {
   try {
     const teams = await Teams.findAll();
+    const users = await Users.findAll({
+      include: { model: Teams },
+    });
+
+    console.log(users);
     res.render("team", { teams });
   } catch (err) {
     console.error(err);
@@ -241,5 +246,56 @@ router.route("/myTeam/:team_name").get(async (req, res, next) => {
     console.error(err);
   }
 });
+
+// 가입 신청 목록
+router
+  .get("/myTeam/:team_name/wannaJoin", async (req, res, next) => {
+    try {
+      const wannaJoin = await WannaJoin.findAll({
+        include: { model: User },
+        where: {
+          team_name: req.params.team_name,
+        },
+      });
+      res.render("wannaJoin", { wannaJoin });
+    } catch (err) {
+      console.error(err);
+    }
+  })
+  .get(
+    "/myTeam/:team_name/wannaJoin/:user_id/approved",
+    async (req, res, next) => {
+      try {
+        // 구단 가입 승인 => 유저 테이블에 구단명 기입
+        const userUpdate = Users.update(
+          { user_team: req.params.team_name },
+          { where: { user_id: req.params.user_id } }
+        );
+        const wannaJoinDelete = WannaJoin.destroy({
+          where: { user_id: req.params.user_id },
+        });
+
+        res.redirect(`/team/myTeam/${req.params.team_name}/wannaJoin`);
+      } catch (err) {
+        console.error(err);
+        next(err);
+      }
+    }
+  )
+  .get(
+    "/myTeam/:team_name/wannaJoin/:user_id/removed",
+    async (req, res, next) => {
+      try {
+        const wannaJoinDelete = WannaJoin.destroy({
+          where: { user_id: req.params.user_id },
+        });
+
+        res.redirect(`/team/myTeam/${req.params.team_name}/wannaJoin`);
+      } catch (err) {
+        console.error(err);
+        next(err);
+      }
+    }
+  );
 
 module.exports = router;

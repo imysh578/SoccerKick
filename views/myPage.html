@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/common.css" />
-    <link rel="stylesheet" href="../css/header.css" />
-    <link rel="stylesheet" href="../css/footer.css" />
-    <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/player_card.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/player_card.css" />
     <title>Document</title>
   </head>
   <body>
@@ -17,6 +17,12 @@
       <div class="main-wrap">
         {% include "player_card.html" %}
         <div class="btn-list">
+          <a>
+            <button onclick="history.back()" class="button" id="back-btn">
+              뒤로가기
+            </button>
+          </a>
+          {% if user.user_id == login %}
           <form method="post">
             <a>
               <button class="button" id="signOut-btn">회원 탈퇴</button>
@@ -25,6 +31,7 @@
           <a href="/user/edit/${userId}">
             <button class="button" id="signUp-btn">회원정보 수정</button>
           </a>
+          {% endif %}
         </div>
       </div>
     </main>

@@ -125,6 +125,9 @@
   transition: background 0.4s ease;
   border-radius: 25px;
 }
+.btn-list button:hover {
+  background: orange;
+}
 .btn-list > a,
 .btn-list > form {
   flex: 1;

@@ -54,6 +54,7 @@ exports.loginDataParser = async (req, res, next) => {
       });
       if (team_info) {
         res.locals.team_logo = team_info.dataValues.logo_filename;
+        res.locals.team_leaderId = team_info.dataValues.team_leaderId;
       }
       res.locals.teamName = team;
     }

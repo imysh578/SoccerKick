@@ -156,8 +156,6 @@ router
         attributes: ["team_name", "logo_filename"],
         where: { team_name: req.cookies.user.user_team },
       });
-      console.log(req.cookies.user.user_team);
-      console.log(team);
       res.render("myPage", { user, team });
     } catch (err) {
       console.error(err);
@@ -182,17 +180,15 @@ router
   });
 
 // 팀원 페이지 보기
-router.get("/userPage/:user_id", logined, async (req, res, next) => {
+router.get("/myPage/:user_id", logined, async (req, res, next) => {
   try {
     const user = await User.findOne({
-      where: { user_id: req.cookies.user.user_id },
+      where: { user_id: req.params.user_id },
     });
     const team = await Team.findOne({
       attributes: ["team_name", "logo_filename"],
-      where: { team_name: req.cookies.user.user_team },
+      where: { team_name: user.dataValues.user_team },
     });
-    console.log(req.cookies.user.user_team);
-    console.log(team);
     res.render("myPage", { user, team });
   } catch (err) {
     console.error(err);
