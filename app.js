@@ -79,8 +79,8 @@ app.use("/mercenary_board", logined, mercenaryBoardRouter);
 // app.use('/mercenary_comment', mercenaryCommentRouter);
 app.use("/battle_board", logined, battleBoardRouter);
 // app.use('/battle_comment', battleCommentRouter);
-app.use("/search", searchRouter);
-app.use("/map", mapRouter);
+app.use("/search", logined, searchRouter);
+app.use("/map", logined, mapRouter);
 
 app.use((err, req, res, next) => {
 	res.locals.message = err.message;
