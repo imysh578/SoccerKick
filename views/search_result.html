@@ -6,29 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>검색결과테이블</title>
     {% include "./layout/style.html" %}
-    <link rel="stylesheet" href="css/search_result.css">
+    <!-- <link rel="stylesheet" href="css/search_result.css"> -->
+    <link rel="stylesheet" href="/css/team_board.css" />
+    <link rel="stylesheet" href="css/team.css">
+
 </head>
 <body class="wrapper">
   {% include "./layout/header.html" %}
   <main class="site-content">
     <div class="forum-index">
       <section>
-        <h2 class="site-content__subtitle">구단 리스트</h2>       
+        <h2 class="site-content__subtitle">구단 리스트</h2>
         <div class="board-list">
           {% for team in teams %}
-          {% if loop.index <= 4 %}
-          <div class="board-list__item team_section">
+          <div class="board-list__item">
             <div class="board-list__icon">
               <i class="fa fa-comments-o" aria-hidden="true"></i>
             </div>
             <div class="board-list__info">
-              <a class="board-list__info__name_1">{{team.team_name}}</a>
+              <a class="board-list__info__name">{{team.team_name}}</a>
+            </div>
+            <div class="board-list__area">
+              <a class="board-list__area__info">{{team.team_area}}</a>
             </div>
             <div class="board-list__stats">
-              <div class="board-list__stats__value">{{team.team_area}}</div>
-              <div class="board-list__stats__key"><!--인원수--></div>
+              <div class="board-list__stats__value">{{team.UsersInTeams.length}}명</div>
             </div>
-            <div class="board-list__lastpost board-list__item--last">
+            <div class="board-list__lastpost board-list__item__last">
               <div class="board-list__avatar">
                 {% if team.logo_filename !== 'empty' %}
                 <img class="board-list__avatar__image image" src="/uploads/{{team.logo_filename}}" alt="Team-logo">
@@ -38,60 +42,130 @@
               </div>
               <div>
                 <div class="board-list__lastpost__topic">
-                  <!--팀 리더-->
+                  구단주
                 </div>
                 <div class="board-list__lastpost__user">
                   <a class="board-list__link">{{team.team_leaderId}}</a>
                 </div>
-                
-                <div class="board-list__created__date">
-                  {{date[loop.index]}}
-                </div>
               </div>
             </div>
           </div>
-          {% endif %}
           {% endfor %}
         </div>
-        
       </section>
       <br>
       <!--=====================================용병게시판=====================================-->
       <section>
-        <h2 class="site-content__subtitle">용병 게시판</h2>
+        <div class="team-info-box">
+          <div class="board-list__team">
+            {% if team_logo %}
+            <img
+              class="board-list__logo__image"
+              src="/uploads/{{team_logo}}"
+              alt="Team-logo"
+            />
+            {% else %}
+            <img
+              class="board-list__logo__image"
+              src="/images/team-logo-empty.png"
+              alt="Team-logo"
+            />
+            {% endif %}
+          </div>
+          <h1 class="team-name">{{teamName}}</h1>
+        </div>
+        <h2 class="site-content__subtitle">
+          용병 게시판 <button class="tab-btn" id="want_player">구해요</button>
+          <button class="tab-btn" id="want_to_play">할래요</button>
+        </h2>
+
         <div class="board-list">
-          {% for mer in merces %} <!--(merces):merceS의 (merce)를 받아와-->
-          {% if loop.index <= 4 %}
-          <div class="board-list__item mercenary_section">
-            <div class="board-list__icon">
-              <i class="fa fa-comments-o" aria-hidden="true"></i>
+          <div class="list_names">
+            <div class="list_names_num">번호</div>
+
+            <div class="list_names_title">제목</div>
+            <div class="list_names-bundle">
+              <div class="list_names_view">구분　</div>
+              <div class="list_names_writer">작성자</div>
+              <div class="list_names_date">게시일</div>
             </div>
-            <div class="board-list__info">
-              <a class="board-list__info__name_2">{{mer.mercenary_board_number}}</a>
-            </div>
-            <div>
-              {{mer.mercenary_board_title}}
-            </div>
-            <div class="board-list__stats">
-              <div class="board-list__stats__value">{{mer.mercenary_select}}</div>
-              <div class="board-list__stats__key"><!--할래요/구해요--></div>
-            </div>
-            
-              <div>
-                <div class="board-list__lastpost__topic">
-                <!--팀 리더-->
+          </div>
+          <!-- 구해요 -->
+          {% for post in posts %} {% if post.mercenary_select == '구해요'%}
+          <div class="want_player">
+            <div class="board-list__item">
+              <div class="board-list__icon">
+                <i class="fa fa-comments-o" aria-hidden="true"></i>
+              </div>
+              <div class="board-list__info post_num">
+                <a class="board-list__info__name"
+                  >{{post.mercenary_board_number}}</a
+                >
+              </div>
+              <div class="board-list__info post_title">
+                <a class="board-list__info__name"
+                  >{{post.mercenary_board_title}}</a
+                >
+              </div>
+
+              <div class="board-list__lastpost board-list__item--last">
+                <div class="board-list__stats">
+                  <div class="board-list__stats__value mercenary_select">
+                    {{post.mercenary_select}}
+                  </div>
                 </div>
-                <div class="board-list__lastpost__user">
-                  <a class="board-list__link">{{mer.user_area}}</a>
+                <div>
+                  <div class="board-list__lastpost__user">
+                    <a class="board-list__link">{{post.user_id}}</a>
+                  </div>
                 </div>
-                <div class="board-list__created__date">
-                  {{date[loop.index]}}
+                <div class="board-list__info">
+                  <div class="board-list__info__name date">
+                    {{ date[loop.index-1] }}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          {% endif %}
-          {% endfor %}
+          {% endif %} {% endfor %}
+          <!-- 할래요 -->
+          {% for post in posts %} {% if post.mercenary_select == '할래요'%}
+          <div class="want_to_play" hidden>
+            <div class="board-list__item">
+              <div class="board-list__icon">
+                <i class="fa fa-comments-o" aria-hidden="true"></i>
+              </div>
+              <div class="board-list__info post_num">
+                <a class="board-list__info__name"
+                  >{{post.mercenary_board_number}}</a
+                >
+              </div>
+              <div class="board-list__info post_title">
+                <a class="board-list__info__name"
+                  >{{post.mercenary_board_title}}</a
+                >
+              </div>
+
+              <div class="board-list__lastpost board-list__item--last">
+                <div class="board-list__stats">
+                  <div class="board-list__stats__value mercenary_select">
+                    {{post.mercenary_select}}
+                  </div>
+                </div>
+                <div>
+                  <div class="board-list__lastpost__user">
+                    <a class="board-list__link">{{post.user_id}}</a>
+                  </div>
+                </div>
+                <div class="board-list__info">
+                  <div class="board-list__info__name date">
+                    {{ date[loop.index-1] }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %} {% endfor %}
         </div>
       </section>
       <br>
