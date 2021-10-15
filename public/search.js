@@ -34,11 +34,11 @@ function boardListClick() {
             const documentNumber = el.querySelector(
               ".board-list__info__name_2" //documentNumber 변수에 name_2로감싸진 '값'을 넣어준다. 이'값'은 글번호이다.
             ).textContent;
-            window.location.href = `/mercenary_board/content/${documentNumber}`; //따온 글번호를 여따넣고 유동적으로 사이트 불러
+            window.location.href = `/mercenary_board/${documentNumber}`; //따온 글번호를 여따넣고 유동적으로 사이트 불러
 
             break;
           case "battle_section":
-            const battle_board_teamName = el.querySelector(
+            const battle_board_postnumber = el.querySelector(
               ".board-list__info__name_3"
             ).textContent;
             if (battle_board_teamName) {

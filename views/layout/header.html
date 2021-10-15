@@ -25,7 +25,9 @@
           <span>카테고리</span>
           <ul>
             <li><a href="/mercenary_board">용병 게시판</a></li>
+            {% if team_leaderId == login %}
             <li><a href="/battle_board">한판 떠요</a></li>
+            {% endif %}
             <li><a href="/map">구장 찾기</a></li>
           </ul>
         </div>

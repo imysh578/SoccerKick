@@ -137,31 +137,45 @@ router.route("/detail/:team_name").get(async (req, res, next) => {
 });
 
 // 가입신청
-router.route("/detail/:team_name/join").get(async (req, res, next) => {
-	try {
-		const team = await Teams.findOne({
-			attributes: ["team_name", "team_leaderId"],
-			where: {
-				team_name: req.params.team_name,
-			},
-		});
-		const user = await Users.findOne({
-			attributes: ["user_id"],
-			where: {
-				user_id: req.cookies.user.user_id,
-			},
-		});
-		const wannaJoin = await WannaJoin.create({
-			team_name: team.dataValues.team_name,
-			team_leaderId: team.dataValues.team_leaderId,
-			user_id: user.dataValues.user_id,
-		});
-		res.redirect("/team");
-	} catch (err) {
-		console.error(err);
-		next(err);
-	}
-});
+router
+	.get("/detail/:team_name/join", async (req, res, next) => {
+		try {
+			const team = await Teams.findOne({
+				attributes: ["team_name", "team_leaderId"],
+				where: {
+					team_name: req.params.team_name,
+				},
+			});
+			const user = await Users.findOne({
+				attributes: ["user_id"],
+				where: {
+					user_id: req.cookies.user.user_id,
+				},
+			});
+			const wannaJoin = await WannaJoin.create({
+				team_name: team.dataValues.team_name,
+				team_leaderId: team.dataValues.team_leaderId,
+				user_id: user.dataValues.user_id,
+			});
+			res.redirect("/team");
+		} catch (err) {
+			console.error(err);
+			next(err);
+		}
+	})
+	.get("/detail/:team_name/join/:user_id/cancel", async (req, res, next) => {
+		try {
+			// 가입 승인 요청 지우기
+			const wannaJoinDelete = WannaJoin.destroy({
+				where: { user_id: req.params.user_id },
+			});
+
+			res.redirect(`/team`);
+		} catch (err) {
+			console.error(err);
+			next(err);
+		}
+	});
 
 // 구단 정보 수정
 router
