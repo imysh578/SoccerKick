@@ -37,6 +37,10 @@
             <div class="btn-box">
               <a href="/team/detail/{{teamName}}/edit"><button class="write_btn">구단 관리</button></a>
             </div>
+            {% else %}
+            <div class="btn-box">
+              <a href="/team/detail/{{teamName}}/out/{{login}}"><button class="write_btn">구단 탈퇴하기</button></a>
+            </div>
             {% endif %}
           </div>
           <div class="board-list">

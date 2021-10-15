@@ -246,6 +246,32 @@ router
 		}
 	});
 
+// 구단 탈퇴
+router.route("/detail/:team_name/out/:user_id").get(async (req, res, next) => {
+	try {
+		const usersInTeam = await UsersInTeam.destroy({
+			where: {
+				user_id: req.params.user_id,
+			},
+		});
+		const user = await Users.update(
+			{
+				user_team: null,
+			},
+			{
+				where: {
+					user_id: req.params.user_id,
+				},
+			}
+		);
+
+		res.redirect("/");
+	} catch (err) {
+		console.error(err);
+		next(err);
+	}
+});
+
 // 구단 삭제
 router.route("/detail/:team_name/edit/delete").get(async (req, res, next) => {
 	try {
