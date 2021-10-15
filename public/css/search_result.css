@@ -34,7 +34,7 @@
 	background-color: rgba(221, 221, 221, 0.9);
   }
   .board-list__item--last_M {
-	padding-right: 1rm;
+	padding-right: 1rem;
   }
   .board-list__icon_M {
 	flex: 0 0 2rem;
