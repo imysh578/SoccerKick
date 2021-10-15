@@ -194,7 +194,7 @@
 	background-color: rgba(221, 221, 221, 0.9);
   }
   .board-list__item--last {
-	padding-right: 1rem;
+	padding-right: 1rm;
   }
   .board-list__icon {
 	flex: 0 0 1rem;

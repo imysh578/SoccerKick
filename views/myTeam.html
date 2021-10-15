@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>소속 구단 페이지</title>
+    <title>{{user.user_team}}</title>
     {% include "./layout/style.html" %}
     <link rel="stylesheet" href="/css/team_board.css" />
   </head>
@@ -35,7 +35,9 @@
             <h2 class="site-content__subtitle">구단원 목록</h2>
             {% if login == team_leaderId %}
             <div class="btn-box">
-              <a href="/team/detail/{{teamName}}/edit"><button class="write_btn">구단 관리</button></a>
+              <a href="/team/detail/{{teamName}}/edit"
+                ><button class="write_btn">구단 관리</button></a
+              >
             </div>
             {% else %}
             <div class="btn-box">
