@@ -75,7 +75,7 @@ app.use("/user", usersRouter);
 app.use("/team", logined, teamsRouter);
 app.use("/team_board", logined, teamBoardRouter);
 app.use("/team_comment", logined, teamCommentRouter);
-app.use("/mercenary_board", mercenaryBoardRouter);
+app.use("/mercenary_board", logined, mercenaryBoardRouter);
 // app.use('/mercenary_comment', mercenaryCommentRouter);
 app.use("/battle_board", logined, battleBoardRouter);
 // app.use('/battle_comment', battleCommentRouter);
