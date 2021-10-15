@@ -30,7 +30,11 @@
             </div>
             <div class="board-list__lastpost board-list__item--last">
               <div class="board-list__avatar">
-                <img class="board-list__avatar__image" src="" alt="Team logo">
+                {% if team.logo_filename !== 'empty' %}
+                <img class="board-list__avatar__image image" src="/uploads/{{team.logo_filename}}" alt="Team-logo">
+                {% else %}
+                <img class="board-list__avatar__image image" src="/images/team-logo-empty.png" alt="Team-logo">
+                {% endif %}
               </div>
               <div>
                 <div class="board-list__lastpost__topic">
@@ -39,6 +43,7 @@
                 <div class="board-list__lastpost__user">
                   <a class="board-list__link">{{team.team_leaderId}}</a>
                 </div>
+                
                 <div class="board-list__created__date">
                   {{date[loop.index]}}
                 </div>
