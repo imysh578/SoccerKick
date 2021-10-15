@@ -1,58 +1,74 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>한판떠요 글 생성</title>
+    {% include "./layout/style.html" %}
+    <link rel="stylesheet" href="/css/team_board_content.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>한판떠요 생성</title>
-  {% include "./layout/style.html" %}
-  <link rel="stylesheet" href="/css/team_board_content.css" />
-</head>
-
-<body class="wrapper">
-  {% include "./layout/header.html" %}
-  <main class="site-content">
-    <div class="forum-index">
-      <section>
-        <div class="team-info-box">
-          <div class="board-list__team">
-            {% if team_logo %}
-            <img class="board-list__logo__image" src="/uploads/{{team_logo}}" alt="Team-logo" />
-            {% else %}
-            <img class="board-list__logo__image" src="/images/team-logo-empty.png" alt="Team-logo" />
-            {% endif %}
+  <body class="wrapper">
+    {% include "./layout/header.html" %}
+    <main class="site-content">
+      <div class="forum-index">
+        <section>
+          <div class="team-info-box">
+            <div class="board-list__team">
+              {% if team_logo %}
+              <img
+                class="board-list__logo__image"
+                src="/uploads/{{team_logo}}"
+                alt="Team-logo"
+              />
+              {% else %}
+              <img
+                class="board-list__logo__image"
+                src="/images/team-logo-empty.png"
+                alt="Team-logo"
+              />
+              {% endif %}
+            </div>
+            <h1 class="team-name">{{teamName}}</h1>
           </div>
-          <h1 class="team-name">{{teamName}}</h1>
-        </div>
-        <form method="post">
-          <div class="content-title">
-            <div class="content-title-list">
-              <div class="board-list__icon">
-                <i class="fa fa-comments-o" aria-hidden="true"></i>
-              </div>
-              <div class="content-title-list_ post_title">
-                <a><input required autofocus placeholder="제목을 입력하세요" type="text" value="{{ post[0].title }}"
-                    name="mercenary_board_title" /></a>
+          <form method="post">
+            <div class="content-title">
+              <div class="content-title-list">
+                <div class="board-list__icon">
+                  <i class="fa fa-comments-o" aria-hidden="true"></i>
+                </div>
+                <div class="content-title-list_ post_title">
+                  <a
+                    ><input
+                      required
+                      autofocus
+                      placeholder="제목을 입력하세요"
+                      type="text"
+                      value="{{ post[0].title }}"
+                      name="mercenary_board_title"
+                  /></a>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="content-content">
-            <div>
-              <textarea placeholder="글을 입력하세요" name="mercenary_board_content"></textarea>
+            <div class="content-content">
+              <div>
+                <textarea
+                  placeholder="글을 입력하세요"
+                  name="mercenary_board_content"
+                ></textarea>
+              </div>
             </div>
-          </div>
-          <a><button type="submit" class="content-btn">완료</button></a>
-        </form>
-        <a href="/team_board">
-          <button class="content-btn">취소</button>
-        </a>
-      </section>
-    </div>
-  </main>
-  {% include "./layout/footer.html" %}
-  <script src="/inputEnterDisable.js"></script>
-  <script src="/mercenary_board.js"></script>
-</body>
-
+            <a><button type="submit" class="content-btn">완료</button></a>
+          </form>
+          <a href="/team_board">
+            <button class="content-btn">취소</button>
+          </a>
+        </section>
+      </div>
+    </main>
+    {% include "./layout/footer.html" %}
+    <script src="/inputEnterDisable.js"></script>
+    <script src="/mercenary_board.js"></script>
+  </body>
 </html>
