@@ -87,15 +87,14 @@
 
 ### 🛠 사용한 기술
 
-![KakaoTalk_20211125_174239334](https://user-images.githubusercontent.com/88940298/143418476-feff562d-e665-4d09-a100-0e0dccb38f3b.png)
 
 
 
-- 웹 화면 구성 : `REACT` 
-- DB 액션 처리 : `Sequelize` `mongoose`
-- DBMS : `MySQL` `Mongo` 
+
+- 웹 화면 구성 : `HTML` 
+- DBMS : `MySQL`
 - 개발 Tool : `Visual Studio Code` `github`
-- AWS 배포 : `EC2` `RDS` `Atlas`
+- AWS 배포 : `EC2` `RDS`
 - 로그인 구현 :  
 - 프레임워크 : `NodeJs` 
 - 결제: 
@@ -103,67 +102,22 @@
 
 -  사용 모듈(Server) :`  
   - "async": "^3.2.2",      
-    "bcrypt": "^5.0.1",      
-    "body-parser": "^1.18.3",      
-    "cookie-parser": "^1.4.5",      
-    "cors": "^2.8.5",      
-    "debug": "^4.1.1",      
-    "dotenv": "^10.0.0",      
-    "express": "^4.17.1",      
-    "express-session": "^1.17.2",      
-    "fluent-ffmpeg": "^2.1.2",      
-    "jsonwebtoken": "^8.5.1",      
-    "mongoose": "^5.4.20",      
-    "morgan": "^1.10.0",      
-    "multer": "^1.4.3",      
-    "mysql2": "^2.3.3",      
-    "passport": "^0.5.0",      
-    "passport-local": "^1.0.0",      
-    "promise": "^8.1.0",      
+
     "sequelize": "^6.9.0",      
-    "sequelize-cli": "^6.3.0"  
+    "sequelize-cli": "^6.3.0"  ......
     ` 
 
 ### 🌱주요 기능
 
-- 로그인 : 일반 로그인, `Sequelize` `passport` `mysql` `REDUX` 
-- 회원가입 : `Sequelize` `passport` `mysql` `mongo` `mongoose` `REDUX`
-- 회원정보변경 :`Sequelize` `mysql` `mongo` `mongoose`
-- 장바구니 : `Sequelize` `mysql` `mongo` `mongoose`
-- 결제 : `Sequelize` `passport` `PAYTAL` `mongo` `mongoose`
-- 마이페이지 : `Sequelize` `mysql` `RDS`
-- SNS:`Sequelize` `mysql` `RDS`
-- 놀거리 :`Sequelize` `mysql` `RDS`
-- 편지:`Sequelize` `mysql` `RDS`
-- 놀거리 :`Sequelize` `mysql` `RDS`
-- MUSIC PLAYER :`styled-componets`
-- 관리자모드(상품등록 및 삭제) :`mongo` `mongoose`
-- 물품 필터 (검색): `mongo` `mongoose` 
-- 모달:`Sequelize` `mysql` `RDS`
+
 
 
 
 ### 🔎  깃 브런치 활용
 
-코드 병합시 오류를 최소화 하기위해 깃브런치 
+브런치 활용내용...
 
 ```
-✔ main - 개발 완료하고 최종 코드 올리는 브랜치
-
-
-✔ SNS  sns 파트 깃브런치
-
-
-   - diaryhyun (sns 파트 프론트 브런치)
-   
-   - diarymin (sns 파트 깃 브런치)
-   
-✔ SHOP  shop 파트 깃브런치
-
-
-   - ssangmin (shop 파트 프론트 브런치)
-   
-   - parkjh (shop 파트 깃 브런치)
 
   
 
