@@ -1,4 +1,4 @@
-#⚽ **SoccerKick**
+# ⚽ **SoccerKick**
 > Football-Community-Website (축구 커뮤니티 사이트 )
 
 
@@ -64,13 +64,13 @@
 
 ***
 
-##📒개요
+## 📒개요
 
 개요...
 
 
 
-##🎯 목적
+## 🎯 목적
 
 ### 개발 배경
 (1) 배경
@@ -87,7 +87,7 @@
 축구 커뮤니티 및 매칭 기능 제공
 
 
-##🛠 사용한 기술 
+## 🛠 사용한 기술 
 - 웹 화면 구성 : `HTML` `CSS`
 - DBMS : `MySQL`
 - 개발 Tool : `Visual Studio Code` `github`
@@ -98,7 +98,7 @@
 
 
 
-##⚙ 주요 기능 
+## ⚙ 주요 기능 
 
 
 
