@@ -5,9 +5,9 @@
 
 ### 팀원 및 역할
 
-[`윤석훈`](https://github.com/imysh578) : 구단 생성/관리 구현<br/>
-[`선영규`](https://github.com/bukgyu) : 로그인/회원가입 구현 <br/>
-[`이상민`](https://github.com/LeessangMin) : 서버 배포, 용병 게시판 구현<br/>
+[`윤석훈`](https://github.com/imysh578) : 구단 생성/관리, 마이페이지 구현<br/>
+[`선영규`](https://github.com/bukgyu) : 로그인/회원가입 구현, DB연동 <br/>
+[`이상민`](https://github.com/LeessangMin) : 서버 배포, DB연동, 용병 게시판 구현<br/>
 [`제갈동훈`](https://github.com/GariJK) : 구장 찾기, 경기 매칭 게시판 구현 <br/>
 
 
@@ -74,9 +74,9 @@
   - 내 소속 구단 관리(구단주만) 
   - 구단 가입 신청 및 가입 수락 기능
   - 경기 매칭 기능
-  - 구장 찾기(Google map 연동)
+  - 구장 찾기(Kakao map API 활용)
   - 구단 게시판
-  - 용병 게시판
+  - 용병 게시판(구현 중)
 
 ***
 
@@ -87,8 +87,13 @@
 | **메인페이지** |  ![mainpage](https://user-images.githubusercontent.com/33863016/144067412-c8291256-5488-49e2-8480-5ba71cbaccad.gif)| 축구 하이라이트 유튜브 영상을 띄움 |
 | **로그인/회원가입** | ![loginpage](https://user-images.githubusercontent.com/33863016/144067454-e5f88293-4bf7-48d0-baca-533810b8a924.gif)| 한 페이지에서 버튼을 클릭하여 로그인/회원가입으로 전환 |
 | **구단 가입** | ![team_join](https://user-images.githubusercontent.com/33863016/144068634-c62fbeb2-ddf8-44e7-98d9-c11953529165.gif)| 로그인 후 구단 가입 신청이 가능하다 |
-| **구단 생성** | ![team_create](https://user-images.githubusercontent.com/33863016/144071147-2c961995-f49a-4073-867a-5a967903546d.gif)| 로그인 후 구단 생성하여 구단주가 될 수 있다. 팀로고를 추가하여 나만의 구단을 완성하자! |
-| **구단 관리** | | 소속 팀원 리스트를 확인 할 수 있으며, 구단주만 구단 정보를 수정할 수 있다. |
+| **구단 생성** | ![team_create](https://user-images.githubusercontent.com/33863016/144079159-a9141382-ebe9-4aca-a1bc-30ecfa0a9593.gif)| 로그인 후 구단 생성하여 구단주가 될 수 있다. 팀로고를 추가하여 나만의 구단을 완성하자! |
+| **구단 관리** | ![team_edit](https://user-images.githubusercontent.com/33863016/144080411-00589972-c892-4276-8d82-2728ff5ebbf6.gif)| 소속 팀원 리스트를 확인 할 수 있으며, 구단주만 구단 정보를 수정할 수 있다. |
+| **가입 신청 목록** | ![team_join_approve](https://user-images.githubusercontent.com/33863016/144082358-4a897386-198c-4591-ad6b-809edf0e43d2.gif) | 구단주만 가입 신청 목록을 확인할 수 있으며, 승인 및 거절 권한이 있다. |
+| **구단 게시판** | ![team_community](https://user-images.githubusercontent.com/33863016/144084171-62fdffe7-c1d5-41fa-ba94-d40b82c8f66d.gif) | 구단에 가입하면, 소속 구단 게시판에 글 작성 및 수정할 수 있는 권한이 주어진다. |
+| **용병 게시판** | ![mercenary_boards](https://user-images.githubusercontent.com/33863016/144086035-d0b7a7b2-196b-4dd6-90d9-261aefe7dd0d.gif) | 용병 게시판에는 '구해요', '할래요' 게시판으로 나뉘며 버튼을 통해 전환된다. |
+| **한판떠요 게시판** | ![image](https://user-images.githubusercontent.com/33863016/144086734-d206a839-538b-46ee-94ec-6072b00f34f1.png) `구현 중` | 한판 떠요 게시판으로 구단 간 경기 매칭을 잡을 수 있다. 구단주만이 글을 남길 수 있다. |
+| **구장 찾기** | ![playground_map](https://user-images.githubusercontent.com/33863016/144088132-054ebf09-c7ab-4319-9f97-d9b6b8d57bbe.gif) | 추천 구장을 지도에서 클릭하여 정보를 확인할 수 있다. 또한, 키워드 검색을 통해 해당 지역 구장을 검색할 수 있다. |
 
 
 
@@ -206,10 +211,5 @@ exports.loginDataParser = async (req, res, next) => {
 
 
 
-
-
-
-### 프로젝트 기획안 PPT
-PPT 첨부...
 
 
