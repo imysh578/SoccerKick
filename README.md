@@ -1,4 +1,4 @@
-# **SoccerKick**
+#⚽ **SoccerKick**
 > Football-Community-Website (축구 커뮤니티 사이트 )
 
 
@@ -13,10 +13,10 @@
 
 ### 팀원
 
-`윤석훈` : [Github Page] (https://github.com/imysh578) <br/>
-`제갈동훈`: [Github Page] (https://github.com/GariJK) <br/>
-`선영규` : [Github Page] (https://github.com/bukgyu) <br/>
-`이상민` : [Github Page] (https://github.com/LeessangMin) <br/>
+`윤석훈` : [Github](https://github.com/imysh578) <br/>
+`선영규` : [Github](https://github.com/bukgyu) <br/>
+`이상민` : [Github](https://github.com/LeessangMin) <br/>
+`제갈동훈`: [Github](https://github.com/GariJK) <br/>
 
 
 **전반적인 프로젝트 진행절차**
@@ -37,7 +37,7 @@
 
 
 **배포 후**
-소감 등..
+몰라몰라
 
 
 
@@ -64,15 +64,15 @@
 
 ***
 
-## 개요
+##📒개요
 
 개요...
 
 
 
-## 목적
+##🎯 목적
 
-###개발 배경
+### 개발 배경
 (1) 배경
 축구 경기 시 필요한 인원을 모으기 힘듦
 일반인이 소속팀을 갖기 어려움
@@ -85,12 +85,9 @@
 (3) 개발 목표
 사용자에게 높은 접근성과 편의성을 제공
 축구 커뮤니티 및 매칭 기능 제공
-   
-
-### 전체 소스 코드 [클라이언트](https://github.com/pl2hteam/pl2hproject/tree/main/client)  or [서버](https://github.com/pl2hteam/pl2hproject/tree/main/server)
 
 
-## 🛠 사용한 기술 
+##🛠 사용한 기술 
 - 웹 화면 구성 : `HTML` `CSS`
 - DBMS : `MySQL`
 - 개발 Tool : `Visual Studio Code` `github`
@@ -101,21 +98,12 @@
 
 
 
-## ⚙ 주요 기능 
+##⚙ 주요 기능 
 
 
 
 
 
-### 깃 브런치 활용
-
-브런치 활용내용...
-
-```
-
-  
-
-```
 
 # 발생한 이슈 & 해결 방법
 
