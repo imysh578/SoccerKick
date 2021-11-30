@@ -13,10 +13,10 @@
 
 ### 팀원
 
-`윤석훈` : [Github Page] (https://github.com/imysh578)
-`제갈동훈`: [Github Page] (https://github.com/GariJK)
-`선영규` : [Github Page] (https://github.com/bukgyu)
-`이상민` : [Github Page] (https://github.com/LeessangMin)
+`윤석훈` : [Github Page] (https://github.com/imysh578) <br/>
+`제갈동훈`: [Github Page] (https://github.com/GariJK) <br/>
+`선영규` : [Github Page] (https://github.com/bukgyu) <br/>
+`이상민` : [Github Page] (https://github.com/LeessangMin) <br/>
 
 
 **전반적인 프로젝트 진행절차**
