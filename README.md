@@ -67,15 +67,15 @@
 
 ***
 
-### 개요
+## 개요
 
 개요...
 
 
 
-### 목적
+## 목적
 
-#개발 배경
+###개발 배경
 (1) 배경
 축구 경기 시 필요한 인원을 모으기 힘듦
 일반인이 소속팀을 갖기 어려움
@@ -93,7 +93,7 @@
 ### 전체 소스 코드 [클라이언트](https://github.com/pl2hteam/pl2hproject/tree/main/client)  or [서버](https://github.com/pl2hteam/pl2hproject/tree/main/server)
 
 
-### 사용한 기술 🛠
+## 🛠 사용한 기술 
 - 웹 화면 구성 : `HTML` `CSS`
 - DBMS : `MySQL`
 - 개발 Tool : `Visual Studio Code` `github`
@@ -104,7 +104,7 @@
 
 
 
-###주요 기능 ⚙
+## ⚙ 주요 기능 
 
 
 
