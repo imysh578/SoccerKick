@@ -183,6 +183,19 @@ exports.loginDataParser = async (req, res, next) => {
 
 해결한 방법 설명...
 
+***
+[상황]  
+개발단계와 배포단계에서 AWS MySQL RDS DB 연결이 되지 않음
+
+[문제] 
+보안그룹에서 인바운드 규칙을 알맞게 바꾸어 주어야 함
+
+[해결]  
+정확한 해결법은 알지 못하였으나 어차피 RDS에 접근할 때
+RDS DB를 생성할 때 받은 엔드포인트와 username, password가 필요하기에 보안에 문제는 없을거라 판단하여
+![image](https://user-images.githubusercontent.com/90792916/144182789-84bcb003-33dd-450a-a864-a7fe2c6a6d1f.png)  
+인바운드 규칙을 모든 트래픽에 아무나 접근할 수 있도록 0.0.0.0/0 으로 지정해주었다.
+
 
 ***
 
