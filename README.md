@@ -94,7 +94,10 @@
 | **용병 게시판** | ![mercenary_boards](https://user-images.githubusercontent.com/33863016/144086035-d0b7a7b2-196b-4dd6-90d9-261aefe7dd0d.gif) | 용병 게시판에는 '구해요', '할래요' 게시판으로 나뉘며 버튼을 통해 전환된다. |
 | **한판떠요 게시판** | ![image](https://user-images.githubusercontent.com/33863016/144086734-d206a839-538b-46ee-94ec-6072b00f34f1.png) `구현 중` | 한판 떠요 게시판으로 구단 간 경기 매칭을 잡을 수 있다. 구단주만이 글을 남길 수 있다. |
 | **구장 찾기** | ![playground_map](https://user-images.githubusercontent.com/33863016/144088132-054ebf09-c7ab-4319-9f97-d9b6b8d57bbe.gif) | 추천 구장을 지도에서 클릭하여 정보를 확인할 수 있다. 또한, 키워드 검색을 통해 해당 지역 구장을 검색할 수 있다. |
+  
 
+### DB 테이블 관계도
+![image](https://user-images.githubusercontent.com/33863016/144186995-dd247826-44dc-40ac-bc56-047a9cdb4e16.png)
 
 
 ***
