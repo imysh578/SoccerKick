@@ -187,8 +187,8 @@ layout 폴더에 공통 컴포넌트를 따로 관리 했으며, 필요한 페�
 로그인 정보를 다른 페이지에 전달이 안되는 문제가 발생
 
 - [해결]  
-loginCheck 미들웨어에서 로그인 상태 뿐만 아니라 로그인 정보도 보내도록 코드를 추가함.  
-res.locals 를 이용해서 미들웨어 간 데이터를 전달함.
+`loginCheck` 미들웨어에서 로그인 상태 뿐만 아니라 로그인 정보도 보내도록 코드를 추가함.  
+`res.locals` 를 이용해서 미들웨어 간 데이터를 전달함.
 
 
 - **[/public/loginCheck.js](https://github.com/imysh578/SoccerKick/blob/main/public/loginCheck.js)**
@@ -244,7 +244,7 @@ exports.loginDataParser = async (req, res, next) => {
 - [해결]  
 연관이 있는 테이블 사이에 또 하나의 테이블을 만듦.  
 데이터 검색을 할 때는 해당 테이블만 검색하여 검색 속도에 영향을 최소화 함.  
-ex) user 테이블에도 소속 구단 컬럼이 있지만, usersInTeam 테이블을 하나 더 생성하여 구단 내 선수 검색할 때 빠른 검색이 가능하도록 함.
+ex) user 테이블에도 소속 구단 컬럼이 있지만, `usersInTeam` 테이블을 하나 더 생성하여 구단 내 선수 검색할 때 빠른 검색이 가능하도록 함.
 ![image](https://user-images.githubusercontent.com/33863016/144227199-be3cd16a-c96e-4beb-9a44-1216a9530e7f.png)  
 
 
