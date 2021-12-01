@@ -85,6 +85,7 @@
 | --- | --- | --- |
 | **메인페이지** |  ![mainpage](https://user-images.githubusercontent.com/33863016/144067412-c8291256-5488-49e2-8480-5ba71cbaccad.gif)| 축구 하이라이트 유튜브 영상을 띄움 |
 | **로그인/회원가입** | ![loginpage](https://user-images.githubusercontent.com/33863016/144067454-e5f88293-4bf7-48d0-baca-533810b8a924.gif)| 한 페이지에서 버튼을 클릭하여 로그인/회원가입으로 전환 |
+| **마이페이지** |![myPage](https://user-images.githubusercontent.com/33863016/144178069-978ac5a5-3fce-4bf4-9cb2-dafa8bdb4dd8.gif) | 회원 정보 수정이 가능하며 왼쪽 상단에는 소속 구단 마크가 보여진다. |
 | **구단 가입** | ![team_join](https://user-images.githubusercontent.com/33863016/144068634-c62fbeb2-ddf8-44e7-98d9-c11953529165.gif)| 로그인 후 구단 가입 신청이 가능하다 |
 | **구단 생성** | ![team_create](https://user-images.githubusercontent.com/33863016/144079159-a9141382-ebe9-4aca-a1bc-30ecfa0a9593.gif)| 로그인 후 구단 생성하여 구단주가 될 수 있다. 팀로고를 추가하여 나만의 구단을 완성하자! |
 | **구단 관리** | ![team_edit](https://user-images.githubusercontent.com/33863016/144080411-00589972-c892-4276-8d82-2728ff5ebbf6.gif)| 소속 팀원 리스트를 확인 할 수 있으며, 구단주만 구단 정보를 수정할 수 있다. |
