@@ -1,6 +1,9 @@
 # ⚽ **SoccerKick**
 > Football-Community-Website (축구 커뮤니티 사이트 )
 
+
+![image](https://user-images.githubusercontent.com/33863016/145717747-096571a9-044f-4d30-bf2c-888eaeb7a5ce.png)
+
 ### 기간 : `2021-09-29 ~ 2021-10-15`
 
 ### 팀원 및 역할
