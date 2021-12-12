@@ -2,7 +2,7 @@
 > Football-Community-Website (축구 커뮤니티 사이트 )
 
 
-![image](https://user-images.githubusercontent.com/33863016/145717747-096571a9-044f-4d30-bf2c-888eaeb7a5ce.png)
+![image](https://user-images.githubusercontent.com/33863016/145717808-53c8e9e9-e06e-47ac-a61c-f9fc5220bce5.png)
 
 ### 기간 : `2021-09-29 ~ 2021-10-15`
 
