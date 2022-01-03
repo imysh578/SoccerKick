@@ -127,7 +127,7 @@
 각 코드별로 exports 해서 각각의 미들웨어에 코드를 사용했다.  
 
 - **[/public/loginCheck.js](https://github.com/imysh578/SoccerKick/blob/main/public/loginCheck.js)**
-```
+```js
 exports.logined = (req, res, next) => {
   // 로그인 검증
   const cookie = req.cookies.user;
@@ -170,7 +170,7 @@ layout 폴더에 공통 컴포넌트를 따로 관리 했으며, 필요한 페�
 ![image](https://user-images.githubusercontent.com/33863016/144210251-e4170ec8-2d89-40db-9d12-041e60349860.png)
 
 - **[/views/team_board.html](https://github.com/imysh578/SoccerKick/blob/main/views/team_board.html)**
-```
+```html
 ...
 
 <body class="wrapper">
@@ -195,7 +195,7 @@ layout 폴더에 공통 컴포넌트를 따로 관리 했으며, 필요한 페�
 
 
 - **[/public/loginCheck.js](https://github.com/imysh578/SoccerKick/blob/main/public/loginCheck.js)**
-```
+```js
 ...
 
 // 필요한 데이터를 res.locals.[변수명] = [값] 형태로 보내기
